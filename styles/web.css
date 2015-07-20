@@ -36,6 +36,9 @@ h6 {
     break-after: avoid;
     hyphens: none;
 }
+h1 .header-section-number {
+    display: none;
+}
 h1,
 h2,
 h3 {
@@ -45,7 +48,7 @@ h3 {
 h2 {
     text-transform: uppercase;
 }
-h3 {
+h4 {
     font-weight: normal;
     font-style: italic;
     font-size: 1.2222222222222223em;
@@ -54,6 +57,9 @@ h1 + h2 {
     margin-top: 0;
 }
 h2 + h3 {
+    margin-top: 0;
+}
+h3 + h4 {
     margin-top: 0;
 }
 p {
@@ -71,7 +77,11 @@ figure img {
 }
 figure figcaption {
     margin-left: 200px;
-    font-size: 80%;
+    font-size: 0.85rem;
+    font-family: 'Myriad pro', serif;
+}
+figure figcaption .figure-title {
+    font-weight: bold;
 }
 .small-caps {
     font-variant: small-caps;

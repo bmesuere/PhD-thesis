@@ -12,13 +12,15 @@ cp hyphenator.js output/
 # -s: create stand alone file
 # -S: use smart quotes in output
 # -N: number sections
-pandoc chapter2.md \
+pandoc chapter0.md chapter1.md chapter2.md chapterz.md \
     -f markdown \
     -t html5 \
     -o output/book.html \
     -s \
     -S \
     -N \
+    --chapters \
+    -M chapters \
     --filter='/Users/bart/.cabal/bin/pandoc-crossref' \
     --css='styles/web.css' \
     --css='styles/chapter2.css' \
