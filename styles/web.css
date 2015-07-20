@@ -1,24 +1,25 @@
-@import url(http://fonts.googleapis.com/css?family=Source+Serif+Pro:400,700);
-@import url(http://fonts.googleapis.com/css?family=Source+Serif+Pro:400,700);
-@import url(http://fonts.googleapis.com/css?family=Source+Code+Pro:600);
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 html {
-    font-size: 20px;
+    font-size: 24px;
 }
 body {
-    box-sizing: border-box;
     max-width: 700px;
     margin: 3em auto 6em;
     -webkit-column-count: 1;
     -moz-column-count: 1;
     column-count: 1;
-    font-family: 'Myriad pro', sans-serif;
+    font-family: 'Adobe Caslon Pro', sans-serif;
     color: rgba(0, 0, 0, 0.8);
     letter-spacing: -0.02em;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     -moz-font-feature-settings: "liga" on;
-    line-height: 1.5;
+    line-height: 1.35;
     text-align: left;
 }
 h1,
@@ -27,18 +28,23 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: 'Adobe Caslon Pro', serif;
+    font-family: 'Myriad pro', serif;
     -webkit-column-break-after: avoid;
     column-break-after: avoid;
     break-after: avoid;
     hyphens: none;
 }
 h1 {
-    font-size: 1.33333em;
+    font-size: 1.3333333333333333em;
     margin: 1.3333333333333333em 0 0 0;
 }
 p {
-    line-height: 1.3;
+    line-height: 1.35;
+    margin-bottom: 1em;
+    hyphens: auto;
+}
+.small-caps {
+    font-variant: small-caps;
 }
 .references p {
     font-size: 80%;

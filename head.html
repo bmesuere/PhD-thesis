@@ -1,0 +1,10 @@
+<script src="hyphenator.js"></script>
+<script type="text/javascript">
+  Hyphenator.config({
+    defaultlanguage: "en",
+    selectorfunction: function() {
+      return document.getElementsByTagName("p");
+    }
+  });
+  Hyphenator.run();
+</script>
