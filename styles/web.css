@@ -63,6 +63,16 @@ p {
     line-height: 1.35;
     hyphens: auto;
 }
+figure {
+    margin-right: 1em;
+}
+figure img {
+    width: 100%;
+}
+figure figcaption {
+    margin-left: 200px;
+    font-size: 80%;
+}
 .small-caps {
     font-variant: small-caps;
 }

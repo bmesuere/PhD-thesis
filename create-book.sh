@@ -3,6 +3,7 @@
 rm -rf output
 mkdir output
 cp -r styles output/
+cp -r images output/
 cp hyphenator.js output/
 
 # -f markdown: use markdown as input
@@ -10,9 +11,7 @@ cp hyphenator.js output/
 # -o: output filename
 # -s: create stand alone file
 # -S: use smart quotes in output
-# --toc: include table of content
 # -N: number sections
-# -css: add style sheet
 pandoc chapter2.md \
     -f markdown \
     -t html5 \
@@ -20,6 +19,7 @@ pandoc chapter2.md \
     -s \
     -S \
     -N \
+    --filter='/Users/bart/.cabal/bin/pandoc-crossref' \
     --css='styles/web.css' \
     --css='styles/chapter2.css' \
     --bibliography='library.bib' \
