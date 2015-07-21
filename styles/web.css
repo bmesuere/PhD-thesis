@@ -83,6 +83,10 @@ figure figcaption {
 figure figcaption .figure-title {
     font-weight: bold;
 }
+.pre-small-image + figure img {
+    margin-left: 200px;
+    width: 700px;
+}
 .small-caps {
     font-variant: small-caps;
 }
@@ -181,10 +185,6 @@ cite,
     padding: 0.5em 1em;
     font-size: 15px;
     box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.4);
-}
-figure img,
-figure svg {
-    cursor: pointer;
 }
 .lightbox {
     box-sizing: border-box;
