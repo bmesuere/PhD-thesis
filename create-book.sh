@@ -33,4 +33,5 @@ pandoc chapter0.md chapter1.md chapter2.md chapter3.md chapter4.md chapter5.md c
     --include-in-header='head.html'
 #    --toc \
 
-#prince output/book.html -o output/book.pdf
+prince output/book.html \
+    -o output/book.pdf

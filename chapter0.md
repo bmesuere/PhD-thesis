@@ -2,6 +2,8 @@
 title: 'Unipept'
 author: 'Bart Mesuere'
 
+lang: "en"
+
 link-citations: true
 
 titleDelim: ""
@@ -12,6 +14,5 @@ figPrefix:
 ---
 
 <div class="todo">
-* Hyphens in captions
 * white space
 </div>
