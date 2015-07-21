@@ -15,7 +15,7 @@ body {
     -moz-column-count: 1;
     column-count: 1;
     font-family: 'Adobe Caslon Pro', sans-serif;
-    color: rgba(0, 0, 0, 0.8);
+    color: rgba(0, 0, 0, 0.87);
     letter-spacing: -0.02em;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
@@ -103,7 +103,7 @@ figure figcaption .figure-title {
     font-family: 'Myriad pro', serif;
     font-size: 0.85rem;
     line-height: 1.40;
-    color: #667;
+    color: rgba(0, 0, 0, 0.54);
 }
 .references {
     white-space: normal;
@@ -113,14 +113,17 @@ figure figcaption .figure-title {
     text-indent: -40px;
     margin-left: 40px;
 }
+.todo {
+    color: red;
+}
 a {
-    color: rgba(0, 0, 0, 0.8);
+    color: rgba(0, 0, 0, 0.87);
 }
 a.latex {
     display: inline-block;
     text-decoration: none;
     height: 21px;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.8);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.87);
 }
 code {
     font-family: 'menlo', monospace;

@@ -10,3 +10,8 @@ figPrefix:
   - "figure"
   - "figures"
 ---
+
+<div class="todo">
+* Hyphens in captions
+* white space
+</div>

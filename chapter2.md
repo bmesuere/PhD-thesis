@@ -1,5 +1,11 @@
-# Chapter 2: Something about Unipept
-Say something about how this chapter bundles 2 paper about unipept: the initial publication and the update published in proteomics
+# Chapter 2: Something about Unipept, proteomics and biodiversity
+<span class="todo">Say something about how this chapter bundles 2 paper about unipept: the initial publication and the update published in proteomics.</span>
+
+<div class="todo">
+* Table
+* species names
+* uniprot records
+</div>
 
 ## Unipept: tryptic peptide-based biodiversity analysis of metaproteome samples
 **Abstract** - The Unipept web application ([http://unipept.ugent.be](http://unipept.ugent.be)) supports biodiversity analysis of large and complex metaproteome samples using tryptic peptide information obtained from shotgun MS/MS experiments. Its underlying index structure is designed to quickly retrieve all occurrences of a tryptic peptide in UniProtKB records. Taxon-specificity of the tryptic peptide is successively derived from these occurrences using a novel lowest common ancestor approach that is robust against taxonomic misarrangements, misidentifications and inaccuracies. Not taking into account this identification noise would otherwise result in drastic loss of information. Dynamic treemaps visualize the biodiversity of metaproteome samples, which eases the exploration of samples with highly complex compositions. The potential of Unipept to gain novel insights into the biodiversity of a sample is evaluated by reanalyzing publicly available metaproteome data sets taken from the bacterial phyllosphere and the human gut.
