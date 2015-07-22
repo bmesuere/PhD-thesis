@@ -5,8 +5,9 @@
     margin: 16mm 16mm 16mm 16mm;
 }
 header {
-    page: blank;
+    page: no-header;
 }
+#TOC,
 .front-matter {
     page: front-matter;
 }
@@ -19,26 +20,24 @@ h1 {
 @page :left {
     @top-left {
         font-family: 'Myriad pro', serif;
+        font-size: 80%;
         content: string(chap, first);
     }
 }
-@page blank,
-@page :blank {
-    @top-left {
-        content: normal;
-    }
-}
 h2 {
-    string-set: sect content();
+    string-set: section content();
 }
 @page :right {
     @top-right {
         font-family: 'Myriad pro', serif;
-        content: string(sect, first);
+        font-size: 80%;
+        content: string(section, first);
     }
 }
-@page blank,
-@page :blank {
+@page no-header {
+    @top-left {
+        content: normal;
+    }
     @top-right {
         content: normal;
     }
@@ -46,13 +45,8 @@ h2 {
 
 /* footer settings */
 
-.content-start {
-    counter-reset: page 1
-}
-@page blank {
-    @bottom-left {
-        content: normal;
-    }
+div#reset {
+    counter-reset: page 1;
 }
 @page :left {
     @bottom-left {
@@ -64,11 +58,6 @@ h2 {
     @bottom-left {
         font-family: 'Myriad pro', serif;
         content: counter(page, lower-roman);
-    }
-}
-@page blank {
-    @bottom-right {
-        content: normal;
     }
 }
 @page :right {
@@ -83,12 +72,79 @@ h2 {
         content: counter(page, lower-roman);
     }
 }
+@page:blank {
+    @top-left {
+        content: normal;
+    }
+    @top-right {
+        content: normal;
+    }
+    @bottom-left {
+        content: normal;
+    }
+    @bottom-right {
+        content: normal;
+    }
+}
+
+/* TOC */
+
+#TOC {
+    page-break-after: always;
+}
+#TOC a {
+    text-decoration: none;
+}
+#TOC ul,
+#TOC ul ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    margin-left: 1.5em;
+}
+#TOC li {
+    text-indent: -1.5em;
+}
+#TOC ul ul {
+    margin-left: 1.5em;
+    font-weight: normal;
+}
+#TOC > ul > li {
+    font-weight: bold;
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+#TOC ul a::after {
+    content: leader('.') target-counter(attr(href), page);
+    font-style: normal;
+}
+#TOC > ul > li > a::after {
+    content: leader(' ') target-counter(attr(href), page);
+    font-style: normal;
+}
+
+/* set the number of roman-numbered sections here */
+
+#TOC > ul > li:nth-child(-n+3) > a::after {
+    content: leader(' ') target-counter(attr(href), page, lower-roman);
+}
+#TOC > ul > li > a > .toc-section-number::before {
+    content: "Chapter ";
+}
+#TOC > ul > li > a > .toc-section-number::after {
+    content: ":";
+}
 
 /* chapter page settings */
 
-.chapter {
+section.level1.chapter {
     page-break-before: right;
+}
+section.level1 {
     page-break-after: always;
+}
+section.content-start {
+    counter-reset: page 1;
 }
 
 /* content settings */
@@ -124,7 +180,7 @@ figure figcaption {
     break-inside: avoid;
 }
 table thead,
-table tbody{
+table tbody {
     font-size: 70%;
 }
 .aside {

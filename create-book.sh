@@ -18,6 +18,8 @@ pandoc chapter0.md chapter1.md chapter2.md chapter3.md chapter4.md chapter5.md c
     -S \
     -N \
     --metadata="date:$version" \
+    --number-sections \
+    --section-divs \
     --chapters \
     -M chapters \
     --filter='/Users/bart/.cabal/bin/pandoc-crossref' \
@@ -40,6 +42,8 @@ pandoc chapter0.md chapter1.md chapter2.md chapter3.md chapter4.md chapter5.md c
     -S \
     -N \
     --metadata="date:$version" \
+    --number-sections \
+    --section-divs \
     --chapters \
     -M chapters \
     --filter='/Users/bart/.cabal/bin/pandoc-crossref' \

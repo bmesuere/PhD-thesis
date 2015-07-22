@@ -1,3 +1,1 @@
-<div class='chapter'>
-# Chapter 4: Something about proteome clustering
-</div>
+# Something about proteome clustering {.chapter}

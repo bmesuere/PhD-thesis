@@ -72,6 +72,12 @@ figure figcaption {
     font-family: 'Myriad pro', serif;
     text-align: left;
 }
+.chapter h1 .header-section-number::before {
+    content: "Chapter "
+}
+.chapter h1 .header-section-number::after {
+    content: ": "
+}
 .table-title,
 .figure-title {
     font-weight: bold;
@@ -139,6 +145,9 @@ header h2 {
 }
 .title {
     font-size: 36px;
+}
+.subtitle {
+    margin-top: 0;
 }
 .author {
     font-size: 14px;

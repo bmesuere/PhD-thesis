@@ -1,5 +1,6 @@
 ---
 title: 'Unipept'
+subtitle: 'Computational Exploration of Microbial Metaproteome Data'
 author: 'Bart Mesuere'
 
 lang: "en"
@@ -16,8 +17,6 @@ tblPrefix:
   - "table"
   - "tables"
 ---
-<div class='front-matter'>
-<div class="todo">
-* white space
-</div>
-</div>
+# English Summary {- .front-matter}
+# Nederlandstalige Samenvatting {- .front-matter}
+# List of Publications {- .front-matter}

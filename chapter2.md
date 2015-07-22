@@ -1,5 +1,4 @@
-<div class='chapter'>
-# Chapter 2: Something about Unipept, proteomics and biodiversity
+# Something about Unipept, proteomics and biodiversity {.chapter}
 <span class="todo">Say something about how this chapter bundles 2 paper about unipept: the initial publication and the update published in proteomics.</span>
 <div class="todo">
 * species names
@@ -106,5 +105,3 @@ Reanalysis of sample 7 from the @Verberkmoes2009 study yielded 1292 bacteria-spe
 
 #### Future developments
 The Unipept web application presented here is a novel approach to peptide-based biodiversity analysis. The LCA algorithm has the significant advantage, when compared to the Pep2Pro tool, of using noise filtering algorithms to provide the most accurate results. Restricting the scope of the application to tryptic peptides also allows for a highly optimized index yielding excellent performance. To the best of our knowledge, no index structures exist that are both sufficiently fast and memory efficient to allow exact substring matching of generic peptides over all UniProtKB records. Further research is planned to have Unipept support proteases other than trypsin, without dramatic loss of performance. In addition to being fast, the application is also easy to use and presents the results in a visually appealing way. Now that the basic infrastructure is put in place, additional support for the comparison of multiple samples is planned. Further improvements will also include support for functional analysis of metaproteome samples by adding the functional annotations of the Gene Ontology project [@Ashburner2000] to the Unipept database.
-
-</div>
