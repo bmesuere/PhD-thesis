@@ -11,6 +11,10 @@ figureTemplate: "<span class='figure-title'>$$figureTitle$$&nbsp;$$i$$</span> $$
 figPrefix:
   - "figure"
   - "figures"
+tableTemplate: "<span class='table-title'>$$tableTitle$$&nbsp;$$i$$</span> $$t$$"
+tblPrefix:
+  - "table"
+  - "tables"
 ---
 
 <div class="todo">
