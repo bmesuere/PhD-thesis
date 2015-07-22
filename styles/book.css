@@ -1,0 +1,134 @@
+/* page settings */
+
+@page {
+    size: 160mm 240mm;
+    margin: 16mm 16mm 16mm 16mm;
+}
+header {
+    page: blank;
+}
+.front-matter {
+    page: front-matter;
+}
+
+/* header settings */
+
+h1 {
+    string-set: chap content();
+}
+@page :left {
+    @top-left {
+        font-family: 'Myriad pro', serif;
+        content: string(chap, first);
+    }
+}
+@page blank,
+@page :blank {
+    @top-left {
+        content: normal;
+    }
+}
+h2 {
+    string-set: sect content();
+}
+@page :right {
+    @top-right {
+        font-family: 'Myriad pro', serif;
+        content: string(sect, first);
+    }
+}
+@page blank,
+@page :blank {
+    @top-right {
+        content: normal;
+    }
+}
+
+/* footer settings */
+
+.content-start {
+    counter-reset: page 1
+}
+@page blank {
+    @bottom-left {
+        content: normal;
+    }
+}
+@page :left {
+    @bottom-left {
+        font-family: 'Myriad pro', serif;
+        content: counter(page);
+    }
+}
+@page front-matter:left {
+    @bottom-left {
+        font-family: 'Myriad pro', serif;
+        content: counter(page, lower-roman);
+    }
+}
+@page blank {
+    @bottom-right {
+        content: normal;
+    }
+}
+@page :right {
+    @bottom-right {
+        font-family: 'Myriad pro', serif;
+        content: counter(page);
+    }
+}
+@page front-matter:right {
+    @bottom-right {
+        font-family: 'Myriad pro', serif;
+        content: counter(page, lower-roman);
+    }
+}
+
+/* chapter page settings */
+
+.chapter {
+    page-break-before: right;
+    page-break-after: always;
+}
+
+/* content settings */
+
+html {
+    font-size: 12pt;
+}
+body {
+    color: black;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    break-after: avoid;
+}
+p {
+    margin-left: 100px;
+    margin-right: 0px;
+}
+figure {
+    margin-right: 0;
+}
+.pre-small-image + figure img {
+    padding-left: 100px;
+}
+table caption,
+figure figcaption {
+    margin-left: 100px;
+    font-size: 80%;
+    break-inside: avoid;
+}
+table thead,
+table tbody{
+    font-size: 70%;
+}
+.aside {
+    width: 130px;
+    margin-left: -50px;
+    margin-right: 20px;
+}
