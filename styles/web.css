@@ -16,7 +16,9 @@ body {
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    -moz-font-feature-settings: "liga" on;
+    -webkit-font-feature-settings: "kern" on, "liga" on;
+    -moz-font-feature-settings: "kern" on, "liga" on;
+    font-feature-settings: "kern" on, "liga" on;
     line-height: 1.35;
     text-align: left;
 }
@@ -103,6 +105,15 @@ td {
 }
 .small-caps {
     font-variant: small-caps;
+    letter-spacing: 0.05em;
+}
+p .small-caps {
+    -webkit-font-feature-settings: "smcp" on;
+    -moz-font-feature-settings: "smcp" on;
+    font-feature-settings: "smcp" on;
+    font-variant: normal;
+    font-variant: prince-opentype(smcp);
+    letter-spacing: 0.02em;
 }
 .aside {
     display: block;
