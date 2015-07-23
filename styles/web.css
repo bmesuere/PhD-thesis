@@ -136,6 +136,7 @@ a {
 }
 code {
     font-family: 'menlo', monospace;
+    font-size: 85%;
 }
 table {
     margin: 2em auto 3em;

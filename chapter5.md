@@ -13,9 +13,9 @@ Fast computation of LCAs for given lists of peptides also enables interactive bi
 
 To guarantee optimal performance and correctness, the Unipept project pursues excellence regarding best practices for modern web application development. One example of this is automatic correctness testing by over 1000 tests after each code change. The entire application including the web services is open source and licensed under the terms of the MIT license. The source code can be found at [http://github.com/unipept/unipept](http://github.com/unipept/unipept).
 
-![Example of the interactive sunburst visualisation in Unipept. The graph shows the result of the marine sample dataset available on the Unipept website.](images/ch5fig3.png){#fig:ch5fig3}
-
 In this article, we present the latest addition to the Unipept toolbox: a set of web services that expose the Unipept analysis functions for use in other applications and data processing pipelines.
+
+![Example of the interactive sunburst visualisation in Unipept. The graph shows the result of the marine sample dataset available on the Unipept website.](images/ch5fig3.png){#fig:ch5fig3}
 
 ![Example of the interactive treemap in Unipept. The graph show the result of the *Arabidopsis thaliana* phylosphere sample dataset available on the Unipept website.](images/ch5fig4.png){#fig:ch5fig4}
 

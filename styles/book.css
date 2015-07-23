@@ -194,3 +194,7 @@ table tbody {
     margin-left: -50px;
     margin-right: 20px;
 }
+table tbody,
+.references div {
+    break-inside: avoid;
+}
