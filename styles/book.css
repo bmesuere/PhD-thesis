@@ -7,6 +7,9 @@
 header {
     page: no-header;
 }
+header h3.date {
+    string-set: version content();
+}
 #TOC,
 .front-matter {
     page: front-matter;
@@ -53,6 +56,13 @@ h2 {
 
 div#reset {
     counter-reset: page 1;
+}
+/* remove for final version */
+@page {
+    @bottom-center {
+        font-family: 'Myriad pro', serif;
+        content: string(version, first);
+    }
 }
 @page :left {
     @bottom-left {
