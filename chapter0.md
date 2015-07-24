@@ -17,6 +17,6 @@ tblPrefix:
   - "table"
   - "tables"
 ---
-# English Summary {- .front-matter}
-# Nederlandstalige Samenvatting {- .front-matter}
-# List of Publications {- .front-matter}
+# English Summary {- .front-matter data-running-title='English Summary'}
+# Nederlandstalige Samenvatting {- .front-matter data-running-title='Nederlandstalige Samenvatting'}
+# List of Publications {- .front-matter data-running-title='List of Publications'}
