@@ -1,5 +1,4 @@
 /* page settings */
-
 @page {
     size: 170mm 240mm;
     margin-bottom: 19mm;
@@ -13,6 +12,8 @@
     margin-left: 23mm;
     margin-right: 19mm;
 }
+
+/* named pages */
 header {
     page: no-header-footer;
 }
@@ -60,7 +61,7 @@ section.level2 {
         content: string(sect, first);
     }
 }
-@page no-header-footer {
+@page no-header {
     @top-left {
         content: normal;
     }
