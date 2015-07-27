@@ -44,8 +44,11 @@ section.level1 {
         content: string(chap, first);
     }
 }
+section#references {
+    string-set: sect attr('data-running-title'), chap attr('data-running-title');
+}
 section.level2 {
-    string-set: sect attr('data-running-title')
+    string-set: sect attr('data-running-title');
 }
 @page :right {
     @top-right {
