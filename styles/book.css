@@ -223,6 +223,9 @@ p {
 figure {
     margin-right: 0;
 }
+a {
+    text-decoration: none;
+}
 .pre-small-image + figure img {
     padding-left: 100px;
 }
