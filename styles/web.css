@@ -77,7 +77,10 @@ figure figcaption {
     font-family: 'Myriad pro', serif;
     text-align: left;
 }
-
+ol,
+ul {
+    margin-left: 200px;
+}
 .chapter h1 .header-section-number::before {
     content: "Chapter ";
 }

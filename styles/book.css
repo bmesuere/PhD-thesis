@@ -240,6 +240,10 @@ figure {
 a {
     text-decoration: none;
 }
+ul,
+ol {
+    margin-left: 100px;
+}
 .pre-small-image + figure img {
     padding-left: 100px;
 }
