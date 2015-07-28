@@ -1,10 +1,8 @@
-# Something about the technical stuff {.chapter data-running-title='Something about the technical stuff'}
+# A short history of Unipept {.chapter data-running-title='A short history of Unipept'}
 
-* Use Unipept minor versions as sections
-* Start the section with the changelog for that version
-* Pick a few items to write a subsection about
-* Bundle the pre-1.0 versions into a single section?
+This chapter tells the story of Unipept from a developer's point of view. Each section covers a major or minor version of Unipept by first listing the changes introduced in that version by means of an extended changelog. Next, a few highlights are discussed in more detail.
 
+<p class="todo">
 Subsection ideas:
 
 * development process
@@ -17,3 +15,11 @@ Subsection ideas:
 * docker
 * documentation
 * testing
+</p>
+
+## Before the web application
+
+* java application
+* a few statistics
+* screenshot
+* poster
