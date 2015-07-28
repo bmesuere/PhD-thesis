@@ -3,7 +3,7 @@
   Hyphenator.config({
     defaultlanguage: "en",
     selectorfunction: function() {
-      return document.getElementsByTagName("body");
+      return document.querySelectorAll("p,ul,ol,figure,table");
     }
   });
   Hyphenator.run();
