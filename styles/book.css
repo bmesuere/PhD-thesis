@@ -243,6 +243,7 @@ a {
 ul,
 ol {
     margin-left: 100px;
+    break-inside: avoid;
 }
 .pre-small-image + figure img {
     padding-left: 100px;

@@ -23,3 +23,213 @@ Subsection ideas:
 * a few statistics
 * screenshot
 * poster
+
+## 0.1
+
+## 0.2
+
+## 0.3
+
+## 0.4
+
+## 1.0
+
+## 1.1
++- 80 commits
+
+* new website design
+* news box on home page
+* performance improvement of the sunburst visualization in Firefox
+
+## 1.2
++- 20 commits
+
+> The focus of Unipept version 1.2 was on performance improvements. This results in massive improvements in page load time due to optimized queries and faster JSON generation.
+
+## 1.3
++- 65 commits
+
+* Switched to twitter bootstrap for the user interface
+* Added full screen visualisations for supported browsers
+* Visualisations can now be saved as images
+* Updated to UniProt release 2012_07
+
+## 1.4
++- 40 commits
+
+* Added tryptic peptides with length between 5 and 8 to the database
+* Added support for missed cleavages
+
+## 1.5
++- 200 commits
+
+* Add support for PRIDE datasets
+* Add dataset loading from url
+* Add multi-peptide results download from the results page
+* Add new layout for news page
+* Fix layout issue with single peptide page
+
+## 2.0
++- 800 commits
+
+* Add the unique peptide finder
+* Add GO and EC cross references to database
+* Invalidate "metagenome" NCBI taxa
+* Tweak the lineage invalidation
+* Code spring cleaning
+* Rewrite of backend scripts
+* Add search settings to the batch run script
+* Switch from JS animations to CSS animations where possible
+* Add a timeout before filtering the tree on the multi result page
+* Fix bug when attempting to load a pride dataset without entering an id
+* Fix bug where only 1 number was shown in the tree on the multi result page
+* Fix bug where downloading results from results page didn't behave as expected
+* Fix bug where the sizes of the slices in the sunburst were not correct
+* Update bootstrap to 2.3.1
+* Update rails to 3.2.13
+* Update D3 to 3.3.8
+* Update html2canvas to 0.4.1
+
+## 2.1
++- 250 commits
+
+* Minor redesign of most of the pages
+* Add retina image assets
+* Add CSV export for data in the unique peptides graph
+* Add SVG export for the sunburst and unique peptides graphs
+* Improve all file download flows
+* Improve dragging performance on unique peptides graph
+* Replace the tree on multi-peptides result page with own implementation
+* Rewrite the complete pancore JavaScript code
+* Remove new relic monitoring
+* Remove Qbaka error handling
+* Fix a bug where the download button stayed disabled after downloading the results on the multi-peptide page
+* Fix a bug with using full screen mode on the unique peptide page
+* Fix a bug where dragging a node triggered a popover in some browsers
+* Update to Bootstrap 3.0.3
+* Update to D3 3.3.10
+
+## 2.2
+
+* Add peptidome similarity feature
+* Add myGenomes feature to peptidome analysis
+* Add full screen support for IE11
+* Add links to the bioproject webpage in the peptide finder graph tooltips and genomes table
+* Add an option to disable individual lines in the unique peptide finder by clicking on the legend labels
+* Add an option to use fixed colors for the sunburst graph allowing to compare the results of multiple samples
+* Add rails errors log via email
+* Make most of the logging optional by using settings
+* Improve the design of the genomes table
+* Improve the loading of the unique sequences in the unique peptide finder
+* Less clutter in the peptide finder graph by abbreviating names
+* Fix a bug where the genome size was not shown by default
+* Fix a bug causing the LCA to be root in some cases in the unique peptide finder
+* Fix a bug where the custom drag cursor wasn't shown in Internet Explorer
+* Fix a bug where matching children weren't shown while filtering on the multi peptides result page
+* Fix a crash when trying to sort without genomes
+* Fix an issue with the full screen view of the peptide finder graph
+* Fix an issue where the download dialog didn't disappear by pressing the escape key
+* Update to capistrano 3
+* Update bootstrap to 3.1.1
+* Update D3.js to 3.4.6
+* Update ruby to 2.1
+* Update rails to 4.1.1
+
+
+## 2.3
+
+* Add treeview to the multi-peptide analysis result page (#381)
+* Add ec numbers and go terms to the single peptide analysis result page (#368)
+* Add links to PRIDE and PeptideAtlas on the single peptide analysis result page (#122)
+* Add the option to add multiple genomes at a time to the my genomes feature (#390)
+* Add copy to clipboard buttons where appropriate (#386)
+* Add the option to add unlimited genomes to the my genomes feature by switching to indexedDB storage (#390)
+* Add a progress bar to the multi-peptide analysis page (#68)
+* Improve the multi-peptide analysis input parsing  by stripping #-symbols (#115)
+* Improve the design by removing most of the gradients and drop shadows
+* Improve the stability of the clustered order (#387)
+* Fix a bug where filtering the selection tree of the peptidome analysis was case sensitive where it shouldn't be (#377)
+* Fix a bug where loading the /organisms page resulted in an error (#374)
+* Fix a bug where only loading 'my genomes' into the peptidome analysis caused an error (#369)
+* Fix a bug where having 2 genomes with the same name caused the phylogenetic tree to crash (#376)
+* Fix an issue where some image assets failed to load (#372)
+* Fix a small inaccuracy with the UPGMA calculation (#378)
+* Update bootstrap to 3.2
+* Update D3.js to 3.4.8
+
+## 2.4
+
+* Add an API and documentation (#397)
+* Add tests for the ruby on rails app (#412)
+* Add a reset button to the visualisations (#423)
+* Add the new treeview to the tryptic peptide analysis page (#393)
+* Improve the organisation of the tryptic peptide analysis page (#392)
+* Improve phylogenetic tree export by hiding internal nodes (#364)
+* Improve the LCA calculation code by rewriting everything in java (#384, #398)
+* Rename single peptide analysis to tryptic peptide analysis (#392)
+* Rename multi peptide analysis to metaproteomics analysis (#392)
+* Fix the database to account for bigger uniprot accession numbers (#239)
+* Fix the database to account for bigger EMBL and Refseq cross references (#417)
+* Update rails to 4.1.4
+* Update D3 to 3.4.11
+
+## 2.5
+
+* Rewrite Treemap with D3 (#428)
+* Rewrite all Metaproteomics Analysis visualisation code (#453)
+* Add a new full screen mode to the Metaproteomics Analysis results page with improved functionality (#453)
+* Add breadcrumb navigation to the treemap (#78)
+* Add breadcrumb navigation to the sunburst (#453)
+* Add the option to shift-click a node in the treeview to expand all children (#395)
+* Add color highlights on mouseover to the sunburst graph (#438)
+* Add insdc and refseq cross references to the pept2prot api (#452)
+* Add a publications page (#454)
+* Improve the performance of the metaproteomics result page by reducing the page size (#61)
+* Improve the sunburst image export by excluding the faded sunburst arcs from the exported image (#439)
+* Incremental PRIDE dataset loading with progress bar (#440)
+* Improve the tree on the TPA results page by using the number of hits instead of the number of leafs to scale the nodes + include a tooltip (#404)
+* Achieve 100% test coverage (#442)
+* Fix an issue with incorrect treemap bounding box (#30)
+* Fix an issue with the top navigation being on 2 lines when helvetica and arial aren't installed (#430)
+* Fix an issue with overlapping nodes in the new tree visualisation (#388)
+* Fix an issue with header rows being imported in the database (#441)
+* Fix an issue with the 'new version'-message appearing in the CLI
+* Fix an issue where a serif font was used for the image export of clustered genomes (#425)
+* Fix an issue where removing a genome while a genome was being removed, crashed the unique peptide finder (#418)
+* Fix an issue where negative taxon id's could be returned by the API (#455)
+* Update rails to 4.1.8
+* Update D3 to 3.5.3
+* Update bootstrap to 3.3.2
+
+## 3.0
+
+* Redesign (#520)
+* Use Assemblies instead of Bioprojects for the proteomes (#460)
+* Automatically resume a previous peptidome analysis (#416)
+* Add draft genomes to the peptidome analysis (#353)
+* Add command line documentation (#410)
+* Add type strain info to the proteomes (#491)
+* New table based method of selecting proteomes (#472)
+* Remove drag and drop for proteome selection (#419)
+* Shift + click now always expands the treeview, both on the TPA and MPA results page. (#395, #476)
+* Use autoprefixer for css (#463)
+* Refactored the JavaScript code to use promises were possible (#464)
+* Use notifications to indicate progress (#474)
+* Add protein names to the tryptic peptide analysis results (#465)
+* Add protein names to the API output (#519)
+* Add the possibility to leave an email address on encountering an error (#494)
+* Include the UniProt version in the footer
+* Rewrite of the uniprot parser using make files and berkeley DB (#424)
+* Add copy to clipboard button for Tryptic Peptide Analysis (#466)
+* Add open in UniProt button for Tryptic Peptide Analysis (#466)
+* Fix an issue where the names of "My proteomes" were incorrectly abbreviated in some cases (#483)
+* Fix an issue where IndexedDB was broken in Safari (#489)
+* Fix an issue where the input order was not preserved for the taxonomy API call (#490)
+* Fix a bug where the my proteomes popover wouldn't open once a pancore popover was shown (#472)
+* Fix a bug where the pancore popover was still present after a remove all (#484)
+* Fix an issue where text was selected during drag-to-reorder in the pancore graph (#472)
+* Fix an issue where a few JavaScript errors were shown when loading the TPA tree
+* Fix an issue where the application crashed when a user submitted non-ascii characters in the multi-peptide analysis (#493)
+* Update rails to 4.2.3
+* Update D3 to 3.5.5
+* Update bootstrap to 3.3.5
