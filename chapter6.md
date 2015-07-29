@@ -1,66 +1,71 @@
 # A short history of Unipept {.chapter data-running-title='A short history of Unipept'}
 
-This chapter tells the story of Unipept from a developer's point of view. Each section covers a major or minor version of Unipept by first listing the changes introduced in that version by means of an extended changelog. Next, a few highlights are discussed in more detail.
+This chapter tells the story of Unipept from a developer's point of view.
 
 <p class="todo">
-Subsection ideas:
+Find a place to talk about:
 
 * development process
 * github(\@UGent)
-* ruby on Rails
-* D3
-* data visualizations
-* JavaScript
-* Java
-* docker
-* documentation
-* testing
 </p>
 
-## Before the web application
+## Before the web application {data-running-title='Before the web application'}
 
 * java application
 * a few statistics
 * screenshot
 * poster
 
-## 0.1
+## The Unipept web application{ data-running-title='The Unipept web application'}
 
-## 0.2
+Each section covers a major or minor version of Unipept by first listing the changes introduced in that version by means of an extended changelog. Next, a few highlights are discussed in more detail.
 
-## 0.3
+### Unipept version 0.1 &ndash; 0.4
 
-## 0.4
+#### Ruby on Rails
 
-## 1.0
+#### Java parser
 
-## 1.1
-+- 80 commits
+#### Data visualisations
+
+### Unipept version 1.0
+
+#### D3.js?
+
+### Unipept version 1.1 &ndash; 1.3
+
+**1.1**
 
 * new website design
 * news box on home page
 * performance improvement of the sunburst visualization in Firefox
 
-## 1.2
-+- 20 commits
+**1.2**
 
 > The focus of Unipept version 1.2 was on performance improvements. This results in massive improvements in page load time due to optimized queries and faster JSON generation.
 
-## 1.3
-+- 65 commits
+**1.3**
 
 * Switched to twitter bootstrap for the user interface
 * Added full screen visualisations for supported browsers
 * Visualisations can now be saved as images
 * Updated to UniProt release 2012_07
 
-## 1.4
+#### Bootstrap
+
+#### Saving images
+
+#### Full screen
+
+### Unipept version 1.4
 +- 40 commits
 
 * Added tryptic peptides with length between 5 and 8 to the database
 * Added support for missed cleavages
 
-## 1.5
+#### Missed cleavages
+
+### Unipept version 1.5
 +- 200 commits
 
 * Add support for PRIDE datasets
@@ -69,7 +74,7 @@ Subsection ideas:
 * Add new layout for news page
 * Fix layout issue with single peptide page
 
-## 2.0
+### Unipept version 2.0
 +- 800 commits
 
 * Add the unique peptide finder
@@ -90,7 +95,11 @@ Subsection ideas:
 * Update D3 to 3.3.8
 * Update html2canvas to 0.4.1
 
-## 2.1
+#### Unique Peptide Finder
+
+#### Code cleaning?
+
+### Unipept version 2.1
 +- 250 commits
 
 * Minor redesign of most of the pages
@@ -109,7 +118,9 @@ Subsection ideas:
 * Update to Bootstrap 3.0.3
 * Update to D3 3.3.10
 
-## 2.2
+#### JavaScript
+
+### Unipept version 2.2
 
 * Add peptidome similarity feature
 * Add myGenomes feature to peptidome analysis
@@ -135,8 +146,11 @@ Subsection ideas:
 * Update ruby to 2.1
 * Update rails to 4.1.1
 
+#### Peptidome similarity
 
-## 2.3
+#### My genomes
+
+### Unipept version 2.3
 
 * Add treeview to the multi-peptide analysis result page (#381)
 * Add ec numbers and go terms to the single peptide analysis result page (#368)
@@ -157,7 +171,13 @@ Subsection ideas:
 * Update bootstrap to 3.2
 * Update D3.js to 3.4.8
 
-## 2.4
+#### Treeview
+
+#### Copy to clipboard
+
+#### My genomes revisited
+
+### Unipept version 2.4
 
 * Add an API and documentation (#397)
 * Add tests for the ruby on rails app (#412)
@@ -173,7 +193,13 @@ Subsection ideas:
 * Update rails to 4.1.4
 * Update D3 to 3.4.11
 
-## 2.5
+#### API
+
+#### tests
+
+#### LCA in Java
+
+### Unipept version 2.5
 
 * Rewrite Treemap with D3 (#428)
 * Rewrite all Metaproteomics Analysis visualisation code (#453)
@@ -201,7 +227,11 @@ Subsection ideas:
 * Update D3 to 3.5.3
 * Update bootstrap to 3.3.2
 
-## 3.0
+#### D3 treemap
+
+#### Full screen?
+
+### Unipept version 3.0
 
 * Redesign (#520)
 * Use Assemblies instead of Bioprojects for the proteomes (#460)
@@ -233,3 +263,15 @@ Subsection ideas:
 * Update rails to 4.2.3
 * Update D3 to 3.5.5
 * Update bootstrap to 3.3.5
+
+#### peptidome
+
+#### CLI?
+
+#### redesign
+
+### What's next?
+
+* Docker
+
+## The Unipept command line tools {data-running-title='The Unipept command line tools'}

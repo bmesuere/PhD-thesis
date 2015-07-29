@@ -228,7 +228,10 @@ h3,
 h4,
 h5,
 h6 {
-    break-after: avoid;
+    page-break-after: avoid;
+}
+.chapter section.level2:first-of-type {
+    page-break-before: always;
 }
 p {
     margin-left: 100px;
@@ -243,7 +246,10 @@ a {
 ul,
 ol {
     margin-left: 100px;
-    break-inside: avoid;
+}
+ul:first-child,
+ul:first-child {
+    page-break-after: avoid;
 }
 .pre-small-image + figure img {
     padding-left: 100px;
@@ -252,7 +258,7 @@ table caption,
 figure figcaption {
     margin-left: 100px;
     font-size: 80%;
-    break-inside: avoid;
+    page-break-inside: avoid;
 }
 table thead,
 table tbody {
@@ -265,9 +271,9 @@ table tbody {
     margin-right: 20px;
 }
 img {
-    break-after: avoid;
+    page-break-after: avoid;
 }
 table tbody,
 .references div {
-    break-inside: avoid;
+    page-break-inside: avoid;
 }
