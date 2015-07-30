@@ -270,6 +270,14 @@ table tbody {
     margin-left: -50px;
     margin-right: 20px;
 }
+span.aside {
+    margin-left: -150px;
+}
+h2 + .aside,
+h3 + .aside,
+h4 + .aside {
+    top: 12pt;
+}
 img {
     page-break-after: avoid;
 }

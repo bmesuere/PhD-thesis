@@ -270,6 +270,8 @@ Each section covers a major or minor version of Unipept by first listing the cha
 
 #### redesign
 
+#### UniProt reduction
+
 ### What's next?
 
 * Docker
