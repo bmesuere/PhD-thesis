@@ -1,6 +1,8 @@
-# Something about Unipept, proteomics and biodiversity {.chapter data-running-title='Something about Unipept, proteomics and biodiversity'}
+# Metaproteomics biodiversity analysis {.chapter data-running-title='Metaproteomics biodiversity analysis'}
 
-<p class="todo">Say something about how this chapter bundles 2 papers about Unipept: the initial publication and the update published in proteomics.</p>
+The initial objective of Unipept was to improve the biodiversity analysis of metaproteomics experiments. This was achieved not only by providing more accurate and faster results, but also by presenting the results with interactive visualisations in a user-friendly approach focused on non-techical users.
+
+This chapter contains the initial Unipept article published in the Journal of Proteome Research in 2012 and an update article published in Proteomics in 2015.
 
 ## Unipept: Tryptic peptide-based biodiversity analysis of metaproteome samples {data-running-title='Tryptic peptide-based biodiversity analysis'}
 
