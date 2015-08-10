@@ -155,6 +155,7 @@ h4 + .aside {
 }
 .todo {
     color: red;
+    font-family: "comic sans MS";
 }
 a {
     color: inherit;
