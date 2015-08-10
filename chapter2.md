@@ -6,7 +6,7 @@ This chapter contains the initial Unipept article published in the Journal of Pr
 
 ## Unipept: Tryptic peptide-based biodiversity analysis of metaproteome samples {data-running-title='Tryptic peptide-based biodiversity analysis'}
 
-<p class='aside'>This section contains a verbatim copy of @Mesuere2012.</p>
+<p class='aside'>This section contains a verbatim copy of the research article by @Mesuere2012 as published in the Journal of Proteome Research.</p>
 
 **Abstract** &mdash; The Unipept web application ([http://&#8203;unipept&#8203;.ugent&#8203;.be](http://unipept.ugent.be)) supports biodiversity analysis of large and complex metaproteome samples using tryptic peptide information obtained from shotgun MS/MS experiments. Its underlying index structure is designed to quickly retrieve all occurrences of a tryptic peptide in UniProt entries. Taxon-specificity of the tryptic peptide is successively derived from these occurrences using a novel lowest common ancestor approach that is robust against taxonomic misarrangements, misidentifications and inaccuracies. Not taking into account this identification noise would otherwise result in drastic loss of information. Dynamic treemaps visualize the biodiversity of metaproteome samples, which eases the exploration of samples with highly complex compositions. The potential of Unipept to gain novel insights into the biodiversity of a sample is evaluated by reanalyzing publicly available metaproteome data sets taken from the bacterial phyllosphere and the human gut.
 
@@ -127,7 +127,7 @@ The Unipept web application presented here is a novel approach to peptide-based 
 
 ## The Unipept metaproteomics analysis pipeline {data-running-title='The Unipept metaproteomics analysis pipeline'}
 
-<p class='aside'>This section contains a verbatim copy of @Mesuere2015.</p>
+<p class='aside'>This section contains a verbatim copy of the application note by @Mesuere2015 as published in Proteomics.</p>
 
 **Abstract** &mdash; Unipept, available at [http://&#8203;unipept&#8203;.ugent&#8203;.be](http://unipept.ugent.be), is a web application that offers a user friendly way to explore the biodiversity of complex metaproteome samples by providing interactive visualizations. In this article, the updates and changes to Unipept since its initial release are presented. This includes the addition of interactive sunburst and treeview visualizations to the multi-peptide analysis, the foundations of an API and a command line interface, updated data sources and the open-sourcing of the entire application under the MIT license.
 
@@ -136,7 +136,7 @@ Unipept ([http://&#8203;unipept&#8203;.ugent&#8203;.be](http://unipept.ugent.be)
 
 Users can also submit a list of tryptic peptides. In this case, the LCA is calculated for every submitted peptide as described above. These LCAs are then bundled into a frequency table and visualized on the results page using an interactive treemap ([@Fig:ch2fig6]). This treemap displays hierarchical data in a multilayer histogram-like graphical representation. The squares in the treemap each correspond to a taxonomic node in the NCBI taxonomy, with their size proportional to the number of peptides having that taxonomic node as their LCA. The cleaned up hierarchy of the NCBI Taxonomy is used to tile the squares according to their occurrence in the taxonomic lineages. These squares are color coded according to their taxonomic ranks. This graphical representation allows users to see at a glance which organisms are present in a metaproteome sample and to what extent. The treemap is interactive and can be manipulated by clicking on individual nodes. This makes it possible for users to zoom in to an area of interest (e.g., Bacteria or Firmicutes).
 
-![The treemap visualisation available in Unipept when running a Unipept multi-peptide analysis on sample 7 as determined by @Verberkmoes2009, zoomed in on Bacteria.](images/ch2fig6.png){#fig:ch2fig6}
+![The treemap visualisation available in Unipept when running a multi-peptide analysis on sample 7 as determined by @Verberkmoes2009, zoomed in on Bacteria.](images/ch2fig6.png){#fig:ch2fig6}
 
 Since its release in 2012 [@Mesuere2012], the Unipept application was praised for its ease of use and great data visualizations [@Tanca2013a; @Kolmeder2014; @Seifert2013]. The Unipept LCA approach was compared with the commonly used taxonomic analysis in MEGAN [@Huson2011] by @Tanca2013a. Unipept consistently outperformed MEGAN by a factor of three on both the family, genus and species level with only half the number of misassignments ([@Fig:ch2fig9]). In this article we present some of the improvements and new features of Unipept since its original publication.
 
@@ -147,9 +147,9 @@ Since its release in 2012 [@Mesuere2012], the Unipept application was praised fo
 #### Sunburst
 With complex samples containing a diverse range of taxa, the treemap ([@Fig:ch2fig6]) representation quickly becomes cluttered which makes it hard to get a clear insight into the results. To resolve this problem, a new sunburst visualization [@Andrews1998] was built into Unipept (@Fig:ch2fig7) using the D3.js framework [@Bostock2011]. The sunburst diagram displays the same data as the treemap, but as an interactive multi-level pie chart. The center of this pie chart represents the root node with several concentric rings around it. These rings are divided into slices representing the child nodes in the taxonomic hierarchy of the aligning more central slice. The size of the slices corresponds to the number of peptides having an LCA equal to that taxonomic node or any of its children.
 
-![The newly added sunburst visualisation available in Unipept when running a Unipept multi-peptide analysis on sample 7 as determined by @Verberkmoes2009, zoomed in on Bacteria with default colors.](images/ch2fig7.png){#fig:ch2fig7}
+![The newly added sunburst visualisation available in Unipept when running a multi-peptide analysis on sample 7 as determined by @Verberkmoes2009, zoomed in on Bacteria with default colors.](images/ch2fig7.png){#fig:ch2fig7}
 
-The sunburst diagram provides a more comprehensive view by displaying only four levels at a time. Users can see more levels by clicking on a slice of interest. The node that was clicked then becomes the center of the sunburst and the four levels below it are displayed. By clicking on the center of the sunburst, users can zoom out one level. By hovering the mouse over a slice, a tooltip is displayed with more information about the taxonomic node associated with that slice and the number of peptides belonging to that taxonomic node or any of its children.
+The sunburst diagram provides a more comprehensive view by displaying only four levels at a time. Users can see more levels by clicking on a slice of interest. <span class='aside'>In a later version, breadcrumbs were added to allow users to keep track of their position in the phylogenetic tree.</span>The node that was clicked then becomes the center of the sunburst and the four levels below it are displayed. By clicking on the center of the sunburst, users can zoom out one level. By hovering the mouse over a slice, a tooltip is displayed with more information about the taxonomic node associated with that slice and the number of peptides belonging to that taxonomic node or any of its children.
 
 By default, the colors of the slices are algorithmically grouped to indicate taxonomic clusters. This is done by first assigning a random color from a list of hand picked colors to all of the leaf nodes. The colors of the parent nodes are then recursively calculated by taking the average of the colors of the first two children in the hue-saturation-lightness (HSL) color space. If a node only has a single child, a slightly darker tint of the child color is taken. Although this method of assigning colors is visually pleasing, it is hard to compare sunbursts of several analyses because the colors of the slices depend on the composition of the result set. For this reason, a second coloring option was added to Unipept, which uses a hash function to calculate the color based on the taxonomic data. A hash function is a mathematical function that can be used to convert arbitrary data, in this case the name and rank of taxonomic node, to a strict output format, in this case a color value. By using this approach, a taxonomic node is always colored the same way, regardless of the sample. An example of the comparison of two analyses using the hash-based coloring is shown in @Fig:ch2fig10 and @Fig:ch2fig11.
 
@@ -160,21 +160,28 @@ By default, the colors of the slices are algorithmically grouped to indicate tax
 #### Treeview
 A third way of visualizing the results of a multi-peptide analysis in Unipept is by using an advanced treeview ([@Fig:ch2fig8]). Although the default treeview is great for the visualization of hierarchical data, it falls short for showing the weights (i.e., the number of peptides) associated with the nodes and branches. To overcome this problem, the concept of a Sankey diagram [@Riehmann2005] was applied to the treeview. The size of a node now corresponds to the number of peptides associated with that node or any of its children and the width of each branch corresponds to the size of the destination node. As a result, the diameter of each node equals the sum of the width of all outgoing links, supplemented with a proportional share for the number of peptides associated with the node itself. Each of the superkingdoms is assigned a color in which the corresponding nodes and branches are drawn.
 
-![The newly added advanced treeview visualisation available in Unipept when running a Unipept multi-peptide analysis on sample 7 as determined by @Verberkmoes2009, rescaled on Bacteria.](images/ch2fig8.png){#fig:ch2fig8}
+![The newly added advanced treeview visualisation available in Unipept when running a multi-peptide analysis on sample 7 as determined by @Verberkmoes2009, rescaled on Bacteria.](images/ch2fig8.png){#fig:ch2fig8}
 
 When the graph initially loads, the root and 2 levels of children are shown. Clicking on a node allows users to expand and collapse the children of that node. In addition, scrolling the mouse invokes a zooming behavior, and dragging lets the graph be repositioned.
 
-The root initially corresponds to 100% of the peptides and is drawn at full size. By right clicking a node of interest, the graph is rescaled to focus on that node. The clicked node is now drawn at full size and all of its children are scaled accordingly. The nodes and branches that are not part of the active subtree are dimmed by drawing them with a small gray line. @Fig:ch2fig8 shows an example of the treeview, focused on Bacteria.
+The root initially corresponds to 100% of the peptides and is drawn at full size. By right clicking a node of interest, the graph is rescaled to focus on that node. The clicked node is now drawn at full size and all of its children are scaled accordingly. The nodes and branches that are not part of the active subtree are dimmed by drawing them with a thin gray line. @Fig:ch2fig8 shows an example of the treeview, focused on Bacteria.
 
 As with the sunburst and treemap visualization, a tooltip with more information is shown when the user hovers over a node. Finally, a full-screen mode and the option to export the visualization as a PNG or SVG image were also added.
 
 #### API
+
+<p class='aside todo'>The Unipept API and command line interface are discussed in more detail in chapter ###.</p>
+
 The web-based peptide analysis tools in Unipept are a great fit for exploring the biodiversity of a single sample. However, using the website can be cumbersome when multiple datasets need to be analyzed. To address these issues, all of the peptide analysis functionality (except the visualizations) are also available as a web service. Using this Unipept API, a command line interface to Unipept was implemented in Ruby that allows batch analysis of samples and opens up new ways to include the Unipept functionality in a processing pipeline.
 
 #### Peptidome-based analysis
 The tryptic peptidome is the complete set of (tryptic) peptides encoded in the genome of an organism. Unipept now provides fast and flexible analysis tools for identifying the unique peptidome of a given taxon and for clustering whole-genomes based on their peptidome content.
 
+<p class='aside todo'>The unique peptide finder is discussed in more detail in chapter ###.</p>
+
 A first tool, the unique peptide finder, computes the unique peptidome for a selected set of RefSeq whole-genome sequences. This unique peptidome consists of all tryptic peptides that are contained in all of the selected genomes, but in none of the UniProt entries belonging to taxa outside those of the selected genomes, making these peptides taxon-specific. Unique peptide sets can be downloaded and used in targeted proteomics experiments.
+
+<p class='aside todo'>Peptidome-based clustering is discussed in more detail in chapter ###.</p>
 
 Peptidome-based clustering computes the UPGMA clustering of a selected set of RefSeq whole-genome sequences based on their peptidome content. Pairwise similarities are computed as the fraction of the size of the intersection over the size of the union of both peptidomes. The results are visualized by a similarity matrix and a phylogenetic tree and can be exported in the Newick and CSV format.
 
@@ -189,10 +196,25 @@ The Unipept Multi-peptide Analysis now also directly interfaces with PRIDE [@Viz
 The source code and documentation of the current and all previous Unipept releases have been made available on Github at [http://github.com/unipept/unipept](http://github.com/unipept/unipept). All code is licensed under the permissive MIT license. By open sourcing Unipept, we provide optimal transparency on how our algorithms work and invite other researchers to contribute to Unipept. Additionally, the source code of individual components (e.g., the visualizations) may be extracted for use in other projects. Another advantage of making all code available, is that research groups may set up their own Unipept server. Setting up a local Unipept server provides a solution for researchers who are not entitled to send out proprietary data to public, third party services. Running a local server also limits the dependency on external resources, which was a stumbling block for several users to include Unipept in their workflow.
 
 ### Statistics
-The initial Unipept release was based on UniProt 2012_07 containing 17 million protein entries. Unipept 2.3 is based on UniProt 2014_05 containing 56.5 million protein entries. In 22 months, the amount of data in UniProt more than tripled and Unipept now contains information on over a billion peptides. The number of distinct tryptic peptides went up from 250 million to 402 million. Unipept now also parses additional protein metadata such as EC numbers [@Bairoch2000] and Gene Ontology [@Ashburner2000] annotations and displays this information on the single peptide analysis results page. The increase in data caused the size of the Unipept database to grow from 81 GB (39 GB data, 42 GB index) to 188 GB (91 GB data, 97 GB index). The exponential growth in data poses some challenges for the future regarding data processing and storage. An incremental update strategy, next to the use of high performance key-value stores such as Berkeley DB [@Olson1999] or in memory databases like VoltDB [@Stonebraker2013], might offer some solutions to reduce the time needed to parse UniProt. The analysis on the Unipept website is not negatively affected by the growing data, on the contrary, the results become increasingly more accurate.
+The initial Unipept release was based on UniProt 2012_07 containing 17 million protein entries. Unipept 2.3 is based on UniProt 2014_05 containing 56.5 million protein entries. In 22 months, the amount of data in UniProt more than tripled and Unipept now contains information on over a billion peptides. The number of distinct tryptic peptides went up from 250 million to 402 million. Unipept now also parses additional protein metadata such as EC numbers [@Bairoch2000] and Gene Ontology [@Ashburner2000] annotations and displays this information on the single peptide analysis results page. The increase in data caused the size of the Unipept database to grow from 81 GB (39 GB data, 42 GB index) to 188 GB (91 GB data, 97 GB index). The exponential growth in data poses some challenges for the future regarding data processing and storage. An incremental update strategy, next to the use of high performance key-value stores <span class='aside'>The current data processing pipeline uses a Berkeley DB-based solution to speed up parsing.</span> such as Berkeley DB [@Olson1999] or in memory databases like VoltDB [@Stonebraker2013], might offer some solutions to reduce the time needed to parse UniProt. The analysis on the Unipept website is not negatively affected by the growing data, on the contrary, the results become increasingly more accurate.
 
 Unipept uses the NCBI Taxonomy as its reference taxonomy database. The taxonomic information in Unipept is only updated when a new UniProt version is parsed. These updates sometimes introduce erroneous taxa such as the species *metagenomes* (NCBI taxon ID 256318). By adjusting the invalidation algorithms, the impact of such taxa can be reduced, but this requires manual inspection with each update.
 
 The number of Unipept users is growing each month, with over a thousand users in June 2014. In total, 4000 multi-peptide and 3000 single peptide analyses were performed, accounting for 81 million processed peptides.
 
 ## Potential subsection about new TPA/MPA stuff not yet mentioned in these articles
+
+* Reset button
+* use new treeview for TPA page
+* D3 treemap
+* MPA full screen
+* treemap and sunburst breadcrumbs
+* shift+click to expand all on treeview
+* use number of hits for node size of TPA tree
+* test coverage
+* fix overlapping nodes in treeview
+* protein names in TPA output
+* UniProt version in footer
+* new parser
+* copy to clipboard for TPA
+* open in Uniprot for TPA

@@ -133,8 +133,8 @@ p .small-caps {
     clear: both;
     margin-bottom: 1rem;
     font-family: 'Myriad pro', serif;
-    font-size: 0.85rem;
-    line-height: 1.40;
+    font-size: 0.8rem;
+    line-height: 1.5;
     color: rgba(0, 0, 0, 0.54);
 }
 span.aside {
