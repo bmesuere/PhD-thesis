@@ -266,6 +266,8 @@ Each section covers a major or minor version of Unipept by first listing the cha
 
 #### peptidome
 
+### Promises and ES6
+
 #### CLI?
 
 #### redesign

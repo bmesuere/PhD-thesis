@@ -124,7 +124,6 @@ p .small-caps {
 }
 .aside {
     position: relative;
-    display: block;
     float: left;
     margin-top: 0;
     margin-left: 0;
