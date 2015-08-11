@@ -8,7 +8,7 @@ cp hyphenator.js output/
 
 version='version x'
 
-pandoc chapter2.md \
+pandoc chapter6.md \
     -f markdown \
     -t html5 \
     -o output/web.html \

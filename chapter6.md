@@ -1,22 +1,33 @@
 # A short history of Unipept {.chapter data-running-title='A short history of Unipept'}
 
-This chapter tells the story of Unipept from a developer's point of view.
+This chapter tells the story of Unipept from a developer's point of view. The first section deals with Unipept before it was a web application. Section two goes into detail about the individual versions of the Unipept web application. The last section handles the Unipept command line tools.
 
-<p class="todo">
+<div class="todo">
 Find a place to talk about:
 
 * development process
 * github(\@UGent)
-</p>
+</div>
 
 ## Before the web application {data-running-title='Before the web application'}
 
-* java application
-* a few statistics
-* screenshot
-* poster
+The first attempt at creating a tool for peptide analysis was a stand-alone  application written in Java. The data source for this application was the set of  complete bacterial RefSeq genomes. After downloading all genbank files containing the protein sequences, the files were fed through a data processing pipeline. The processing consisted of performing an in-silico trypsin digest on the protein sequences and storing all peptides with a length between 8 and 50 amino acids.
 
-## The Unipept web application{ data-running-title='The Unipept web application'}
+Initially, the peptides were stored using a patricia trie. <span class="aside">Unlike in a normal trie, in a patricia trie, parent nodes having only a single child are collapsed into a single node. This reduces the size of the data structure, especially in sparse trees.</span> A trie, or prefix tree, is a data structure where an ordered tree is used to efficiently search for keys (in our case peptides) and retrieve the associated values (in our case taxon id's). While information retrieval is very fast, this approach has two major problems: the entire dataset must fit into memory and it's not trivial to store the data structure to disk. This means that all source data must be reprocessed every time the program is run.
+
+Both problems were solved by storing the data in a MySQL database instead of a patricia trie. By default, MySQL uses the hard drive to store data and only uses memory for temporary tables and caches. This not only allowed us to process the source data once and have permanent access afterwards, but also enabled more flexible data access through the use of SQL queries. The downsides are slightly slower data access and fairly slower index construction.
+
+At that time, there were 1190 complete bacterial RefSeq genomes spanning 860 species. Using the MySQL database, it took 21 hours to parse these genomes and create the index. This resulted in a database of 7 GB of which half was used for indexes. The database contained information on 34.4 million distinct peptides that each occurred in 1.57 genomes on average. 90.7% of all peptides only occurred within a single species, 5.8% occurred within two species.
+
+<p style="display:none" class='pre-small-image'> </p> ![A screenshot of the initial PeptideInfo Java application, when searching for the peptide <span class='small-caps'>AAALAYAK</span>. The peptide was found in 3 of the 4 *Staphylococcus aureus* genomes and in a *Staphylococcus pasteuri* genome. Note that the database only contained a test set of 8 genomes at the moment of the screenshot.](images/ch6fig2.png){#fig:ch6fig2}
+
+After creating a fast index mapping peptides on taxonomic nodes, there are two  research questions that emerge: in which species does a given peptide occur, and which peptides only occur within a given species. To answer the first question, a Java application with a graphical user interface was created.<span class="aside">This PeptideInfo application later evolved into the Unipept tryptic peptide analysis.</span> As shown in @Fig:ch6fig2, the user could enter a tryptic peptide in the text area, click the search button and a report was generated listing all species in which the peptide was found. The application also listed the number of genomes in which the peptide was found in case multiple genomes of a species were available.
+
+The second question, which peptides can be used to uniquely identify a certain species, was harder to answer. The database was not optimized for this and the queries took too long to wrap everything into a desktop application.<span class="aside">A solution to this question was later provided by the Unipept unique peptide finder.</span> Instead, a collection of scripts and queries was created to explore the potential of the data. @Fig:ch6fig1 shows the promising results of such analysis on the available genomes of *Staphylococcus aureus* supsp. *aureus*, *Clostridium botulinum* and *Campylobacter*. These results show that there is a large number of species-specific peptides and a surprisingly low number of genus-specific peptides. This means that there is a great potential to use peptides as a way to identify organisms.
+
+![A poster presenting the results of the precursor of Unipept at the 4th International Symposium on Proteome Analysis in Antwerp, Belgium in December 2010.](images/ch6fig1.png){#fig:ch6fig1}
+
+## The Unipept web application {data-running-title='The Unipept web application'}
 
 Each section covers a major or minor version of Unipept by first listing the changes introduced in that version by means of an extended changelog. Next, a few highlights are discussed in more detail.
 
