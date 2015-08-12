@@ -33,13 +33,13 @@ Each section covers a major or minor version of Unipept by first listing the cha
 
 ### Unipept version 0.1 &ndash; 0.4
 
-After creating a database-backed mapping from peptide sequences to organisms, the use of Java for the client application was reevaluated. The main advantages were familiarity with the programming language, good performance and (theoretically) cross-platformness. This was offset by drawbacks such as the need for installation of the application, the difficulty to distribute updates and the need to run your own database as a user. Because the target audience of Unipept is non-technical users and we had an agile development style in mind, the disadvantages outweighed the benefits.
+After creating a database-backed mapping from peptide sequences to organisms, the use of Java for the client application was reevaluated. The main advantages were familiarity with the programming language, good performance and, at least theoretically, cross-platformness.<span class="aside">Users would also have to set up a local database, still requiring platform-specific solutions.</span> This was offset by drawbacks such as the need for installation of the application, the difficulty to distribute updates and the need to run your own database as a user. Because the target audience of Unipept is non-technical users and we had an agile development style in mind, the disadvantages outweighed the benefits.
 
 In the end, we chose to rebuild the client as a web application using the Ruby on Rails framework ([@Fig:ch6fig3]). The main reason for choosing for a web application was the low threshold for users to start using the application and the ease with which new versions can be deployed. This client-server architecture also completely shifts the technical burden away from the user. The choice for Ruby on Rails was a bit of a risk since we had no previous experience with it, but the framework looked promising and was becoming popular very fast.
 
 <p style="display:none" class='image-screenshot'> </p> ![The homepage of version 0.1 of the Unipept web application.](images/ch6fig3.png){#fig:ch6fig3}
 
-Unipept version 0.1 was a straightforward reimplementation of the existing PeptideInfo tool. As can be seen in @Fig:ch6fig4, the user could submit a tryptic peptide in a search form to which the application responded with an overview in which species the peptide was found.
+Unipept version 0.1 was a straightforward reimplementation of the existing PeptideInfo tool. As can be seen in @Fig:ch6fig4, the user could submit a tryptic peptide in a search form to which the application responded with an overview in which species the peptide was found. The only noteworthy change to the old application was the inclusion of not only the complete RefSeq genomes, but also the draft genomes.
 
 <p style="display:none" class='image-screenshot'> </p> ![Web-based reimplementation of the PeptideInfo tool. The analysis for the peptide <span class='small-caps'>AAALAYAK</span> is shown.](images/ch6fig4.png){#fig:ch6fig4}
 
