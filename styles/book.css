@@ -251,8 +251,14 @@ ul:first-child,
 ul:first-child {
     page-break-after: avoid;
 }
-.pre-small-image + figure img {
-    padding-left: 100px;
+.pre-small-image + figure {
+    margin-left: 100px;
+}
+.pre-small-image + figure figcaption{
+    margin-left: 0;
+}
+.image-screenshot + figure img {
+    border: 1px solid #D3D3D3;
 }
 table caption,
 figure figcaption {
