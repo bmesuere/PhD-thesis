@@ -13,6 +13,7 @@ Find a place to talk about:
 
 The first attempt at creating a tool for peptide analysis was a stand-alone  application written in Java. The data source for this application was the set of  complete bacterial RefSeq genomes. After downloading all genbank files containing the protein sequences, the files were fed through a data processing pipeline. The processing consisted of performing an in-silico trypsin digest on the protein sequences and storing all peptides with a length between 8 and 50 amino acids.
 
+##### Storing the data
 Initially, the peptides were stored using a patricia trie. <span class="aside">Unlike in a normal trie, in a patricia trie, parent nodes having only a single child are collapsed into a single node. This reduces the size of the data structure, especially in sparse trees.</span> A trie, or prefix tree, is a data structure where an ordered tree is used to efficiently search for keys (in our case tryptic peptides) and retrieve the associated values (in our case taxon id's). While information retrieval is very fast, this approach has two major problems: the entire dataset must fit into memory and it's not trivial to store the data structure to disk. This means that all source data must be reprocessed every time the program is run.
 
 Both problems were solved by storing the data in a MySQL database instead of a patricia trie. By default, MySQL uses the hard drive to store data and only uses memory for temporary tables and caches. This not only allowed us to process the source data once and have permanent access afterwards, but also enabled more flexible data access through the use of SQL queries. The downsides are slightly slower data access and fairly slower index construction.
@@ -21,6 +22,7 @@ At that time, there were 1190 complete bacterial RefSeq genomes spanning 860 spe
 
 <p style="display:none" class='pre-small-image image-screenshot'> </p> ![The initial PeptideInfo Java application, when searching for the peptide <span class='small-caps'>AAALAYAK</span>. The peptide was found in 3 of the 4 *Staphylococcus aureus* genomes and in a *Staphylococcus pasteuri* genome. Note that the database only contained a test set of 8 genomes at the moment of the screenshot.](images/ch6fig2.png){#fig:ch6fig2}
 
+##### Exploring the data
 After creating a fast index mapping peptides on taxonomic nodes, there are two  research questions that emerge: in which species does a given peptide occur, and which peptides only occur within a given species. To answer the first question, a Java application with a graphical user interface was created.<span class="aside">This PeptideInfo application later evolved into the Unipept tryptic peptide analysis.</span> As shown in @Fig:ch6fig2, the user could enter a tryptic peptide in the text area, click the search button and a report was generated listing all species in which the peptide was found. The application also listed the number of genomes in which the peptide was found in case multiple genomes of a species were available.
 
 The second question, which peptides can be used to uniquely identify a certain species, was harder to answer. The database was not optimized for this and the queries took too long to wrap everything into a desktop application.<span class="aside">A solution to this question was later provided by the Unipept unique peptide finder.</span> Instead, a collection of scripts and queries was created to explore the potential of the data. @Fig:ch6fig1 shows the promising results of such analysis on the available genomes of *Staphylococcus aureus* subsp. *aureus*, *Clostridium botulinum* and *Campylobacter*. These results show that there is a large number of species-specific peptides and a surprisingly low number of genus-specific peptides. This means that there is a great potential to use peptides as a way to identify organisms.
@@ -35,6 +37,7 @@ Each section covers a major or minor version of Unipept by first listing the cha
 
 After creating a database-backed mapping from peptide sequences to organisms, the use of Java for the client application was reevaluated. The main advantages were familiarity with the programming language, good performance and, at least theoretically, cross-platformness.<span class="aside">Users would also have to set up a local database, still requiring platform-specific solutions.</span> This was offset by drawbacks such as the need for installation of the application, the difficulty to distribute updates and the need to run your own database as a user. Because the target audience of Unipept is non-technical users and we had an agile development style in mind, the disadvantages outweighed the benefits.
 
+##### Unipept version 0.1
 In the end, we chose to rebuild the client as a web application using the Ruby on Rails framework ([@Fig:ch6fig3]). The main reason for choosing for a web application was the low threshold for users to start using the application and the ease with which new versions can be deployed. This client-server architecture also completely shifts the technical burden away from the user. The choice for Ruby on Rails was a bit of a risk since we had no previous experience with it, but the framework looked promising and was becoming popular very fast.
 
 <p style="display:none" class='image-screenshot'> </p> ![The homepage of version 0.1 of the Unipept web application.](images/ch6fig3.png){#fig:ch6fig3}
@@ -43,18 +46,23 @@ Unipept version 0.1 was a straightforward reimplementation of the existing Pepti
 
 <p style="display:none" class='image-screenshot'> </p> ![Web-based reimplementation of the PeptideInfo tool. The analysis for the peptide <span class='small-caps'>AAALAYAK</span> is shown.](images/ch6fig4.png){#fig:ch6fig4}
 
-After reaching feature parity in version 0.1, work began on adding new features. Where the initial single peptide search only listed the species in which a peptide was found, version 0.2 introduced the concept of the lowest common ancestor (LCA).<span class="aside todo">The LCA is discussed in more detail in section ###.</span> To efficiently calculate the LCA, the complete lineage of every organism is needed. Until then, the hierarchical information of the taxonomy tree was not easily accessible. Each of the records in the taxonomy table represented a single taxonomic node containing, among other things, the taxon id of its parent. To retrieve all ancestors<span class="aside">With ancestor, we mean all parent nodes in the taxonomic tree, not evolutionary ancestors.</span> of a given organism, we needed to recursively query the database for the parent node until we reached the root. A solution to this problem was to calculate the lineage for each organism during database construction, and then store that path to root in a dedicated table. To accommodate for a variable number of ancestors, a fixed structure was used, using only the so called named ranks. This precalculated table containing the 28 possible ancestors for every organism made it possible to efficiently calculate LCAs.
+##### Unipept version 0.2
+After reaching feature parity with the Java client in version 0.1, work began on adding new features. Where the initial single peptide search only listed the species in which a peptide was found, version 0.2 introduced the concept of the lowest common ancestor (LCA).<span class="aside todo">The LCA is discussed in more detail in section ###.</span> To efficiently calculate the LCA, the complete lineage of every organism is needed. Until then, the hierarchical information of the taxonomy tree was not easily accessible. Each of the records in the taxonomy table represented a single taxonomic node containing, among other things, the taxon id of its parent. To retrieve all ancestors<span class="aside">With ancestor, we mean all parent nodes in the taxonomic tree, not evolutionary ancestors.</span> of a given organism, we needed to recursively query the database for the parent node until we reached the root. A solution to this problem was to calculate the lineage for each organism during database construction, and then store that path to root in a dedicated table. To accommodate for a variable number of ancestors, a fixed structure was used, using only the so called named ranks. This precalculated table containing the 28 possible ancestors for every organism made it possible to efficiently calculate LCAs.
 
-0.2:
+This lineage data was used to improve the single peptide analysis page ([@Fig:ch6fig5]). Instead of simply listing the species in which the peptide was found, it now shows all organisms, the common lineage of these organisms and the lowest common ancestor. The result is also visualized by drawing a simple treeview of the relevant section of the taxonomy tree.
 
-* multi search
-* visualisations
+<p style="display:none" class='image-screenshot'> </p> ![Result page of the single peptide analysis in Unipept version 0.2 for peptide <span class='small-caps'>EVAEAAQEK</span>.](images/ch6fig5.png){#fig:ch6fig5}
 
-Other topics:
+The next main feature of Unipept became the multi-peptide analysis ([@Fig:ch6fig6]). This feature allowed a user to submit a list of tryptic peptides from a metaproteomics experiment instead of just a single peptide. Listing all occurences for each tryptic peptide would produce a long and cluttered list of information. Instead, only the LCA of each of the submitted peptides was used. These results were aggregated per taxonomic node into some kind of hierarchical frequency table. Clicking on a node in this table revealed the peptides associated with that taxonomic node. The same information was displayed as in interactive treemap using the JavaScript InfoVis Toolkit, a JavaScript visualization framework.
 
-* 0.3
-* 0.4
-* Switch from RefSeq genomes to UniProt
+<p style="display:none" class='image-screenshot'> </p> ![Result page of the multi-peptide analysis in Unipept version 0.2. The page shows the result of the analysis of Sample 7 as defined by @Verberkmoes2009.](images/ch6fig6.png){#fig:ch6fig6}
+
+
+##### Unipept version 0.3
+* Switch from RefSeq genomes to UniProt?
+
+##### Unipept version 0.4
+* Switch from RefSeq genomes to UniProt?
 
 ### Unipept version 1.0
 
@@ -62,17 +70,17 @@ Other topics:
 
 ### Unipept version 1.1 &ndash; 1.3
 
-**1.1**
+##### Unipept version 1.1
 
 * new website design
 * news box on home page
 * performance improvement of the sunburst visualization in Firefox
 
-**1.2**
+##### Unipept version 1.2
 
 > The focus of Unipept version 1.2 was on performance improvements. This results in massive improvements in page load time due to optimized queries and faster JSON generation.
 
-**1.3**
+##### Unipept version 1.3
 
 * Switched to twitter bootstrap for the user interface
 * Added full screen visualisations for supported browsers

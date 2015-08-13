@@ -144,7 +144,7 @@ Since its release in 2012 [@Mesuere2012], the Unipept application was praised fo
 ![Bar chart showing experimental data from @Tanca2013a with the number of correct taxonomic assignments at the family, genus and species level from the lab assembled 9MM sample using the NCBI-BFV database. The amount of incorrect identifications are 6%, 10% and 15% respectively for Unipept, and 9%, 18% and 34% for MEGAN.](images/ch2fig9.png){#fig:ch2fig9}
 
 ### What’s new
-#### Sunburst
+##### Sunburst
 With complex samples containing a diverse range of taxa, the treemap ([@Fig:ch2fig6]) representation quickly becomes cluttered which makes it hard to get a clear insight into the results. To resolve this problem, a new sunburst visualization [@Andrews1998] was built into Unipept (@Fig:ch2fig7) using the D3.js framework [@Bostock2011]. The sunburst diagram displays the same data as the treemap, but as an interactive multi-level pie chart. The center of this pie chart represents the root node with several concentric rings around it. These rings are divided into slices representing the child nodes in the taxonomic hierarchy of the aligning more central slice. The size of the slices corresponds to the number of peptides having an LCA equal to that taxonomic node or any of its children.
 
 ![The newly added sunburst visualisation available in Unipept when running a multi-peptide analysis on sample 7 as determined by @Verberkmoes2009, zoomed in on Bacteria with default colors.](images/ch2fig7.png){#fig:ch2fig7}
@@ -157,7 +157,7 @@ By default, the colors of the slices are algorithmically grouped to indicate tax
 
 ![Sunburst diagram visualizing the bacterial diversity in human gut metaproteome sample 8 as determined by @Verberkmoes2009. The diagrams use a fixed color scheme allowing easy comparison of the composition of different samples.](images/ch2fig11.png){#fig:ch2fig11}
 
-#### Treeview
+##### Treeview
 A third way of visualizing the results of a multi-peptide analysis in Unipept is by using an advanced treeview ([@Fig:ch2fig8]). Although the default treeview is great for the visualization of hierarchical data, it falls short for showing the weights (i.e., the number of peptides) associated with the nodes and branches. To overcome this problem, the concept of a Sankey diagram [@Riehmann2005] was applied to the treeview. The size of a node now corresponds to the number of peptides associated with that node or any of its children and the width of each branch corresponds to the size of the destination node. As a result, the diameter of each node equals the sum of the width of all outgoing links, supplemented with a proportional share for the number of peptides associated with the node itself. Each of the superkingdoms is assigned a color in which the corresponding nodes and branches are drawn.
 
 ![The newly added advanced treeview visualisation available in Unipept when running a multi-peptide analysis on sample 7 as determined by @Verberkmoes2009, rescaled on Bacteria.](images/ch2fig8.png){#fig:ch2fig8}
@@ -168,13 +168,11 @@ The root initially corresponds to 100% of the peptides and is drawn at full size
 
 As with the sunburst and treemap visualization, a tooltip with more information is shown when the user hovers over a node. Finally, a full-screen mode and the option to export the visualization as a PNG or SVG image were also added.
 
-#### API
+##### API
 
-<p class='aside todo'>The Unipept API and command line interface are discussed in more detail in chapter ###.</p>
+<span class='aside todo'>The Unipept API and command line interface are discussed in more detail in chapter ###.</span>The web-based peptide analysis tools in Unipept are a great fit for exploring the biodiversity of a single sample. However, using the website can be cumbersome when multiple datasets need to be analyzed. To address these issues, all of the peptide analysis functionality (except the visualizations) are also available as a web service. Using this Unipept API, a command line interface to Unipept was implemented in Ruby that allows batch analysis of samples and opens up new ways to include the Unipept functionality in a processing pipeline.
 
-The web-based peptide analysis tools in Unipept are a great fit for exploring the biodiversity of a single sample. However, using the website can be cumbersome when multiple datasets need to be analyzed. To address these issues, all of the peptide analysis functionality (except the visualizations) are also available as a web service. Using this Unipept API, a command line interface to Unipept was implemented in Ruby that allows batch analysis of samples and opens up new ways to include the Unipept functionality in a processing pipeline.
-
-#### Peptidome-based analysis
+##### Peptidome-based analysis
 The tryptic peptidome is the complete set of (tryptic) peptides encoded in the genome of an organism. Unipept now provides fast and flexible analysis tools for identifying the unique peptidome of a given taxon and for clustering whole-genomes based on their peptidome content.
 
 <p class='aside todo'>The unique peptide finder is discussed in more detail in chapter ###.</p>
@@ -185,14 +183,14 @@ A first tool, the unique peptide finder, computes the unique peptidome for a sel
 
 Peptidome-based clustering computes the UPGMA clustering of a selected set of RefSeq whole-genome sequences based on their peptidome content. Pairwise similarities are computed as the fraction of the size of the intersection over the size of the union of both peptidomes. The results are visualized by a similarity matrix and a phylogenetic tree and can be exported in the Newick and CSV format.
 
-#### Website changes
+##### Website changes
 Since usability is a key feature of Unipept, the entire website was redesigned based on several usability studies. A lot of attention was spent on providing an optimal user experience and  interaction design. The open source Bootstrap project was used for basic user interface components such as buttons, tabs and popups and all graphics and visualizations were optimized to take advantage of high-DPI displays.
 
 Another addition to Unipept is an improved export functionality. In addition to the PNG format, Unipept is now also able to export all vector-based visualizations in the SVG file format. Furthermore, CSV exports and copy to clipboard-buttons were added where appropriate for textual results.
 
 The Unipept Multi-peptide Analysis now also directly interfaces with PRIDE [@Vizcaino2013] to allow a one-click analysis of data deposited in the PRIDE archive. Users can simply enter the ID of any PRIDE experiment and click the "Load Dataset" button. Unipept subsequently fetches the data and preloads the search form for further analysis.
 
-#### Open source
+##### Open source
 The source code and documentation of the current and all previous Unipept releases have been made available on Github at [http://github.com/unipept/unipept](http://github.com/unipept/unipept). All code is licensed under the permissive MIT license. By open sourcing Unipept, we provide optimal transparency on how our algorithms work and invite other researchers to contribute to Unipept. Additionally, the source code of individual components (e.g., the visualizations) may be extracted for use in other projects. Another advantage of making all code available, is that research groups may set up their own Unipept server. Setting up a local Unipept server provides a solution for researchers who are not entitled to send out proprietary data to public, third party services. Running a local server also limits the dependency on external resources, which was a stumbling block for several users to include Unipept in their workflow.
 
 ### Statistics

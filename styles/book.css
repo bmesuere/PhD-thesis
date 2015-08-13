@@ -230,6 +230,10 @@ h5,
 h6 {
     page-break-after: avoid;
 }
+h5 {
+    font-size: 12pt;
+    margin-left: 100px;
+}
 .chapter section.level2:first-of-type {
     page-break-before: always;
 }

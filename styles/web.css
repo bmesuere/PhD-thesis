@@ -51,6 +51,7 @@ h4 {
 h5 {
     margin-left: 200px;
     font-weight: 600;
+    font-size: 24px;
 }
 h5 .header-section-number {
     display: none;
@@ -62,6 +63,9 @@ h2 + h3 {
     margin-top: 0;
 }
 h3 + h4 {
+    margin-top: 0;
+}
+h5 + p {
     margin-top: 0;
 }
 p {
@@ -155,7 +159,8 @@ span.aside {
 }
 h2 + .aside,
 h3 + .aside,
-h4 + .aside {
+h4 + .aside,
+h5 + .aside {
     top: 1rem;
 }
 .references {
