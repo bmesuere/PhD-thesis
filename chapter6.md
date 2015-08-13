@@ -59,14 +59,24 @@ The next main feature of Unipept became the multi-peptide analysis ([@Fig:ch6fig
 
 
 ##### Unipept version 0.3
-* Switch from RefSeq genomes to UniProt?
+* Switch from RefSeq genomes to UniProt
+* update LCA algorithm
+* add table to peptide view
+* added a list of unmatched sequences to MPA
 
 ##### Unipept version 0.4
-* Switch from RefSeq genomes to UniProt?
+* keep both original and equated sequence in the database + I=L search option
+* invalidate taxa
+* CSV export
+* store LCA
+* sample data
+* D3
+* sunburst
 
 ### Unipept version 1.0
+After the release of Unipept 0.4, everything was prepared to release the first production-ready version. This means that no new features were added and that the only changes were bug fixes, layout tweaks and more documentation.
 
-#### D3.js?
+* github flow
 
 ### Unipept version 1.1 &ndash; 1.3
 
