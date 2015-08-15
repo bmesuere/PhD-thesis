@@ -54,7 +54,7 @@ This lineage data was used to improve the single peptide analysis page ([@Fig:ch
 
 <p style="display:none" class='image-screenshot'> </p> ![Result page of the single peptide analysis in Unipept version 0.2 for peptide <span class='small-caps'>EVAEAAQEK</span>.](images/ch6fig5.png){#fig:ch6fig5}
 
-The next main feature of Unipept became the multi-peptide analysis ([@Fig:ch6fig6]). This feature allowed a user to submit a list of tryptic peptides from a metaproteomics experiment instead of just a single peptide. Listing all occurences for each tryptic peptide would produce a long and cluttered list of information. Instead, only the LCA of each of the submitted peptides was used. These results were aggregated per taxonomic node into some kind of hierarchical frequency table. Clicking on a node in this table revealed the peptides associated with that taxonomic node. The same information was displayed as in interactive treemap using the JavaScript InfoVis Toolkit, a JavaScript visualization framework.
+The next main feature of Unipept became the multi-peptide analysis ([@Fig:ch6fig6]). This feature allowed a user to submit a list of tryptic peptides from a metaproteomics experiment instead of just a single peptide. Listing all occurences for each tryptic peptide would produce a long and cluttered list of information. Instead, only the LCA of each of the submitted peptides was used. These results were aggregated per taxonomic node into some kind of hierarchical frequency table. Clicking on a node in this table revealed the peptides associated with that taxonomic node. The same information was displayed as in interactive treemap using the JavaScript InfoVis Toolkit (http://philogb.github.io/jit/), a JavaScript visualization framework.
 
 <p style="display:none" class='image-screenshot'> </p> ![Result page of the multi-peptide analysis in Unipept version 0.2. The page shows the result of the analysis of Sample 7 as defined by @Verberkmoes2009.](images/ch6fig6.png){#fig:ch6fig6}
 
@@ -75,9 +75,23 @@ The next main feature of Unipept became the multi-peptide analysis ([@Fig:ch6fig
 * sunburst
 
 ### Unipept version 1.0
-After the release of Unipept 0.4, everything was prepared to release the first production-ready version. This means that no new features were added and that the only changes were bug fixes, layout tweaks and more documentation.
+After the release of Unipept 0.4, everything was prepared to release the first production-ready version. This means that no new features were added between version 0.4 and 1.0 and that the only changes were bug fixes, layout tweaks and more documentation.
 
-* github flow
+During the development of version 1.0, Ghent University deployed GitHub Enterprise.<span class="aside">GitHub Enterprise is a self-hosted version of the public GitHub.com website.</span> This allowed all students and researchers to create an unlimited number of (private) repositories to manage their programming projects free of charge. Since the Unipept team was very much in favor of offering GitHub Enterprise as a university-wide repository hosting service, we immediately switched over as a pilot user. This switch resulted in a more professional development approach and the adoption of several best-practices.
+
+##### The flow branching model
+The most profound change was the adoption of the flow branching model ([@Fig:ch6fig7]) instead of working on a single branch. Flow uses two core branches: `develop` and `master`. All new development work should happen on `develop`, while `master` always reflects a production-ready state. Once enough work is done on `develop` to justify a new release, the branch is merged into `master`, a version tag is created and the new version can be deployed on the production servers.
+
+Next to these two core branches, two types of temporary, supporting branches are used: feature branches and hotfix branches. As the name implies, feature branches are used to experiment and develop new features without interfering with other development. They always start by branching of `develop` and are merged back into `develop` when the feature is finished. A hotfix branch is used to fix a critical bug in the current production version. When such bug is discovered, a new branch is started from `master`, the bug gets fixed and the hotfix branch gets merged into both `master` and `develop` resulting in a new release.
+
+The flow branching model also suggests using release branches before creating a new release and merging changes into `master`. This release branch can be used for final testing and last-minute bug fixes without interrupting continuing work on `develop`. Because Unipept development is mostly a one-man operation, this type of branch was not really useful for us.
+
+![Schematic overview of the flow branching model. Image created by Vincent Driessen](images/ch6fig7.png){#fig:ch6fig7}
+
+##### Issues and pull requests
+* pull requests
+* issues
+* changelog
 
 ### Unipept version 1.1 &ndash; 1.3
 
