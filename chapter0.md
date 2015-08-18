@@ -16,6 +16,9 @@ tableTemplate: "<span class='table-title'>$$tableTitle$$&nbsp;$$i$$</span> $$t$$
 tblPrefix:
   - "table"
   - "tables"
+secPrefix:
+  - "section"
+  - "sections"
 ---
 # English Summary {- .front-matter data-running-title='English Summary'}
 # Nederlandstalige Samenvatting {- .front-matter data-running-title='Nederlandstalige Samenvatting'}

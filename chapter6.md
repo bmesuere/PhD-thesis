@@ -46,7 +46,7 @@ Unipept version 0.1 was a straightforward reimplementation of the existing Pepti
 <p style="display:none" class='image-screenshot'> </p> ![Web-based reimplementation of the PeptideInfo tool. The analysis for the peptide <span class='small-caps'>AAALAYAK</span> is shown.](images/ch6fig4.png){#fig:ch6fig4}
 
 ##### Unipept version 0.2
-After reaching feature parity with the Java client in version 0.1, work began on adding new features. Where the initial single peptide search only listed the species in which a peptide was found, version 0.2 introduced the concept of the lowest common ancestor (LCA).<span class="aside todo">The LCA is discussed in more detail in section ###.</span> To efficiently calculate the LCA, the complete lineage of every organism is needed. Until then, the hierarchical information of the taxonomy tree was not easily accessible. Each of the records in the taxonomy table represented a single taxonomic node containing, among other things, the taxon id of its parent. To retrieve all ancestors<span class="aside">With ancestor, we mean all parent nodes in the taxonomic tree, not evolutionary ancestors.</span> of a given organism, we needed to recursively query the database for the parent node until we reached the root. A solution to this problem was to calculate the lineage for each organism during database construction, and then store that path to root in a dedicated table. To accommodate for a variable number of ancestors, a fixed structure was used, using only the so-called named ranks. This precalculated table containing the 28 possible ancestors for every organism made it possible to efficiently calculate LCAs.
+After reaching feature parity with the Java client in version 0.1, work began on adding new features. Where the initial single peptide search only listed the species in which a peptide was found, version 0.2 introduced the concept of the lowest common ancestor (LCA).<span class="aside">The LCA is discussed in more detail in @sec:ch2-SPA.</span> To efficiently calculate the LCA, the complete lineage of every organism is needed. Until then, the hierarchical information of the taxonomy tree was not easily accessible. Each of the records in the taxonomy table represented a single taxonomic node containing, among other things, the taxon id of its parent. To retrieve all ancestors<span class="aside">With ancestor, we mean all parent nodes in the taxonomic tree, not evolutionary ancestors.</span> of a given organism, we needed to recursively query the database for the parent node until we reached the root. A solution to this problem was to calculate the lineage for each organism during database construction, and then store that path to root in a dedicated table. To accommodate for a variable number of ancestors, a fixed structure was used, using only the so-called named ranks. This precalculated table containing the 28 possible ancestors for every organism made it possible to efficiently calculate LCAs.
 
 This lineage data was used to improve the single peptide analysis page ([@Fig:ch6fig5]). Instead of simply listing the species in which the peptide was found, it now shows all organisms, the common lineage of these organisms and the lowest common ancestor. The result is also visualized by drawing a simple treeview of the relevant section of the taxonomy tree.
 
@@ -120,7 +120,7 @@ Each of the following sections covers a major or minor version of Unipept by fir
 
 #### Full screen
 
-### Unipept version 1.4
+### Unipept version 1.4 {#sec:ch6-missed-cleavage}
 +- 40 commits
 
 * Added tryptic peptides with length between 5 and 8 to the database
@@ -240,7 +240,7 @@ Each of the following sections covers a major or minor version of Unipept by fir
 
 #### My genomes revisited
 
-### Unipept version 2.4
+### Unipept version 2.4 {#sec:ch6-api}
 
 * Add an API and documentation (#397)
 * Add tests for the ruby on rails app (#412)
@@ -335,7 +335,7 @@ Each of the following sections covers a major or minor version of Unipept by fir
 
 #### redesign
 
-#### UniProt reduction
+#### UniProt reduction {#sec:ch6-uniprot-reduction}
 
 ### What's next?
 
