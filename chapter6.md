@@ -6,8 +6,6 @@ This chapter tells the story of Unipept from a developer's point of view. The fi
 Things to add to this chapter
 
 * disadvantages of tabular lineages with plants
-* development process
-* github(\@UGent)
 </div>
 
 ## Before the web application {data-running-title='Before the web application'}
@@ -84,14 +82,14 @@ The most profound change was the adoption of the flow branching model ([@Fig:ch6
 
 Next to these two core branches, two types of temporary, supporting branches are used: feature branches and hotfix branches. As the name implies, feature branches are used to experiment and develop new features without interfering with other development. They always start by branching of `develop` and are merged back into `develop` when the feature is finished. A hotfix branch is used to fix a critical bug in the current production version. When such bug is discovered, a new branch is started from `master`, the bug gets fixed and the hotfix branch gets merged into both `master` and `develop` resulting in a new release.
 
-The flow branching model also suggests using release branches before creating a new release and merging changes into `master`. This release branch can be used for final testing and last-minute bug fixes without interrupting continuing work on `develop`. Because Unipept development is mostly a one-man operation, this type of branch was not really useful for us.
+The flow branching model also suggests using release branches before creating a new release and merging changes into `master`. This release branch can be used for final testing, documentation generation, last-minute bug fixes and other release-oriented tasks without interrupting continuing work on `develop`. Because Unipept development is mostly a one-man operation, this type of branch was not really useful for us.
 
 ![Schematic overview of the flow branching model. Image created by Vincent Driessen](images/ch6fig7.png){#fig:ch6fig7}
 
-##### Issues and pull requests
-* pull requests
-* issues
-* changelog
+##### Issues, pull requests &amp; releases
+The flow guidelines note that feature branches typically only exist in developer repos and are only pushed to the main repository when the feature is done. This is not something we agree with, on the contrary, we encourage pushing feature branches as early as possible to be able to create a pull request. A pull request was originally meant to be a way to submit modifications to an open source project. On GitHub, any branch can be used to create a pull request. This creates some sort of timeline view of the branch, containing all commits and comments chronologically. In the Unipept repository, we use these discussion views to document the development of the feature by commenting with motivations for design choices, benchmark results, screenshots, task lists, etc. Other benefits of using pull requests over simple branches are that they can be labeled, are searchable and can be linked to. Branches also eventually get deleted, pull requests are never deleted, only closed or merged.
+
+Another GitHub feature that helped the management of the project are the extensive use of issues.<span class='aside'>The Unipept repository used over 500 issues for around 3000 commits.</span> Issues is the central bug tracker of GitHub that can be used for bug reports, but also to keep track of ideas for features and other tasks. Each issue gets assigned an incremental numeric identifier after creation. This id can then be used to reference the respective issue in commit messages and throughout the GitHub website. Just like pull requests, issues can also be labeled and assigned to milestones. We always create milestones for the next several Unipept versions and by assigning issues to them, we create a coarse roadmap. This way, the list of all open issues for the next milestone release can serve as a todo list. When all issues for a milestone are closed (or moved to the next milestone), a new Unipept version is released. The list of closed issues for that milestone can then be used to create a changelog. From version 1.0, this changelog is published on both github and the Unipept website.
 
 ### Unipept version 1.1 &ndash; 1.3
 
