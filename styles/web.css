@@ -92,6 +92,11 @@ ol,
 ul {
     margin-left: 200px;
 }
+sup {
+    vertical-align: baseline;
+    position: relative;
+    top: -0.4em;
+}
 .chapter h1 .header-section-number::before {
     content: "Chapter ";
 }

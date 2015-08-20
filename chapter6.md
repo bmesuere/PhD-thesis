@@ -58,20 +58,24 @@ The next main feature of Unipept became the multi-peptide analysis ([@Fig:ch6fig
 
 
 ##### Unipept version 0.3
-For Unipept version 0.3, we changed our peptide data source from the RefSeq genomes to the UniProt Knowledgebase [@Wu2006]. UniProtKB consists of two parts, Swiss-Prot and TrEMBL, containing millions of protein entries, including proteins from complete and reference proteomes. Our Java pipeline iterates over the xml version of UniProt to extract the protein entries and additional metadata such as organism information and various cross references. To store this additional data, the database schema had to be extended.
+For Unipept version 0.3, we changed our protein data source from the RefSeq genomes to the UniProt Knowledgebase [@Wu2006]. UniProtKB consists of two parts, Swiss-Prot and TrEMBL, containing millions of protein entries, including proteins from complete and reference proteomes. Our Java pipeline iterates over the xml version of UniProt to extract the protein entries and additional metadata such as organism information and various cross references. These additional data are stored in an extended database schema. Switching from RefSeq to Uniprot not only yielded more protein data, but also richer annotations.
 
-From a user's point of view, there were two small additions in Unipept 0.3. Instead of simply listing all occurrences of a tryptic peptide on the single peptide analysis result page, a table was now added to not only include the organism name of the matched UniProt entry, but also to include the complete lineage (@Fig:ch6fig8). The second addition was that the multi-peptide analysis result page now also includes a list of all peptides that could not be matched by Unipept. These peptides were accompanied by a link to immediately start a blastp search for them.
+From a user's point of view, there were two small additions in Unipept 0.3. The list of organisms in which the tryptic peptides occurs ([@Fig:ch6fig5]) was replaced by a table. This table not only includes the organism name of the matched UniProt entry, but also the complete lineage of that organism (@Fig:ch6fig8). The second addition was that of a list of all peptides that could not be matched by Unipept on the multi-peptide analysis result page. These peptides were accompanied by a link to immediately start a blastp search for them.
 
 <p style="display:none" class='pre-small-image'> </p> ![The lineage table that was added in the single peptide analysis result page in Unipept version 0.3](images/ch6fig8.png){#fig:ch6fig8}
 
 ##### Unipept version 0.4
-* keep both original and equated sequence in the database + I=L search option
-* invalidate taxa
-* CSV export
+Until Unipept 0.4, we always replaced all occurrences of isoleucine (I) by leucine (L) during initial processing.<span class='aside'>Isoleucine and leucine are isobaric amino acids and therefore hard to tell apart in MS experiments.</span> While this makes sense for proteomics data, it makes it impossible to optionally discern between them in a search because that data is simply not present in the database. One could of course store the original sequence in the database and make the substitution at runtime, but this would have a, potentially severe, negative performance impact. When searching for a peptide with $x$ Is or Ls, we would have to combine the result of searching for all possible I/L-combinations, meaning $2^x$ sequences. Instead, we chose to both store the original sequence and the "equated" version. This way, we can offer the user the choice if he wants to differentiate between I and L or not. The only disadvantage is the doubled storage space that is needed to store the sequence and its index in the database.
+
 * store LCA
-* sample data
+
+* invalidate taxa
+
 * D3
 * sunburst
+
+* CSV export
+* sample data
 
 ### Unipept version 1.0
 After the release of Unipept 0.4, everything was prepared to release the first production-ready version. This means that no new features were added between version 0.4 and 1.0 and that the only changes were bug fixes, layout tweaks and more documentation.
