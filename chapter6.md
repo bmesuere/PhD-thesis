@@ -52,16 +52,17 @@ This lineage data was used to improve the single peptide analysis page ([@Fig:ch
 
 <p style="display:none" class='image-screenshot'> </p> ![Result page of the single peptide analysis in Unipept version 0.2 for peptide <span class='small-caps'>EVAEAAQEK</span>.](images/ch6fig5.png){#fig:ch6fig5}
 
-The next main feature of Unipept became the multi-peptide analysis ([@Fig:ch6fig6]). This feature allowed a user to submit a list of tryptic peptides from a metaproteomics experiment instead of just a single peptide. Listing all occurences for each tryptic peptide would produce a long and cluttered list of information. Instead, only the LCA of each of the submitted peptides was used. These results were aggregated per taxonomic node into some kind of hierarchical frequency table. Clicking on a node in this table revealed the peptides associated with that taxonomic node. The same information was displayed as in interactive treemap using the JavaScript InfoVis Toolkit (http://philogb.github.io/jit/), a JavaScript visualization framework.
+The next main feature of Unipept became the multi-peptide analysis ([@Fig:ch6fig6]). This feature allowed a user to submit a list of tryptic peptides from a metaproteomics experiment instead of just a single peptide. Listing all occurrences for each tryptic peptide would produce a long and cluttered list of information. Instead, only the LCA of each of the submitted peptides was used. These results were aggregated per taxonomic node into some kind of hierarchical frequency table. Clicking on a node in this table revealed the peptides associated with that taxonomic node. The same information was displayed as in interactive treemap using the JavaScript InfoVis Toolkit (http://philogb.github.io/jit/), a JavaScript visualization framework.
 
 <p style="display:none" class='image-screenshot'> </p> ![Result page of the multi-peptide analysis in Unipept version 0.2. The page shows the result of the analysis of Sample 7 as defined by @Verberkmoes2009.](images/ch6fig6.png){#fig:ch6fig6}
 
 
 ##### Unipept version 0.3
-* Switch from RefSeq genomes to UniProt
-* update LCA algorithm
-* add table to peptide view
-* added a list of unmatched sequences to MPA
+For Unipept version 0.3, we changed our peptide data source from the RefSeq genomes to the UniProt Knowledgebase [@Wu2006]. UniProtKB consists of two parts, Swiss-Prot and TrEMBL, containing millions of protein entries, including proteins from complete and reference proteomes. Our Java pipeline iterates over the xml version of UniProt to extract the protein entries and additional metadata such as organism information and various cross references. To store this additional data, the database schema had to be extended.
+
+From a user's point of view, there were two small additions in Unipept 0.3. Instead of simply listing all occurrences of a tryptic peptide on the single peptide analysis result page, a table was now added to not only include the organism name of the matched UniProt entry, but also to include the complete lineage (@Fig:ch6fig8). The second addition was that the multi-peptide analysis result page now also includes a list of all peptides that could not be matched by Unipept. These peptides were accompanied by a link to immediately start a blastp search for them.
+
+<p style="display:none" class='pre-small-image'> </p> ![The lineage table that was added in the single peptide analysis result page in Unipept version 0.3](images/ch6fig8.png){#fig:ch6fig8}
 
 ##### Unipept version 0.4
 * keep both original and equated sequence in the database + I=L search option
