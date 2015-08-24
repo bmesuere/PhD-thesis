@@ -2,12 +2,6 @@
 
 This chapter tells the story of Unipept from a developer's point of view. The first section deals with Unipept before it was a web application. Section two goes into detail about the individual versions of the Unipept web application. The last section handles the Unipept command line tools.
 
-<div class="todo">
-Things to add to this chapter
-
-* disadvantages of tabular lineages with plants
-</div>
-
 ## Before the web application {data-running-title='Before the web application'}
 
 The first attempt at creating a tool for peptide analysis was a stand-alone  application written in Java. The data source for this application was the set of  complete bacterial RefSeq genomes. First, all files containing the proteomes were downloaded in the GenBank flat file format. These files were then fed through our data processing pipeline. The processing consisted of parsing the files using BioJava [@Prlic2012], performing an in-silico trypsin digest on the protein sequences and storing all peptides with a length between 8 and 50 amino acids.
@@ -46,7 +40,7 @@ Unipept version 0.1 was a straightforward reimplementation of the existing Pepti
 <p style="display:none" class='image-screenshot'> </p> ![Web-based reimplementation of the PeptideInfo tool. The analysis for the peptide <span class='small-caps'>AAALAYAK</span> is shown.](images/ch6fig4.png){#fig:ch6fig4}
 
 ##### Unipept version 0.2
-After reaching feature parity with the Java client in version 0.1, work began on adding new features. Where the initial single peptide search only listed the species in which a peptide was found, version 0.2 introduced the concept of the lowest common ancestor (LCA).<span class="aside">The LCA is discussed in more detail in @sec:ch2-SPA.</span> To efficiently calculate the LCA, the complete lineage of every organism is needed. Until then, the hierarchical information of the taxonomy tree was not easily accessible. Each of the records in the taxonomy table represented a single taxonomic node containing, among other things, the taxon id of its parent. To retrieve all ancestors<span class="aside">With ancestor, we mean all parent nodes in the taxonomic tree, not evolutionary ancestors.</span> of a given organism, we needed to recursively query the database for the parent node until we reached the root. A solution to this problem was to calculate the lineage for each organism during database construction, and then store that path to root in a dedicated table. To accommodate for a variable number of ancestors, a fixed structure was used, using only the so-called named ranks. This precalculated table containing the 28 possible ancestors for every organism made it possible to efficiently calculate LCAs.
+After reaching feature parity with the Java client in version 0.1, work began on adding new features. Where the initial single peptide search only listed the species in which a peptide was found, version 0.2 introduced the concept of the lowest common ancestor (LCA).<span class="aside">The LCA is discussed in more detail in @sec:ch2-SPA.</span> To efficiently calculate the LCA, the complete lineage of every organism is needed. Until then, the hierarchical information of the taxonomy tree was not easily accessible. Each of the records in the taxonomy table represented a single taxonomic node containing, among other things, the taxon id of its parent. To retrieve all ancestors<span class="aside">With ancestor, we mean all parent nodes in the taxonomic tree, not evolutionary ancestors.</span> of a given organism, we needed to recursively query the database for the parent node until we reached the root. A solution to this problem was to calculate the lineage for each organism during database construction,<span class="aside">Unfortunately, it turned out that the unnamed ranks also contain important information, especially in plants.</span> and then store that path to root in a dedicated table. To accommodate for a variable number of ancestors, a fixed structure was used, using only the so-called named ranks. This precalculated table containing the 28 possible ancestors for every organism made it possible to efficiently calculate LCAs.
 
 This lineage data was used to improve the single peptide analysis page ([@Fig:ch6fig5]). Instead of simply listing the species in which the peptide was found, it now shows all organisms, the common lineage of these organisms and the lowest common ancestor. The result is also visualized by drawing a simple treeview of the relevant section of the taxonomy tree.
 
@@ -78,6 +72,8 @@ In a competitive environment, it's important to make the threshold to start usin
 ### Unipept version 1.0
 After the release of Unipept 0.4, everything was prepared to release the first production-ready version. This means that no new features were added between version 0.4 and 1.0 and that the only changes were bug fixes, layout tweaks and more documentation.
 
+#### GitHub
+
 During the development of version 1.0, Ghent University deployed GitHub Enterprise.<span class="aside">GitHub Enterprise is a self-hosted version of the public GitHub.com website.</span> This allowed all students and researchers to create an unlimited number of (private) repositories to manage their programming projects free of charge. Since the Unipept team was very much in favor of offering GitHub Enterprise as a university-wide repository hosting service, we immediately switched over as a pilot user. This switch resulted in a more professional development approach and the adoption of several best-practices.
 
 ##### The flow branching model
@@ -95,6 +91,8 @@ The flow guidelines note that feature branches typically only exist in developer
 Another GitHub feature that helped the management of the project is the extensive use of issues.<span class='aside'>The Unipept repository used over 500 issues for around 3000 commits.</span> Issues is the central bug tracker of GitHub that can be used for bug reports, but also to keep track of ideas for features and other tasks. Each issue gets assigned an incremental numeric identifier after creation. This id can then be used to reference the respective issue in commit messages and throughout the GitHub website. Just like pull requests, issues can also be labeled and assigned to milestones. We always create milestones for the next several Unipept versions and by assigning issues to them, we create a coarse roadmap. This way, the list of all open issues for the next milestone release can serve as a todo list. When all issues for a milestone are closed (or moved to the next milestone), a new Unipept version is released. The list of closed issues for that milestone can then be used to create a changelog. From version 1.0, this changelog is published on both GitHub and the Unipept website.
 
 After a new version is released, it must also be deployed on the Unipept production servers. To automate this process and minimize downtime, we use a tool called Capistrano (http://capistranorb.com/). Capistrano uses our GitHub repository to automatically download the latest version of the code to the server, updates the dependencies and takes care of asset generation. By default, our Capistrano configuration deploys the `master` branch on production machines and the `develop` branch on our test servers.
+
+#### D3.js
 
 * D3
 * sunburst
