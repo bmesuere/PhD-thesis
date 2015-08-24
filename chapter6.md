@@ -106,6 +106,7 @@ Each of the following sections covers a major or minor version of Unipept by fir
 * new website design
 * news box on home page
 * performance improvement of the sunburst visualization in Firefox
+* rails 3.2 and assets pipeline
 
 ##### Unipept version 1.2
 
