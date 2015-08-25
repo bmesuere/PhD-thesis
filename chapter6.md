@@ -113,12 +113,11 @@ From a technical point of view, the biggest change was the update from rails 3.0
 
 <p style="display:none" class='image-screenshot'> </p> ![Home page of Unipept 1.1.](images/ch6fig11.png){#fig:ch6fig11}
 
-
 ##### Unipept version 1.2
 
-Unipept 1.2 contained no visible changes and solely focused on performance improvements. As discussed in a previous section, both the treemap and sunburst visualizations use a JSON object as their data source.
+Unipept 1.2 contained no visible changes and solely focused on performance improvements. As discussed in a previous section, both the treemap and sunburst visualizations use a JSON object as their data source. These two similar JSON objects are first created as a single Ruby root node object that contains all data for the two visualizations. Since the desired output format is slightly different for both, they must be generated separately which involves a few back and forth conversion to the JSON format.<span class='aside'>The initial root object is essentially deep copied by serialization.</span> These conversion steps accounted for a majority of the 2500 ms page load time. Swapping out the default Ruby JSON parser for OJ, a JSON parser optimized for speed, reduced loading time to only 500 ms.
 
-> The focus of Unipept version 1.2 was on performance improvements. This results in massive improvements in page load time due to optimized queries and faster JSON generation.
+A second set of performance improvements consisted of optimizing all queries for performance and applying eager loading where possible. Eager loading is a Ruby on Rails mechanism where associated records are loaded in as few queries as possible. For example, retrieving all UniProt entries in which a given peptide occurs can be done in a single query. If we afterwards want to fetch information on the associated taxonomy records, we need one query per UniProt entry.<span class='aside'>This is called the N+1 query problem: one initial query + one for each of the N associations.</span> If we know in advance that we will need the taxonomy data, we can use eager loading to fetch that data while doing the initial query using only a single extra query.
 
 ##### Unipept version 1.3
 
