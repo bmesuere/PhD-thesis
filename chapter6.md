@@ -117,7 +117,7 @@ From a technical point of view, the biggest change was the update from rails 3.0
 
 Unipept 1.2 contained no visible changes and solely focused on performance improvements. As discussed in a previous section, both the treemap and sunburst visualizations use a JSON object as their data source. These two similar JSON objects are first created as a single Ruby root node object that contains all data for the two visualizations. Since the desired output format is slightly different for both, they must be generated separately which involves a few back and forth conversion to the JSON format.<span class='aside'>The initial root object is essentially deep copied by serialization.</span> These conversion steps accounted for a majority of the 2500 ms page load time. Swapping out the default Ruby JSON parser for OJ, a JSON parser optimized for speed, reduced loading time to only 500 ms.
 
-A second set of performance improvements consisted of optimizing all queries for performance and applying eager loading where possible. Eager loading is a Ruby on Rails mechanism where associated records are loaded in as few queries as possible. For example, retrieving all UniProt entries in which a given peptide occurs can be done in a single query. If we afterwards want to fetch information on the associated taxonomy records, we need one query per UniProt entry.<span class='aside'>This is called the N+1 query problem: one initial query + one for each of the N associations.</span> If we know in advance that we will need the taxonomy data, we can use eager loading to fetch that data while doing the initial query using only a single extra query.
+A second set of performance improvements consisted of optimizing all queries for performance and applying eager loading where possible. Eager loading is a Ruby on Rails mechanism where associated records are loaded in as few queries as possible. For example, retrieving all UniProt entries in which a given peptide occurs can be done in a single query. If we afterwards want to fetch information on the associated taxonomy records,<span class='aside'>This is called the N+1 query problem: one initial query + one for each of the N associations.</span> we need one query per UniProt entry. If we know in advance that we will need the taxonomy data, we can use eager loading to fetch that data while doing the initial query using only a single extra query.
 
 ##### Unipept version 1.3
 
@@ -135,12 +135,11 @@ Topics:
 -> Full screen
 
 ##### Unipept version 1.4
-+- 40 commits
+Unipept 1.4 was released as a response to some of the review remarks of the initial Unipept particle [@Mesuere2012]. Up until now, our processing pipeline only stored peptides with a length between 8 and 50 amino acids. At the request of one of the reviewers, this was expanded to a length between 5 and 50. Other than an increased database size, this had no implications on the application.
 
-* Added tryptic peptides with length between 5 and 8 to the database
-* Added support for missed cleavages
+A second request was the addition of missed cleavage handling. When trypsin is added to a sample, it hasn't got a 100% success rate. Sometimes it misses a cleavage site, resulting in peptides consisting of two or more tryptic parts. Since Unipept only keeps an index of tryptic peptides, these composite peptides cannot be found using Unipept. A pragmatic solution to this is to do an in-silico tryptic digest after the peptide has been submitted to unipept and to search for the two or more separate parts. This technique has no negative performance impact en will never produce incorrect results since the matched peptides were genuinely present in the sample. It is however not the most accurate solution, because we don't take into account the fact that the separate parts of the peptide occur adjacently and in the same protein.
 
-->  Missed cleavages
+The easiest solution to this would be to not only store tryptic peptides, but also peptides with one or more missed cleavages. The big drawback is that the database size would grow exponentially, depending on how many missed cleavages we wanted to support. Since this is not desirable, we came up with a better solution which we call advanced missed cleavage handling. We still do an in silico digest of the submitted peptide, but instead of returning the various parts as separate peptides, we recombine the results. Since the separate parts occur in the same peptide, we only want UniProt entries where each of the parts occur. The first step in the recombination is thus to take the intersection of the sets of matched UniProt entries for the separate peptide parts. We now have a reduced set of UniProt entries that potentially contain our composite peptide. The second step is to account for the locality since the separate parts occur adjacently. We do this by performing a full text search on the composite peptide in each of the the protein sequences of the reduced set of Uniprot entries and only retaining those entries with a match. The LCA for the composite peptide is then calculated as normally from the remaining UniProt entries. The biggest downside of this approach is that it takes some time to do the extra calculations, which is why the advanced missed cleavage handling is disabled by default. The big advantage is that it works for any number of missed cleavages.
 
 ##### Unipept version 1.5
 +- 200 commits
@@ -150,6 +149,8 @@ Topics:
 * Add multi-peptide results download from the results page
 * Add new layout for news page
 * Fix layout issue with single peptide page
+
+-> pride data loading via biomart
 
 ### Unipept version 2.0
 +- 800 commits
