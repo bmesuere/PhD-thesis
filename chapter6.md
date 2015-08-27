@@ -111,31 +111,25 @@ The most visible change of Unipept 1.1 was the reworked design ([@Fig:ch6fig11])
 
 From a technical point of view, the biggest change was the update from rails 3.0 to rails 3.2. This update introduced the rails asset pipeline in Unipept. The asset pipeline is a framework to manage CSS and JavaScript resources in a web application. Concretely, this means that when deploying your application to a production environment, your assets are "compiled". During this compilation step, all CSS files of your application are bundled into a single file whilst removing unnecessary white-space. Similarly, all JavaScript files are bundled into one file which is then minified. As the name implies, minification tries to make the input file as small as possible by removing white-space and comments, and by renaming variables and functions to shorter names. The advantage of using the asset pipeline is that as a developer, you can use as many files as you want to organize your code without suffering from the related impact on performance.
 
-<p style="display:none" class='image-screenshot'> </p> ![Home page of Unipept 1.1.](images/ch6fig11.png){#fig:ch6fig11}
+<p style="display:none" class='image-screenshot'> </p> ![The home page of Unipept 1.1.](images/ch6fig11.png){#fig:ch6fig11}
 
 ##### Unipept version 1.2
 
 Unipept 1.2 contained no visible changes and solely focused on performance improvements. As discussed in a previous section, both the treemap and sunburst visualizations use a JSON object as their data source. These two similar JSON objects are first created as a single Ruby root node object that contains all data for the two visualizations. Since the desired output format is slightly different for both, they must be generated separately which involves a few back and forth conversion to the JSON format.<span class='aside'>The initial root object is essentially deep copied by serialization.</span> These conversion steps accounted for a majority of the 2500 ms page load time. Swapping out the default Ruby JSON parser for OJ, a JSON parser optimized for speed, reduced loading time to only 500 ms.
 
-A second set of performance improvements consisted of optimizing all queries for performance and applying eager loading where possible. Eager loading is a Ruby on Rails mechanism where associated records are loaded in as few queries as possible. For example, retrieving all UniProt entries in which a given peptide occurs can be done in a single query. If we afterwards want to fetch information on the associated taxonomy records,<span class='aside'>This is called the N+1 query problem: one initial query + one for each of the N associations.</span> we need one query per UniProt entry. If we know in advance that we will need the taxonomy data, we can use eager loading to fetch that data while doing the initial query using only a single extra query.
+A second set of performance improvements consisted of optimizing all queries for performance and applying eager loading where possible. Eager loading is a Ruby on Rails mechanism where associated records are loaded in as few queries as possible. For example, retrieving all UniProt entries in which a given peptide occurs can be done in a single query. If we afterwards want to fetch information on the associated taxonomy records,<span class='aside'>This is called the N+1 query problem: doing one initial query + one for each of the N associations.</span> we need one query per UniProt entry. If we know in advance that we will need the taxonomy data, we can use eager loading to fetch that data while doing the initial query using only a single extra query.
 
 ##### Unipept version 1.3
+Unipept 1.3 further tweaked the user interface of the website by using Twitter Bootstrap ([@Fig:ch6fig12]).<span class="aside">The project is no longer associated with Twitter and is now called Bootstrap.</span> Bootstrap is a popular, open source front-end framework to create web applications. It contains HTML and CSS templates, for example for typography, icons, forms, etc., and a number of JavaScript powered components such as modal dialogs and tooltips. The main benefit of using Bootstrap is that it speeds up front-end development because of its ready-made components that don't require any additional styling to create an ok-looking, but somewhat generic, web page.
 
-* Switched to twitter bootstrap for the user interface
-* Added full screen visualisations for supported browsers
-* Visualisations can now be saved as images
-* Updated to UniProt release 2012_07
+<p style="display:none" class='image-screenshot'> </p> ![The home page of Unipept 1.3, the first release to use Bootstrap.](images/ch6fig12.png){#fig:ch6fig12}
 
-Topics:
+A second focus area of Unipept 1.3 was to improve the usability of the visualizations by implementing a fullscreen mode and by allowing users to export the visualizations as an image. The Fullscreen API in browsers is a *living standard* which means that it is still in active development and by no means a finalized standard. As a result, it's impossible for browsers to adhere to the standard since there is none. All major browsers do have their own implementation of a fullscreen API, but unfortunately they are not mutually-compatible and incompatible with the latest draft of the spec. To reliably implement fullscreen support, we had to write our own mini API containing the necessary functions as a compatibility layer. This compatibility layer then called different internal functions depending on which browser (version) was used. The downside of this approach is that to maintain compatibility, we had to keep an eye on browsers changing their implementation.
 
--> Bootstrap
-
--> Saving images
-
--> Full screen
+At the time, Unipept contained two types of visualizations: the treeview and treemap are based on the canvas element, while the sunburst uses the svg element. Exporting them as images required a different approach for each. The solution for the canvas visualizations was very simple: the canvas API contains a `toDataURL`-method that returns the contents of the canvas as a image. The svg API has no similar alternative and required a server-side solution. When the user clicks the *save image* button, the contents of the svg element gets sent to the server. There,<span class='aside'>Imagemagick is a set of command line utilities for manipulating images.</span> Imagemagick gets called to rasterize the vector graphic and the resulting image gets Base64 encoded and sent back to the client as a data-url. Although these two precedures are very different in nature, they happen completely transparent to the user.
 
 ##### Unipept version 1.4
-Unipept 1.4 was released as a response to some of the review remarks of the initial Unipept particle [@Mesuere2012]. Up until now, our processing pipeline only stored peptides with a length between 8 and 50 amino acids. At the request of one of the reviewers, this was expanded to a length between 5 and 50. Other than an increased database size, this had no implications on the application.
+Unipept 1.4 was released as a response to some of the review remarks of the initial Unipept article [@Mesuere2012]. Up until now, our processing pipeline only stored peptides with a length between 8 and 50 amino acids. At the request of one of the reviewers, this was expanded to a length between 5 and 50. Other than an increased database size, this had no implications on the application.
 
 A second request was the addition of missed cleavage handling. When trypsin is added to a sample, it hasn't got a 100% success rate. Sometimes it misses a cleavage site, resulting in peptides consisting of two or more tryptic parts. Since Unipept only keeps an index of tryptic peptides, these composite peptides cannot be found using Unipept. A pragmatic solution to this is to do an in-silico tryptic digest after the peptide has been submitted to unipept and to search for the two or more separate parts. This technique has no negative performance impact en will never produce incorrect results since the matched peptides were genuinely present in the sample. It is however not the most accurate solution, because we don't take into account the fact that the separate parts of the peptide occur adjacently and in the same protein.
 
@@ -173,9 +167,9 @@ The easiest solution to this would be to not only store tryptic peptides, but al
 * Update D3 to 3.3.8
 * Update html2canvas to 0.4.1
 
-#### Unique Peptide Finder
+##### Unique Peptide Finder
 
-#### Code cleaning?
+##### Code cleaning?
 
 ### Unipept version 2.1
 +- 250 commits
@@ -196,7 +190,7 @@ The easiest solution to this would be to not only store tryptic peptides, but al
 * Update to Bootstrap 3.0.3
 * Update to D3 3.3.10
 
-#### JavaScript
+##### JavaScript
 
 ### Unipept version 2.2
 
@@ -224,9 +218,9 @@ The easiest solution to this would be to not only store tryptic peptides, but al
 * Update ruby to 2.1
 * Update rails to 4.1.1
 
-#### Peptidome similarity
+##### Peptidome similarity
 
-#### My genomes
+##### My genomes
 
 ### Unipept version 2.3
 
@@ -249,11 +243,11 @@ The easiest solution to this would be to not only store tryptic peptides, but al
 * Update bootstrap to 3.2
 * Update D3.js to 3.4.8
 
-#### Treeview
+##### Treeview
 
-#### Copy to clipboard
+##### Copy to clipboard
 
-#### My genomes revisited
+##### My genomes revisited
 
 ### Unipept version 2.4 {#sec:ch6-api}
 
@@ -271,11 +265,11 @@ The easiest solution to this would be to not only store tryptic peptides, but al
 * Update rails to 4.1.4
 * Update D3 to 3.4.11
 
-#### API
+##### API
 
-#### tests
+##### tests
 
-#### LCA in Java
+##### LCA in Java
 
 ### Unipept version 2.5
 
@@ -305,9 +299,9 @@ The easiest solution to this would be to not only store tryptic peptides, but al
 * Update D3 to 3.5.3
 * Update bootstrap to 3.3.2
 
-#### D3 treemap
+##### D3 treemap
 
-#### Full screen?
+##### Full screen?
 
 ### Unipept version 3.0
 
@@ -342,15 +336,15 @@ The easiest solution to this would be to not only store tryptic peptides, but al
 * Update D3 to 3.5.5
 * Update bootstrap to 3.3.5
 
-#### peptidome
+##### peptidome
 
-#### Promises and ES6
+##### Promises and ES6
 
-#### CLI?
+##### CLI?
 
-#### redesign
+##### redesign
 
-#### UniProt reduction {#sec:ch6-uniprot-reduction}
+##### UniProt reduction {#sec:ch6-uniprot-reduction}
 
 ### What's next?
 
