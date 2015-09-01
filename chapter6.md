@@ -114,7 +114,6 @@ From a technical point of view, the biggest change was the update from rails 3.0
 <p style="display:none" class='image-screenshot'> </p> ![The home page of Unipept 1.1.](images/ch6fig11.png){#fig:ch6fig11}
 
 ##### Unipept version 1.2
-
 Unipept 1.2 contained no visible changes and solely focused on performance improvements. As mentioned in a previous side note, both the treemap and sunburst visualizations use a JSON object as their data source. These two similar JSON objects are first created as a single Ruby root node object that contains all data for the two visualizations. Since the desired output format is slightly different for both, they must be generated separately which involves a few back and forth conversion to the JSON format.<span class='aside'>The initial root object is essentially deep copied by serialization.</span> These conversion steps accounted for a majority of the 2500 ms page load time. Swapping out the default Ruby JSON parser for OJ, a JSON parser optimized for speed, reduced loading time to only 500 ms.
 
 A second set of performance improvements consisted of optimizing all queries for performance and applying eager loading where possible. Eager loading is a Ruby on Rails mechanism where associated records are loaded in as few queries as possible. For example, retrieving all UniProt entries in which a given peptide occurs can be done in a single query. If we afterwards want to fetch information on the associated taxonomy records,<span class='aside'>This is called the N+1 query problem: doing one initial query + one for each of the N associations.</span> we need one query per UniProt entry. If we know in advance that we will need the taxonomy data, we can use eager loading to fetch that data while doing the initial query using only a single extra query.
@@ -139,29 +138,23 @@ The easiest solution to this would be to not only store tryptic peptides, but al
 The main feature of Unipept 1.5 was support for loading datasets from PRIDE<span class='aside'>PRIDE stands for PRoteomics IDEntifications.</span>, a public data repository for proteomics data. When a user enters the id of a PRIDE experiment into the Unipept website, the Unipept server fetches the corresponding dataset from PRIDE using BioMart and then sends the peptides back to the user. Data access through BioMart proved very cumbersome and unnecessary difficult. To request data using the BioMart API, one must construct an xml file containing the desired input and output using a special tool. The generated file must then be URL-encoded and added to the request-URL as a parameter. The PRIDE BioMart was retired in November 2014 and replaced by the much more user-friendly PRIDE web services. Support for these web services was added in Unipept 2.4.2.
 
 ### Unipept version 2.0
-+- 800 commits
+Where Unipept 1.0 can be seen as a minimal version of Unipept, Unipept 1.5 can be seen as a more complete version. Now that the dust had settled down, it was a good time to review some of the implementation choices and refactor the code. From Unipept 2.0 onwards we aimed for bigger releases, containing at least one big new feature, every four to six months. The big feature of Unipept 2.0 was the addition of the unique peptide finder.
 
-* Add the unique peptide finder
-* Add GO and EC cross references to database
-* Invalidate "metagenome" NCBI taxa
-* Tweak the lineage invalidation
-* Code spring cleaning
-* Rewrite of backend scripts
-* Add search settings to the batch run script
-* Switch from JS animations to CSS animations where possible
-* Add a timeout before filtering the tree on the multi result page
-* Fix bug when attempting to load a pride dataset without entering an id
-* Fix bug where only 1 number was shown in the tree on the multi result page
-* Fix bug where downloading results from results page didn't behave as expected
-* Fix bug where the sizes of the slices in the sunburst were not correct
-* Update bootstrap to 2.3.1
-* Update rails to 3.2.13
-* Update D3 to 3.3.8
-* Update html2canvas to 0.4.1
+##### Spring cleaning
+Ruby on Rails is a web application framework using the Model-View-Controller (MVC) principle. MVC is a software pattern for implementing user interfaces that is traditionally used in desktop applications. In this pattern, the application consists of three kinds of components with well-defined interactions between them. A model is used to store data, a controller manipulates the data in the model and a view shows the data of the model. In web applications, the pattern is implemented by letting (a method of) the controller handle incoming requests. The controller can then use models to process the request and prepare data for use in the view. This view consists of template that gets rendered as a response, for example an HTML page. Models are generally supported by an object-relational mapping (ORM), a system to connect the objects of an application to tables in a relational database. This ORM allows easy access to the properties and relationships of objects in an application that are stored in a database, without writing SQL statements.
 
-##### Unique Peptide Finder
+In previous version of Unipept, models were underused and most of the logic was present in the controllers. Additionally, the logic contained lots of SQL queries. To improve reuse of code, much of the business logic was shifted from the controllers to the models in Unipept 2.0.<span class='aside'>A principle that's know as fat models, skinny controllers.</span> The numerous queries were eliminated by making use of the ORM features of Ruby on Rails. These improvements reduce the number of code adjustments that are needed when, for example, the database schema changes.
 
-##### Code cleaning?
+A database change in Unipept 2.0 is support for the storage of additional UniProt cross references. Until then, only NCBI and EMBL cross references were stored. These were expanded with EC numbers [@Bairoch2005] and Gene Ontology annotations [@Ashburner2000] with the purpose of adding a functional analysis component to Unipept. A second change was the addition of information about the completed RefSeq genomes. This could be done by adding a single table containing the mapping from BioProject identifiers to the existing UniProt cross references.
+
+##### Unique peptide finder
+* screenshot
+* D3
+* roundtrips
+* client side calculation
+* set implementation -> sorted integer array
+* web workers
+* precompute all LCAs
 
 ### Unipept version 2.1
 +- 250 commits
@@ -182,6 +175,7 @@ The main feature of Unipept 1.5 was support for loading datasets from PRIDE<span
 * Update to Bootstrap 3.0.3
 * Update to D3 3.3.10
 
+##### Redesign
 ##### JavaScript
 
 ### Unipept version 2.2
