@@ -175,26 +175,74 @@ When adding a new genome to the analysis, it immediately gets added to the table
 After all queued genomes are loaded, the graph requests the web worker to load the unique peptide data. The web worker sends the server a list of all core peptides in the analysis, together with the taxon id's of all genomes in the analysis. The server calculates the LCA of these taxon id's and filters the list of peptides for those having the same LCA. The filtered list is then sent back to the web worker, which forwards the size of the received list to the main thread. The main thread then uses this information as data points in the graph. The server needs the LCA for each of the submitted peptides to be able to filter on this. Because the typical genome size is between 50&thinsp;000 and 150&thinsp;000 peptides, it's not feasible to calculate all LCAs on the fly. To solve this problem, the LCA for all peptides in the database is precomputed after constructing the database by making use of the LCA caching functionality introduced in Unipept 0.4. Unfortunately, this increases the already long time needed to process a new UniProt version with a few weeks.
 
 ### Unipept version 2.1
-+- 250 commits
+Unipept 2.1 was the smallest release in the Unipept 2 release series. Apart from the redesigned home page ([@Fig:ch6fig14]), it contained few new user-facing features. From a technical point of view, there are only two improvements worth mentioning: an improved file download flow and the refactoring of all unique peptide finder JavaScript code.
 
-* Minor redesign of most of the pages
-* Add retina image assets
-* Add CSV export for data in the unique peptides graph
-* Add SVG export for the sunburst and unique peptides graphs
-* Improve all file download flows
-* Improve dragging performance on unique peptides graph
-* Replace the tree on multi-peptides result page with own implementation
-* Rewrite the complete pancore JavaScript code
-* Remove new relic monitoring
-* Remove Qbaka error handling
-* Fix a bug where the download button stayed disabled after downloading the results on the multi-peptide page
-* Fix a bug with using full screen mode on the unique peptide page
-* Fix a bug where dragging a node triggered a popover in some browsers
-* Update to Bootstrap 3.0.3
-* Update to D3 3.3.10
+<p style="display:none" class='image-screenshot'> </p> ![The new home page layout as introduced in Unipept 2.1.](images/ch6fig14.png){#fig:ch6fig14}
 
-##### Redesign
-##### JavaScript
+##### Triggering file downloads
+Initiating a file download on a web page is harder than it seems, especially if the data is only present locally in the user's browser. Let's say we've got a JavaScript array containing a list of peptides and we want to let the user store these peptides on his computer. There is no straightforward<span class='aside'>Chrome started work on a FileSystem API, but the project was abandoned because of the lack of interest from other browser vendors.</span> way to write this data to a file on the user's file system using JavaScript only. The main reason for this is that in modern browsers JavaScript code gets executed in a sandbox which has no access to the local file system. The only reliable way to trigger a file download that works in all browsers is by doing a server roundtrip. With this strategy, the desired contents of the file gets sent to the server which then sends back the exact same data to the user. The server also sets the `disposition` header of the response to `attachment`. When the user's browser detects this header, it will trigger a file download dialog instead of rendering the response.
+
+The downside of this approach is that sending all data to the server and back can take some time. According to @Miller1968, if a computer response takes longer than a second, some kind of confirmation or progress should be displayed to reassure the user. It is easy to display a notification that the file download is being prepared, but much harder to know when said notification can be removed. Because the download is triggered by an HTTP request, it's impossible to get direct status information on that request and thus on the status of the download. Our workaround sends a random number<span class='aside'>A random number that is used for similar purposes is also called a nonce.</span> to the server along with the contents of the file. The server uses this number to set a cookie with a predefined name and the random number as its value. Meanwhile, the client-side JavaScript code keeps checking the list of cookies at a regular interval after the request was sent. Since the cookie only gets set when the server starts responding, we can remove the notification once the cookie with the correct value is detected.
+
+##### JavaScript objects
+code example
+
+```JavaScript
+/**
+ * Some comments about this class
+ *
+ * @param <String> name This is a string variable
+ */
+var constructMyClass = function constructMyClass(name) {
+    /*************** Private variables ***************/
+
+    // the object to which we will add all public methods
+    var that = {};
+
+    // a private variable
+    var privateVariable = name;
+
+    // a jquery variable
+    var $jqueryVar = $("#someSelector");
+    /*************** Private methods ***************/
+
+    /**
+     * Initializes method to set up the object.
+     * Something constructor-like that gets called
+     * at the end of the construct function
+     */
+    function init() {
+        // set up some stuff
+        privateMethod();
+        that.publicMethod();
+    }
+
+    /**
+     * This is a private method
+     *
+     * @param <Integer> i A magic number!
+     */
+    function privateMethod(i) {
+        // Do something
+    }
+
+    /*************** Public methods ***************/
+
+    /**
+     * This is a public method that gets exported with
+     * the created object
+     */
+    that.publicMethod = function publicMethod() {
+        // do something
+    };
+
+    // initialize the object
+    init();
+
+    // return the object
+    return that;
+};
+```
 
 ### Unipept version 2.2
 
