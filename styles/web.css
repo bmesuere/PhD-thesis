@@ -82,11 +82,15 @@ figure img {
     width: 100%;
 }
 table caption,
-figure figcaption {
+figure figcaption{
     margin-left: 200px;
     font-size: 0.85rem;
     font-family: 'Myriad pro', serif;
     text-align: left;
+}
+.listing-caption {
+    font-size: 0.85rem;
+    font-family: 'Myriad pro', serif;
 }
 ol,
 ul {
@@ -104,7 +108,8 @@ sup {
     content: ": ";
 }
 .table-title,
-.figure-title {
+.figure-title,
+.listing-title {
     font-weight: bold;
 }
 .pre-small-image + figure {
@@ -227,4 +232,9 @@ code a,
     margin-top: 3em;
     padding-top: 1em;
     border-top: 1px solid #000;
+}
+div.sourceCode {
+    font-size: 80%;
+    border-left: 2px solid #D3D3D3;
+    padding-left: 10px;
 }

@@ -19,6 +19,10 @@ tblPrefix:
 secPrefix:
   - "section"
   - "sections"
+listingTemplate: "<span class='listing-caption'><span class='listing-title'>$$listingTitle$$&nbsp;$$i$$</span> $$t$$</span>"
+lstPrefix:
+  - "listing"
+  - "listings"
 ---
 # English Summary {- .front-matter data-running-title='English Summary'}
 # Nederlandstalige Samenvatting {- .front-matter data-running-title='Nederlandstalige Samenvatting'}
