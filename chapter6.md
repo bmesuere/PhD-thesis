@@ -246,33 +246,20 @@ var constructMyClass = function constructMyClass(name) {
 
 ### Unipept version 2.2
 
-* Add peptidome similarity feature
-* Add myGenomes feature to peptidome analysis
-* Add full screen support for IE11
-* Add links to the bioproject webpage in the peptide finder graph tooltips and genomes table
-* Add an option to disable individual lines in the unique peptide finder by clicking on the legend labels
-* Add an option to use fixed colors for the sunburst graph allowing to compare the results of multiple samples
-* Add rails errors log via email
-* Make most of the logging optional by using settings
-* Improve the design of the genomes table
-* Improve the loading of the unique sequences in the unique peptide finder
-* Less clutter in the peptide finder graph by abbreviating names
-* Fix a bug where the genome size was not shown by default
-* Fix a bug causing the LCA to be root in some cases in the unique peptide finder
-* Fix a bug where the custom drag cursor wasn't shown in Internet Explorer
-* Fix a bug where matching children weren't shown while filtering on the multi peptides result page
-* Fix a crash when trying to sort without genomes
-* Fix an issue with the full screen view of the peptide finder graph
-* Fix an issue where the download dialog didn't disappear by pressing the escape key
-* Update to capistrano 3
-* Update bootstrap to 3.1.1
-* Update D3.js to 3.4.6
-* Update ruby to 2.1
-* Update rails to 4.1.1
+Unipept 2.2 introduced the peptidome clustering feature ([@Fig:ch6fig15]) and the possibility to add your own local genomes to the analysis. The user interface of the unique peptide finder was fine-tuned and a new coloring option was added to the sunburst visualization. The previous method randomly selects colors from a list for the leafs and recursively<span class='aside'>The colors of the parents are calculated by taking the average of their first two children in de HSL color space.</span> determines matching colors for the parents. This results in a visually pleasing graphic, but the result is somewhat arbitrary. A small change in the dataset can result in a drastically different result. This is annoying when trying to compare the sunburst visualization of two datasets. The new coloring option calculates a hash of each of the taxon names in the dataset and uses that to deterministically assign a color to the corresponding leafs. This means that a certain taxonomic node will always have the same color, independent of the dataset.
 
-##### Peptidome similarity
+<p style="display:none" class='image-screenshot'> </p> ![The peptidome clustering feature as introduced in Unipept 2.2.](images/ch6fig15.png){#fig:ch6fig15}
+
+##### Peptidome clustering
+The peptidome clustering feature uses the peptidome contents of the genomes to calculate pairwise similarities. The similarity between two genomes is the number of peptides they have in common divided by the total number op peptides or, in other words, the size of the intersection divided by the size of the union of the two sets of peptides. These similarities are then used to perform a hierarchical clustering using UPGMA.<span class='aside'>UPGMA stands for Unweighted Pair Group Method with Arithmetic Mean.</span> The output of the clustering algorithm is then used to construct a phylogenetic tree. Both the tree and similarity matrix are rendered using D3 as a single visualization. This means that the branches of the phylogenetic tree are aligned with the squares in the similarity matrix, and that clicking on a fork in the tree swaps both the branches and the corresponding rows and columns in the matrix.
+
+Calculating the similarities is relatively fast (under 50 ms per pair), but because the number of pairs grows quadratically with the number of genomes in the analysis, the similarity calculation can't be done in the main JavaScript thread without interfering with the usability. All necessary data is already present in the web worker of the unique peptide finder, so it was an obvious choice to add the code for the similarity calculation to the same worker. The similarity metric uses both the union and the intersection of the input sets, but because only the sizes are needed and not the actual contents, the calculation can be optimized. First, the intersection is calculated by iterating over the two sorted arrays containing the id's of the peptides in the input sets and counting the number of common peptides. The size of the union is then derived by taking the sum of the size of the input sets and subtracting the size of the intersection.
 
 ##### My genomes
+* worker
+* local storage + drawback
+
+<p style="display:none" class='pre-small-image image-screenshot'> </p> ![The form to add locally stored genomes to the peptidome analysis.](images/ch6fig16.png){#fig:ch6fig16}
 
 ### Unipept version 2.3
 
