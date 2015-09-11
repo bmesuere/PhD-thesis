@@ -264,6 +264,9 @@ ul:first-child {
 .image-screenshot + figure img {
     border: 1px solid #D3D3D3;
 }
+figure {
+    page-break-inside: avoid;
+}
 table caption,
 figure figcaption {
     margin-left: 100px;
