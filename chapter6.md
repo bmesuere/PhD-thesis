@@ -263,31 +263,19 @@ Internally, the genomes added by the user and the genomes derived from BioProjec
 <p style="display:none" class='pre-small-image image-screenshot'> </p> ![The form to add locally stored genomes to the peptidome analysis.](images/ch6fig16.png){#fig:ch6fig16}
 
 ### Unipept version 2.3
+Unipept 2.3 introduced a new data visualization to the multi-peptide analysis. Next to the existing sunburst and treemap, an interactive treeview ([@Fig:ch6fig17]) was added.<span class='aside'>The new treeview is discussed in more detail in @sec:ch2-art2-whats-new.</span> The treeview is written in D3 and is a combination of a classic tree visualization and a Sankey diagram. This means that the size of the nodes and the width of the edges between them correspond to the number of matches for these nodes. Another change is the improved single peptide analysis page. External links to PRIDE and PeptideAtlas and cross references with EC numbers and GO terms were added to the table containing all UniProt matches.
 
-* Add treeview to the multi-peptide analysis result page (#381)
-* Add ec numbers and go terms to the single peptide analysis result page (#368)
-* Add links to PRIDE and PeptideAtlas on the single peptide analysis result page (#122)
-* Add the option to add multiple genomes at a time to the my genomes feature (#390)
-* Add copy to clipboard buttons where appropriate (#386)
-* Add the option to add unlimited genomes to the my genomes feature by switching to indexedDB storage (#390)
-* Add a progress bar to the multi-peptide analysis page (#68)
-* Improve the multi-peptide analysis input parsing  by stripping #-symbols (#115)
-* Improve the design by removing most of the gradients and drop shadows
-* Improve the stability of the clustered order (#387)
-* Fix a bug where filtering the selection tree of the peptidome analysis was case sensitive where it shouldn't be (#377)
-* Fix a bug where loading the /organisms page resulted in an error (#374)
-* Fix a bug where only loading 'my genomes' into the peptidome analysis caused an error (#369)
-* Fix a bug where having 2 genomes with the same name caused the phylogenetic tree to crash (#376)
-* Fix an issue where some image assets failed to load (#372)
-* Fix a small inaccuracy with the UPGMA calculation (#378)
-* Update bootstrap to 3.2
-* Update D3.js to 3.4.8
-
-##### Treeview
+<p style="display:none" class='image-screenshot'> </p> ![The new treeview on the multi-peptide analysis page, added in Unipept 2.3.](images/ch6fig17.png){#fig:ch6fig17}
 
 ##### Copy to clipboard
+An oft-requested feature was better support for data export out of Unipept. Although some pages already offered file exports, copying something to the clipboard is often more convenient. Because of the structure of the html pages it is not always possible to do this manually. For example, when the data is presented in a tabular form, it's impossible to manually select a single column and copy only that data. In this case, some sort of button to copy the contents of the column to the clipboard would solve the problem. Unfortunately, it's almost impossible to reliably access the clipboard across all browsers without external aid. We chose to use ZeroClipboard (http://zeroclipboard.org/), a library that provides clipboard access using an invisible Adobe Flash movie using a JavaScript interface. This library allows to programmatically copy any contents to the user's clipboard, enabling buttons such as the one in [@Fig:ch6fig18].
+
+<p style="display:none" class='pre-small-image image-screenshot'> </p> ![Example of the new copy to clipboard button using ZeroClipboard in Unipept 2.3.](images/ch6fig18.png){#fig:ch6fig18}
 
 ##### My genomes revisited
+The initial version of My Genomes introduced in Unipept 2.2 was fully functional, but had some restrictions that limited its usefulness. The main obstacle was the limited storage space of 5 MB that's imposed by the use of localStorage. A solution for this limitation was to switch to IndexedDB, a standard for storing data in the browser using local databases. Because IndexedDB is not supported by all browsers,<span class='aside'>IndexedDB is supported by Chrome, Firefox and Internet Explorer (>=10). Unfortunately, the Safari implementation is riddled with bugs.</span> the old localStorage implementation is used as a fall back. The elimination of the size restrictions allowed us to fix a second problem with the initial implementation: the dependency on a single UniProt version. When parsing Uniprot, peptides get assigned an id incrementally. This means that when parsing two versions of Uniprot, a certain peptide will almost certainly get different id in the two versions. Because we only stored the sequence id's for the peptides in the user-submitted fasta file, the uploaded genomes became invalid when we updated the underlying UniProt database. To fix this, we now also store the original fasta file using IndexedDB. When the page detects that Unipept uses a newer version of UniProt, all stored genomes get updated.
+
+A consequence of unrestricted storage space is that a user potentially wants to add many custom genomes. Adding them one by one is a cumbersome process, which is why Unipept 2.3 added the option to add many files at once. In this case, the files are processed sequentially by the worker and a progress indicator is shown. The filenames are used as placeholder genome names and can later be edited.
 
 ### Unipept version 2.4 {#sec:ch6-api}
 

@@ -143,7 +143,7 @@ Since its release in 2012 [@Mesuere2012], the Unipept application was praised fo
 <p style="display:none" class='pre-small-image'> </p>
 ![Bar chart showing experimental data from @Tanca2013a with the number of correct taxonomic assignments at the family, genus and species level from the lab assembled 9MM sample using the NCBI-BFV database. The amount of incorrect identifications are 6%, 10% and 15% respectively for Unipept, and 9%, 18% and 34% for MEGAN.](images/ch2fig9.png){#fig:ch2fig9}
 
-### What’s new
+### What’s new {#sec:ch2-art2-whats-new}
 ##### Sunburst
 With complex samples containing a diverse range of taxa, the treemap ([@Fig:ch2fig6]) representation quickly becomes cluttered which makes it hard to get a clear insight into the results. To resolve this problem, a new sunburst visualization [@Andrews1998] was built into Unipept (@Fig:ch2fig7) using the D3.js framework [@Bostock2011]. The sunburst diagram displays the same data as the treemap, but as an interactive multi-level pie chart. The center of this pie chart represents the root node with several concentric rings around it. These rings are divided into slices representing the child nodes in the taxonomic hierarchy of the aligning more central slice. The size of the slices corresponds to the number of peptides having an LCA equal to that taxonomic node or any of its children.
 
