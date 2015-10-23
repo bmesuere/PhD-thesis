@@ -279,25 +279,37 @@ A consequence of unrestricted storage space is that a user potentially wants to 
 
 ### Unipept version 2.4 {#sec:ch6-api}
 
-* Add an API and documentation (#397)
-* Add tests for the ruby on rails app (#412)
-* Add a reset button to the visualisations (#423)
-* Add the new treeview to the tryptic peptide analysis page (#393)
-* Improve the organisation of the tryptic peptide analysis page (#392)
-* Improve phylogenetic tree export by hiding internal nodes (#364)
-* Improve the LCA calculation code by rewriting everything in java (#384, #398)
-* Rename single peptide analysis to tryptic peptide analysis (#392)
-* Rename multi peptide analysis to metaproteomics analysis (#392)
-* Fix the database to account for bigger uniprot accession numbers (#239)
-* Fix the database to account for bigger EMBL and Refseq cross references (#417)
-* Update rails to 4.1.4
-* Update D3 to 3.4.11
+Unipept 2.4 adds an API with accompanying documentation to Unipept enabling the use of the LCA functionality in other tools and applications. Internally, all code was provided with tests and a rewrite of the UniProt processing pipeline was started with an improved LCA pre-computation step.
+
+Multi-peptide analysis was renamed to metaproteomics analysis and a reset button was added to all visualizations. Single peptide analysis was renamed to tryptic peptide analysis and the results page was restructured. The old treeview was replaced by the one introduced in Unipept 2.3 ([@Fig:ch6fig19]).
+
+<p style="display:none" class='image-screenshot'> </p> ![The restructured tryptic peptide analysis page in Unipept 2.4.](images/ch6fig19.png){#fig:ch6fig19}
 
 ##### API
+<p class='aside'>More information about the API from a functional point of view can be found in chapter 5.</p>
+* json
+* documentation
+* examples
+* try it
 
-##### tests
+##### Tests
+Unipept aims to comply to as many software development best practices as possible. A major shortcoming to this was the lack of automated tests. Unipept 2.4 remedies this problem by adding over 900 tests and achieving a 100% test coverage for the Ruby on Rails part of the application. While this means that every single line of Ruby code is executed during testing, it doesn't imply that every line is actually tested.
+
+Testing support is deeply integrated in Rails by the inclusion of a testing environment. This environment allows to specify separate settings for use during testing, for example a dedicated testing database. Furthermore, the testing framework Minitest<span class='aside'>The included framework is actually called TestUnit, a rails-specific flavor of Minitest.</span> is included since version 1.9. The Minitest framework offers support for different types of tests and a way to actually run the tests.
+
+All models are covered by unit tests, a way to test individual units of code. Because most models interact with the database, a separate test database is used. The data in this database is not actual data, but mock data specifically constructed for the tests. This mock data is specified in separate files called fixtures and is loaded into the database before every test is executed. The purpose of this is to create a known and fixed environment in which the tests can run so that the results are repeatable.
+
+The code in the controllers is not as easily isolated as the code in the models. The controllers depend on many external elements and are therefore harder to test using unit tests. A different approach is to use integration tests. In integration tests, several modules are tested as a group, usually after testing the individual modules using unit tests. When performing an integration test on a controller, a web request is simulated and the output of the controller is compared with the expected output.
+
+A third part of our testing strategy involves running RuboCop. RuboCop is a static code analyzer for Ruby that checks the code for offences against the Ruby Style Guide. While it may seem that this only affects the appearance of the code, it also prevents errors due to sloppyness.
+
+Having tests is of no use if you never run them which is why we use Travis, a continuous integration service with GitHub integration. Whenever a commit gets pushed to GitHub, Travis fetches the code, runs all tests and posts the outcome of the tests in the pull request where the code was pushed. This helps guarantee that faulty code never gets deployed in production. The outcome of all tests is publicly available at https://travis-ci.org/unipept/unipept and can be used as a quality label for the code base.
 
 ##### LCA in Java
+
+* previously ruby code
+* java 8 stream api
+* 2 * 3 weeks -> 2 * 15 minutes
 
 ### Unipept version 2.5
 
