@@ -286,16 +286,16 @@ Multi-peptide analysis was renamed to metaproteomics analysis and a reset button
 <p style="display:none" class='image-screenshot'> </p> ![The restructured tryptic peptide analysis page in Unipept 2.4.](images/ch6fig19.png){#fig:ch6fig19}
 
 ##### API
-<p class='aside'>More information about the API from a functional point of view can be found in chapter 5.</p>
-* json
-* documentation
-* examples
-* try it
+To<span class='aside'>More information about the API from a functional point of view can be found in chapter 5.</span> allow access to the Unipept peptide analysis features from within other applications, we created a simple RESTful API. The API contains five methods (`pept2prot`, `pept2taxa`, `pept2lca`, `taxa2lca` and `taxonomy`) that can be accessed using HTTP POST or GET requests. The results are always returned in the JSON format. The API was designed with performance in mind, so by default, only a minimal number of fields are returned for each result. More information fields can be retrieved by explicitly asking for them when sending the request.
+
+The API comes with extensive documentation pages where every available method is explained in detailed. All posible input options and output fields are listed, along with several examples per method. Each documentation page also contains an interactive API explorer to compose requests and immediately see the results ([@Fig:ch6fig20]).
+
+<p style="display:none" class='pre-small-image'> </p> ![Screenshot of the API explorer, available on the documentation page of each of the Unipept API functions.](images/ch6fig20.png){#fig:ch6fig20}
 
 ##### Tests
 Unipept aims to comply to as many software development best practices as possible. A major shortcoming to this was the lack of automated tests. Unipept 2.4 remedies this problem by adding over 900 tests and achieving a 100% test coverage for the Ruby on Rails part of the application. While this means that every single line of Ruby code is executed during testing, it doesn't imply that every line is actually tested.
 
-Testing support is deeply integrated in Rails by the inclusion of a testing environment. This environment allows to specify separate settings for use during testing, for example a dedicated testing database. Furthermore, the testing framework Minitest<span class='aside'>The included framework is actually called TestUnit, a rails-specific flavor of Minitest.</span> is included since version 1.9. The Minitest framework offers support for different types of tests and a way to actually run the tests.
+Testing support is deeply integrated in Rails by the inclusion of a testing environment. This environment allows to specify separate settings for use during testing, for example a dedicated testing database.<span class='aside'>The included framework is actually called TestUnit, a rails-specific flavor of Minitest.</span> Furthermore, the testing framework Minitest is included since version 1.9. The Minitest framework offers support for different types of tests and a way to actually run the tests.
 
 All models are covered by unit tests, a way to test individual units of code. Because most models interact with the database, a separate test database is used. The data in this database is not actual data, but mock data specifically constructed for the tests. This mock data is specified in separate files called fixtures and is loaded into the database before every test is executed. The purpose of this is to create a known and fixed environment in which the tests can run so that the results are repeatable.
 
