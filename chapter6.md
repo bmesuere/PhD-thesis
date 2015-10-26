@@ -305,11 +305,10 @@ A third part of our testing strategy involves running RuboCop. RuboCop is a stat
 
 Having tests is of no use if you never run them which is why we use Travis, a continuous integration service with GitHub integration. Whenever a commit gets pushed to GitHub, Travis fetches the code, runs all tests and posts the outcome of the tests in the pull request where the code was pushed. This helps guarantee that faulty code never gets deployed in production. The outcome of all tests is publicly available at https://travis-ci.org/unipept/unipept and can be used as a quality label for the code base.
 
-##### LCA in Java
+##### Computing the LCAs in Java
+The LCAs for all peptides in the database were precomputed by iterating over all peptides and calculating their LCA using the Ruby on Rails middleware. This is done for both the original peptide and the version where isoleucine and leucine were equated. Because the middleware fetched the information for each peptide separately, several database queries were executed per peptide, resulting in terrible performance. The total runtime of the LCA calculation using the middelware was three weeks for each of the two variants.
 
-* previously ruby code
-* java 8 stream api
-* 2 * 3 weeks -> 2 * 15 minutes
+Unipept 2.4 includes a reimplementation of the LCA calculation code in Java. This code works directly in the generated tsv output files of the processing pipeline and has no interaction with the database. By keeping the lineage of all taxa in memory and making extensive use of the Java 8 Stream API, the new LCA calculation code is several orders of magnitude faster and runs in 30 minutes total for both variants. Profiling the Java code learns that almost all time is spent in reading and parsing the input files. This means that the algorithm can't be optimized any further. Another benefit is that because the code no longers makes use of the middleware and the database, it's much easier to integrate it in the data processing pipeline and to run it on a separate server.
 
 ### Unipept version 2.5
 
