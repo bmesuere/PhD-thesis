@@ -312,35 +312,23 @@ Unipept 2.4 includes a reimplementation of the LCA calculation code in Java. Thi
 
 ### Unipept version 2.5
 
-* Rewrite Treemap with D3 (#428)
-* Rewrite all Metaproteomics Analysis visualisation code (#453)
-* Add a new full screen mode to the Metaproteomics Analysis results page with improved functionality (#453)
-* Add breadcrumb navigation to the treemap (#78)
-* Add breadcrumb navigation to the sunburst (#453)
-* Add the option to shift-click a node in the treeview to expand all children (#395)
-* Add color highlights on mouseover to the sunburst graph (#438)
-* Add insdc and refseq cross references to the pept2prot api (#452)
-* Add a publications page (#454)
-* Improve the performance of the metaproteomics result page by reducing the page size (#61)
-* Improve the sunburst image export by excluding the faded sunburst arcs from the exported image (#439)
-* Incremental PRIDE dataset loading with progress bar (#440)
-* Improve the tree on the TPA results page by using the number of hits instead of the number of leafs to scale the nodes + include a tooltip (#404)
-* Achieve 100% test coverage (#442)
-* Fix an issue with incorrect treemap bounding box (#30)
-* Fix an issue with the top navigation being on 2 lines when helvetica and arial aren't installed (#430)
-* Fix an issue with overlapping nodes in the new tree visualisation (#388)
-* Fix an issue with header rows being imported in the database (#441)
-* Fix an issue with the 'new version'-message appearing in the CLI
-* Fix an issue where a serif font was used for the image export of clustered genomes (#425)
-* Fix an issue where removing a genome while a genome was being removed, crashed the unique peptide finder (#418)
-* Fix an issue where negative taxon id's could be returned by the API (#455)
-* Update rails to 4.1.8
-* Update D3 to 3.5.3
-* Update bootstrap to 3.3.2
+Unipept 2.5 focussed on improving the metaproteomics analysis visualizations. Until now, the sunburst and treeview graphs were created using D3.js and the treemap using the JavaScript InfoVis Toolkit (JIT, http://philogb.github.io/jit/). This meant that the treemap was much more restricted in customizing the visualization and in adding new features. Another drawback is that the two sets of visualizations use a similar but slightly different input format. This means that the source data must be sent to the client twice, once for JIT and once for D3. Unipept 2.5 introduces a treemap replacement that is written using D3.<span class='aside'>By dropping JIT, the JavaScript code base was reduced by 500 KB.</span> This change allowed us to drop the JIT dependency from Unipept, unify the input format and pave the way for new treemap features.
 
-##### D3 treemap
+##### A D3 treemap
+Although D3 doesn't include premade visualizations, it does have a few built-in layout algorithms. These algorithms encapsulate the process of converting input data to a set of shapes and/or positions. This output can then be used to create a graph. One of the built-in algorithms can be used to create a treemap from a hierarchical JSON object. When using this layout algorithm, a heuristic tries to recursively lay out rectangles associated with the input nodes. The algorithm used by D3 is superiour to the one used by JIT, resulting in a better match between the size of the rectangles and the number of peptides associated with a node.
 
-##### Full screen?
+A second improvement is the addition of breadcrumbs at the top of the visualization ([@Fig:ch6fig22]). When a user zooms in by clicking on a node, these breadcrumbs show the path from the root till where the user zoomed in. This navigational aid allows the user to keep track of their location within the taxonomy tree. Clicking on one of the breadcrumbs results in zooming out to that level immediately, whereas previously, zooming out happened only a level at a time.
+
+<p style="display:none" class='image-screenshot'> </p> ![The new D3-based treemap introduced in Unipept 2.5. The visualization uses an improved layout algorithm to determine the size of the rectangles and includes breadcrumbs as a navigation bar.](images/ch6fig22.png){#fig:ch6fig22}
+
+##### Full screen mode
+Apart from rewriting the treemap visualization using D3, the other visualizations were also refactored to make use of the JavaScript object style that was introduced in Unipept 2.1. As a consequence, the graphs became more modular and more flexible to work with. A direct result of this increased flexibility is a new full screen mode ([@Fig:ch6fig21]). Previously, full screen mode only showed a single visualization at a time without any other features. The new full screen mode lets users switch between visualizations and gives access to all export and display settings.
+
+<p style="display:none" class='image-screenshot'> </p> ![Full screen mode of the Multi-peptide analysis visualizations demonstrating the new breadcrumbs of the sunburst graph.](images/ch6fig21.png){#fig:ch6fig21}
+
+The spaciousness of full screen mode and the treemap breadcrumbs provided the inspiration to also add breadcrumbs to the sunburst ([@Fig:ch6fig23]). A one-dimensional list of links works fine for the treemap, but doesn't fit the bold and circular sunburst. Instead, the circular theme was extended in the breadcrumbs by adding small pie charts showing the fraction of peptides at that level. The colors of the pie charts are the same as the ones used in the corresponding slices of the sunburst, creating an additional contextual link.
+
+<p style="display:none" class='pre-small-image image-screenshot image-half-size'> </p> ![Breadcrumbs of the sunburst visualization. Next to being a navigational aid, the miniature pie charts in the sunburst breadcrumbs also provide quantitative information.](images/ch6fig23.png){#fig:ch6fig23}
 
 ### Unipept version 3.0
 
