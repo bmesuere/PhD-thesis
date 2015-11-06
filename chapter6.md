@@ -331,47 +331,48 @@ The spaciousness of full screen mode and the treemap breadcrumbs provided the in
 <p style="display:none" class='pre-small-image image-screenshot image-half-size'> </p> ![Breadcrumbs of the sunburst visualization. Next to being a navigational aid, the miniature pie charts in the sunburst breadcrumbs also provide quantitative information.](images/ch6fig23.png){#fig:ch6fig23}
 
 ### Unipept version 3.0
-
-* Redesign (#520)
-* Use Assemblies instead of Bioprojects for the proteomes (#460)
-* Automatically resume a previous peptidome analysis (#416)
-* Add draft genomes to the peptidome analysis (#353)
-* Add command line documentation (#410)
-* Add type strain info to the proteomes (#491)
-* New table based method of selecting proteomes (#472)
-* Remove drag and drop for proteome selection (#419)
-* Shift + click now always expands the treeview, both on the TPA and MPA results page. (#395, #476)
-* Use autoprefixer for css (#463)
-* Refactored the JavaScript code to use promises were possible (#464)
-* Use notifications to indicate progress (#474)
-* Add protein names to the tryptic peptide analysis results (#465)
-* Add protein names to the API output (#519)
-* Add the possibility to leave an email address on encountering an error (#494)
-* Include the UniProt version in the footer
-* Rewrite of the uniprot parser using make files and berkeley DB (#424)
-* Add copy to clipboard button for Tryptic Peptide Analysis (#466)
-* Add open in UniProt button for Tryptic Peptide Analysis (#466)
-* Fix an issue where the names of "My proteomes" were incorrectly abbreviated in some cases (#483)
-* Fix an issue where IndexedDB was broken in Safari (#489)
-* Fix an issue where the input order was not preserved for the taxonomy API call (#490)
-* Fix a bug where the my proteomes popover wouldn't open once a pancore popover was shown (#472)
-* Fix a bug where the pancore popover was still present after a remove all (#484)
-* Fix an issue where text was selected during drag-to-reorder in the pancore graph (#472)
-* Fix an issue where a few JavaScript errors were shown when loading the TPA tree
-* Fix an issue where the application crashed when a user submitted non-ascii characters in the multi-peptide analysis (#493)
-* Update rails to 4.2.3
-* Update D3 to 3.5.5
-* Update bootstrap to 3.3.5
-
-##### peptidome
-
-##### Promises and ES6
-
-##### CLI?
+Unipept 3.0 is the biggest Unipept release yet with major rewrites in both the back and front end and many new features. At the back end, the entire UniProt parsing pipeline was rewritten to make it several orders of magnitude faster. The entire website was redesigned based on Google's Material Design guidelines. The unique peptide finder and peptidome clustering page was given a major update and the Unipept command line tools and accompanying documentation were released.
 
 ##### redesign
+* material design
+* screenshot
+* eliminate text
+* toast notifications
+
+##### peptidome
+* stop using bioprojects (with reference)
+* start using Assemblies
+* explain mapping
+* explain incomplete genomes problem
+* new way of selecting genomes: filterable list
+* screenshot of filter
+* full screen (+ screenshot?)
+* auto resume
+
+##### Promises and ES6
+* make use of new JavaScript techniques
+* explain ES6
+* explain promises
+* polyfills
+* CSS autoprefixer?
+
+##### CLI
+* next section
+* documentation
+* similar to API docs
+* case studies
+
+##### file-based UniProt parser
+* don't use database
+* use TSV files + berkeleyDB
+* faster
 
 ##### UniProt reduction {#sec:ch6-uniprot-reduction}
+* not directly related with 3.0
+* describe procedure http://insideuniprot.blogspot.ch/2015_05_01_archive.html
+* add graph
+* effects on TPA/MPA
+* effects on unique peptide finder
 
 ### What's next?
 
