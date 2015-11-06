@@ -333,11 +333,14 @@ The spaciousness of full screen mode and the treemap breadcrumbs provided the in
 ### Unipept version 3.0
 Unipept 3.0 is the biggest Unipept release yet with major rewrites in both the back and front end and many new features. At the back end, the entire UniProt parsing pipeline was rewritten to make it several orders of magnitude faster. The entire website was redesigned based on Google's Material Design guidelines. The unique peptide finder and peptidome clustering page was given a major update and the Unipept command line tools and accompanying documentation were released.
 
-##### redesign
-* material design
-* screenshot
-* eliminate text
-* toast notifications
+<p style="display:none" class='pre-small-image image-screenshot'> </p> ![Redesigned home page of Unipept 3.0, based on the Google Material Design guidelines.](images/ch6fig24.png){#fig:ch6fig24}
+
+##### Introducing Material Design
+Until now, the Unipept page layout was based on the corporate design of Ghent University. This aging design was already heavily adapted to accommodate the needs of a modern web application. We chose to redesign the entire application based on Google's Material Design guidelines ([@Fig:ch6fig24]). These guidelines define a set of rules and principles to which applications must adhere to, leaving plenty of room for customization. These principles include using cards, depth and padding to group information and using animations as a way to reinforce the user's actions.
+
+The redesign was seized to rethink and improve all pages of the application. Special attention went to the removal of clutter and the simplification of the application. A prime example of this is the tryptic peptide analysis search page ([@Fig:ch6fig25]). The page now focusses on purpose of the page, being the search form, and the long help text was rewritten and split into three clear chunks.
+
+<p style="display:none" class='image-screenshot'> </p> ![Compilation showing the old (Unipept 2.5) and redesigned (Unipept 3.0) tryptic peptide analysis page. The top navigation bar now shows the current page, the search form is front and center and the copy was improved.](images/ch6fig25.png){#fig:ch6fig25}
 
 ##### peptidome
 * stop using bioprojects (with reference)
