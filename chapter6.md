@@ -342,15 +342,14 @@ The redesign was seized to rethink and improve all pages of the application. Spe
 
 <p style="display:none" class='image-screenshot'> </p> ![Compilation showing the old (Unipept 2.5) and redesigned (Unipept 3.0) tryptic peptide analysis page. The top navigation bar now shows the current page, the search form is front and center and the copy was improved.](images/ch6fig25.png){#fig:ch6fig25}
 
-##### peptidome
-* stop using bioprojects (with reference)
-* start using Assemblies
-* explain mapping
-* explain incomplete genomes problem
-* new way of selecting genomes: filterable list
-* screenshot of filter
-* full screen (+ screenshot?)
-* auto resume
+##### Proteome Analysis 2.0
+Both the unique peptide finder and the peptidome similarity feature need a way to define complete genomes and to select all corresponding UniProt entries. In the past, BioProjects were used for this because each BioProject corresponded with a single sequenced genome. More recently however, this relation changed as a single BioProject ID can be used for a multi-species and multi-isolate project [@Tatusova2015]. As suggested by @Tatusova2015, in Unipept 3.0 we started using Assemblies instead. By using the GenBank accession numbers associated with the assembly sequences, we can easily map them to UniProt entries for use in the application.
+
+By using the assemblies, which also include incomplete genomes, the list of available genomes grew considerably to over 7500. This had performance implication on the tree that was used to add genomes to the analysis. The initial rendering time of the selection tree grew to over 10 seconds, which is unacceptable. A new solution was found in using a filterable list, showing only 50 results per page ([@Fig:ch6fig26]). The improved search settings include options to target specific taxonomic ranks, filter on assembly level (e.g. complete or scaffold), filter on complete or partial genomes and to only display type strains.
+
+<p style="display:none" class='pre-small-image'> </p> ![The proteome library showing a new way of selecting proteomes by using a filterable list instead of hierarchical lists. All complete genomes of the *Acholeplasma* genus are shown.](images/ch6fig26.png){#fig:ch6fig26}
+
+The idea of adding more functionality to the full screen mode of the metaproteomics analysis was also applied on the proteome analysis. While in full screen, users can now switch between the unique peptide finder and the peptidome similarity and can even add new proteomes to the analysis. Another improvement to the proteome analysis is the automatic recovery of the analysis state of the previous visit to the page. To eliminate the risk of getting caught in a restoration/crash loop, the same state is only restored once.
 
 ##### Promises and ES6
 * make use of new JavaScript techniques
