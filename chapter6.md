@@ -351,15 +351,15 @@ By using the assemblies, which also include incomplete genomes, the list of avai
 
 The idea of adding more functionality to the full screen mode of the metaproteomics analysis was also applied on the proteome analysis. While in full screen, users can now switch between the unique peptide finder and the peptidome similarity and can even add new proteomes to the analysis. Another improvement to the proteome analysis is the automatic recovery of the analysis state of the previous visit to the page. To eliminate the risk of getting caught in a restoration/crash loop, the same state is only restored once.
 
-##### Promises and ES6
-* make use of new JavaScript techniques
-* explain ES6
-* explain promises
-* polyfills
-* CSS autoprefixer?
+##### Modern JavaScript
+While rewriting big parts of the peptidome analysis feature, the opportunity was seized to introduce a few new JavaScript features in the Unipept code base. These features are all part of ECMAScript 2015,<span class="aside">ES2015 was previously called ECMAScript 6 or ES6.</span> a new JavaScript language specification that was standardized in June 2015. Because not all browsers support these features yet, Unipept only uses functionality that can be mimicked by using polyfills. A polyfill is a piece of code that can be used to replicate a functionality that the browser doesn't support natively. An example of an ES2015 feature that is used in Unipept 3.0 are the new Map and Set data structures.
+
+A second example of a new ES2015 feature thats used in Unipept are Promises. Traditionally, JavaScript programmers make liberal use of callbacks to handle the results of asynchronous functions. Callbacks are functions that are supplied by the programmer when calling an, often asynchronous, function and are typically executed by that function when the result is available.<span class="aside">This problem is called inversion of control.</span> The problem with this approach is that after calling the initial function, the programmer has lost control over the subsequent program flow. Additionally, callbacks seem to be contagious and have the nature to propagate through the source code, resulting in a phenomenon called *callback hell*. Most of these problems can be solved using Promises, a way to refer to the result of operations that aren't available yet, but will be in the near future.
+
+All JavaScript code in Unipept that used callbacks for asynchronous functions was rewritten to make use of Promises. The peptidome analysis page makes heavy use of JavaScript Workers and therefore callbacks. The switch to Promises drastically reduced the complexity this code and made the program flow much more transparent.
 
 ##### CLI
-* next section
+* more info in next section
 * documentation
 * similar to API docs
 * case studies
