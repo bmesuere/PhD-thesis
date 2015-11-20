@@ -361,10 +361,12 @@ All JavaScript code in Unipept that used callbacks for asynchronous functions wa
 ##### The Unipept command line tools
 After an API was added in Unipept 2.4, work began on a Unipept command line interface (CLI) tool to easily integrate Unipept functionality in batch processing scripts. A major part in creating the tool was providing ample documentation about its usage. This documentation was included in Unipept 3.0 and was create in analogy to the API documentation. Each of the included commands have their own documentation page listing all available input and output options and a few examples. Additionally, the documentation includes two detailed case studies: the taxonomic analysis of a tryptic peptide and of a metaproteomics dataset. More information about the development about the CLI tool itself can be found in the next section. <span class="todo">section/chapter</span>
 
-##### file-based UniProt parser
-* don't use database
-* use TSV files + berkeleyDB
-* faster
+##### A file-based UniProt parser
+In Unipept 2.4, the LCA calculation was reimplemented to use a file-based approach instead of the database. This resulted in such a huge performance improvement that the entire processing pipeline was rewritten using the same ideas. Instead of directly writing the data to the database, the individual parsing steps now generated tab seperated value (TSV) files that can easily be imported into the database afterwards. The entire pipeline can be executed by running a single makefile that runs and combines the various processing steps.
+
+For all but one table, this was a straightforward conversion. Because these tables are only written to during processing, it required minimal changes to the code. The `sequences` table is the exception here because we both read from and write to this table in the processing step. More specifically, before a sequence is added to the "database" we first want to check if it was not previously added, and if this is the case, with which identifier. To solve this problem, we used Berkeley DB to store the sequence-identifier mapping during processing. Berkeley DB is a high-performance software library to store key-value pairs. Berkeley DB will keep as much data in memory as possible and will use the hard drive as a fallback option when memory is exhausted.
+
+The performance improvements of this reimplementation are similar to the once achieved with the new LCA approach. Parsing the entire UniProt database can now be done in under 12 hours compared to over four weeks with the old approach. This allows us to provide more timely updates to the Unipept database. Another attempt to reduce the number of lookup operations by making use of bloom filters did not result in any significant performance improvements.
 
 ##### UniProt reduction {#sec:ch6-uniprot-reduction}
 * not directly related with 3.0
