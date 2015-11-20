@@ -368,15 +368,11 @@ For all but one table, this was a straightforward conversion. Because these tabl
 
 The performance improvements of this reimplementation are similar to the once achieved with the new LCA approach. Parsing the entire UniProt database can now be done in under 12 hours compared to over four weeks with the old approach. This allows us to provide more timely updates to the Unipept database. Another attempt to reduce the number of lookup operations by making use of bloom filters did not result in any significant performance improvements.
 
-##### UniProt reduction {#sec:ch6-uniprot-reduction}
-* not directly related with 3.0
-* describe procedure http://insideuniprot.blogspot.ch/2015_05_01_archive.html
-* add graph
-* effects on TPA/MPA
-* effects on unique peptide finder
+##### UniProt redundancy removal {#sec:ch6-uniprot-reduction}
+Over the course of 2014, the size of the UniProt database more than doubled from 45 million entries to over 90 million ([@Fig:ch6fig27]). The UniProt team attributes this exponential growth to the high number of redundant bacterial genomes. As an example, they show that UniProt contains 4000 proteomes for *Staphylococcus aureus*, accounting for 10 million UniProt entries. In order to deal with this drastic data growth, they implemented a reduncancy removal procedure. The procedure removes redundant UniProt entries by identifying similar bacterial genomes. As a result the size of the UniProt database decreased from 92 million entries to just 47 million.
 
-### What's next?
+<p style="display:none" class='pre-small-image'> </p> ![A graph showing the growth rate of the UniProt database. Its size was approaching 100 million entries in early 2015 after which a redundancy removal was implemented.](images/ch6fig27.png){#fig:ch6fig27}
 
-* Docker
+Although this redundancy removal has nothing to do with changes in Unipept 3.0, it was the first Unipept version that was impacted by this reduction in source data. As expected and verified by spot checks, the impact on the Tryptic Peptide Analysis and Metaproteomics Analysis was minimal. Because only redundant entries were removed, there is enough data left to reliably assign peptides to taxa. The Unique Peptide Finder and Pepetidome Clustering on the other hand, were seriously affected by the change in UniProt. To properly function, these features rely on the presence of multiple genomes/proteomes per species. The more data is available, the better these features work. The removal of half of the database thus had a severe negative impact on the usefullness of the peptidome analysis. We therefore regret the decision of the UniProt team to throw away half of their data.
 
 ## The Unipept command line tools {data-running-title='The Unipept command line tools'}
