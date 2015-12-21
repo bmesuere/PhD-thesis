@@ -298,3 +298,9 @@ table tbody,
 .references div {
     page-break-inside: avoid;
 }
+div.sourceCode {
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    overflow-x: hidden;
+}
