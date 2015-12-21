@@ -54,4 +54,6 @@ pandoc chapter0.md chapter1.md chapter2.md chapter3.md chapter4.md chapter5.md c
     --toc
 
 prince output/book.html \
-    -o output/book.pdf
+    -o output/book-no-cover.pdf
+
+gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -sOutputFile=output/book.pdf output/images/cover.pdf output/book-no-cover.pdf

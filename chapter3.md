@@ -1,4 +1,4 @@
-# The Unipept Unique Peptide Finder: a tool for targeted proteomics {.chapter data-running-title='The Unipept Unique Peptide Finder'}
+# The unique peptidome: finding taxon-specific biomarkers for targeted proteomics {.chapter data-running-title='The Unique Peptidome'}
 
 <!---
 7.1 Title page
@@ -17,6 +17,7 @@ The first page of all manuscripts should contain only the following:
 <!---
 The next page of the manuscript should contain the abstract only. The abstract should not exceed 200 words. Non-standard abbreviations must be written in full when first used and the abstract should not contain any references.
 --->
+The unique peptide finder (http://unipept.ugent.be/peptidefinder) is an interactive web application that lets users find unique tryptic peptides for a given species or genus. The interactive web application visualizes the union and intersection of any set of genomes and calculates the unique peptides for the set of genomes based on the Lowest Common Ancestor algorithm in Unipept. These unique peptides could be used as marker peptides for targeted proteomic experiments.
 
 ## Statement of significance
 <!---
