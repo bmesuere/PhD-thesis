@@ -56,7 +56,19 @@ The Unipept project consists of two main parts: a collection of scripts to const
 
 The GalaxyP project already takes advantage of the new Unipept web services to integrate Unipept functionality into the Galaxy Framework [@Jagtap2015]. Exact matching of peptides to UniProt entries is also implemented by the Peptide Match application [@Chen2013] of the Protein Information Resource (PIR). Where Unipept is restricted for use with tryptic peptides, Peptide Match has no such limitation. However, the advantage of accepting all peptides comes at the cost of reduced performance. For a test set of 500 tryptic peptides, the Unipept `pept2prot` function returned all matching UniProt entries in 1.5 seconds whereas Peptide Match took over 33 minutes. Since (meta)proteomics experiments almost exclusively use trypsin to digest proteins, resulting in a list of tryptic peptides, this is a reasonable compromise [@Olsen2004]. All functions of the Unipept API are tweaked for optimal performance and usable for high throughput data analysis. The `pept2lca` function (no counterpart in PIR), can process over 10,000 peptides per second. For this reason, the information fields that are returned by default are limited to the subset of available fields that can be returned without performance penalty.
 
-## Something about the CLI {data-running-title='Something about the CLI'}
+## The Unipept command line tools {data-running-title='The Unipept command line tools'}
 
-* article?
-* case studies?
+* a short introduction
+
+### The Unipept gem
+
+* inspiration from thesis Toon
+* inspiration from overview page on website
+* general overview
+* installation
+* commands
+
+### Case study: Taxonomic analysis of a tryptic peptide
+
+
+### Case study: Taxonomic analysis of a metaproteomics data set
