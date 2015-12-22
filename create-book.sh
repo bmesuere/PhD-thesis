@@ -57,9 +57,9 @@ prince output/book.html \
     -o output/book-no-cover.pdf
 
 # Has quality loss in images!
-gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -sOutputFile=output/book.pdf output/images/cover.pdf output/book-no-cover.pdf
+#gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -sOutputFile=output/book.pdf output/images/cover.pdf output/book-no-cover.pdf
 
 # No embedded fonts
 #/System/Library/Automator/Combine\ PDF\ Pages.action/Contents/Resources/join.py --output output/book.pdf output/images/cover.pdf output/book-no-cover.pdf
 
-#pdftk output/images/cover.pdf output/book-no-cover.pdf cat output/book.pdf
+pdftk output/images/cover.pdf output/book-no-cover.pdf cat output output/book.pdf

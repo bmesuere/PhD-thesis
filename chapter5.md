@@ -59,21 +59,29 @@ The GalaxyP project already takes advantage of the new Unipept web services to i
 ## The Unipept command line tools {data-running-title='The Unipept command line tools'}
 
 * a short introduction about the structure
-* description of the gem
-* case studies as published on the website
+  1. description of the gem
+  2. case studies as published on the website
 
 ### The Unipept gem
 
-* inspiration from thesis Toon
-* inspiration from overview page on website
-* inspiration from the case study
-* general overview
-* installation
-* commands
-* fix syntax highlighting
-* fix references
-* add layout tags
-* fix wide code boxes
+* wrapper around api calls with same options
+* open source + fully tested
+* list commands and extra commands (from overview/command page?)
+
+##### Parallel requests
+* not 1 peptide per request but batching
+* multiple requests at a time
+* difficulty in making sure the output order is the same as the input order
+
+##### Input and output formats
+* output format (json, xml, csv)
+* output field selection -s flag
+* fasta input and output
+
+##### Installation
+* something about it being a gem
+* text from overview page
+* text from use case (installation)
 
 ### Taxonomic analysis of a tryptic peptide
 
