@@ -188,77 +188,110 @@ The correctness of the computed LCAs can be checked based on the taxonomic hiera
 
 ### Taxonomic analysis of a metaproteomics data set
 
-As a demonstration of the Unipept CLI we show how it can be used to get insight into the biodiversity within one of the faecal samples from a gut microbiome study (Verberkmoes et al., 2009). The sample was taken from a female that is part of a healthy monozygotic twin pair born in 1951 that was invited to take part in a larger double-blinded study. Details of this individual with respect to diet, antibiotic usage, and so on are described by Dicksved et al. (2008; individual 6a in this study, sample 7 in the study of Verberkmoes et al. (2009)). The most important that we learn from the available information in the questionnaire that this individual has filled up, is that she had gastroenteritis at the time the sample was taken and that her twin sister (individual 6b in the study of Dicksved et al. (2008), sample 7 in the study of Verberkmoes et al. (2009)) had taken non-steroidal anti-inflammatory drugs during the past 12 months before the time of sampling. The data can be downloaded from the website of the study and is also available as a demo data set on the Unipept website.
+As a demonstration of the Unipept CLI we show how it can be used to get insight into the biodiversity within one of the faecal samples from a gut microbiome study [@Verberkmoes2009]. The sample was taken from a female that is part of a healthy monozygotic twin pair born in 1951 that was invited to take part in a larger double-blinded study. Details of this individual with respect to diet, antibiotic usage, and so on are described by @Dicksved2008 (individual 6a in this study, sample 7 in the study of @Verberkmoes2009). The most important thing that we learn from the available information in the questionnaire that this individual has filled up, is that she had gastroenteritis at the time the sample was taken and that her twin sister (individual 6b in the study of @Dicksved2008, sample 7 in the study of @Verberkmoes2009) had taken non-steroidal anti-inflammatory drugs during the past 12 months before the time of sampling. The data can be downloaded from the website of the study and is also available as a demo data set on the Unipept website.
 
-Say that we stored the list of tryptic peptides that were extracted from sample 7 in the study of Verberkmoes et al. (2009) in the text file sample7.dat. The file contains a list of all tryptic peptides, each on a separate line. The following session shows that this file contains a list of 3983 tryptic peptides (2065 unique peptides) that could be identified in the faecal sample using shotgun metaproteomics.
+Say that we stored the list of tryptic peptides that were extracted from sample 7 in the study of @Verberkmoes2009 in the text file sample7.dat. The file contains a list of all tryptic peptides, each on a separate line. The following session shows that this file contains a list of 3983 tryptic peptides (2065 unique peptides) that could be identified in the faecal sample using *shotgun metaproteomics*.
 
-```zsh
-$ head -n5 sample7.dat
+<div class="sourceCode"><pre class="sourceCode zsh"><code class="sourceCode zsh"><b>$</b> <span class="kw">head</span> -n5 sample7.dat
 SGIVLPGQAQEKPQQAEVVAVGPGGVVDGK
 SGIVLPGQAQEKPQQAEVVAVGPGGVVDGK
 SGIVLPGQAQEKPQQAEVVAVGPGGVVDGKEVK
 MEVAVGDKVIYSK
 MDGTEYIIVK
-$ wc -l sample7.dat
+<b>$</b> <span class="kw">wc</span> -l sample7.dat
 3983 sample7.dat
-$ sort -u sample7.dat | wc -l
-2065
-```
+<b>$</b> <span class="kw">sort</span> -u sample7.dat <span class="kw">|</span> <span class="kw">wc</span> -l
+2065</code></pre></div>
 
-The first thing that strikes the eye is that a mass spectrometer might pick up multiple copies of the same tryptic peptide from an environmental sample. Depending on the fact whether or not we can draw quantitative conclusion on the number of different identifications of a particular peptide (apart from identification, the quantification of proteins in an environmental sample is an important research theme (Seifert et al., 2013; Kolmeder & de Vos, 2014)), we might decide to deduplicate the peptides before they are analysed further using the Unipept CLI. This decision has an impact on the analysis results, but deduplication also results in improved performance since it avoids duplicate work.
+The first thing that strikes the eye is that a mass spectrometer might pick up multiple copies of the same tryptic peptide from an environmental sample. Depending on the fact whether or not we can draw quantitative conclusion on the number of different identifications of a particular peptide (apart from identification, the quantification of proteins in an environmental sample is an important research theme [@Seifert2013;@Kolmeder2014]), we might decide to deduplicate the peptides before they are analysed further using the Unipept CLI. This decision has an impact on the analysis results, but deduplication also results in improved performance since it avoids duplicate work.
 
-What might be less obvious at first sight, is that the peptides on lines 3 and 4 in the text file sample7.dat actually aren't tryptic peptides, but the composition of two tryptic peptides. This is a consequence of the fact that cleavage of proteins using trypsin is not always perfect, leading to some proteins that aren't cleaved properly. Such composed tryptic peptides are called missed cleavages. The index structure underpinning Unipept only indexes tryptic peptides that result from an in silico trypsin digest of the proteins in UniProt, so that missed cleavages cannot be matched directly by Unipept.
+What might be less obvious at first sight, is that the peptides on lines 3 and 4 in the text file sample7.dat actually aren't tryptic peptides, but the composition of two tryptic peptides. This is a consequence of the fact that cleavage of proteins using trypsin is not always perfect, leading to some proteins that aren't cleaved properly. Such composed tryptic peptides are called *missed cleavages*. The index structure underpinning Unipept only indexes tryptic peptides that result from an *in silico* trypsin digest of the proteins in UniProt, so that missed cleavages cannot be matched directly by Unipept.
 
-To cope with this problem, we can start to check if the peptides resulting from a shotgun metaproteomics experiment need to be cleaved further before making taxonomic identifications using Unipept. Performing an in silico trypsin digest can be done using the prot2pept command from the Unipept CLI. This command is executed purely client side, and thus is provided as a standalone command and not as a subcommand of the unipept command.
+To cope with this problem, we can start to check if the peptides resulting from a shotgun metaproteomics experiment need to be cleaved further before making taxonomic identifications using Unipept. Performing an *in silico* trypsin digest can be done using the `prot2pept` command from the Unipept CLI. This command is executed purely *client side*, and thus is provided as a standalone command and not as a subcommand of the `unipept` command.
 
-```zsh
-$ sed -ne '4{p;q}' sample7.dat
+<div class="sourceCode"><pre class="sourceCode zsh"><code class="sourceCode zsh"><b>$</b> <span class="kw">sed</span> -ne <span class="st">'4{p;q}'</span> sample7.dat
 MEVAVGDKVIYSK
-$ sed -ne '4{p;q}' sample7.dat | prot2pept
+<b>$</b> <span class="kw">sed</span> -ne <span class="st">'4{p;q}'</span> sample7.dat <span class="kw">|</span> <span class="kw">prot2pept</span>
 MEVAVGDK
-VIYSK
-```
+VIYSK</code></pre></div>
 
-Once a peptide is broken into multiple tryptic peptides, the lowest common ancestor can be computed for each tryptic peptide using the unipept pept2lca command. Next to accepting tryptic peptides as arguments, the command can also read one ore more tryptic peptides from standard input if no arguments were passed. Each tryptic peptide should be on a separate line when using standard input.
+Once a peptide is broken into multiple tryptic peptides, the lowest common ancestor can be computed for each tryptic peptide using the `unipept pept2lca` command. Next to accepting tryptic peptides as arguments, the command can also read one ore more tryptic peptides from standard input if no arguments were passed. Each tryptic peptide should be on a separate line when using standard input.
 
-```zsh
-$ unipept pept2lca -e SGIVLPGQAQEKPQQAEVVAVGPGGVVDGK MDGTEYIIVK
+<div class="sourceCode"><pre class="sourceCode zsh"><code class="sourceCode zsh"><b>$</b> <span class="kw">unipept pept2lca</span> -e SGIVLPGQAQEKPQQAEVVAVGPGGVVDGK MDGTEYIIVK
 peptide,taxon_id,taxon_name,taxon_rank
 SGIVLPGQAQEKPQQAEVVAVGPGGVVDGK,1263,Ruminococcus,genus
 MDGTEYIIVK,1263,Ruminococcus,genus
-$ sed -ne '3{p;q}' sample7.dat
+<b>$</b> <span class="kw">sed</span> -ne <span class="st">'3{p;q}'</span> sample7.dat
 SGIVLPGQAQEKPQQAEVVAVGPGGVVDGKEVK
-$ sed -ne '3{p;q}' sample7.dat | unipept pept2lca -e
-$ sed -ne '3{p;q}' sample7.dat | prot2pept
+<b>$</b> <span class="kw">sed</span> -ne <span class="st">'3{p;q}'</span> sample7.dat <span class="kw">|</span> <span class="kw">unipept pept2lca</span> -e
+<b>$</b> <span class="kw">sed</span> -ne <span class="st">'3{p;q}'</span> sample7.dat <span class="kw">|</span> <span class="kw">prot2pept</span>
 SGIVLPGQAQEKPQQAEVVAVGPGGVVDGK
 EVK
-$ sed -ne '3{p;q}' sample7.dat | prot2pept | unipept pept2lca -e
+<b>$</b> <span class="kw">sed</span> -ne <span class="st">'3{p;q}'</span> sample7.dat <span class="kw">|</span> <span class="kw">prot2pept</span> <span class="kw">|</span> <span class="kw">unipept pept2lca</span> -e
 peptide,taxon_id,taxon_name,taxon_rank
-SGIVLPGQAQEKPQQAEVVAVGPGGVVDGK,1263,Ruminococcus,genus
-```
+SGIVLPGQAQEKPQQAEVVAVGPGGVVDGK,1263,Ruminococcus,genus</code></pre></div>
 
-Unipept only indexes tryptic peptides extracted from UniProt sequences that have a length between 5 and 50 amino acids (boundaries included). This choice was driven by the detection limits of most common mass spectrometers. As a result, an additional time saver is to search for tryptic peptides that have less than 5 of more than 50 amino acids, because Unipept will never find protein matches for these peptides. The peptfilter command from the Unipept CLI can be used to filter out peptides that are too short or too long prior to the taxonomic identification step. By default, it filters out all peptides for which it is known in advance that Unipept will find no matches.
+Unipept only indexes tryptic peptides extracted from UniProt sequences that have a length between 5 and 50 amino acids (boundaries included). This choice was driven by the detection limits of most common mass spectrometers. As a result, an additional time saver is to search for tryptic peptides that have less than 5 of more than 50 amino acids, because Unipept will never find protein matches for these peptides. The `peptfilter` command from the Unipept CLI can be used to filter out peptides that are too short or too long prior to the taxonomic identification step. By default, it filters out all peptides for which it is known in advance that Unipept will find no matches.
 
-```zsh
-$ sed -ne '3{p;q}' sample7.dat | prot2pept | peptfilter | unipept pept2lca -e
+<div class="sourceCode"><pre class="sourceCode zsh"><code class="sourceCode zsh"><b>$</b> <span class="kw">sed</span> -ne <span class="st">'3{p;q}'</span> sample7.dat <span class="kw">|</span> <span class="kw">prot2pept</span> <span class="kw">|</span> <span class="kw">peptfilter</span> <span class="kw">|</span> <span class="kw">\</span>
+  <span class="kw">unipept pept2lca</span> -e
 peptide,taxon_id,taxon_name,taxon_rank
-SGIVLPGQAQEKPQQAEVVAVGPGGVVDGK,1263,Ruminococcus,genus
-```
+SGIVLPGQAQEKPQQAEVVAVGPGGVVDGK,1263,Ruminococcus,genus</code></pre></div>
 
-All commands of the Unipept CLI follow the input/output paradigm of the Unix command line, so that they be chained together seamlessly. This way, for example, we can determine the LCAs for the first six peptides of sample 7 by combining the previous processing steps: split missed cleavages, filter out peptides that are too short or too long, equate leucine (residue L) and isoleucine (residue I), and deduplicate the tryptic peptides.
+All commands of the Unipept CLI follow the input/output paradigm of the Unix command line, so that they be chained together seamlessly. This way, for example, we can determine the LCAs for the first six peptides of sample 7 by combining the previous processing steps: split missed cleavages, filter out peptides that are too short or too long, equate leucine (residue `L`) and isoleucine (residue `I`), and deduplicate the tryptic peptides.
 
-```zsh
-$ head -n6 sample7.dat | prot2pept | peptfilter | tr I L | sort -u
+<div class="sourceCode"><pre class="sourceCode zsh"><code class="sourceCode zsh"><b>$</b> <span class="kw">head</span> -n6 sample7.dat <span class="kw">|</span> <span class="kw">prot2pept</span> <span class="kw">|</span> <span class="kw">peptfilter</span> <span class="kw">|</span> <span class="kw">tr</span> I L <span class="kw">|</span> <span class="kw">sort</span> -u
 GLTAALEAADAMTK
 MDGTEYLLVK
 MEVAVGDK
 SGLVLPGQAQEKPQQAEVVAVGPGGVVDGK
 VLYSK
-$ head -n6 sample7.dat | prot2pept | peptfilter | tr I L | sort -u | unipept pept2lca -e
+<b>$</b> <span class="kw">head</span> -n6 sample7.dat <span class="kw">|</span> <span class="kw">prot2pept</span> <span class="kw">|</span> <span class="kw">peptfilter</span> <span class="kw">|</span> <span class="kw">tr</span> I L <span class="kw">|</span> <span class="kw">sort</span> -u <span class="kw">|</span> <span class="kw">\</span>
+  <span class="kw">unipept pept2lca</span> -e
 peptide,taxon_id,taxon_name,taxon_rank
 GLTAALEAADAMTK,186802,Clostridiales,order
 MDGTEYLLVK,1263,Ruminococcus,genus
 MEVAVGDK,1263,Ruminococcus,genus
 SGLVLPGQAQEKPQQAEVVAVGPGGVVDGK,1263,Ruminococcus,genus
-VLYSK,1,root,no rank
+VLYSK,1,root,no rank</code></pre></div>
+```zsh
 ```
+
+The biodiversity in sample 7 from the study of @Verberkmoes2009 can be easily computed and visualised using the Metagenomics Analysis feature of the Unipept web site. All it takes is to paste the list of peptides that were identified from an environmental sample in a text area, select the appropriate search options, and to click the Search button to launch the identification process.
+
+In the session that is shown in @Fig:ch5fig6, we have indicated that no distinction should be made between leucine (`L`) and isoleucine (`I`), that the peptides must be deduplicate prior to the actual biodiversity analysis, and that the results must be exported in csv format (comma separated values). Breaking up the missed cleavages happens by default. In addition, the option Advanced missed cleavage handling can be activated to indicate that the results should be aggregated as a post-processing step (not selected in this example).
+
+The same result can be obtained using the following combination of commands from the Unipept CLI. The timing gives an impression of the performance of Unipept to compute the LCAs for all 2005 unique tryptic peptides extracted from sample 7. It indicates that part of the processing is parallelised, and that the majority of the processing time is consumed by exchanging data between the client and the Unipept server and the server-side processing of the data.
+
+<div class="sourceCode"><pre class="sourceCode zsh"><code class="sourceCode zsh"><b>$</b> <span class="kw">prot2pept</span> <span class="kw">&lt;</span> sample7.dat <span class="kw">|</span> <span class="kw">peptfilter</span> <span class="kw">|</span> <span class="kw">tr</span> I L <span class="kw">|</span> <span class="kw">sort</span> -u <span class="kw">|</span> <span class="kw">wc</span> -l
+2005
+<b>$</b> <span class="kw">time prot2pept</span> <span class="kw">&lt;</span> sample7.dat <span class="kw">|</span> <span class="kw">peptfilter</span> <span class="kw">|</span> <span class="kw">tr</span> I L <span class="kw">|</span> <span class="kw">sort</span> -u <span class="kw">|</span> <span class="kw">\</span>
+  <span class="kw">unipept pept2lca</span> -e <span class="kw">&gt;</span> sample7.csv
+
+real    0m0.329s
+user    0m0.465s
+sys     0m0.038s
+<b>$</b> <span class="kw">head</span> -n6 sample7.csv
+peptide,taxon_id,taxon_name,taxon_rank
+AAALNLVPNSTGAAK,2,Bacteria,superkingdom
+AAALNTLAHSTGAAK,1678,Bifidobacterium,genus
+AAALNTLPHSTGAAK,1678,Bifidobacterium,genus
+AAAMSMLPTSTGAAK,2,Bacteria,superkingdom
+AAANESFGYNEDELVSSDLVGMR,186802,Clostridiales,order</code></pre></div>
+
+<p style="display:none" class='pre-small-image'> </p> ![Processing of sample 7 from the study of @Verberkmoes2009 using the Metaproteomics Analysis feature of the Unipept web site.](images/ch5fig6.png){#fig:ch5fig6}
+
+For those that are not familiar with IO redirection, the `unipept` command also supports the `-i/--input` option to read the peptides from the file that is passed as an argument and the `-o/--output` option to store the results in a file that is passed as an argument.
+
+<div class="sourceCode"><pre class="sourceCode zsh"><code class="sourceCode zsh"><b>$</b> <span class="kw">unipept pept2lca</span> <b>--input</b> sample7.dat <b>--output</b> sample7.csv
+<b>$</b> <span class="kw">head</span> -n6 sample7.csv
+peptide,taxon_id,taxon_name,taxon_rank
+AAALNLVPNSTGAAK,2,Bacteria,superkingdom
+AAALNTLAHSTGAAK,1678,Bifidobacterium,genus
+AAALNTLPHSTGAAK,1678,Bifidobacterium,genus
+AAAMSMLPTSTGAAK,2,Bacteria,superkingdom
+AAANESFGYNEDELVSSDLVGMR,186802,Clostridiales,order</code></pre></div>
+
+If needed, the unipept `pept2lca` command can be used in combination with the `-a` option to fetch the complete lineages for all LCAs according to the Unipept Taxonomy. @Fig:ch5fig7 shows the hierarchical classification of the taxa that could be identified in sample 7. A similar tree view can be found in the *Treeview* tab on the page showing the results of a Metaproteomics analysis in the Unipept web interface.
+
+![Screenshot of an interactive tree view that shows the results of the biodiversity analysis of sample 7, a metaproteomics data set from the study of @Verberkmoes2009.](images/ch5fig7.png){#fig:ch5fig7}

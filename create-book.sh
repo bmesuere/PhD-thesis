@@ -56,4 +56,10 @@ pandoc chapter0.md chapter1.md chapter2.md chapter3.md chapter4.md chapter5.md c
 prince output/book.html \
     -o output/book-no-cover.pdf
 
+# Has quality loss in images!
 gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -sOutputFile=output/book.pdf output/images/cover.pdf output/book-no-cover.pdf
+
+# No embedded fonts
+#/System/Library/Automator/Combine\ PDF\ Pages.action/Contents/Resources/join.py --output output/book.pdf output/images/cover.pdf output/book-no-cover.pdf
+
+#pdftk output/images/cover.pdf output/book-no-cover.pdf cat output/book.pdf
