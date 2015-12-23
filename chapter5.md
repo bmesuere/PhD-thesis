@@ -1,6 +1,8 @@
-# Something about the API and CLI {.chapter data-running-title='Something about the API and CLI'}
+# The Unipept API and command line tools {.chapter data-running-title='The Unipept API and CLI'}
 
-<p class="todo">Write an introduction.</p>
+The Unipept website is an excellent tool for the biodiversity of metaproteomics samples. One disadvantage is that all analysis must be run manually on the website. For high-throughput studies, this manual is not a viable approach. With this in mind, we developed an API and a set of command line tools to expose the Unipept peptide analysis features for use in pipelines and other applications.
+
+In this chapter, we first describe the Unipept API by means of the application note submitted to Bioinformatics <span class="todo">update!</span> and then give an overview of the command line tools with two detailed case studies.
 
 ## Unipept web services for metaproteomics analysis {#sec:ch5-api data-running-title='Unipept web services for metaproteomics analysis'}
 
@@ -58,16 +60,12 @@ The GalaxyP project already takes advantage of the new Unipept web services to i
 
 ## The Unipept command line tools {data-running-title='The Unipept command line tools'}
 
-* a short introduction about the structure
-  1. description of the gem
-  2. case studies as published on the website
+The Unipept API provides a good starting point for integrating Unipept functionality in other application and pipelines. It is however not a ready-made solution that can be used without additional programming. To counter this, we developed a set of user-friendly command line tools that are essentially wrappers around the API. In this section, we first give an overview of the Unipept command line tools and their advantages over the API and then demonstrate their usage in two detailed use cases.
 
 ### The Unipept gem
-
-The Unipept API provides a good starting point for integrating Unipept functionality in other application and pipelines. It is however not a ready-made solution. To counter this, we developed a set of user-friendly command line tools that are essentially wrappers around the API. These tools provide a command line interface to the Unipept web services and a few utility commands for handling proteins using the command line. All tools support fasta and plain text input, multiple output formats (csv, xml and json) and parallel web requests for improved performance. Just as with the Unipept web application, we followed the coding best practices and the entire code base is covered with unit and integration tests. All code is open source under the MIT License and available on Github in a separate `unipept-cli` repository.
+The Unipept command line tools provide a command line interface to the Unipept web services along with a few utility commands for handling proteins using the command line. All tools support fasta and plain text input, multiple output formats (csv, xml and json) and parallel web requests for improved performance. Just as with the Unipept web application, we followed the coding best practices and the entire code base is covered with unit and integration tests. All code is open source under the MIT License and available on Github in a separate `unipept-cli` repository at https://github.com/unipept/unipept-cli.
 
 ##### Installation
-
 The Unipept command line tools are written in Ruby, so to use them, Ruby needs to be installed on your system. We recommend using Ruby 2.2, but all versions since Ruby 1.9.3, as well as JRuby are supported. We made the command line tools available as a Ruby gem. A gem is a packaged version of the code that can be used in combination with the RubyGems package manager. This means it can easily be installed with a single command:
 
 <div class="sourceCode"><pre class="sourceCode zsh"><code class="sourceCode zsh"><b>$</b> <span class="kw">gem</span> install unipept
