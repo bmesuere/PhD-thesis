@@ -375,4 +375,6 @@ Over the course of 2014, the size of the UniProt database more than doubled from
 
 Although this redundancy removal has nothing to do with changes in Unipept 3.0, it was the first Unipept version that was impacted by this reduction in source data. As expected and verified by spot checks, the impact on the Tryptic Peptide Analysis and Metaproteomics Analysis was minimal. Because only redundant entries were removed, there is enough data left to reliably assign peptides to taxa. The Unique Peptide Finder and Pepetidome Clustering on the other hand, were seriously affected by the change in UniProt. To properly function, these features rely on the presence of multiple genomes/proteomes per species. The more data is available, the better these features work. The removal of half of the database thus had a severe negative impact on the usefullness of the peptidome analysis. We therefore regret the decision of the UniProt team to throw away half of their data.
 
-## The Unipept command line tools {data-running-title='The Unipept command line tools'}
+### Unipept version 3.1
+* UniProt proteomes
+* delta encoding

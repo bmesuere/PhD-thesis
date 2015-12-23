@@ -21,7 +21,7 @@ In this article, we present the latest addition to the Unipept toolbox: a set of
 
 ![Example of the interactive treemap in Unipept. The graph show the result of the *Arabidopsis thaliana* phylosphere sample dataset available on the Unipept website.](images/ch5fig4.png){#fig:ch5fig4}
 
-### Methods
+### Methods {#sec:ch5-API}
 Unipept version 2.4 introduced the Unipept web services. These web services allow access to all Unipept peptide analysis features through a REST-ful API. This means that all communication with the web services can be done using simple stateless HTTP requests, to which the server answers in JSON. JSON is an open standard for transmitting data that is both human readable and has wide support in developer tools and programming languages.
 
 In the next sections, we discuss the available API functions by drawing parallels between usage of the Unipept website and the Unipept API. @Fig:ch5fig1 displays a schematic overview of the functions, along with the expected input and output. The full documentation can be found at [http://&#8203;api&#8203;.unipept&#8203;.ugent&#8203;.be](http://api.unipept.ugent.be). Next to the documentation, the website also offers an interactive API explorer (@Fig:ch5fig5) where API requests can be composed and tested with just a few clicks.
@@ -64,26 +64,118 @@ The GalaxyP project already takes advantage of the new Unipept web services to i
 
 ### The Unipept gem
 
-* wrapper around api calls with same options
-* open source + fully tested
-* list commands and extra commands (from overview/command page?)
-
-##### Parallel requests
-* not 1 peptide per request but batching
-* multiple requests at a time
-* difficulty in making sure the output order is the same as the input order
-
-##### Input and output formats
-* output format (json, xml, csv)
-* output field selection -s flag
-* fasta input and output
+The Unipept API provides a good starting point for integrating Unipept functionality in other application and pipelines. It is however not a ready-made solution. To counter this, we developed a set of user-friendly command line tools that are essentially wrappers around the API. These tools provide a command line interface to the Unipept web services and a few utility commands for handling proteins using the command line. All tools support fasta and plain text input, multiple output formats (csv, xml and json) and parallel web requests for improved performance. Just as with the Unipept web application, we followed the coding best practices and the entire code base is covered with unit and integration tests. All code is open source under the MIT License and available on Github in a separate `unipept-cli` repository.
 
 ##### Installation
-* something about it being a gem
-* text from overview page
-* text from use case (installation)
 
-### Taxonomic analysis of a tryptic peptide
+The Unipept command line tools are written in Ruby, so to use them, Ruby needs to be installed on your system. We recommend using Ruby 2.2, but all versions since Ruby 1.9.3, as well as JRuby are supported. We made the command line tools available as a Ruby gem. A gem is a packaged version of the code that can be used in combination with the RubyGems package manager. This means it can easily be installed with a single command:
+
+<div class="sourceCode"><pre class="sourceCode zsh"><code class="sourceCode zsh"><b>$</b> <span class="kw">gem</span> install unipept
+Fetching: unipept-1.1.0.gem (100%)
+Successfully installed unipept-1.1.0
+Parsing documentation for unipept-1.1.0
+Installing ri documentation for unipept-1.1.0
+Done installing documentation for unipept after 0 seconds
+1 gem installed</code></pre></div>
+
+After successful installation, the unipept command should be available. To check if unipept was installed correctly, run `unipept --version`. This should print the version number:
+
+<div class="sourceCode"><pre class="sourceCode zsh"><code class="sourceCode zsh"><b>$</b> <span class="kw">unipept</span> --version
+1.1.0</code></pre></div>
+
+Updating to the newest version of the command line tools is equally simple using the `gem update unipept` command. Each of the commands also has a built-in help function that can be displayed using the `--help` argument.
+
+<div class="sourceCode"><pre class="sourceCode zsh"><code class="sourceCode zsh"><b>$</b> <span class="kw">unipept</span> --help
+<span class='wa'>NAME</span>
+<span class="kw">unipept</span> - Command line interface to Unipept web services.
+
+<span class='wa'>USAGE</span>
+<span class="kw">unipept</span> subcommand [options]
+
+<span class='wa'>DESCRIPTION</span>
+The unipept subcommands are command line wrappers around the Unipept web
+services.
+
+Subcommands that start with pept expect a list of tryptic peptides as
+input. Subcommands that start with tax expect a list of NCBI Taxonomy
+Identifiers as input. Input is passed
+- as separate command line arguments
+- in a text file that is passed as an argument to the -i option
+- to standard input
+
+The command will give priority to the first way the input is passed, in
+the order as listed above. Text files and standard input should have one
+tryptic peptide or one NCBI Taxonomy Identifier per line.
+
+<span class='wa'>COMMANDS</span>
+<span class="kw">config</span>        Set configuration options.
+<span class="kw">help</span>          show help
+<span class="kw">pept2lca</span>      Fetch taxonomic lowest common ancestor of UniProt entries
+              that match tryptic peptides.
+<span class="kw">pept2prot</span>     Fetch UniProt entries that match tryptic peptides.
+<span class="kw">pept2taxa</span>     Fetch taxa of UniProt entries that match tryptic peptides.
+<span class="kw">taxa2lca</span>      Compute taxonomic lowest common ancestor for given list of taxa.
+<span class="kw">taxonomy</span>      Fetch taxonomic information from Unipept Taxonomy.
+
+<span class='wa'>OPTIONS</span>
+<span class="kw">-f --format</span>=&lt;value&gt;        define the output format (available: json,
+                           csv, xml) (default: csv)
+<span class="kw">-h --help</span>                  show help for this command
+   <span class="kw">--host</span>=&lt;value&gt;          specify the server running the Unipept web
+                           service
+<span class="kw">-i --input</span>=&lt;value&gt;         read input from file
+<span class="kw">-o --output</span>=&lt;value&gt;        write output to file
+<span class="kw">-q --quiet</span>                 disable service messages
+<span class="kw">-v --version</span>               displays the version</code></pre></div>
+
+##### Commands
+The Unipept command line tools consist of four main commands: `uniprot`, `prot2pept`, `peptfilter` and `unipept`.
+
+The `uniprot` command is a utility to easily fetch protein information from UniProt. It takes one or more UniProt accession numbers and returns the corresponding UniProt entry for each of the accession numbers as output. This information is fetched by using the UniProt web services.
+
+<div class="sourceCode"><pre class="sourceCode zsh"><code class="sourceCode zsh"><b>$</b> <span class='kw'>uniprot</span> C6JD41 Q06JG4
+MTLVPLGDRVVLKQVEAEETTKSGIVLPGQAQEKPQQAEVVAVGPGGVVDGKEVKMEVAVGDKVIYSKYSGTEVKMDGTEYIIVKQNDILAIVK
+MFTNSIKNLIIYLMPLMVTLMLLSVSFVDAGKKPSGPNPGGNN</code></pre></div>
+
+`prot2pept` is a utility to perform an *in silico* trypsin digest on protein sequences. The command takes one or more protein sequences as input and returns the digested peptides as output. This command runs entirely locally and doesn't connect to any server.
+
+<div class="sourceCode"><pre class="sourceCode zsh"><code class="sourceCode zsh"><b>$</b> <span class="kw">echo</span> <span class="st">"LGAARPLGAGLAKVIGAGIGIGK"</span> <span class="kw">|</span> <span class="kw">prot2pept</span>
+LGAARPLGAGLAK
+VIGAGIGIGK</code></pre></div>
+
+The `peptfilter` command also runs entirely client-side and can be used to filter a list of peptides that satisfy a given set of criteria. By default, peptides with length between 5 and 50 are retained, but other criteria can be specified. The length filter can be changed by using the `--minlen` and `--maxlen` parameters. Peptides can also be filtered based on whether or not they lack or contain certain amino acids. This can be done with the `--lacks` and `--contains` parameters.
+
+<div class="sourceCode"><pre class="sourceCode zsh"><code class="sourceCode zsh"><b>$</b> <span class="kw">cat</span> input.txt
+AAR
+AALTER
+<b>$</b> <span class="kw">cat</span> input.txt <span class="kw">|</span> <span class="kw">peptfilter</span>
+AALTER</code></pre></div>
+
+The `unipept` command has several subcommands: `pept2lca`, `pept2taxa`, `pept2prot`, `taxa2lca` and `taxonomy`. Each of them corresponds to the equally named API call and has several options that are equivalent with the corresponding API parameters. A comprehensive description of these calls and parameters can be found in @sec:ch5-API of this chapter, examples of their usage can be found in the case studies in @sec:ch5-CS1 and @sec:ch5-CS2.
+
+##### Input and output formats
+One of the benefits of using the command line tools is support for multiple input and output formats. All commands accept input from command line arguments, a file, or *standard input*. Output can be written to *standard output* or to a file. Where the API always uses json as output format, the command line tools offer support for json, xml and csv. Additionally, the `--select` option allows you to control which fields are returned. A list of fields can be specified by a comma-separated list, or by using multiple `--select` options. A `*` can be used as a wildcard for field names. For example, `--select peptide,taxon*` will return the `peptide` field and all fields starting with `taxon`.
+
+The commands also support input (from any source) in fasta(-like) format. This format consists of a fasta header (a line starting with a `>`), followed by one or more lines containing, for example, one peptide each. When this format is detected, the output will automatically include an extra information field in the output containing the corresponding fasta header.
+
+<div class="sourceCode"><pre class="sourceCode zsh"><code class="sourceCode zsh"><b>$</b> <span class="kw">cat</span> input.txt
+&gt; header 1
+AALTER
+MDGTEYIIVK
+&gt; header 2
+AALTER
+<b>$</b> <span class="kw">unipept pept2lca</span> --input input.txt
+fasta_header,peptide,taxon_id,taxon_name,taxon_rank
+&gt; header 1,AALTER,1,root,no rank
+&gt; header 1,MDGTEYIIVK,1263,Ruminococcus,genus
+&gt; header 2,AALTER,1,root,no rank</code></pre></div>
+
+##### Request optimizations
+Internally, the command line tools query the Unipept API for each of the `unipept` subcommands. Making one http-request at a time for each of the input values would cause a significant overhead and poor performance. This problem was tackled in two ways. A first solution is batching multiple input values per request. The batch size was determined experimentally and lies between 10 and 1000 values per request, depending on the subcommand and the amount of extra information that is requested.
+
+A second solution is doing multiple parallel requests at a time to make optimal use of the multiple CPU cores of the client and server. This fix improves performance significantly, but has an unexpected side effect: because multiple requests are sent at a time, we don't know in what order they will be completed. To make sure that the order of the input and output values are the same, we had include a non-trivial reordering algorithm to restore the order without consuming lots of memory.
+
+### Taxonomic analysis of a tryptic peptide {#sec:ch5-CS1}
 
 Say that we have determined the mass spectrum of a tryptic peptide, that was identified as the peptide <span class="sequence">enfvyiak</span> using database searches (*Mascot* [@Perkins1999], *Sequest* [@Eng1994], *X!Tandem* [@Craig2003]) or de novo identification (*PEAKS* [@Ma2003]). As an example, we show how this tryptic peptide can be taxonomically assigned to the phylum *Streptophyta*. As a starter, we can use the `unipept pept2prot` command to fetch all UniProt proteins indexed by Unipept that contain the peptide.
 
@@ -194,7 +286,7 @@ ENFVYLAK,35493,Streptophyta,phylum</code></pre></div>
 The correctness of the computed LCAs can be checked based on the taxonomic hierarchy shown in [@Fig:ch5fig1].
 
 
-### Taxonomic analysis of a metaproteomics data set
+### Taxonomic analysis of a metaproteomics data set {#sec:ch5-CS2}
 
 As a demonstration of the Unipept CLI we show how it can be used to get insight into the biodiversity within one of the faecal samples from a gut microbiome study [@Verberkmoes2009]. The sample was taken from a female that is part of a healthy monozygotic twin pair born in 1951 that was invited to take part in a larger double-blinded study. Details of this individual with respect to diet, antibiotic usage, and so on are described by @Dicksved2008 (individual 6a in this study, sample 7 in the study of @Verberkmoes2009). The most important thing that we learn from the available information in the questionnaire that this individual has filled up, is that she had gastroenteritis at the time the sample was taken and that her twin sister (individual 6b in the study of @Dicksved2008, sample 7 in the study of @Verberkmoes2009) had taken non-steroidal anti-inflammatory drugs during the past 12 months before the time of sampling. The data can be downloaded from the website of the study and is also available as a demo data set on the Unipept website.
 
