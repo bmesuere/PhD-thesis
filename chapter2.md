@@ -200,7 +200,7 @@ Unipept uses the NCBI Taxonomy as its reference taxonomy database. The taxonomic
 
 The number of Unipept users is growing each month, with over a thousand users in June 2014. In total, 4000 multi-peptide and 3000 single peptide analyses were performed, accounting for 81 million processed peptides.
 
-## Potential subsection about new TPA/MPA stuff not yet mentioned in these articles
+## Potential subsection about new TPA/MPA stuff not yet mentioned in these articles {data-running-title='Optional section'}
 
 * Reset button
 * use new treeview for TPA page
