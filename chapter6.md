@@ -137,7 +137,7 @@ The easiest solution to this would be to not only store tryptic peptides, but al
 ##### Unipept version 1.5
 The main feature of Unipept 1.5 was support for loading datasets from PRIDE<span class='aside'>PRIDE stands for PRoteomics IDEntifications.</span>, a public data repository for proteomics data. When a user enters the id of a PRIDE experiment into the Unipept website, the Unipept server fetches the corresponding dataset from PRIDE using BioMart and then sends the peptides back to the user. Data access through BioMart proved very cumbersome and unnecessary difficult. To request data using the BioMart API, one must construct an xml file containing the desired input and output using a special tool. The generated file must then be URL-encoded and added to the request-URL as a parameter. The PRIDE BioMart was retired in November 2014 and replaced by the much more user-friendly PRIDE web services. Support for these web services was added in Unipept 2.4.2.
 
-### Unipept version 2.0
+### Unipept version 2.0 {#sec:ch5-unipept20}
 Where Unipept 1.0 can be seen as a minimal version of Unipept, Unipept 1.5 is a more complete version. Now that the dust has settled and the code base has stabilized, it was a good time to review some of the implementation choices and refactor the code. From Unipept 2.0 onwards we aimed for bigger releases, every four to six months, containing at least one big new feature. The big feature of Unipept 2.0 was the addition of the unique peptide finder.
 
 ##### Spring cleaning
@@ -376,5 +376,31 @@ Over the course of 2014, the size of the UniProt database more than doubled from
 Although this redundancy removal has nothing to do with changes in Unipept 3.0, it was the first Unipept version that was impacted by this reduction in source data. As expected and verified by spot checks, the impact on the Tryptic Peptide Analysis and Metaproteomics Analysis was minimal. Because only redundant entries were removed, there is enough data left to reliably assign peptides to taxa. The Unique Peptide Finder and Peptidome Clustering on the other hand, were seriously affected by the change in UniProt. To properly function, these features rely on the presence of multiple genomes/proteomes per species. The more data is available, the better these features work. The removal of half of the database thus had a severe negative impact on the usefulness of the peptidome analysis. We therefore regret the decision of the UniProt team to throw away half of their data.
 
 ### Unipept version 3.1
-* UniProt proteomes
-* delta encoding
+To counter the problems caused by the UniProt redundancy removal, we once again switched our data source for the Peptidome Analysis in Unipept 3.1. Using the assembly data proved increasingly unreliable and caused several incomplete proteomes to show up in our list of proteomes. In our search for an alternative, we reevaluated the use of the proteomes as published on the UniProt website. We considered using these proteomes before, because they are guaranteed to be complete. The reason for not using them earlier was that they only contained few proteomes per species, something essential for the Peptidome Analysis. This issue was remedied in more recent UniProt releases when more proteomes became available. An overview of the number of available proteomes for a few key species can be seen in [@Tbl:ch6tbl1]. Because the previous rewrite was done with flexibility of the underlying data in mind, the change from assemblies to UniProt proteomes required relatively few code changes.
+
+organism        | number of assemblies | number of uniprot proteomes
+:-------------- | ----------: | ------------------:
+*Acinetobacter baumannii* | 16 | 31
+*Escherichia coli* | 61 | 151
+*Staphylococcus aureus* | 22 | 20
+*Bacillus cereus* | 16 | 107
+*Lactococcus lactis* | 13 | 18
+**Total** | 7&thinsp;715 | 13&thinsp;298
+
+: Number of proteomes for which Unipept has data for both the old (complete assemblies) and the new (UniProt complete non-redundant proteomes) data source. Both the total number of proteomes and the number of proteomes for five key species are shown. The UniProt numbers are taken from the 2015.11 release. {#tbl:ch6tbl1}
+
+##### Delta encoding
+A second focus of Unipept 3.1 was performance improvements of the Peptidome Analysis. One of the things that happen constantly when using this feature is downloading proteomes from the Unipept server.<span class="aside">More information in these id's can be found in [@sec:ch5-unipept20].</span> Although sending peptide id's instead of the full sequences already saves us some space and thus download time, we can do better. When sending the id's to the browser, these integers are actually sent as text (i.e. as separate digits) and not as a number. This means that for example the number 123&thinsp;456 takes up six times more space than the number 3. Sending shorter, lower numbers would thus mean sending less data.
+
+One way to achieve this is by performing a delta encoding on the id's before sending them. With delta encoding, instead of sending the numbers themselves, we send the arithmetic difference between the actual value and the value of the previous element in the list. For example, the list `[1,2,4,5,10,11]` would get sent as `[1,1,2,1,5,1]`. Because we don't have any negative id's, this results in lower numbers by definition and because our initial list is sorted, we achieve a maximal reduction in size. The client can easily reconstruct the original list by simply incrementing a temporary variable with the received values.
+
+Applying delta encoding on the sequence id's had a few other unexpected benefits. When data gets sent from a web server to a browser, most of the time the data is compressed using gzip compression. This compression technique works best if there are a lot of repeating values in the data, something that is certainly the case with our delta-encoded id's. Especially when taking into account that because of the way the id's are assigned during database construction, there's a high chance of having sequential id's in a proteome. As can be seen in [@Tbl:ch6tbl2], applying delta encoding reduces the proteome size (and download time) by a factor of three. Consequently, the space needed to store a cached version of our proteomes is also reduced by the same ammount, just as the time the browser needs to convert the received response to a list of integers.
+
+organism | # peptides | sequence size | id size | Δ encoded size | compressed size
+:-------------| ---------: | ---------: | --------: | ----------: | ------------:
+*B. napus* | 1&thinsp;257&thinsp;794 | 20.7 MB | 11.8 MB | 3.00 MB | 835 KB
+*H. sapiens* | 722&thinsp;407 | 11.5 MB | 5.8 MB  | 1.60 MB | 395 KB
+*E. coli* | 84&thinsp;126 | 1.4 MB | 0.7 MB |  0.21 MB | 63 KB
+*A. baumannii* | 69&thinsp;723 | 1.1 MB | 0.6 MB  | 0.19 MB | 68 KB
+
+: The size of a proteome of *Brassica napus* (rapeseed), *Homo sapiens* (human), *Escherichia coli* and *Acinetobacter baumannii* after various encoding and compression steps. *Sequence size* shows the size of the proteome if the actual sequences are used, *id size*  if the sequences are represented by their id (in textual form), *encoded id size* if the sequence id's are delta encoded and *compressed size* after applying gzip compression on the delta encoded result. {#tbl:ch6tbl2}
