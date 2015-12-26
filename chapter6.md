@@ -385,7 +385,7 @@ organism        | number of assemblies | number of uniprot proteomes
 *Staphylococcus aureus* | 22 | 20
 *Bacillus cereus* | 16 | 107
 *Lactococcus lactis* | 13 | 18
-**Total** | 7&thinsp;715 | 13&thinsp;298
+**Total** | 7&thinsp;715 | 10&thinsp;638
 
 : Number of proteomes for which Unipept has data for both the old (complete assemblies) and the new (UniProt complete non-redundant proteomes) data source. Both the total number of proteomes and the number of proteomes for five key species are shown. The UniProt numbers are taken from the 2015.11 release. {#tbl:ch6tbl1}
 
