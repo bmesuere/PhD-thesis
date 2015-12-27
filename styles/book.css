@@ -50,6 +50,7 @@ section.level1 {
     }
 }
 section#references {
+    page-break-before: right;
     string-set: sect attr('data-running-title'), chap attr('data-running-title');
 }
 section.level2 {

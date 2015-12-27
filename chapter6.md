@@ -20,7 +20,7 @@ After creating a fast index mapping peptides on taxonomic nodes, there are two r
 
 The second question, which peptides can be used to uniquely identify a certain species, was harder to answer. The database was not optimized for this and the queries took too long to wrap everything into a desktop application.<span class="aside">A solution to this question was later provided by the Unipept unique peptide finder.</span> Instead, a collection of scripts and queries was created to explore the potential of the data. @Fig:ch6fig1 shows the promising results of such analysis on the available genomes of *Staphylococcus aureus* subsp. *aureus*, *Clostridium botulinum* and *Campylobacter*. These results show that there is a large number of species-specific peptides and a surprisingly low number of genus-specific peptides. This means that there is a great potential to use tryptic peptides as a way to identify organisms.
 
-Because there was an immediate need for a tool to help analyze the gut microbiota of patients with cystic fibrosis for a joint research project <span class="todo">add reference to JCF paper</span>, we decided to first further develop the PeptideInfo application.
+Because there was an immediate need for a tool to help analyze the gut microbiota of patients with cystic fibrosis for a joint research project [@debyser2015], we decided to first further develop the PeptideInfo application.
 
 ![A poster presenting the results of the precursor of Unipept at the 4th International Symposium on Proteome Analysis in Antwerp, Belgium in December 2010.](images/ch6fig1.png){#fig:ch6fig1}
 
