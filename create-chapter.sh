@@ -22,6 +22,5 @@ pandoc chapter7.md \
     -M chapters \
     --filter='/Users/bart/.cabal/bin/pandoc-crossref' \
     --css='styles/web.css' \
-    --css='styles/chapter2.css' \
     --bibliography='library.bib' \
     --include-in-header='head.html' \
