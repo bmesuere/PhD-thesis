@@ -1,24 +1,62 @@
 # Proteomics for computer scientists {.chapter .content-start  data-running-title='Proteomics for computer scientists'}
 
-Things we could also talk about:
-* CF
-* metagenomics
+Biology can be a daunting subject for computer scientists. As people who are used to everything being deterministic and logical, the real world can be disappointingly unpredictable. Biological lingo and jargon can also be a real barrier in the communication between computer scientists and biologists. This chapters aims to be a gentle introduction in the (micro)biology and biochemistry that is needed to understand this thesis.
 
-## What is life? {data-running-title='What is life?'}
-This section should cover:
-* Organisms
-* Taxonomy
-* DNA/RNA/proteins
+## Life {data-running-title='Life'}
 
-Inspiration from:
-* Molecular Biology for Computer Scientists
+### The origin of life
+A good starting point to explain what life is, would be to start with its origin. Unfortunately, this origin of life is not something we know for sure. The origin of life of an active research area that tries to form hypothesis that take into account the biological, chemical as well as geophysical aspects.
+
+Before the nineteenth century, it was generally believed that life could generate spontaneously out of non-living matter [@Balme1962].<span class="aside">This theory is known as *spontaneous generations*.</span> Maggots, for example, could arise from dead flesh and crocodiles could form  from logs rotting at the bottom of a pond according to the Greek philosopher Aristotle. During the seventeenth century, it gradually became clear that this belief was false and the theory that each living organism comes from a pre-existing living organism was adopted for visible organisms.
+
+At the time, there was a strong suspicion of the existence of organisms that aren't visible to the naked eye. In 1676, Antoni van Leeuwenhoek was the first to observe these microorganisms using a self-made microscope [@Gest2004]. The origin of these organisms was not clear and it wasn't until 1859, when Louis Pasteur did a series of famous experiments that proved that microbial life couldn't spontaneously originate from a sterile nutrient broth, that the theory of spontaneous generation was refuted [@Schwartz2001].
+
+One of the earliest evidences of life is found in the form of stromatolites [@Garwood2012].<span class="aside">Stromatolite literally means *layered rock*.</span> Stromatolites are solid, rock-like structures that are formed by cyanobacteria, a type of aquatic bacteria that obtains energy through photosynthesis. Cyanobacteria can form colonies and capture sediments using a sticky, mucus-like surface layer. These sediments can react with water to form a thin layer of limestone. Over time, the limestone accumulates and forms a stromatolite [@Riding1999]. The earliest of these geological formations that contain fossilized cyanobacteria date to over 3.5 billion years ago [@Schopf2002].
+
+
+
+* before 19th century: regular spontaneous generation out of non-living matter. This was disproved by Louis Pasteur.
+* 1871 Darwin proposed a natural process for the origin of life: the original spark of life may have begun in a "warm little pond, with all sorts of ammonia and phosphoric salts, lights, heat, electricity, etc. A protein compound was then chemically formed and ready to undergo still more complex changes."
+* 1924 Alexander Oparin: atmospheric oxygen prevented the synthesis of organic molecules, the necessary building blocks for the evolution of life. Oparin argued that a "primeval soup" of organic molecules could be created in an oxygen-less atmosphere through the action of sunlight. These would combine in ever-more complex fashions until they formed droplets. These droplets would "grow" by fusion with other droplets, and "reproduce" through fission into daughter droplets, and so have a primitive metabolism in which those factors which promote "cell integrity" survive, those that do not become extinct. Many modern theories of the origin of life still take Oparin's ideas as a starting point.
+
+* RNA world hypothesis vs. Protein world hypothesis:
+  * RNA world
+    * RNA works both as enzyme and container of genes (DNA took over the latter)
+    * it may have supported pre-cellular life and major step towards cellular life
+    * evidence: there are RNA enzymes, some virusses use RNA for heredity, many fundamental parts of the cell require RNA
+  * protein world
+    * proteins worked as enzymes first, producing metabolism.
+    * evidence: protein as enzyme is essential for today's lives, some AAs are formed from more basic chemicals.
+  * generally accepted that current life descended from an RNA world.
+
+* cell development?
+* chemical evolution before biological evolution?
+* cell membrane
+* stromatolites: fossilized cyanobacteria: one of oldest known lifeform on Earth. There was almost no fee oxygen in earth's atmosphere and the CB created this by photosynthesis.
+* between 3.8 and 4.1 billion years ago
+
+* hyperthermophiles: last universal lowest common ancestor
+
+
+##### What is life
+
+
+##### DNA/RNA/proteins
+
+
+##### Taxonomy
+
+
+
 
 ## Proteomics {data-running-title='Proteomics'}
 This section should cover:
+
 * Basics on Proteomics including peptide identification
 * Basics on metaproteomics
 
 Inspiration from:
+
 * TPA case study: basic proteomics and trypsin
 * MPA case study: basic metaproteomics
 
@@ -43,10 +81,18 @@ A next step is to determine what genes are actually expressed and the function o
 
 ## Unipept {data-running-title='Unipept'}
 This section should cover:
+
 * What we did and why we did it
 * Overview of the chapters
 
 Inspiration from:
+
 * layman’s summary FWO
 
 Microorganisms drive most of the chemical transformations crucial to sustaining life on Earth. Their ability to inhabit almost every environmental niche proves they possess an incredible diversity of physiological capabilities. However, little is known about the majority of the millions of microbial species that are predicted to exists, given that we are able to grow only an estimated 1% of these organisms under lab conditions. The emerging disciplines of metagenomics and metaproteomics take advantage of the current generation of sequencing technologies to recover genetic material and active proteins directly from environmental samples. These new approaches provide us with a “new kind of microscope” that is revolutionizing our understanding of the diversity and ecology of environmental communities. However, the computational and statistical tools to analyze metagenomics and metaproteomics data are clearly lagging behind the developments in sequencing technology. To counter this, researchers at Ghent University are developing an online web portal called Unipept that combines advanced algorithms, novel statistical methods and interactive visualizations for the analysis of metagenomics and metaproteomics data sets. It will equip the new microscope with more powerful lenses, enabling researchers to better zoom in on who is living in complex environmental communities, what they are doing there and how they are doing it. To validate that Unipept has important applications across the fields of environmental, clinical and evolutionary microbiology, it is used to study shifts in the gut microbiota of patients suffering from cystic fibrosis (also known as mucovisidosis), the most common genetic disease in people from Caucasian origin that mostly affects the lungs and for which no cure exists today.
+
+<span class="todo">something about:
+
+* CF?
+* metagenomics?
+</span>
