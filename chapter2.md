@@ -17,7 +17,7 @@ High quality multidimensional liquid chromatography in combination with shotgun 
 
 In metaproteomics approaches, MS/MS based identification is hampered by several aspects. A first problem is the limited coverage of the curated protein databases, e.g. UniProtKB/Swiss-Prot [@Boeckmann2003]. Ideally, a protein complement of a synthetic metagenomic database containing sequences from different metagenomics experiments covering a wide range of organisms expected in the environment of interest could be created. Metagenomic databases however are exponentially increasing, and naive six-frame translation and protein prediction would lead to a high false discovery rate or low protein identification efficiency. @Rooijers2011 countered this problem by implementing an iterative workflow combining the use of a defined synthetic metagenome and a non-annotated metagenome repository.
 
-<p class='aside'>The taxon-specificity of peptides is discussed in more detail in chapter 3.</p>
+<p class='aside'>The taxon-specificity of peptides is discussed in more detail in chapter 4.</p>
 
 A more specific problem towards functional analysis of the metaproteome is the lack of connectivity of the tryptic peptides and the organism of origin. Many tryptic peptide sequences are conserved over different bacterial taxa and are therefore not-informative to describe the taxonomic diversity or functional properties of the sample. @Askenazi2010 developed the Pep2Pro web service to identify taxon-specific peptides. However, they used a restricted definition of taxon-specificity by only retaining peptides unique to a single taxon as defined in the NCBI taxonomy. In this paper, we present Unipept ([http://&#8203;unipept&#8203;.ugent&#8203;.be](http://unipept.ugent.be)), a web application that supports biodiversity analysis of large and complex metaproteome samples using tryptic peptide information obtained from shotgun MS/MS experiments. Its underlying index structure is designed to quickly retrieve all occurrences of a tryptic peptide in UniProt entries. Taxon-specificity of the tryptic peptide is successively derived from these occurrences using a novel lowest common ancestor approach that is robust against taxonomic misarrangements, misidentifications and inaccuracies. Not taking into account this identification noise would otherwise result in drastic loss of information. Dynamic treemaps visualize the biodiversity of metaproteome samples, which eases the exploration of samples with highly complex compositions. The potential of Unipept to gain novel insights into the biodiversity of a sample is evaluated by reanalyzing publicly available environmental metaproteome data sets from phyllosphere bacteria [@Delmotte2009] and the human gut [@Verberkmoes2009].
 
@@ -170,16 +170,16 @@ As with the sunburst and treemap visualization, a tooltip with more information 
 
 ##### API
 
-<span class='aside'>The Unipept API and command line interface are discussed in more detail in chapter 5.</span>The web-based peptide analysis tools in Unipept are a great fit for exploring the biodiversity of a single sample. However, using the website can be cumbersome when multiple datasets need to be analyzed. To address these issues, all of the peptide analysis functionality (except the visualizations) are also available as a web service. Using this Unipept API, a command line interface to Unipept was implemented in Ruby that allows batch analysis of samples and opens up new ways to include the Unipept functionality in a processing pipeline.
+<span class='aside'>The Unipept API and command line interface are discussed in more detail in chapter 3.</span>The web-based peptide analysis tools in Unipept are a great fit for exploring the biodiversity of a single sample. However, using the website can be cumbersome when multiple datasets need to be analyzed. To address these issues, all of the peptide analysis functionality (except the visualizations) are also available as a web service. Using this Unipept API, a command line interface to Unipept was implemented in Ruby that allows batch analysis of samples and opens up new ways to include the Unipept functionality in a processing pipeline.
 
 ##### Peptidome-based analysis
 The tryptic peptidome is the complete set of (tryptic) peptides encoded in the genome of an organism. Unipept now provides fast and flexible analysis tools for identifying the unique peptidome of a given taxon and for clustering whole-genomes based on their peptidome content.
 
-<p class='aside'>The unique peptide finder is discussed in more detail in chapter 3.</p>
+<p class='aside'>The unique peptide finder is discussed in more detail in chapter 4.</p>
 
 A first tool, the unique peptide finder, computes the unique peptidome for a selected set of RefSeq whole-genome sequences. This unique peptidome consists of all tryptic peptides that are contained in all of the selected genomes, but in none of the UniProt entries belonging to taxa outside those of the selected genomes, making these peptides taxon-specific. Unique peptide sets can be downloaded and used in targeted proteomics experiments.
 
-<p class='aside'>Peptidome-based clustering is discussed in more detail in chapter 4.</p>
+<p class='aside'>Peptidome-based clustering is discussed in more detail in chapter 5.</p>
 
 Peptidome-based clustering computes the UPGMA clustering of a selected set of RefSeq whole-genome sequences based on their peptidome content. Pairwise similarities are computed as the fraction of the size of the intersection over the size of the union of both peptidomes. The results are visualized by a similarity matrix and a phylogenetic tree and can be exported in the Newick and CSV format.
 
