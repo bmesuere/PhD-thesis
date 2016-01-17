@@ -36,9 +36,39 @@ In a first case study we determined the unique peptidome of *Acinetobacter bauma
 
 The fact that biomarker analysis always relies on correct taxonomic assignments is illustrated by the misclassified proteome *A. baumannii 6411* (UniProt Proteome UP000031110) that was deliberately excluded from the above analysis. Using the Peptidome Clustering application (another tool from the Unipept ecosystem that is available online, unpublished) to cluster this proteome with available type strain proteomes of the genus *Acinetobacter*, shows that the proteome correctly classifies in the species *Acinetobacter nosocomialis*. As a result of this misclassification the Unique Peptide Finder discovers almost no unique peptides for the species for *A. nosocomialis*. Most of its actual unique peptides also occur in the proteome that was incorrectly classified as *A. baumannii*, so that the tool does not consider them to be specific to *A. nosocomialis*. The upside is that the Unique Peptide Finder in combination with the Peptidome Clustering tool allows to easily spot such misclassifications, after which they can be reported to curators of the underpinning information sources (in this case UniProt).
 
-In a second case study we looked at potential biomarkers for *Bacillus anthracis*, a bacterial species that is hard to identify because of its relatedness with *Bacillus cereus*. For this species, the 3 proteomes available in the "UniProt proteomes" library were included in the analysis, together with proteomes of 24 other *B. anthracis* assemblies that were downloaded from the NCBI website and loaded into the "My proteomes" library. The resulting chart (@Fig:ch4fig3) displays a core peptidome containing 50&thinsp;724 peptides, of which 878 are specific to *B. anthracis*. These unique peptides can be used to discern *B. anthracis* from *B. cereus* and any other species. When we revisit the 11 *B. anthracis* biomarkers proposed by @Chenau2014, we first observe that only 8 of them are true tryptic peptides. These 8 peptides are indeed found in *B. anthracis* proteomes and not in any *Bacillus cereus* proteome. However, 3 of these peptides are also found in non-*Bacillus cereus* proteomes: <span class="sequence">lvggvavik</span> in a range of other bacteria, <span class="sequence">ildqsadk</span> in several Firmicutes and <span class="sequence">vctitgr</span> in a *Turicibacter sanguinis* proteome. This can be easily verified using the Tryptic Peptide Analysis tool in Unipept. Only one of the 8 tryptic peptides (<span class="sequence">wllrpedpnyvlik</span>) was common to all 27 *B. anthracis* proteomes we analyzed in this case study.
+In a second case study we looked at potential biomarkers for *Bacillus anthracis*, a bacterial species that is hard to identify because of its relatedness with *Bacillus cereus*. For this species, the 3 proteomes available in the "UniProt proteomes" library were included in the analysis, together with proteomes of 24 other *B. anthracis* assemblies that were downloaded from the NCBI website (@Tbl:ch4tbl1) and loaded into the "My proteomes" library. The resulting chart (@Fig:ch4fig3) displays a core peptidome containing 50&thinsp;724 peptides, of which 878 are specific to *B. anthracis*. These unique peptides can be used to discern *B. anthracis* from *B. cereus* and any other species. When we revisit the 11 *B. anthracis* biomarkers proposed by @Chenau2014, we first observe that only 8 of them are true tryptic peptides. These 8 peptides are indeed found in *B. anthracis* proteomes and not in any *Bacillus cereus* proteome. However, 3 of these peptides are also found in non-*Bacillus cereus* proteomes: <span class="sequence">lvggvavik</span> in a range of other bacteria, <span class="sequence">ildqsadk</span> in several Firmicutes and <span class="sequence">vctitgr</span> in a *Turicibacter sanguinis* proteome. This can be easily verified using the Tryptic Peptide Analysis tool in Unipept. Only one of the 8 tryptic peptides (<span class="sequence">wllrpedpnyvlik</span>) was common to all 27 *B. anthracis* proteomes we analyzed in this case study.
 
 ![Chart displaying sizes of peptidomes (gray), core peptidomes (orange) and unique peptidomes (green) for 3 *B. anthracis* proteomes available in the "UniProt proteomes" library and 24 *B. anthracis* proteomes downloaded from the NCBI website. These 27 proteomes have 50&thinsp;724 tryptic peptides in common (core peptidome), of which 878 are specific to *B. anthracis* (unique peptidome). Sizes of the pan peptidomes were hidden in the visualization to improve legibility of the chart.](images/ch4fig3.png){#fig:ch4fig3}
 
 ### Conclusion
 The Unique Peptide Finder is a user-friendly and high performance web application to find robust taxon-specific biomarkers for use in targeted metaproteomics studies. Biomarker analysis can combine a selection of UniProt proteomes and proprietary proteomes that are persistently stored in the browser. The tool is built using modern web technologies that provide parallel non-blocking computations, interactive visualizations and export functionality.
+
+
+assembly name | assembly accession number
+:------------ | :------------------------
+Bacillus anthracis 52-G | GCA_000559005.1
+Bacillus anthracis CZC5 | GCA_000534935.1
+Bacillus anthracis (strain CDC 684 / NRRL 3495) | GCA_000021445.1
+Bacillus anthracis str. Vollum | GCA_000742895.1
+Bacillus anthracis str. Turkey32 | GCA_000833275.1
+Bacillus anthracis str. Sterne | GCA_000832635.1
+Bacillus anthracis str. V770-NP-1R | GCA_000832785.1
+Bacillus anthracis 9080-G | GCA_000558985.1
+Bacillus anthracis 8903-G | GCA_000558965.1
+Bacillus anthracis (strain A0248) | GCA_000022865.1
+Bacillus anthracis str. Carbosap | GCA_000732465.1
+Bacillus anthracis str. A16 | GCA_000512835.1
+Bacillus anthracis str. SVA11 | GCA_000583105.1
+Bacillus anthracis Tsiankovskii-I | GCA_000181675.2
+Bacillus anthracis str. A0174 | GCA_000182055.1
+Bacillus anthracis str. A0193 | GCA_000181915.1
+Bacillus anthracis str. A0389 | GCA_000219895.1
+Bacillus anthracis str. A0488 | GCA_000181835.1
+Bacillus anthracis str. A0465 | GCA_000181995.1
+Bacillus anthracis str. A0442 | GCA_000181935.1
+Bacillus anthracis str. BF1 | GCA_000295695.1
+Bacillus anthracis str. A16R | GCA_000512775.1
+Bacillus anthracis str. UR-1 | GCA_000292565.1
+Bacillus anthracis str. 95014 | GCA_000585275.1
+
+: Overview of the *Bacillus anthracis* assemblies used to analyze the *B. anthracis* peptidome. The order of the assemblies corresponds to the order of the proteomes in [@Fig:ch4fig3] {#tbl:ch4tbl1}
