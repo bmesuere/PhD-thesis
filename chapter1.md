@@ -10,40 +10,31 @@ A good starting point to explain what life is, would be to start with its origin
 ##### Spontaneous generation
 Before the nineteenth century, it was generally believed that life could generate spontaneously out of non-living matter [@Balme1962].<span class="aside">This theory is known as *spontaneous generation*.</span> Maggots, for example, could arise from dead flesh and crocodiles could form  from logs rotting at the bottom of a pond according to the Greek philosopher Aristotle. During the seventeenth century, it gradually became clear that this belief was false and the theory that each living organism comes from a pre-existing living organism was adopted for visible organisms.
 
-At the time, there was a strong suspicion of the existence of organisms that aren't visible to the naked eye. In 1676, Antoni van Leeuwenhoek was the first to observe these microorganisms using a self-made microscope [@Gest2004]. The origin of these organisms was not clear and it wasn't until 1859, when Louis Pasteur did a series of famous experiments that proved that microbial life couldn't spontaneously originate from a sterile nutrient broth, that the theory of spontaneous generation was refuted [@Schwartz2001].
+At the time, there was a strong suspicion of the existence of organisms that aren't visible to the naked eye. In 1676, Antoni van Leeuwenhoek was the first to observe these microorganisms using a self-made microscope [@Gest2004]. The origin of these organisms were not clear and it wasn't until 1859, when Louis Pasteur did a series of famous experiments that proved that microbial life couldn't spontaneously originate from a sterile nutrient broth, that the theory of spontaneous generation was refuted [@Schwartz2001].
 
-With spontaneous generation off the table, it took several years before a new theory was formulated. In 1924, Alexander Oparin speculated that the presence of oxygen in the atmosphere prevents the formation of the organic molecules that serve as building blocks for the evolution of life. This led Oparin to conclude that although spontaneous generation is not possible under the current circumstances, it did occur at least once a very long time ago when atmospheric oxygen was sparse. He argued that in an oxygenless environment, a mix of organic compounds could indeed form by means of sunlight. These molecules could then cluster into more complex droplets and by merging and splitting, a sort of basic evolutionary pressure that favors integrity emerges [@Oparin1953]. Even today, Oparin's theory is still used as a starting point for many origin of life theories.
+With spontaneous generation off the table, it took several years before a new theory was formulated. In 1924, Alexander Oparin speculated that the presence of oxygen in the atmosphere prevents the formation of the organic molecules that serve as building blocks for the evolution of life. This led Oparin to conclude that although spontaneous generation is not possible under the current circumstances, it did occur at least once a very long time ago when atmospheric oxygen was sparse. He argued that in an oxygenless environment, a mix of organic compounds could indeed form by means of sunlight. These molecules could then cluster into more complex droplets and by merging and splitting, a sort of basic chemical evolutionary pressure that favors integrity emerges [@Oparin1953]. Even today, Oparin's theory is still used as a starting point for many origin of life theories.
 
-##### RNA world hypothesis
-To better understand its origin, it is worth taking a look at the oldest known life forms. One of the earliest evidences of life is found in the form of stromatolites [@Garwood2012].<span class="aside">Stromatolite literally means *layered rock*.</span> Stromatolites are solid, rock-like structures that are formed by cyanobacteria, a type of aquatic bacteria that obtains energy through photosynthesis. Cyanobacteria can form colonies and capture sediments using a sticky, mucus-like surface layer. These sediments can react with water to form a thin layer of limestone. Over time, the limestone accumulates and forms a stromatolite [@Riding1999]. The earliest of these geological formations that contain fossilized cyanobacteria date to over 3.5 billion years ago [@Schopf2002]. At that time, there was almost no fee oxygen in earth's atmosphere. By producing oxygen as a byproduct of converting carbon dioxide and water into sugar during photosynthesis, Cyanobacteria contributed significantly to the oxygenation of the atmosphere.
+##### Timeline
+To better understand its origin, it is worth taking a look at the oldest known life forms. One of the earliest evidences of life is found in the form of stromatolites [@Garwood2012].<span class="aside">Stromatolite literally means *layered rock*.</span> Stromatolites are solid, rock-like structures that are formed by cyanobacteria, a type of aquatic bacteria that obtains energy through photosynthesis. Cyanobacteria can form colonies and capture sediments using a sticky, mucus-like surface layer. These sediments can react with water to form a thin layer of limestone. Over time, the limestone accumulates and forms a stromatolite [@Riding1999]. The earliest of these geological formations that contain fossilized cyanobacteria date to over 3.5 billion years ago [@Schopf2002]. At that time, there was almost no free oxygen in earth's atmosphere. By producing oxygen as a byproduct of converting carbon dioxide and water into sugar during photosynthesis, Cyanobacteria contributed significantly to the oxygenation of the atmosphere. This led to the Great Oxygenation Event some 2.5 billion years ago [@Flannery2012].
 
+1.8 billion years ago, the first eukaryotic cells start to appear [@Knoll2006]. These are still unicellular organisms, but unlike prokaryotes, they contain cell organelles (such as a nucleus and mitochondria) enclosed by membranes. These organisms probably originated from several prokaryotic cells engulfing each other. Until now, the reproduction of organisms happened asexually through mitosis in which a cell divides into two genetically identical cells. Around 1.2 billion years ago, Eukaryotic cell started to also reproduce sexually through meiosis [@Bernstein2012]. In meiosis, cell division produces daughter cells each containing half the genetic material of the parent cell. Two of these haploid cells can then fuse to create a new cell that contains the combined genetic material.
 
-* RNA world hypothesis vs. Protein world hypothesis:
-  * RNA world
-    * RNA works both as enzyme and container of genes (DNA took over the latter)
-    * it may have supported pre-cellular life and major step towards cellular life
-    * evidence: there are RNA enzymes, some virusses use RNA for heredity, many fundamental parts of the cell require RNA
-  * protein world
-    * proteins worked as enzymes first, producing metabolism.
-    * evidence: protein as enzyme is essential for today's lives, some AAs are formed from more basic chemicals.
-  * generally accepted that current life descended from an RNA world.
+According to @Butterfield2000, sexual reproduction was critical for the success of the eukaryotes because it allowed for complex multicellularity. The first multicellular organism is believed to have originated more then 800 million years ago. 50 million years later, the first protozoa emerged, a group of unicellular eukaryotic organisms that exhibit advanced behavior such as motility and predation.
 
-* cell development?
-* chemical evolution before biological evolution?
-* cell membrane
-* stromatolites: fossilized cyanobacteria: one of oldest known lifeform on Earth. There was almost no fee oxygen in earth's atmosphere and the CB created this by photosynthesis.
-* between 3.8 and 4.1 billion years ago
+An interesting side effect of the rising atmospheric oxygen levels, is that high in the atmosphere, the oxygen molecules started interacting with each other under influence of the sun's ultraviolet (UV) radiation to form ozone molecules.  Around 600 million years ago, a thin layer of ozone had built up around the earth, protecting it from irradiation by the sun's UV light. Until now, life was limited to water, but this reduced radiation allowed for the colonization of the land [@Battistuzzi2004].
 
-* hyperthermophiles: last universal lowest common ancestor
+The combination of these events led to a period of increased evolutionary speed known as the Cambrian explosion. Starting around 580 million years ago for a period of 70 to 80 million years, the rate of diversification accelerated significantly [@Marshall2006]. Most of the major animal phyla appeared during that period such as fungi, sponges, corals, crustaceans, sea cucumbers, etc. This period of rapid evolution was followed by the nascency of the first vertebrates (485 million years ago), the first primitive plants (434 million years ago), the first spiders and scorpions (420 million years ago), the first tetrapod on land (395 million years ago) and the first dinosaurs (225 million years ago)[@Lowe2013].
+
+A<span class="aside">This event is known as the  *Cretaceous-Paleogene extinction event*.</span> massive comet impact some 66 million years ago had catastrophic effects on life on earth: over 75 percent of all existing animal species was wiped out including all non-avian dinosaurs [@Renne2013;@Jablonski1994]. The change in the environment and the eradication of many dominant groups let other organisms take their place. An example of this is the elimination of dinosaurs in favor of the mammals. One of these new type of mammals were the primates (60 million years ago) out of which the great apes (hominids; 18 million years ago) and eventually the humans (*Homo*; 2.5 million years ago) and modern humans (*Homo sapiens*; 250&thinsp;000 years ago) formed [@Goodman1998].
+
+### Taxonomy
+
+Since all know life forms on earth share common molecular mechanisms, this is a big indication that they all descend from a common ancestor. "Bacteria develop primitive forms of photosynthesis which at first did not produce oxygen.[25] These organisms generated Adenosine triphosphate by exploiting a proton gradient, a mechanism still used in virtually all organisms."
+
+### DNA/RNA/proteins
 
 
-##### What is life
 
-
-##### DNA/RNA/proteins
-
-
-##### Taxonomy
 
 
 
