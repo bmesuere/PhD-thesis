@@ -14,7 +14,7 @@ At the time, there was a strong suspicion of the existence of organisms that are
 
 With spontaneous generation off the table, it took several years before a new theory was formulated. In 1924, Alexander Oparin speculated that the presence of oxygen in the atmosphere prevents the formation of the organic molecules that serve as building blocks for the evolution of life. This led Oparin to conclude that although spontaneous generation is not possible under the current circumstances, it did occur at least once a very long time ago when atmospheric oxygen was sparse. He argued that in an oxygenless environment, a mix of organic compounds could indeed form by means of sunlight. These molecules could then cluster into more complex droplets and by merging and splitting, a sort of basic chemical evolutionary pressure that favors integrity emerges [@Oparin1953]. Even today, Oparin's theory is still used as a starting point for many origin of life theories.
 
-##### Timeline
+##### evolutionary timeline
 To better understand its origin, it is worth taking a look at the oldest known life forms. One of the earliest evidences of life is found in the form of stromatolites [@Garwood2012].<span class="aside">Stromatolite literally means *layered rock*.</span> Stromatolites are solid, rock-like structures that are formed by cyanobacteria, a type of aquatic bacteria that obtains energy through photosynthesis. Cyanobacteria can form colonies and capture sediments using a sticky, mucus-like surface layer. These sediments can react with water to form a thin layer of limestone. Over time, the limestone accumulates and forms a stromatolite [@Riding1999]. The earliest of these geological formations that contain fossilized cyanobacteria date to over 3.5 billion years ago [@Schopf2002]. At that time, there was almost no free oxygen in earth's atmosphere. By producing oxygen as a byproduct of converting carbon dioxide and water into sugar during photosynthesis, Cyanobacteria contributed significantly to the oxygenation of the atmosphere. This led to the Great Oxygenation Event some 2.5 billion years ago [@Flannery2012].
 
 1.8 billion years ago, the first eukaryotic cells start to appear [@Knoll2006]. These are still unicellular organisms, but unlike prokaryotes, they contain cell organelles (such as a nucleus and mitochondria) enclosed by membranes. These organisms probably originated from several prokaryotic cells engulfing each other. Until now, the reproduction of organisms happened asexually through mitosis in which a cell divides into two genetically identical cells. Around 1.2 billion years ago, Eukaryotic cell started to also reproduce sexually through meiosis [@Bernstein2012]. In meiosis, cell division produces daughter cells each containing half the genetic material of the parent cell. Two of these haploid cells can then fuse to create a new cell that contains the combined genetic material.
@@ -31,8 +31,11 @@ A<span class="aside">This event is known as the  *Cretaceous-Paleogene extinctio
 
 Since all know life forms on earth share common molecular mechanisms, this is a big indication that they all descend from a common ancestor. "Bacteria develop primitive forms of photosynthesis which at first did not produce oxygen.[25] These organisms generated Adenosine triphosphate by exploiting a proton gradient, a mechanism still used in virtually all organisms."
 
-### DNA/RNA/proteins
+- extremely varied (but sharing fundamental mechanisms)
+-
 
+### DNA/RNA/proteins
+start from cell contents?
 
 
 
