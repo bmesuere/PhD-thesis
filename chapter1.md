@@ -14,7 +14,7 @@ At the time, there was a strong suspicion of the existence of organisms that are
 
 With spontaneous generation off the table, it took several years before a new theory was formulated. In 1924, Alexander Oparin speculated that the presence of oxygen in the atmosphere prevents the formation of the organic molecules that serve as building blocks for the evolution of life. This led Oparin to conclude that although spontaneous generation is not possible under the current circumstances, it did occur at least once a very long time ago when atmospheric oxygen was sparse. He argued that in an oxygenless environment, a mix of organic compounds could indeed form by means of sunlight. These molecules could then cluster into more complex droplets and by merging and splitting, a sort of basic chemical evolutionary pressure that favors integrity emerges [@Oparin1953]. Even today, Oparin's theory is still used as a starting point for many origin of life theories.
 
-##### evolutionary timeline
+##### Evolutionary timeline
 To better understand its origin, it is worth taking a look at the oldest known life forms. One of the earliest evidences of life is found in the form of stromatolites [@Garwood2012].<span class="aside">Stromatolite literally means *layered rock*.</span> Stromatolites are solid, rock-like structures that are formed by cyanobacteria, a type of aquatic bacteria that obtains energy through photosynthesis. Cyanobacteria can form colonies and capture sediments using a sticky, mucus-like surface layer. These sediments can react with water to form a thin layer of limestone. Over time, the limestone accumulates and forms a stromatolite [@Riding1999]. The earliest of these geological formations that contain fossilized cyanobacteria date to over 3.5 billion years ago [@Schopf2002]. At that time, there was almost no free oxygen in earth's atmosphere. By producing oxygen as a byproduct of converting carbon dioxide and water into sugar during photosynthesis, Cyanobacteria contributed significantly to the oxygenation of the atmosphere. This led to the Great Oxygenation Event some 2.5 billion years ago [@Flannery2012].
 
 1.8 billion years ago, the first eukaryotic cells start to appear [@Knoll2006]. These are still unicellular organisms, but unlike prokaryotes, they contain cell organelles (such as a nucleus and mitochondria) enclosed by membranes. These organisms probably originated from several prokaryotic cells engulfing each other. Until now, the reproduction of organisms happened asexually through mitosis in which a cell divides into two genetically identical cells. Around 1.2 billion years ago, Eukaryotic cell started to also reproduce sexually through meiosis [@Bernstein2012]. In meiosis, cell division produces daughter cells each containing half the genetic material of the parent cell. Two of these haploid cells can then fuse to create a new cell that contains the combined genetic material.
@@ -25,24 +25,42 @@ An interesting side effect of the rising atmospheric oxygen levels, is that high
 
 The combination of these events led to a period of increased evolutionary speed known as the Cambrian explosion. Starting around 580 million years ago for a period of 70 to 80 million years, the rate of diversification accelerated significantly [@Marshall2006]. Most of the major animal phyla appeared during that period such as fungi, sponges, corals, crustaceans, sea cucumbers, etc. This period of rapid evolution was followed by the nascency of the first vertebrates (485 million years ago), the first primitive plants (434 million years ago), the first spiders and scorpions (420 million years ago), the first tetrapod on land (395 million years ago) and the first dinosaurs (225 million years ago)[@Lowe2013].
 
-A<span class="aside">This event is known as the  *Cretaceous-Paleogene extinction event*.</span> massive comet impact some 66 million years ago had catastrophic effects on life on earth: over 75 percent of all existing animal species was wiped out including all non-avian dinosaurs [@Renne2013;@Jablonski1994]. The change in the environment and the eradication of many dominant groups let other organisms take their place. An example of this is the elimination of dinosaurs in favor of the mammals. One of these new type of mammals were the primates (60 million years ago) out of which the great apes (hominids; 18 million years ago) and eventually the humans (*Homo*; 2.5 million years ago) and modern humans (*Homo sapiens*; 250&thinsp;000 years ago) formed [@Goodman1998].
+A<span class="aside">This event is known as the *Cretaceous-Paleogene extinction event*.</span> massive comet impact some 66 million years ago had catastrophic effects on life on earth: over 75 percent of all existing animal species was wiped out including all non-avian dinosaurs [@Renne2013;@Jablonski1994]. The change in the environment and the eradication of many dominant groups let other organisms take their place. An example of this is the elimination of dinosaurs in favor of the mammals. One of these new type of mammals were the primates (60 million years ago) out of which the great apes (hominids; 18 million years ago) and eventually the humans (*Homo*; 2.5 million years ago) and modern humans (*Homo sapiens*; 250&thinsp;000 years ago) formed [@Goodman1998].
 
 ### Taxonomy
+Life on earth is extremely varied, even more so that one would initially think. The group of beetles, for example, is incredibly diverse with over 400&thinsp;000 species and gigantic compared to the number of mammals of which only 5&thinsp;500 are known [@Hammond1992]. The number of described species easily exceeds 1 million and it is estimated that we have only managed to document a small fraction. Estimates for the total number of species range from 5 million to over 100 million. A recent statistical analysis estimates that the total number of non-bacterial species is 8.7 million [@Mora2011] with thousands of additional bacterial species.
+
+Aristotle (384&ndash;322 BC) was one of the first to start naming and organizing living organisms [@Mayr1982]. He used a simple system with two groups: plants and animals. Organisms were put into classes based on their physical appearance and shape. This branch of science of naming and classifying organisms is called taxonomy and was relatively uneventful for the next 2000 years.
+
+It wasn't until Carl Linnaeus (1707&ndash;1778), that taxonomy broke new ground. With the publication of the Systema Naturae [@Linnaeus1758], he introduced a standardized naming system for organisms. Next to a new naming system, he also introduced a new tree-like classification system. In his taxonomy, there are three kingdoms (plants, animals and minerals) that are each divided into several classes [@Fig:ch1fig4]. These classes are then subdivided further in orders, families, genera and species, each having their own name. The name of a species consists of two parts of which the first part refers to the parent genus. Although his system had numerous flaws, *minerals* can hardly be called living organisms and his class of *vermes* was a grab bag of organisms fitting nowhere else, the basic ideas of the Linnaean system are still used in today's systems.
+
+![The classification of animals in the classes of mammals (quadrupedia), birds (aves), amphibians (amphibia), fish (pesces), insects (insecta) and vermes ("animals of slow motion, soft substance, able to increase their bulk and restore parts which have been destroyed, extremely tenacious of life, and the inhabitants of moist places.") as described in the Systema Naturae [@Linnaeus1758].](images/ch1fig4.png){#fig:ch1fig4}
+
+##### evolution
+- "With Darwin's theory, a general acceptance that classification should reflect the Darwinian principle of common descent quickly appeared. Tree of Life representations became popular in scientific works, with known fossil groups incorporated."
+- "With the modern evolutionary synthesis of the early 1940s, an essentially modern understanding of evolution of the major groups was in place. The evolutionary taxonomy being based on Linnaean taxonomic ranks, the two terms are largely interchangeable in modern use."
+- in recent years, reorganized based on gene analysis
+- controversy and discussion
+- dozens of levels
+- common tree of descent is the basis for the taxonomy
+- estimation of when 2 species diverged = last time they had a common ancestor
+- the more similar, the more recent
+
+
+- we use NCBI taxonomy (not best, but contains all kingdoms)
+
+### DNA/RNA/proteins
+- much variation in species
+- at the core, very similar
+- start from cell contents?
 
 Since all know life forms on earth share common molecular mechanisms, this is a big indication that they all descend from a common ancestor. "Bacteria develop primitive forms of photosynthesis which at first did not produce oxygen.[25] These organisms generated Adenosine triphosphate by exploiting a proton gradient, a mechanism still used in virtually all organisms."
 
-- extremely varied (but sharing fundamental mechanisms)
--
-
-### DNA/RNA/proteins
-start from cell contents?
-
-
-
-
-
+todo: revisit first section with information from hunter
 
 ## Proteomics {data-running-title='Proteomics'}
+- definition
+
 This section should cover:
 
 * Basics on Proteomics including peptide identification
