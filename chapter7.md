@@ -1,6 +1,6 @@
 # The future of Unipept {.chapter data-running-title='The future of Unipept'}
 
-This chapter explores possible future extensions to the Unipept platform. Three of them are discussed in detail: the possibility to use Unipept for shotgun metagenomics datasets, the addition of a functional analysis next to the current diversity analysis and the addition of a statistically-sound comparative analysis.
+This chapter explores possible future extensions to the Unipept platform. Four of them are discussed in detail: the possibility to use Unipept for shotgun metagenomics datasets, the addition of a functional analysis next to the current diversity analysis, the addition of a statistically-sound comparative analysis and improved filtering of unique peptides for targeted metaproteomics.
 
 ## From metagenomics to metaproteomics (and back again) {data-running-title='From metagenomics to metaproteomics (and back again)'  #sec:ch7-metagenomics}
 
