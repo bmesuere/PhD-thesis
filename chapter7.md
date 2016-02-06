@@ -41,8 +41,32 @@ The Unipept toolbox can thus be expanded with a metagenomics pipeline for the ta
 Current NGS technologies allow metagenomes to be sequenced much deeper than metaproteomes, which can provide a more detailed insight into the complex biodiversity of the samples. Combined metagenomes and metaproteomes of the same sample will also allow to link the functional potential encoded in genomes to expression levels measured in the sample, and to associate differential functional expressions with shifts in the biodiversity. Moreover, to obtain optimal identification of the peptides resulting from metaproteomics experiments, most studies currently match peptides against shotgun metagenomics data sets from the same samples [@Erickson2012;Kolmeder2014].
 
 ##### Preliminary results
+A prototype based on the Unipept command line tools is already available. The prototype takes two fastq files containing paired-end reads as input and tries to map a taxon to each of the reads as output. The pipeline consists of four basic steps.
 
-<span class="todo">Write something about the current pipeline as used on the simulated ITG data and the comparison with Kraken.</span>
+1. Combine the reads of the two fastq files into a single fasta file. This is done using basic unix command line tools.
+2. Run FragGeneScan+ to convert the reads into protein fragments.
+3. Split the protein fragments into tryptic peptides and calculate the LCA for each of the peptides using the Unipept command line tools.
+4. Aggregate the results of the individual peptides per read into a single identification for each read using a custom python script.
+
+As a first test, we ran the pipeline on simulated reads from a mix of four organisms (*Escherichia coli*, *Plasmodium falciparum*, *Shigella dysenteriae*, and *Human immunodeficiency virus*). Our prototype was able to process 2 times 9 million 100 base pair (bp) reads in 15 minutes, or 1.2 million 100 bp reads per minute. This is in the same range as Kraken in normal operation, which can process 1.3 million 100 bp reads per minute. Additionally, the prototype managed to identify all of the species that were present in the simulated sample. A small fraction of the reads, however, was misclassified as organisms that are very abundant in UniProt, but of which no close relatives were present in the original sample.
+
+Further investigation showed that many of the short peptides were responsible for the misclassified reads by accidentally mapping to sequences in UniProt. In an effort the filter these erroneous peptides using machine learning, a random forest was trained using peptide length and amino acid composition as main features.
+
+To test the effectiveness of the filter, we ran the benchmark that was used in @Wood2014 to compare Kraken against other tools. As can be seen in @Tbl:ch7tbl1, the filter managed to increase the precision dramatically from 73.69% to 96.10% without further reducing the (admitedly low) sensitivity. Switching from tryptic peptides to k-mers will probably have a positive effect on sensitivity.
+
+classifier                     | precision | sensitivity | speed (reads/min)
+:----------------------------- | ------: | ------: | ---------:
+Naïve Bayes Classifier         |  97.64% |  97.64% | 7
+PhymmBL                        |  96.11% |  96.11% | 76
+PhymmBL (conf. > 0.65)         |  99.08% |  95.45% | 76
+Megablast w/ best hit          |  96.93% |  93.67% | 4&thinsp;511
+Kraken                         |  99.90% |  91.25% | 1&thinsp;307&thinsp;161
+MiniKraken (Kraken w/ 4GB DB)  |  99.95% |  65.87% | 1&thinsp;441&thinsp;476
+MetaPhlAn                      |     n/a |     n/a | 370&thinsp;770
+**Unipept**                        |  73.69% |  17.66% | 1&thinsp;200&thinsp;000
+**Unipept with filtering**         |  96.10% |  17.38% | 1&thinsp;200&thinsp;000
+
+: Comparison of the prototype of the Unipept metagenomics pipeline (with and without filtering) with the performance of the classifiers as tested by @Wood2014. The filtering as implemented by the random forest increases the precision dramatically. The speed of Unipept is comparable to Kraken, but the sensitivity is many times lower. {#tbl:ch7tbl1}
 
 ## Functional analysis of metaproteomics data {data-running-title='Functional analysis of metaproteomics data' #sec:ch7-functional}
 At the heart of Unipept lies an index structure for fast mapping of tryptic peptides onto all UniProt protein sequences having exact substring matches (@Fig:ch3fig1). The taxonomic and functional annotations on matched UniProt entries can be used to infer taxonomic and functional assignments for the individual peptides from metaproteomics experiments using the Tryptic Peptide Analysis feature of Unipept (http://&#8203;unipept&#8203;.ugent&#8203;.be&#8203;/search&#8203;/single). The Shotgun Metaproteomics Analysis Pipeline (http://&#8203;unipept&#8203;.ugent&#8203;.be&#8203;/datasets) of Unipept currently supports streamlined identification, analysis and visualization of all peptides from a metaproteomics experiment, and as described in @sec:ch7-metagenomics this pipeline can be extended for biodiversity analysis of shotgun metagenomics experiments. This diversity analysis could be extended with a statistical data analysis and visualization framework for functional analysis of metagenomics and metaproteomics experiments.
