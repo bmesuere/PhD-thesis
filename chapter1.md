@@ -50,14 +50,28 @@ Towards the end of the eighteenth century, the idea formed to translate the Linn
 
 These recent advances don't mean that there is a single, official taxonomy containing all species. On the contrary, each domain has its own classification system. The Angiosperm Phylogeny Group III system [@Bremer2009], for example, is used for flowering plants and the List of Prokaryotic names with Standing in Nomenclature (LPSN) by Euzéby [@Euzeby1997] is the authority for prokaryotes. In our application, we don't wish to limit us to a single domain which is why we use the NCBI Taxonomy database [@Federhen2012]. The NCBI Taxonomy is a nomenclature and classification repository that contains organism names and taxonomic lineages for all sequences in the databases of the International Nucleotide Sequence Database Collaboration (INSDC). Since the data used in our application also originates from INSDC databases, cross-references are ubiquitous.
 
-### DNA/RNA/proteins
+### Molecular building blocks
+Although life on Earth is incredibly diverse, all organisms share fundamental molecular mechanisms.
+
 - much variation in species
 - at the core, very similar
-- start from cell contents?
+  - cell respiration (ADP, ATP)
+  - DNA
+  - proteins
+- what is DNA
+  - uses
+  - composition
+  - in nucleus for eukaryotes
+  - watson en crick
+- first use: replication
+- second use: gene expression
+- types of RNA
+- transcription of DNA to RNA
+- protein synthesis and gene expression
+- translation of RNA to proteins
+- include image from http://www.ck12.org/life-science/Translation-of-RNA-to-Protein-in-Life-Science/lesson/Translation-of-RNA-to-Protein-Basic/?referrer=concept_details
 
-Since all know life forms on Earth share common molecular mechanisms, this is a big indication that they all descend from a common ancestor. "Bacteria develop primitive forms of photosynthesis which at first did not produce oxygen.[25] These organisms generated Adenosine triphosphate by exploiting a proton gradient, a mechanism still used in virtually all organisms."
-
-todo: revisit first section with information from hunter
+todo: revisit this section with information from hunter
 
 ## Proteomics {data-running-title='Proteomics'}
 - definition
