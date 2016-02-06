@@ -40,22 +40,15 @@ Life on Earth is extremely varied, even more so that one would initially think. 
 
 Aristotle (384&ndash;322 BC) was one of the first to start naming and organizing living organisms [@Mayr1982]. He used a simple system with two groups: plants and animals. Organisms were put into classes based on their physical appearance and shape. This branch of science of naming and classifying organisms is called taxonomy and was relatively uneventful for the next 2000 years.
 
-It wasn't until Carl Linnaeus (1707&ndash;1778), that taxonomy broke new ground. With the publication of the Systema Naturae [@Linnaeus1758], he introduced a standardized naming system for organisms. Next to a new naming system, he also introduced a new tree-like classification system. In his taxonomy, there are three kingdoms (plants, animals and minerals) that are each divided into several classes [@Fig:ch1fig4]. These classes are then subdivided further in orders, families, genera and species, each having their own name. The name of a species consists of two parts of which the first part refers to the parent genus. Although his system had numerous flaws, *minerals* can hardly be called living organisms and his class of *vermes* was a grab bag of organisms fitting nowhere else, the basic ideas of the Linnaean system are still used in today's systems.
+##### Linnaean taxonomy
+It wasn't until Carl Linnaeus (1707&ndash;1778), that taxonomy broke new ground. With the publication of the Systema Naturæ [@Linnaeus1758], he introduced a standardized naming system for organisms. Next to a new naming system, he also introduced a new hierarchical classification system. In his taxonomy, there are three kingdoms (plants, animals and minerals) that are each divided into several classes [@Fig:ch1fig4]. These classes are then subdivided further in orders, families, genera and species, each having their own name. The name of a species consists of two parts of which the first part refers to the parent genus. Although his system had numerous flaws, *minerals* can hardly be called living organisms and his class of *vermes* was a grab bag of organisms fitting nowhere else, the basic ideas of the Linnaean system are still used in today's systems.
 
-![The classification of animals in the classes of mammals (quadrupedia), birds (aves), amphibians (amphibia), fish (pesces), insects (insecta) and vermes ("animals of slow motion, soft substance, able to increase their bulk and restore parts which have been destroyed, extremely tenacious of life, and the inhabitants of moist places.") as described in the Systema Naturae [@Linnaeus1758].](images/ch1fig4.png){#fig:ch1fig4}
+![The classification of animals in the classes of quadrupedia (mammals), aves (birds), amphibia (amphibians), pesces (fish), insecta (insects) and vermes ("animals of slow motion, soft substance, able to increase their bulk and restore parts which have been destroyed, extremely tenacious of life, and the inhabitants of moist places.") as described in the Systema Naturæ [@Linnaeus1758].](images/ch1fig4.png){#fig:ch1fig4}
 
-##### evolution
-- "With Darwin's theory, a general acceptance that classification should reflect the Darwinian principle of common descent quickly appeared. Tree of Life representations became popular in scientific works, with known fossil groups incorporated."
-- "With the modern evolutionary synthesis of the early 1940s, an essentially modern understanding of evolution of the major groups was in place. The evolutionary taxonomy being based on Linnaean taxonomic ranks, the two terms are largely interchangeable in modern use."
-- in recent years, reorganized based on gene analysis as oposed to morphology
-- controversy and discussion
-- dozens of levels
-- common tree of descent is the basis for the taxonomy
-- estimation of when 2 species diverged = last time they had a common ancestor
-- the more similar, the more recent
+##### Evolutionary taxonomy
+Towards the end of the 18th century, the idea formed to translate the Linnaean taxonomy, a system that produced systematic lists, into a tree-like organization of plants and animals. After the publication of Charles Darwin's theory of evolution in On an Origin of Species [@Darwin1859], it gradually became accepted that the classification should reflect Darwin's principle of common descent. The ensuing evolutionary taxonomy resulted in the generation of a tree of life that also included known fossil groups. The recent advent of DNA sequencing and analysis completed the transition from a taxonomy based entirely on morphology to one based on evolutionary history (phylogeny).
 
-
-- we use NCBI taxonomy (not best, but contains all kingdoms)
+These recent advances don't mean that there is a single, official taxonomy containing all species. On the contrary, each domain has its own classification system. The Angiosperm Phylogeny Group III system [@Bremer2009], for example, is used for flowering plants and the List of Prokaryotic names with Standing in Nomenclature (LPSN) by Euzéby [@Euzeby1997] is the authority for prokaryotes. In our application, we don't wish to limit us to a single domain which is why we use the NCBI Taxonomy database [@Federhen2012]. The NCBI Taxonomy is a nomenclature and classification repository that contains organism names and taxonomic lineages for all sequences in the databases of the International Nucleotide Sequence Database Collaboration (INSDC). Since the data used in our application also originates from INSDC databases, cross-references are ubiquitous.
 
 ### DNA/RNA/proteins
 - much variation in species
