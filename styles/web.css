@@ -251,3 +251,8 @@ div.sourceCode {
     -moz-font-feature-settings: "liga" off;
     font-feature-settings: "liga" off;
 }
+
+/* specific tweaks */
+.pre-ch1fig11 + figure img {
+    width: 90%;
+}

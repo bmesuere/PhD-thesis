@@ -2,11 +2,11 @@
 
 The Unipept website is an excellent tool for biodiversity analysis of metaproteomics samples. One disadvantage for large-scale data processing is that all analysis must be run manually on the website. For high-throughput studies, this manual approach is not viable. With this in mind, we developed an API and a set of command line tools to expose the Unipept analysis features for use in automated pipelines and other applications.
 
-In this chapter, we first describe the Unipept API by means of the application note submitted to Bioinformatics <span class="todo">update!</span> and then give an overview of the command line tools with two detailed case studies.
+In this chapter, we first describe the Unipept API by means of the application note published in Bioinformatics [@Mesuere2016] and then give an overview of the command line tools with two detailed case studies.
 
 ## Unipept web services for metaproteomics analysis {#sec:ch3-api data-running-title='Unipept web services for metaproteomics analysis'}
 
-<p class='aside'>This section contains a verbatim copy of the application note by <span class="todo">update!</span> as published in Bioinformatics.</p>
+<p class='aside'>This section contains a verbatim copy of the application note by @Mesuere2016 as published in Bioinformatics.</p>
 
 **Abstract** &mdash; Unipept is an open source web application that is designed for metaproteomics analysis with a focus on interactive data-visualization. It is underpinned by a fast index built from UniProtKB and the NCBI taxonomy that enables quick retrieval of all UniProt entries in which a given tryptic peptide occurs. Unipept version 2.4 introduced web services that provide programmatic access to the metaproteomics analysis features. This enables integration of Unipept functionality in custom applications and data processing pipelines. The web services are freely available at [http://&#8203;api&#8203;.unipept&#8203;.ugent&#8203;.be](http://api.unipept.ugent.be) and are open sourced under the MIT license.
 

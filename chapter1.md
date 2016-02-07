@@ -46,34 +46,36 @@ It wasn't until Carl Linnaeus (1707&ndash;1778), that taxonomy broke new ground.
 ![The classification of animals in the classes of quadrupedia (mammals), aves (birds), amphibia (amphibians), pesces (fish), insecta (insects) and vermes ("animals of slow motion, soft substance, able to increase their bulk and restore parts which have been destroyed, extremely tenacious of life, and the inhabitants of moist places.") as described in the Systema Naturæ [@Linnaeus1758].](images/ch1fig4.png){#fig:ch1fig4}
 
 ##### Evolutionary taxonomy
-Towards the end of the eighteenth century, the idea formed to translate the Linnaean taxonomy, a system that produced systematic lists, into a tree-like organization of plants and animals.<span class="aside">When we talk about ancestors in the rest of this thesis, such as in *Lowest Common Ancestor*, we mean a higher node in the taxonomy and not an evolutionary ancestor.</span> After the publication of Charles Darwin's theory of evolution in On an Origin of Species [@Darwin1859], it gradually became accepted that the classification should reflect Darwin's principle of common descent. The ensuing evolutionary taxonomy resulted in the generation of a tree of life that also included known fossil groups. The recent advent of DNA sequencing and analysis completed the transition from a taxonomy based entirely on morphology to one based on evolutionary history (phylogeny).
+Towards the end of the eighteenth century, the idea formed to translate the Linnaean taxonomy, a system that produced systematic lists, into a tree-like organization of plants and animals.<span class="aside">When we talk about ancestors in the rest of this thesis, such as in *Lowest Common Ancestor*, we mean a higher node in the taxonomy tree and not an evolutionary ancestor.</span> After the publication of Charles Darwin's theory of evolution in On an Origin of Species [@Darwin1859], it gradually became accepted that the classification should reflect Darwin's principle of common descent. The ensuing evolutionary taxonomy resulted in the generation of a tree of life that also included known fossil groups. The recent advent of DNA sequencing and analysis completed the transition from a taxonomy based entirely on morphology to one based on evolutionary history (phylogeny).
 
 These recent advances don't mean that there is a single, official taxonomy containing all species. On the contrary, each domain has its own classification system. The Angiosperm Phylogeny Group III system [@Bremer2009], for example, is used for flowering plants and the List of Prokaryotic names with Standing in Nomenclature (LPSN) by Euzéby [@Euzeby1997] is the authority for prokaryotes. In our application, we don't wish to limit us to a single domain, which is why we use the NCBI Taxonomy database [@Federhen2012]. The NCBI Taxonomy is a nomenclature and classification repository that contains organism names and taxonomic lineages for all sequences in the databases of the International Nucleotide Sequence Database Collaboration (INSDC). Since the data used in our application also originates from INSDC databases, cross-references are ubiquitous.
 
 ### Molecular building blocks
 Although life on Earth is incredibly diverse, all organisms share fundamental molecular mechanisms. In almost all organisms, the basic unit of energy is adenosine triphosphate (ATP), structural and functional roles are fulfilled by proteins and DNA (and RNA) carry the genetic information. In this section, we will take a closer look at the latter two.
 
-![The structure of a DNA molecule. Two complementing strands form a double helix structure. Each nucleotide consists of a deoxyribose sugar and a phosphate group at the outside of the helix and a nitrogen-containing base at the inside. The two complementing bases are joined with hydrogen bonds. Image by the CK-12 Foundation under the CC BY-NC 3.0 license.](images/ch1fig9.png){#fig:ch1fig9}
-
 ##### DNA
 Deoxyribonucleic acid, or DNA, is a molecule that contains most of the genetic information that is needed for the development and functioning of all living organisms. The molecule is contained of a long chain of many nucleotides.<span class="aside">Each of our chromosomes is a single DNA molecule.</span> As can be seen in @Fig:ch1fig9, each nucleotide is composed of three main parts: a phosphate group, a 5-carbon sugar (deoxyribose) and one of four nitrogen-containing bases: adenine (A), thymine (T), cytosine (C) or guanine (G). Since the phosphate group and sugar are the same for every nucleotide, a DNA molecule can be described by the sequence of its bases.
 
+![The structure of a DNA molecule. Two complementing strands form a double helix structure. Each nucleotide consists of a deoxyribose sugar and a phosphate group at the outside of the helix and a nitrogen-containing base at the inside. The two complementing bases are joined with hydrogen bonds. Image by the CK-12 Foundation under the CC BY-NC 3.0 license.](images/ch1fig9.png){#fig:ch1fig9}
+
+In 1962, James Watson and Francis Crick (@Fig:ch1fig10) together with Maurice Wilkins won the Nobel Prize in Physiology or Medicine for their discovery of the molecular structure of DNA. Nine years before, they determined that DNA is made of two strands of nucleotides that form a double helix [@Watson1953]. The nucleotides in the two-stranded spiral have their sugar and phosphate groups on the outside and their bases connecting on the inside. Not all bases can connect with each other: adenine always binds with thymine and cytosine always binds with guanine. This means that if one of the two strands is known, the complementary strand can be determined. For example, if the sequence of a strand contains <span class="sequence">acctgtc</span>, the complementary section will be <span class="sequence">tggacag</span>.
+
+<p style="display:none" class='pre-small-image pre-ch1fig11'> </p> !["Photograph 51": X-ray diffraction image of crystallized DNA taken by Rosalind Franklin in 1953. The fuzzy X in the middle of the molecule indicates a helical structure.](images/ch1fig11.jpg){#fig:ch1fig11}
+
 ![James Watson and Francis Crick posing next to their double helix model in 1953. The photo was taken by Antony Barrington Brown.](images/ch1fig10.jpg){#fig:ch1fig10}
 
-In 1962, James Watson and Francis Crick (@Fig:ch1fig10) toghether with Maurice Wilkins won the Nobel Prize in Physiology or Medicine for their discovery of the molecular structure of DNA. Nine years before, they determined that DNA is made of two strands of nucleotides that form a double helix. The nucleotides in the two-stranded spiral have their sugar and phosphate groups on the outside and their bases connecting on the inside. Not all bases can connect with each other: adenine always binds with thymine and cytosine always binds with guanine. This means that if one of the two strands is known, the complementary strand can be determined. For example, if the sequence of a strand contains <span class="sequence">acctgtc</span>, the complementary section will be <span class="sequence">tggacag</span>.
+In eukaryotes, such as humans, DNA occurs in linear chromosomes while in prokaryotes, such as bacteria, DNA occurs in circular chromosomes. All the chromosomes in the cell of an organism make up its genome. The size of the genome varies enormously across the tree of life. Viruses, for example, typically have a genome size of a few thousand base pairs [@Fiers1976], the human genome has 3.2 billion base pairs spread across 46 chromosomes [@Venter2001] and some plants have a genome of over 150 billion base pairs [@Pellicer2010].
 
-<p style="display:none" class='pre-small-image'> </p> !["Photograph 51": X-ray diffraction image of crystallized DNA taken by Rosalind Franklin in 1953. The fuzzy X in the middle of the molecule indicates a helical structure.](images/ch1fig11.jpg){#fig:ch1fig11}
+The genetic information itself is contained within genes. A gene is a part of the chromosome that encodes for a protein or a functional RNA. Not all of the DNA of an organism is part of a gene. In prokaryotes, 80-90% of the genome consists of coding DNA [@Koonin2010], but in eukaryotes this is many times lower. In humans, for example, over 98% of the genome is non-coding [@Elgar2008]. This non-coding DNA used to be called *junk DNA*, but recent research has shown that at least part of the non-coding DNA is biochemically active and performing regulatory functions [@Pennisi2012].
 
-
-- what is DNA
-  - uses
-  - composition
-  - in nucleus for eukaryotes
-  - watson en crick
-- first use: replication
-- second use: gene expression
+##### RNA
+- proteins are create from DNA through RNA
+- difference with DNA: other sugar and uracil
 - types of RNA
 - transcription of DNA to RNA
+
+##### Proteins
+- amino acids
 - protein synthesis and gene expression
 - translation of RNA to proteins
 - include image from http://www.ck12.org/life-science/Translation-of-RNA-to-Protein-in-Life-Science/lesson/Translation-of-RNA-to-Protein-Basic/?referrer=concept_details
