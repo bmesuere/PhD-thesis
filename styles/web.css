@@ -132,7 +132,7 @@ sup {
 table {
     font-size: 0.85rem;
     font-family: 'Myriad pro', serif;
-    width: 100%;
+    width: 100% !important;
 }
 th {
     vertical-align: bottom;

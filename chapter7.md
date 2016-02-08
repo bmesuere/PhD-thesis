@@ -47,17 +47,17 @@ As a first test, we ran the pipeline on simulated reads from a mix of four organ
 
 Further investigation showed that many of the short peptides were responsible for the misclassified reads by accidentally mapping to sequences in UniProt. In an effort the filter these erroneous peptides using machine learning, a random forest was trained using peptide length and amino acid composition as main features.
 
-classifier                     | precision | sensitivity | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;speed (reads/min)
-:----------------------------- | ------: | ------: | ---------:
-Naïve Bayes Classifier         |  97.64% |  97.64% | 7
-PhymmBL                        |  96.11% |  96.11% | 76
-PhymmBL (conf. > 0.65)         |  99.08% |  95.45% | 76
-Megablast w/ best hit          |  96.93% |  93.67% | 4&thinsp;511
-Kraken                         |  99.90% |  91.25% | 1&thinsp;307&thinsp;161
-MiniKraken (Kraken w/ 4GB DB)  |  99.95% |  65.87% | 1&thinsp;441&thinsp;476
-MetaPhlAn                      |     n/a |     n/a | 370&thinsp;770
-**Unipept**                        |  73.69% |  17.66% | 1&thinsp;200&thinsp;000
-**Unipept with filtering**         |  96.10% |  17.38% | 1&thinsp;200&thinsp;000
+classifier | precision | sensitivity | speed (reads/min)
+:--------- | --------: | ----------: | ----------------:
+Naïve&nbsp;Bayes&nbsp;Classifier |  97.64% |  97.64% | 7
+PhymmBL |  96.11% |  96.11% | 76
+PhymmBL (conf. > 0.65) |  99.08% |  95.45% | 76
+Megablast&nbsp;w/&nbsp;best&nbsp;hit |  96.93% |  93.67% | 4&thinsp;511
+Kraken |  99.90% |  91.25% | 1&thinsp;307&thinsp;161
+MiniKraken&nbsp;(Kraken&nbsp;w/&nbsp;4GB&nbsp;DB) |  99.95% |  65.87% | 1&thinsp;441&thinsp;476
+MetaPhlAn |     n/a |     n/a | 370&thinsp;770
+**Unipept** |  73.69% |  17.66% | 1&thinsp;200&thinsp;000
+**Unipept&nbsp;with&nbsp;filtering** |  96.10% |  17.38% | 1&thinsp;200&thinsp;000
 
 : Comparison of the performance of the classifiers as tested by @Wood2014 with the prototype of the Unipept metagenomics pipeline (with and without filtering). The filtering, as implemented by the random forest, increases the precision dramatically without reducing sensitivity. The speed and precision of Unipept is comparable to Kraken, but the sensitivity is many times lower. {#tbl:ch7tbl1}
 

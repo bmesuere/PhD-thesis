@@ -77,17 +77,38 @@ Many types of RNA exist<span class="aside">Other types include small nuclear RNA
 
 ![Overview of gene expression in prokaryotes. DNA is first transcribed to messenger RNA in the nucleus. After transport out of the nucleus, protein synthesis begins with the help of a ribosome and transport RNA by translating nucleotide triplets to amino acids.](images/ch1fig13.png){#fig:ch1fig13}
 
-In the next phase, the mRNA binds to one of the ribosomes in the cell. A ribosome is a cell organelle that is responsible for translating the mRNA into a protein and consists of two subunits that are made from rRNA and proteins. The small subunit binds to the mRNA and reads the sequence. Each nucleotide triplet of the mRNA sequence is called a codon and can bind to a single type of transport RNA holding an amino acid. The large ribosomal subunit then binds to the tRNA and connects the attached amino acid to the growing protein chain. The type of amino acid that is attached to the tRNA depends on the sequence of the codon binding site and is uniquely defined (@Fig:ch1fig12). This way, once the mRNA is bound to the ribosome, there is only a single protein translation possible.
+In the next phase, the mRNA binds to one of the ribosomes in the cell. A ribosome is a cell organelle that is responsible for translating the mRNA into a protein and consists of two subunits that are made from rRNA and proteins. The small subunit binds to the mRNA and reads the sequence. Each nucleotide triplet of the mRNA sequence is called a codon and can bind to a single type of transport RNA holding an amino acid. The large ribosomal subunit binds to the tRNA and connects the attached amino acid to the growing protein chain. The type of amino acid that is attached to the tRNA depends on the sequence of the codon binding site and is uniquely defined (@Fig:ch1fig12). This way, once the mRNA is bound to the ribosome, there is only a single protein translation possible.
 
 ##### Proteins
-- amino acids
-- alphabet
-- UniProt
-
-
-todo: revisit this section with information from hunter
+Proteins are large molecules that perform many different function in living organisms. They can serve as enzyme, have a structural function or even transport other molecules. As mentioned in the previous section, the building blocks of proteins are amino acids. There are 20 naturally occurring amino acids, each having a three-letter and a one-letter abbreviation (@Tbl:ch1tbl1). The one-letter abbreviations are also sometimes called the protein alphabet and are generally used to describe the sequence of the amino acids of a protein. Since proteins are formed by chains of amino acids, the order of them uniquely describes the protein. Shorter chains of amino acids are called peptides.
 
 ![RNA codon table showing the mapping from three-letter RNA codons to amino acids. For example, the RNA codon <span class="small-caps">aac</span> encodes the amino acid asparagine that is abbreviated as Asn or N. Different condons can result in the same amino acid, for example leucine has six possible codons, while tryptophan has only one.](images/ch1fig12.png){#fig:ch1fig12}
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | amino acid&nbsp;&nbsp;&nbsp; | long<br>abbreviation | short<br>abbreviation | molecular weight
+:----- | :--------- | :------- | :------- | ---------------:
+&nbsp; | Alanine | Ala | A | 89
+&nbsp; | Arginine | Arg | R | 174
+&nbsp; | Asparagine | Asn | N | 132
+&nbsp; | Aspartic acid | Asp | D | 133
+&nbsp; | Cysteine | Cys | C | 121
+&nbsp; | Glutamic acid | Glu | E | 147
+&nbsp; | Glutamine | Gln | Q | 146
+&nbsp; | Glycine | Gly | G | 75
+&nbsp; | Histidine | His | H | 155
+&nbsp; | Isoleucine | Ile | I | 131
+&nbsp; | Leucine | Leu | L | 131
+&nbsp; | Lysine | Lys | K | 146
+&nbsp; | Methionine | Met | M | 149
+&nbsp; | Phenylalanine | Phe | F | 165
+&nbsp; | Proline | Pro | P | 115
+&nbsp; | Serine | Ser | S | 105
+&nbsp; | Threonine | Thr | T | 119
+&nbsp; | Tryptophan | Trp | W | 204
+&nbsp; | Tyrosine | Tyr | Y | 181
+&nbsp; | Valine | Val | V | 117
+
+: Overview of all naturally occuring amino acids with long abbreviation, short abbreviation and molecular weight. Notice that leucine and isoleucine have the same weight. {#tbl:ch1tbl1}
+
 
 ## Proteomics {data-running-title='Proteomics'}
 - definition
