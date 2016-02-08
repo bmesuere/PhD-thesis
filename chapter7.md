@@ -47,9 +47,7 @@ As a first test, we ran the pipeline on simulated reads from a mix of four organ
 
 Further investigation showed that many of the short peptides were responsible for the misclassified reads by accidentally mapping to sequences in UniProt. In an effort the filter these erroneous peptides using machine learning, a random forest was trained using peptide length and amino acid composition as main features.
 
-To test the effectiveness of the filter, we ran the benchmark that was used in @Wood2014 to compare Kraken against other tools. As can be seen in @Tbl:ch7tbl1, the filter managed to increase the precision dramatically from 73.69% to 96.10% without further reducing the (admitedly low) sensitivity. Switching from tryptic peptides to k-mers will probably have a positive effect on sensitivity.
-
-classifier                     | precision | sensitivity | speed (reads/min)
+classifier                     | precision | sensitivity | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;speed (reads/min)
 :----------------------------- | ------: | ------: | ---------:
 Naïve Bayes Classifier         |  97.64% |  97.64% | 7
 PhymmBL                        |  96.11% |  96.11% | 76
@@ -61,7 +59,9 @@ MetaPhlAn                      |     n/a |     n/a | 370&thinsp;770
 **Unipept**                        |  73.69% |  17.66% | 1&thinsp;200&thinsp;000
 **Unipept with filtering**         |  96.10% |  17.38% | 1&thinsp;200&thinsp;000
 
-: Comparison of the prototype of the Unipept metagenomics pipeline (with and without filtering) with the performance of the classifiers as tested by @Wood2014. The filtering as implemented by the random forest increases the precision dramatically. The speed of Unipept is comparable to Kraken, but the sensitivity is many times lower. {#tbl:ch7tbl1}
+: Comparison of the performance of the classifiers as tested by @Wood2014 with the prototype of the Unipept metagenomics pipeline (with and without filtering). The filtering, as implemented by the random forest, increases the precision dramatically without reducing sensitivity. The speed and precision of Unipept is comparable to Kraken, but the sensitivity is many times lower. {#tbl:ch7tbl1}
+
+To test the effectiveness of the filter, we ran the benchmark that was used in @Wood2014 to compare Kraken against other tools. As can be seen in @Tbl:ch7tbl1, the filter managed to increase the precision dramatically from 73.69% to 96.10% without further reducing the (admitedly low) sensitivity. Switching from tryptic peptides to k-mers will probably have a positive effect on sensitivity.
 
 ##### Conclusion
 The Unipept toolbox can thus be expanded with a metagenomics pipeline for the taxonomic identification of DNA reads from shotgun metagenomics data sets (at least with the existing and novel strategies discussed above), expanding the scope of the platform from metaproteomics to metagenomics. For this, a benchmark study can be performed to compare the speed of execution, storage requirements and accuracy of the different strategies (including the traditional identification approaches implemented in other metagenomics tools), using real and simulated shotgun metagenome data. A reasonable target seems that Unipept should be able to accurately identify at least 1 million 500bp DNA reads per minute, where other packages take hours to perform the same computations. This would enable us, in collaboration with the EBI Metagenomics team, to re-analyze all metagenomics samples from the EBI Metagenomics Archive at regular time interval (e.g. monthly). At present, each data set submitted to this archive is analyzed only once at the time of submission, where reference databases grow at an exponential rate leading to less under-sampled biodiversity.

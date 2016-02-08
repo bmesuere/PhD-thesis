@@ -68,7 +68,7 @@ In eukaryotes, such as humans, DNA occurs in linear chromosomes while in prokary
 
 The genetic information itself is contained within genes. A gene is a part of the chromosome that encodes for a protein or a functional RNA. Not all of the DNA of an organism is part of a gene. In prokaryotes, 80-90% of the genome consists of coding DNA [@Koonin2010], but in eukaryotes this is many times lower. In humans, for example, over 98% of the genome is non-coding [@Elgar2008]. This non-coding DNA used to be called *junk DNA*, but recent research has shown that at least part of the non-coding DNA is biochemically active and performing regulatory functions [@Pennisi2012].
 
-##### RNA
+##### Gene expression
 - proteins are create from DNA through RNA
 - difference with DNA: other sugar and uracil
 - types of RNA
