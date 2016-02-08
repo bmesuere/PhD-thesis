@@ -158,6 +158,7 @@ p .small-caps {
     font-variant: prince-opentype(smcp);
     letter-spacing: 0.02em;
 }
+
 .aside {
     position: relative;
     float: left;
