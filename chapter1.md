@@ -4,8 +4,10 @@ Biology can be a daunting subject for computer scientists. As people who are use
 
 ## Life on Earth{data-running-title='Life on Earth'}
 
+In this first section we will explore the origin of life, introduce taxonomies and explain the central dogma of biology.
+
 ### The origin of life
-A good starting point to explain what life is, would be to start with its origin. Unfortunately, this origin of life is not something we know for sure. The origin of life of an active research area that tries to form hypothesis that take into account the biological, chemical as well as geophysical aspects.
+A good starting point to explain what life is, would be to start with its origin. Unfortunately, this origin of life is not something we know for sure. The origin of life is an active research area that tries to form hypothesis that take into account the biological, chemical as well as geophysical aspects.
 
 ##### Spontaneous generation
 Before the nineteenth century, it was generally believed that life could generate spontaneously out of non-living matter [@Balme1962].<span class="aside">This theory is known as *spontaneous generation*.</span> Maggots, for example, could arise from dead flesh and crocodiles could form from logs rotting at the bottom of a pond according to the Greek philosopher Aristotle. During the seventeenth century, it gradually became clear that this belief was false and the theory that each living organism comes from a pre-existing living organism was adopted for visible organisms.
@@ -14,9 +16,9 @@ At the time, there was a strong suspicion of the existence of organisms that are
 
 ![Drawing from 1756 by English naturalist Henry Baker of microscopes owned by Antoni van Leeuwenhoek.](images/ch1fig5.jpg){#fig:ch1fig5}
 
-With spontaneous generation off the table, it took several years before a new theory was formulated. In 1924, Alexander Oparin speculated that the presence of oxygen in the atmosphere prevents the formation of the organic molecules that serve as building blocks for the evolution of life. This led Oparin to conclude that although spontaneous generation is not possible under the current circumstances, it did occur at least once a very long time ago when atmospheric oxygen was sparse. He argued that in an oxygenless environment, a mix of organic compounds could indeed form by means of sunlight. These molecules could then cluster into more complex droplets and by merging and splitting, a sort of basic chemical evolutionary pressure that favors integrity emerges [@Oparin1953]. Even today, Oparin's theory is still used as a starting point for many origin of life theories.
+With spontaneous generation off the table, it took several years before a new theory was formulated. In 1924, Alexander Oparin speculated that the presence of oxygen in the atmosphere prevents the formation of the organic molecules that serve as building blocks for the evolution of life. This led Oparin to conclude that although spontaneous generation is not possible under the current circumstances, it did occur at least once a very long time ago when atmospheric oxygen was sparse. He argued that in an oxygenless environment, a mix of organic compounds could indeed form by means of sunlight. These molecules could then cluster into more complex droplets by merging and splitting. This led to a sort of basic chemical evolutionary pressure that favors integrity [@Oparin1953]. Even today, Oparin's theory is still used as a starting point for many origin of life theories.
 
-![Schematic of the experimental setup used by Louis Pasteur in his experiments on alleged spontaneous generation as published in Mémoire sur les corpuscules organisés qui existent dans l'atmosphère: examen de la doctrine des générations spontanées [@Pasteur1862].](images/ch1fig6.jpg){#fig:ch1fig6}
+![Schematic of the experimental setup used by Louis Pasteur in his experiments on alleged spontaneous generation as published in *Mémoire sur les corpuscules organisés qui existent dans l'atmosphère: examen de la doctrine des générations spontanées* [@Pasteur1862].](images/ch1fig6.jpg){#fig:ch1fig6}
 
 ##### Evolutionary timeline
 To better understand its origin, it is worth taking a look at the oldest known life forms. One of the earliest evidences of life is found in the form of stromatolites [@Garwood2012].<span class="aside">Stromatolite literally means *layered rock*.</span> Stromatolites are solid, rock-like structures that are formed by cyanobacteria, a type of aquatic bacteria that obtains energy through photosynthesis. Cyanobacteria can form colonies and capture sediments using a sticky, mucus-like surface layer. These sediments can react with water to form a thin layer of limestone. Over time, the limestone accumulates and forms a stromatolite [@Riding1999]. The earliest of these geological formations that contain fossilized cyanobacteria date to over 3.5 billion years ago [@Schopf2002]. At that time, there was almost no free oxygen in Earth's atmosphere. By producing oxygen as a byproduct of converting carbon dioxide and water into sugar during photosynthesis, Cyanobacteria contributed significantly to the oxygenation of the atmosphere. This led to the Great Oxygenation Event some 2.5 billion years ago [@Flannery2012].
@@ -36,37 +38,37 @@ A<span class="aside">This event is known as the *Cretaceous-Paleogene extinction
 ![Timeline showing the history of life on Earth.](images/ch1fig7.png){#fig:ch1fig7}
 
 ### Taxonomy
-Life on Earth is extremely varied, even more so that one would initially think. The group of beetles, for example, is incredibly diverse with over 400&thinsp;000 species and gigantic compared to the number of mammals of which only 5&thinsp;500 are known [@Hammond1992]. The number of described species easily exceeds 1 million and it is estimated that we have only managed to document a small fraction. Estimates for the total number of species range from 5 million to over 100 million. A recent statistical analysis estimates that the total number of non-bacterial species is 8.7 million [@Mora2011] with thousands of additional bacterial species.
+Life on Earth is extremely varied, even more so than one would initially think. The group of beetles, for example, is incredibly diverse with over 400&thinsp;000 species and gigantic compared to the number of mammals of which only 5&thinsp;500 are known [@Hammond1992]. The number of described species easily exceeds 1 million and it is estimated that we have only managed to document a small fraction. Estimates for the total number of species range from 5 million to over 100 million. A recent statistical analysis estimates that the total number of non-bacterial species is 8.7 million [@Mora2011] with thousands of additional bacterial species.
 
 Aristotle (384&ndash;322 BC) was one of the first to start naming and organizing living organisms [@Mayr1982]. He used a simple system with two groups: plants and animals. Organisms were put into classes based on their physical appearance and shape. This branch of science of naming and classifying organisms is called taxonomy and was relatively uneventful for the next 2000 years.
 
 ##### Linnaean taxonomy
-It wasn't until Carl Linnaeus (1707&ndash;1778), that taxonomy broke new ground. With the publication of the Systema Naturæ [@Linnaeus1758], he introduced a standardized naming system for organisms. Next to a new naming system, he also introduced a new hierarchical classification system. In his taxonomy, there are three kingdoms (plants, animals and minerals) that are each divided into several classes [@Fig:ch1fig4]. These classes are then subdivided further in orders, families, genera and species, each having their own name. The name of a species consists of two parts of which the first part refers to the parent genus. Although his system had numerous flaws, *minerals* can hardly be called living organisms and his class of *vermes* was a grab bag of organisms fitting nowhere else, the basic ideas of the Linnaean system are still used in today's systems.
+It wasn't until Carl Linnaeus (1707&ndash;1778), that taxonomy broke new ground. With the publication of the *Systema Naturæ* [@Linnaeus1758], he introduced a standardized naming system for organisms. Next to a new naming system, he also introduced a new hierarchical classification system. In his taxonomy, there are three kingdoms (plants, animals and minerals) that are each divided into several classes [@Fig:ch1fig4]. These classes are then subdivided further in orders, families, genera and species, each having their own name. The name of a species consists of two parts of which the first part refers to the parent genus. Although his system had numerous flaws, *minerals* can hardly be called living organisms and his class of *vermes* was a grab bag of organisms fitting nowhere else, the basic ideas of the Linnaean system are still used in today's systems.
 
-![The classification of animals in the classes of quadrupedia (mammals), aves (birds), amphibia (amphibians), pesces (fish), insecta (insects) and vermes ("animals of slow motion, soft substance, able to increase their bulk and restore parts which have been destroyed, extremely tenacious of life, and the inhabitants of moist places.") as described in the Systema Naturæ [@Linnaeus1758].](images/ch1fig4.png){#fig:ch1fig4}
+![The classification of animals in the classes of quadrupedia (mammals), aves (birds), amphibia (amphibians), pesces (fish), insecta (insects) and vermes ("animals of slow motion, soft substance, able to increase their bulk and restore parts which have been destroyed, extremely tenacious of life, and the inhabitants of moist places.") as described in the *Systema Naturæ* [@Linnaeus1758].](images/ch1fig4.png){#fig:ch1fig4}
 
 ##### Evolutionary taxonomy
-Towards the end of the eighteenth century, the idea formed to translate the Linnaean taxonomy, a system that produced systematic lists, into a tree-like organization of plants and animals.<span class="aside">When we talk about ancestors in the rest of this thesis, such as in *Lowest Common Ancestor*, we mean a higher node in the taxonomy tree and not an evolutionary ancestor.</span> After the publication of Charles Darwin's theory of evolution in On an Origin of Species [@Darwin1859], it gradually became accepted that the classification should reflect Darwin's principle of common descent. The ensuing evolutionary taxonomy resulted in the generation of a tree of life that also included known fossil groups. The recent advent of DNA sequencing and analysis completed the transition from a taxonomy based entirely on morphology to one based on evolutionary history (phylogeny).
+Towards the end of the eighteenth century, the idea formed to translate the Linnaean taxonomy, a system that produced systematic lists, into a tree-like organization of plants and animals.<span class="aside">When we talk about ancestors in the rest of this thesis, such as in *Lowest Common Ancestor*, we mean a higher node in the taxonomy tree and not an evolutionary ancestor.</span> After the publication of Charles Darwin's theory of evolution in *On the Origin of Species* [@Darwin1859], it gradually became accepted that the classification should reflect Darwin's principle of common descent. The ensuing evolutionary taxonomy resulted in the generation of a tree of life that also included known fossil groups. The recent advent of DNA sequencing and analysis completed the transition from a taxonomy based entirely on morphology to one based on evolutionary history (phylogeny).
 
 These recent advances don't mean that there is a single, official taxonomy containing all species. On the contrary, each domain has its own classification system. The Angiosperm Phylogeny Group III system [@Bremer2009], for example, is used for flowering plants and the List of Prokaryotic names with Standing in Nomenclature (LPSN) by Euzéby [@Euzeby1997] is the authority for prokaryotes. In our application, we don't wish to limit us to a single domain, which is why we use the NCBI Taxonomy database [@Federhen2012]. The NCBI Taxonomy is a nomenclature and classification repository that contains organism names and taxonomic lineages for all sequences in the databases of the International Nucleotide Sequence Database Collaboration (INSDC). Since the data used in our application also originates from INSDC databases, cross-references are ubiquitous.
 
 ### Molecular building blocks
-Although life on Earth is incredibly diverse, all organisms share fundamental molecular mechanisms. In almost all organisms, the basic unit of energy is adenosine triphosphate (ATP), structural and functional roles are fulfilled by proteins and DNA (and RNA) carry the genetic information. In this section, we will take a closer look at the latter two.
+Although life on Earth is incredibly diverse, all organisms share fundamental molecular mechanisms. In almost all organisms, the basic unit of energy is adenosine triphosphate (ATP), structural and functional roles are fulfilled by proteins and DNA (and RNA) carries the genetic information. In this section, we will take a closer look at the latter two.
 
 ##### DNA
 Deoxyribonucleic acid, or DNA, is a molecule that contains most of the genetic information that is needed for the development and functioning of all living organisms. The molecule is contained of a long chain of many nucleotides.<span class="aside">Each of our chromosomes is a single DNA molecule.</span> As can be seen in @Fig:ch1fig9, each nucleotide is composed of three main parts: a phosphate group, a 5-carbon sugar (deoxyribose) and one of four nitrogen-containing bases: adenine (A), thymine (T), cytosine (C) or guanine (G). Since the phosphate group and sugar are the same for every nucleotide, a DNA molecule can be described by the sequence of its bases.
 
 ![The structure of a DNA molecule. Two complementing strands form a double helix structure. Each nucleotide consists of a deoxyribose sugar and a phosphate group at the outside of the helix and a nitrogen-containing base at the inside. The two complementing bases are joined with hydrogen bonds. Image by the CK-12 Foundation under the CC BY-NC 3.0 license.](images/ch1fig9.png){#fig:ch1fig9}
 
-In 1962, James Watson and Francis Crick (@Fig:ch1fig10) together with Maurice Wilkins won the Nobel Prize in Physiology or Medicine for their discovery of the molecular structure of DNA. Nine years before, they determined that DNA is made of two strands of nucleotides that form a double helix [@Watson1953]. The nucleotides in the two-stranded spiral have their sugar and phosphate groups on the outside and their bases connecting on the inside. Not all bases can connect with each other: adenine always binds with thymine and cytosine always binds with guanine. This means that if one of the two strands is known, the complementary strand can be determined. For example, if the sequence of a strand contains <span class="sequence">acctgtc</span>, the complementary section will be <span class="sequence">tggacag</span>.
+In 1962, James Watson and Francis Crick (@Fig:ch1fig10) together with Maurice Wilkins won the Nobel Prize in Physiology or Medicine for their discovery of the molecular structure of DNA. Nine years before, they, together with Rosalind Franklin (@Fig:ch1fig11), determined that DNA is made of two strands of nucleotides that form a double helix [@Watson1953]. The nucleotides in the two-stranded spiral have their sugar and phosphate groups on the outside and their bases connecting on the inside. Not all bases can connect with each other: adenine always binds with thymine and cytosine always binds with guanine. This means that if one of the two strands is known, the complementary strand can be determined. For example, if the sequence of a strand contains <span class="sequence">acctgtc</span>, the complementary section will be <span class="sequence">tggacag</span>.
 
 <p style="display:none" class='pre-small-image pre-ch1fig11'> </p> !["Photograph 51": X-ray diffraction image of crystallized DNA taken by Rosalind Franklin in 1953. The fuzzy X in the middle of the molecule indicates a helical structure.](images/ch1fig11.jpg){#fig:ch1fig11}
 
-![James Watson and Francis Crick posing next to their double helix model in 1953. The photo was taken by Antony Barrington Brown.](images/ch1fig10.jpg){#fig:ch1fig10}
+![James Watson and Francis Crick posing next to their double helix model in 1953. Photo taken by Antony Barrington Brown.](images/ch1fig10.jpg){#fig:ch1fig10}
 
-In eukaryotes, such as humans, DNA occurs in linear chromosomes while in prokaryotes, such as bacteria, DNA occurs in circular chromosomes. All the chromosomes in the cell of an organism make up its genome. The size of the genome varies enormously across the tree of life. Viruses, for example, typically have a genome size of a few thousand base pairs [@Fiers1976], the human genome has 3.2 billion base pairs spread across 46 chromosomes [@Venter2001] and some plants have a genome of over 150 billion base pairs [@Pellicer2010].
+In eukaryotes, such as humans, DNA occurs in linear chromosomes while in most prokaryotes, such as bacteria, DNA occurs in circular chromosomes. All the chromosomes in the cell of an organism make up its genome. The size of the genome varies enormously across the tree of life. Viruses, for example, typically have a genome size of a few thousand base pairs [@Fiers1976], the human genome has 3.2 billion base pairs spread across 46 chromosomes [@Venter2001] and some plants have a genome of over 150 billion base pairs [@Pellicer2010].
 
-The genetic information itself is contained within genes. A gene is a part of the chromosome that encodes for a protein or a functional RNA. Not all of the DNA of an organism is part of a gene. In prokaryotes, 80-90% of the genome consists of coding DNA [@Koonin2010], but in eukaryotes this is many times lower. In humans, for example, over 98% of the genome is non-coding [@Elgar2008]. This non-coding DNA used to be called *junk DNA*, but recent research has shown that at least part of the non-coding DNA is biochemically active and performing regulatory functions [@Pennisi2012].
+The genetic information itself is contained within genes. A gene is a part of the chromosome that encodes for a protein or a functional RNA. Not all of the DNA of an organism is part of a gene. In prokaryotes, 80-90% of the genome consists of coding DNA [@Koonin2010], but in eukaryotes this is many times lower. In humans, for example, over 98% of the genome is non-coding [@Elgar2008]. This non-coding DNA used to be called *junk DNA*, but recent research has shown that at least part of the non-coding DNA is biochemically active and performs regulatory functions [@Pennisi2012].
 
 ##### Gene expression
 When a protein is made based on the information from a gene, we say that the gene is expressed. During the transcription phase of gene expression, a copy of the DNA sequence is made by RNA polymerase, creating messenger RNA. The protein-coding region of the messenger RNA is then translated into a protein (@Fig:ch1fig13).
@@ -80,38 +82,51 @@ Many types of RNA exist<span class="aside">Other types include small nuclear RNA
 In the next phase, the mRNA binds to one of the ribosomes in the cell. A ribosome is a cell organelle that is responsible for translating the mRNA into a protein and consists of two subunits that are made from rRNA and proteins. The small subunit binds to the mRNA and reads the sequence. Each nucleotide triplet of the mRNA sequence is called a codon and can bind to a single type of transport RNA holding an amino acid. The large ribosomal subunit binds to the tRNA and connects the attached amino acid to the growing protein chain. The type of amino acid that is attached to the tRNA depends on the sequence of the codon binding site and is uniquely defined (@Fig:ch1fig12). This way, once the mRNA is bound to the ribosome, there is only a single protein translation possible.
 
 ##### Proteins
-Proteins are large molecules that perform many different function in living organisms. They can serve as enzyme, have a structural function or even transport other molecules. As mentioned in the previous section, the building blocks of proteins are amino acids. There are 20 naturally occurring amino acids, each having a three-letter and a one-letter abbreviation (@Tbl:ch1tbl1). The one-letter abbreviations are also sometimes called the protein alphabet and are generally used to describe the sequence of the amino acids of a protein. Since proteins are formed by chains of amino acids, the order of them uniquely describes the protein. Shorter chains of amino acids are called peptides.
+Proteins are large molecules that perform many different functions in living organisms. They can serve as enzyme, have a structural function or even transport other molecules. As mentioned in the previous section, the building blocks of proteins are amino acids. There are 20 naturally occurring amino acids, each having a three-letter and a one-letter abbreviation (@Tbl:ch1tbl1). The one-letter abbreviations are also sometimes called the protein alphabet and are generally used to describe the sequence of the amino acids of a protein. Since proteins are formed by chains of amino acids, the order of them uniquely describes the protein. Shorter chains of amino acids are called peptides.
 
 ![RNA codon table showing the mapping from three-letter RNA codons to amino acids. For example, the RNA codon <span class="small-caps">aac</span> encodes the amino acid asparagine that is abbreviated as Asn or N. Different condons can result in the same amino acid, for example leucine has six possible codons, while tryptophan has only one.](images/ch1fig12.png){#fig:ch1fig12}
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | amino acid&nbsp;&nbsp;&nbsp; | long<br>abbreviation | short<br>abbreviation | molecular weight
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | amino acid&nbsp;&nbsp;&nbsp; | long<br>abbreviation | short<br>abbreviation | average<br>molecular mass
 :----- | :--------- | :------- | :------- | ---------------:
-&nbsp; | Alanine | Ala | A | 89
-&nbsp; | Arginine | Arg | R | 174
-&nbsp; | Asparagine | Asn | N | 132
-&nbsp; | Aspartic acid | Asp | D | 133
-&nbsp; | Cysteine | Cys | C | 121
-&nbsp; | Glutamic acid | Glu | E | 147
-&nbsp; | Glutamine | Gln | Q | 146
-&nbsp; | Glycine | Gly | G | 75
-&nbsp; | Histidine | His | H | 155
-&nbsp; | Isoleucine | Ile | I | 131
-&nbsp; | Leucine | Leu | L | 131
-&nbsp; | Lysine | Lys | K | 146
-&nbsp; | Methionine | Met | M | 149
-&nbsp; | Phenylalanine | Phe | F | 165
-&nbsp; | Proline | Pro | P | 115
-&nbsp; | Serine | Ser | S | 105
-&nbsp; | Threonine | Thr | T | 119
-&nbsp; | Tryptophan | Trp | W | 204
-&nbsp; | Tyrosine | Tyr | Y | 181
-&nbsp; | Valine | Val | V | 117
+&nbsp; | Alanine | Ala | A | 89.09 Da
+&nbsp; | Arginine | Arg | R | 174.20 Da
+&nbsp; | Asparagine | Asn | N | 132.12 Da
+&nbsp; | Aspartic acid | Asp | D | 133.10 Da
+&nbsp; | Cysteine | Cys | C | 121.15 Da
+&nbsp; | Glutamic acid | Glu | E | 147.13 Da
+&nbsp; | Glutamine | Gln | Q | 146.15 Da
+&nbsp; | Glycine | Gly | G | 75.07 Da
+&nbsp; | Histidine | His | H | 155.16 Da
+&nbsp; | Isoleucine | Ile | I | 131.17 Da
+&nbsp; | Leucine | Leu | L | 131.17 Da
+&nbsp; | Lysine | Lys | K | 146.19 Da
+&nbsp; | Methionine | Met | M | 149.21 Da
+&nbsp; | Phenylalanine | Phe | F | 165.19 Da
+&nbsp; | Proline | Pro | P | 115.13 Da
+&nbsp; | Serine | Ser | S | 105.09 Da
+&nbsp; | Threonine | Thr | T | 119.12 Da
+&nbsp; | Tryptophan | Trp | W | 204.23 Da
+&nbsp; | Tyrosine | Tyr | Y | 181.19 Da
+&nbsp; | Valine | Val | V | 117.15 Da
 
-: Overview of all naturally occuring amino acids with long abbreviation, short abbreviation and molecular weight. Notice that leucine and isoleucine have the same weight. {#tbl:ch1tbl1}
+: Overview of all naturally occurring amino acids with long abbreviation, short abbreviation and molecular weight. Notice that leucine and isoleucine have the same weight. {#tbl:ch1tbl1}
 
 
-## Proteomics {data-running-title='Proteomics'}
-- definition
+## Metaproteomics {data-running-title='Metaproteomics'}
+- proteomics is the study of proteins
+- the complete set of proteins expressed by an organism is called a proteome
+- multiple methods: antibodies and with mass spectrometers, will focus on the last
+- what is mass spectrometry? general explanation. In the context of proteomics.
+- top down & bottom up -> bottom up: "The proteins may first be purified by a method such as gel electrophoresis resulting in one or a few proteins in each proteolytic digest. Alternatively, the crude protein extract is digested directly, followed by one or more dimensions of separation of the peptides by liquid chromatography coupled to mass spectrometry, a technique known as shotgun proteomics.[3][4] By comparing the masses of the proteolytic peptides or their tandem mass spectra with those predicted from a sequence database or annotated peptide spectral in a peptide spectral library, peptides can be identified and multiple peptide identifications assembled into a protein identification."
+
+- metaproteomics: explain difference "study of all protein samples recovered directly from environmental sources"
+- walk through experimental steps + explain (use image)
+- https://en.wikipedia.org/wiki/File:Mass_spectrometry_protocol.png
+- sample prep, trypsin
+- ms step
+- spectra (include image)
+- search (sequest, mascot) mention uniprot?
+- "Characterization of protein mixtures using HPLC/MS is also called shotgun proteomics"
 
 This section should cover:
 
