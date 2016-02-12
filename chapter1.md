@@ -79,7 +79,7 @@ Many types of RNA exist<span class="aside">Other types include small nuclear RNA
 In the next phase, the mRNA binds to one of the ribosomes in the cell. A ribosome is a cell organelle that is responsible for translating the mRNA into a protein and consists of two subunits that are made from rRNA and proteins. The small subunit binds to the mRNA and reads the sequence. Each nucleotide triplet of the mRNA sequence is called a codon and can bind to a single type of transport RNA holding an amino acid. The large ribosomal subunit binds to the tRNA and connects the attached amino acid to the growing protein chain. The type of amino acid that is attached to the tRNA depends on the sequence of the codon binding site and is uniquely defined (@Fig:ch1fig12). This way, once the mRNA is bound to the ribosome, there is only a single protein translation possible.
 
 ##### Proteins
-Proteins are large molecules that perform many different functions in living organisms. They can serve as enzyme, have a structural function or even transport other molecules. As mentioned in the previous section, the building blocks of proteins are amino acids. There are 20 naturally occurring amino acids, each having a three-letter and a one-letter abbreviation (@Tbl:ch1tbl1). The one-letter abbreviations are also sometimes called the protein alphabet and are generally used to describe the sequence of the amino acids of a protein. Since proteins are formed by chains of amino acids, the order of them uniquely describes the protein. Shorter chains of amino acids are called peptides.
+Proteins are large molecules that perform many different functions in living organisms. They can serve as enzyme, have a structural function or even transport other molecules. As mentioned in the previous section, the building blocks of proteins are amino acids. There are 20 naturally occurring amino acids, each having a three-letter and a one-letter abbreviation (@Tbl:ch1tbl1). The one-letter abbreviations are also sometimes called the protein alphabet and are generally used to describe the sequence of the amino acids of a protein. Since proteins are formed by chains of amino acids, the order of them uniquely describes the protein. Shorter chains of amino acids are called peptides. The proteome is the set of all proteins that are expressed by an organism.
 
 ![RNA codon table showing the mapping from three-letter RNA codons to amino acids. For example, the RNA codon <span class="small-caps">aac</span> encodes the amino acid asparagine that is abbreviated as Asn or N. Different condons can result in the same amino acid, for example leucine has six possible codons, while tryptophan has only one.](images/ch1fig12.png){#fig:ch1fig12}
 
@@ -111,17 +111,20 @@ Proteins are large molecules that perform many different functions in living org
 
 ## Metaproteomics {data-running-title='Metaproteomics'}
 
-- proteomics is the study of proteomes
-- the complete set of proteins expressed by an organism is called a proteome
-- multiple methods: antibodies and with mass spectrometers, will focus on the last
+Proteomics is the study and analysis of proteins. The detection of proteins typically happens in two ways: using immunoassays and using mass spectrometry.<span class="aside">Examples of immunoassay techniques are ELISA and Western blot.</span> The techniques using immunoassays use specific antibodies that bind to the target protein to detect and quantify that protein. Mass spectrometry on the other hand, is a more general technique that uses the mass of fragmentized ions to determine the chemical composition of a sample.
 
 ##### Mass spectrometry
-- 3 steps
-  - ionisation (and fragmentation) (several techniques: electron spray, maldi)
-  - "analysis" (find correct word for this) using a magnetic field that separates the ionized fragmentation (several techniques?)
-  - detection (several techniques: TOF, find other technique)
-- add image to explain this
-- results is m/z spectra (add image)
+Mass spectrometry consists of three main parts: the ionization, the mass analysis and detection (@Fig:ch1fig14). During the ionization phase, a part of the sample is converted to ions. This means that the incoming molecules are fragmented and charged by an ion source. Many different types of ion sources can be used depending on the type of sample that is subject to analysis. Two commonly used techniques for biological samples are electrospray ionization (ESI; @Fenn1989) and matrix-assisted laser desorption/ionization (MALDI; @Tanaka1988).
+
+Next, the ions are selected from the sample and directed through the mass analyzer. This component uses electrical and/or magnetic fields to separate the ions based on their molecular mass and charge, or more specific, their mass-to-charge ratio. Again, many types of mass analyzers exist with time-of-flight (TOF) and Orbitrap being common techniques. The combination of the used ion source and mass analyzer determines the configuration of a mass spectrometer. Common configuration often get their own name, for example, MALDI-TOF indicates that a MALDI ion source was used in combination with a TOF analyzer.
+
+<p style="display:none" class='pre-small-image'> </p> ![Schematic overview of a mass spectrometer showing the ionization, mass analysis (magnet) and detector.](images/ch1fig14.png){#fig:ch1fig14}
+
+The separation of the ions makes it possible to detect how many ions of each mass-to-charge ratio are present. This is what happens in the last phase by a detector producing a mass spectrum (@Fig:ch1fig15). This spectrum shows the number of detections and thus the relative abundance for each mass-to-charge ratio.
+
+![Example of a recorded mass spectrum. The horizontal axis shows the recorded m/z range and the vertical axis shows the relative number of detections for each ratio.](images/ch1fig15.gif){#fig:ch1fig15}
+
+TODO: add a few citations?
 
 ##### Proteomics
 - in normal proteomics, 2 main ways to do things: top down and bottom up
@@ -129,9 +132,9 @@ Proteins are large molecules that perform many different functions in living org
 - then add trypsin (add image for tryptic digest?)
 - put them in mass spec
 - optain many spectra
+- tandem MS
 - add image. maybe  https://en.wikipedia.org/wiki/File:Mass_spectrometry_protocol.png
-- look up: is tandem MS also used in normal proteomics?
-- 2 ways to identify peptides: de novo, using search engine. Mention mascot, sequest,... Mention UniProt! -> move to separate section?
+- 2 ways to identify peptides: de novo, using search engine. Mention mascot, sequest,... Mention UniProt! Mention I L issue-> move to separate section?
 
 
 ##### Metaproteomics
@@ -144,6 +147,8 @@ Proteins are large molecules that perform many different functions in living org
 - add image that shows the procedure
 
 ![Shotgun metaproteomics approach used to identify microbial proteins in human faecal samples. Taken from @Verberkmoes2009.](images/ch1fig3.jpg){#fig:ch1fig3}
+
+- read Griet her introduction and review this text
 
 ========
 
