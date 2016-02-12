@@ -4,9 +4,6 @@ Biology can be a daunting subject for computer scientists. As people who are use
 
 ## Life on Earth{data-running-title='Life on Earth'}
 
-In this first section we will explore the origin of life, introduce taxonomies and explain the central dogma of biology.
-
-### The origin of life
 A good starting point to explain what life is, would be to start with its origin. Unfortunately, this origin of life is not something we know for sure. The origin of life is an active research area that tries to form hypothesis that take into account the biological, chemical as well as geophysical aspects.
 
 ##### Spontaneous generation
@@ -37,7 +34,7 @@ A<span class="aside">This event is known as the *Cretaceous-Paleogene extinction
 
 ![Timeline showing the history of life on Earth.](images/ch1fig7.png){#fig:ch1fig7}
 
-### Taxonomy
+## Taxonomy {data-running-title='Taxonomy'}
 Life on Earth is extremely varied, even more so than one would initially think. The group of beetles, for example, is incredibly diverse with over 400&thinsp;000 species and gigantic compared to the number of mammals of which only 5&thinsp;500 are known [@Hammond1992]. The number of described species easily exceeds 1 million and it is estimated that we have only managed to document a small fraction. Estimates for the total number of species range from 5 million to over 100 million. A recent statistical analysis estimates that the total number of non-bacterial species is 8.7 million [@Mora2011] with thousands of additional bacterial species.
 
 Aristotle (384&ndash;322 BC) was one of the first to start naming and organizing living organisms [@Mayr1982]. He used a simple system with two groups: plants and animals. Organisms were put into classes based on their physical appearance and shape. This branch of science of naming and classifying organisms is called taxonomy and was relatively uneventful for the next 2000 years.
@@ -52,7 +49,7 @@ Towards the end of the eighteenth century, the idea formed to translate the Linn
 
 These recent advances don't mean that there is a single, official taxonomy containing all species. On the contrary, each domain has its own classification system. The Angiosperm Phylogeny Group III system [@Bremer2009], for example, is used for flowering plants and the List of Prokaryotic names with Standing in Nomenclature (LPSN) by Euzéby [@Euzeby1997] is the authority for prokaryotes. In our application, we don't wish to limit us to a single domain, which is why we use the NCBI Taxonomy database [@Federhen2012]. The NCBI Taxonomy is a nomenclature and classification repository that contains organism names and taxonomic lineages for all sequences in the databases of the International Nucleotide Sequence Database Collaboration (INSDC). Since the data used in our application also originates from INSDC databases, cross-references are ubiquitous.
 
-### Molecular building blocks
+## Molecular building blocks {data-running-title='Molecular building blocks'}
 Although life on Earth is incredibly diverse, all organisms share fundamental molecular mechanisms. In almost all organisms, the basic unit of energy is adenosine triphosphate (ATP), structural and functional roles are fulfilled by proteins and DNA (and RNA) carries the genetic information. In this section, we will take a closer look at the latter two.
 
 ##### DNA
@@ -113,48 +110,54 @@ Proteins are large molecules that perform many different functions in living org
 
 
 ## Metaproteomics {data-running-title='Metaproteomics'}
-- proteomics is the study of proteins
+
+- proteomics is the study of proteomes
 - the complete set of proteins expressed by an organism is called a proteome
 - multiple methods: antibodies and with mass spectrometers, will focus on the last
-- what is mass spectrometry? general explanation. In the context of proteomics.
+
+##### Mass spectrometry
+- 3 steps
+  - ionisation (and fragmentation) (several techniques: electron spray, maldi)
+  - "analysis" (find correct word for this) using a magnetic field that separates the ionized fragmentation (several techniques?)
+  - detection (several techniques: TOF, find other technique)
+- add image to explain this
+- results is m/z spectra (add image)
+
+##### Proteomics
+- in normal proteomics, 2 main ways to do things: top down and bottom up
+- first separate the proteins using liquid chromatrography (? gels?)
+- then add trypsin (add image for tryptic digest?)
+- put them in mass spec
+- optain many spectra
+- add image. maybe  https://en.wikipedia.org/wiki/File:Mass_spectrometry_protocol.png
+- look up: is tandem MS also used in normal proteomics?
+- 2 ways to identify peptides: de novo, using search engine. Mention mascot, sequest,... Mention UniProt! -> move to separate section?
+
+
+##### Metaproteomics
+- in metaproteomics, we study all proteins of a single environmental sample. Examples are soil, marine, gut,...
+- more complex, also called shotgun metaproteomics (look up: are there other kinds of metaproteomics?) "Characterization of protein mixtures using HPLC/MS is also called shotgun proteomics"
+- different experimental procedure
+  - first add trypsin
+  - separate peptides using LC step (for example HPLC)
+  - using tandem mass spec to generate spectra. The first MS step doesn't fragment the peptides and only separates them, the second step fragments the peptides.
+- add image that shows the procedure
+
+![Shotgun metaproteomics approach used to identify microbial proteins in human faecal samples. Taken from @Verberkmoes2009.](images/ch1fig3.jpg){#fig:ch1fig3}
+
+========
+
+
 - top down & bottom up -> bottom up: "The proteins may first be purified by a method such as gel electrophoresis resulting in one or a few proteins in each proteolytic digest. Alternatively, the crude protein extract is digested directly, followed by one or more dimensions of separation of the peptides by liquid chromatography coupled to mass spectrometry, a technique known as shotgun proteomics.[3][4] By comparing the masses of the proteolytic peptides or their tandem mass spectra with those predicted from a sequence database or annotated peptide spectral in a peptide spectral library, peptides can be identified and multiple peptide identifications assembled into a protein identification."
 
-- metaproteomics: explain difference "study of all protein samples recovered directly from environmental sources"
-- walk through experimental steps + explain (use image)
-- https://en.wikipedia.org/wiki/File:Mass_spectrometry_protocol.png
-- sample prep, trypsin
-- ms step
-- spectra (include image)
-- search (sequest, mascot) mention uniprot?
-- "Characterization of protein mixtures using HPLC/MS is also called shotgun proteomics"
 
-This section should cover:
-
-* Basics on Proteomics including peptide identification
-* Basics on metaproteomics
-
-Inspiration from:
-
-* TPA case study: basic proteomics and trypsin
-* MPA case study: basic metaproteomics
-
-Because most proteins are simply to large to be analyzed using a mass spectrometer, they are usually cleaved into smaller peptides before the actual MS analysis takes place. In practice, most proteomics studies achieve such a cleavage by adding trypsin to a protein sample. Trypsin is a serine protease found in the digestive system of humans and many other vertebrates, where it helps to digest food proteins. The enzyme has a very specific function — it only cleaves peptide chains at the carboxyl side of the amino acids lysine (represented by the letter `K`) or arginine (represented by the letter `R`). As a result, it is commonly used in biological research during proteomics experiments to digest proteins into peptides for mass spectrometry analysis, e.g., in-gel digestion.
+Because most proteins are simply too large to be analyzed using a mass spectrometer, they are usually cleaved into smaller peptides before the actual MS analysis takes place. In practice, most proteomics studies achieve such a cleavage by adding trypsin to a protein sample. Trypsin is a serine protease found in the digestive system of humans and many other vertebrates, where it helps to digest food proteins. The enzyme has a very specific function — it only cleaves peptide chains at the carboxyl side of the amino acids lysine (represented by the letter `K`) or arginine (represented by the letter `R`). As a result, it is commonly used in biological research during proteomics experiments to digest proteins into peptides for mass spectrometry analysis, e.g., in-gel digestion.
 
 High-performance liquid chromatography (HPLC) is a chromatographic technique used to separate the components in a mixture, to identify each component, and to quantify each component. When combined with shotgun tandem mass spectrometric methods, the active proteins within a biological sample may be determined. A trypsin digest is used to cleave the proteins in a sample downstream to every `K` (lysine) or `R` (arginine), except when followed by `P` (proline). The individual components that result after the cleavage step are called tryptic peptides. The amino acid sequence of these tryptic peptides may then be determined by means of mass spectrometry. However, most devices have a detection limit that only allows to determine the amino acid sequence of peptides having a length between 5 and 50 amino acids ([@Fig:ch1fig1]).
 
 ![Tryptic digestion is a necessary step in protein absorption as proteins are generally too large to be absorbed through the lining of the small intestine. Trypsin predominantly cleaves proteins at the carboxyl side (or "C-terminal side") of the amino acids lysine (`K`) and arginine (`R`) except when either is bound to a C-terminal proline (`P`).](images/ch1fig1.png){#fig:ch1fig1}
 
 By searching for all proteins that contain a particular tryptic peptide that was sequenced from an environmental sample, we can get insight into the biodiversity and functionality of the biological sample. The Unipept web application supports biodiversity analysis of large and complex metaproteome samples using tryptic peptide information obtained from shotgun MS/MS experiments. Its underlying index structure is designed to quickly retrieve all occurrences of a tryptic peptide in UniProt entries.
-
-![General outline of the Unipept workflow for taxonomic identification of tryptic peptides. For a given tryptic peptide, all UniProt entries having an exact match of the peptide in the protein sequence are found. Unipept then computes the lowest common ancestor (LCA) of the taxonomic annotations extracted from the matched UniProt entries, based on a cleaned up version of the NCBI Taxonomy. All intermediate results are shown for the sample tryptic peptide <span class="small-caps">enfvy[il]ak</span> (isoleucine and leucine equated), leading to an LCA in the phylum Streptophyta. Arrows at the bottom show which processing steps are available as functions in the Unipept API and the Unipept CLI.](images/ch1fig2.png){#fig:ch1fig2}
-
-Over the period of evolution, we human beings have co-evolved an intricate symbiosis with microorganisms that inhabit our gastrointestinal tract. These microorganisms are responsible for maintaining a healthy gut environment, they aid in digestion of our food and our immune system and they guard us against invading pathogens. In addition, some diseases, such as Crohn's disease, are somehow correlated to the composition of the gut microbiota. Although we are dependent on microorganisms for normal gut functioning, much remains to be learned about microbial processes in the gut that are carried out by this huge community of largely unexplored microbial cells that can amount to numbers as great as 10<sup>11</sup> per gram of faeces.
-
-Recently, we have been aided by the development of molecular tools that enable us to determine the composition of microorganisms inhabiting the intestine without having to cultivate them. In addition to the increasing amounts of information about the identities of microorganisms in the gut from our own studies and others, there have been a limited number of studies of the functional genes in the entire gut microbial metagenome, using sequencing based metagenomics approaches.
-
-A next step is to determine what genes are actually expressed and the function of the gut microbiota in different states of health and disease. Shotgun proteomics (@Fig:ch1fig3) is one approach that can be used to determine what proteins were expressed in an environmental sample. As of today, this technique is still in its infancy, but given the rapid technological developments and based on the results of the first analyses, we can nevertheless consider this to be a very promising technique.
-
-![Shotgun metaproteomics approach used to identify microbial proteins in human faecal samples. Taken from @Verberkmoes2009.](images/ch1fig3.jpg){#fig:ch1fig3}
 
 
 ## Unipept {data-running-title='Unipept'}
@@ -166,6 +169,12 @@ This section should cover:
 Inspiration from:
 
 * layman’s summary FWO
+
+Over the period of evolution, we human beings have co-evolved an intricate symbiosis with microorganisms that inhabit our gastrointestinal tract. These microorganisms are responsible for maintaining a healthy gut environment, they aid in digestion of our food and our immune system and they guard us against invading pathogens. In addition, some diseases, such as Crohn's disease, are somehow correlated to the composition of the gut microbiota. Although we are dependent on microorganisms for normal gut functioning, much remains to be learned about microbial processes in the gut that are carried out by this huge community of largely unexplored microbial cells that can amount to numbers as great as 10<sup>11</sup> per gram of faeces.
+
+Recently, we have been aided by the development of molecular tools that enable us to determine the composition of microorganisms inhabiting the intestine without having to cultivate them. In addition to the increasing amounts of information about the identities of microorganisms in the gut from our own studies and others, there have been a limited number of studies of the functional genes in the entire gut microbial metagenome, using sequencing based metagenomics approaches.
+
+A next step is to determine what genes are actually expressed and the function of the gut microbiota in different states of health and disease. Shotgun proteomics (@Fig:ch1fig3) is one approach that can be used to determine what proteins were expressed in an environmental sample. As of today, this technique is still in its infancy, but given the rapid technological developments and based on the results of the first analyses, we can nevertheless consider this to be a very promising technique.
 
 Microorganisms drive most of the chemical transformations crucial to sustaining life on Earth. Their ability to inhabit almost every environmental niche proves they possess an incredible diversity of physiological capabilities. However, little is known about the majority of the millions of microbial species that are predicted to exists, given that we are able to grow only an estimated 1% of these organisms under lab conditions. The emerging disciplines of metagenomics and metaproteomics take advantage of the current generation of sequencing technologies to recover genetic material and active proteins directly from environmental samples. These new approaches provide us with a “new kind of microscope” that is revolutionizing our understanding of the diversity and ecology of environmental communities. However, the computational and statistical tools to analyze metagenomics and metaproteomics data are clearly lagging behind the developments in sequencing technology. To counter this, researchers at Ghent University are developing an online web portal called Unipept that combines advanced algorithms, novel statistical methods and interactive visualizations for the analysis of metagenomics and metaproteomics data sets. It will equip the new microscope with more powerful lenses, enabling researchers to better zoom in on who is living in complex environmental communities, what they are doing there and how they are doing it. To validate that Unipept has important applications across the fields of environmental, clinical and evolutionary microbiology, it is used to study shifts in the gut microbiota of patients suffering from cystic fibrosis (also known as mucovisidosis), the most common genetic disease in people from Caucasian origin that mostly affects the lungs and for which no cure exists today.
 
