@@ -257,3 +257,6 @@ div.sourceCode {
 .pre-ch1fig11 + figure img {
     width: 90%;
 }
+.no-hyphen {
+    hyphens: none;
+}

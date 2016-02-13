@@ -114,9 +114,9 @@ Proteins are large molecules that perform many different functions in living org
 Proteomics is the study and analysis of proteins. The detection of proteins typically happens in two ways: using immunoassays and using mass spectrometry.<span class="aside">Examples of immunoassay techniques are ELISA and Western blot.</span> The techniques using immunoassays use specific antibodies that bind to the target protein to detect and quantify that protein. Mass spectrometry on the other hand, is a more general technique that uses the mass of fragmentized ions to determine the chemical composition of a sample.
 
 ##### Mass spectrometry
-Mass spectrometry consists of three main parts: the ionization, the mass analysis and detection (@Fig:ch1fig14). During the ionization phase, a part of the sample is converted to ions. This means that the incoming molecules are fragmented and charged by an ion source. Many different types of ion sources can be used depending on the type of sample that is subject to analysis. Two commonly used techniques for biological samples are electrospray ionization (ESI; @Fenn1989) and matrix-assisted laser desorption/ionization (MALDI; @Tanaka1988).
+Mass spectrometry consists of three main parts: ionization, mass analysis and detection (@Fig:ch1fig14). During the ionization phase, a part of the sample is converted to ions. This means that the incoming molecules are fragmented and charged by an ion source. Many different types of ion sources can be used depending on the type of sample that is subject to analysis. Two commonly used techniques for biological samples are electrospray ionization (ESI; @Fenn1989) and matrix-assisted laser desorption/ionization (MALDI; @Tanaka1988).
 
-Next, the ions are selected from the sample and directed through the mass analyzer. This component uses electrical and/or magnetic fields to separate the ions based on their molecular mass and charge, or more specific, their mass-to-charge ratio. Again, many types of mass analyzers exist with time-of-flight (TOF) and Orbitrap being common techniques. The combination of the used ion source and mass analyzer determines the configuration of a mass spectrometer. Common configuration often get their own name, for example, MALDI-TOF indicates that a MALDI ion source was used in combination with a TOF analyzer.
+Next, the ions are selected from the sample and directed through the mass analyzer. This component uses electrical and/or magnetic fields to separate the ions based on their molecular mass and charge, or more specific, their mass-to-charge ratio. Again, many types of mass analyzers exist with time-of-flight (TOF) and Orbitrap [@Hu2005] being common techniques. The combination of the used ion source and mass analyzer determines the configuration of a mass spectrometer. Common configuration often get their own name, for example, MALDI-TOF indicates that a <span class="no-hyphen">MALDI</span> ion source was used in combination with a TOF analyzer.
 
 <p style="display:none" class='pre-small-image'> </p> ![Schematic overview of a mass spectrometer showing the ionization, mass analysis (magnet) and detector.](images/ch1fig14.png){#fig:ch1fig14}
 
@@ -124,18 +124,16 @@ The separation of the ions makes it possible to detect how many ions of each mas
 
 ![Example of a recorded mass spectrum. The horizontal axis shows the recorded m/z range and the vertical axis shows the relative number of detections for each ratio.](images/ch1fig15.gif){#fig:ch1fig15}
 
-TODO: add a few citations?
-
 ##### Proteomics
-- in normal proteomics, 2 main ways to do things: top down and bottom up
-- first separate the proteins using liquid chromatrography (? gels?)
-- then add trypsin (add image for tryptic digest?)
-- put them in mass spec
-- optain many spectra
-- tandem MS
-- add image. maybe  https://en.wikipedia.org/wiki/File:Mass_spectrometry_protocol.png
-- 2 ways to identify peptides: de novo, using search engine. Mention mascot, sequest,... Mention UniProt! Mention I L issue-> move to separate section?
+When using mass spectrometry for proteomics, several experimental techniques (for example, top-down proteomics, bottom-up proteomics, targeted proteomics, ...) can be used depending on the goal of the experiment. In this introduction we will focus on the bottom-up approach, where proteins are first split into smaller peptides before administering them to the mass spectrometer. Splitting a protein in smaller<span class="aside">A proteolytic enzyme is also called a protease.</span> peptides is done by adding a special, proteolytic, enzyme to the protein sample.
 
+One of the most used proteases is trypsin [@Vandermarliere2013], an enzyme that is found in the digestive system of humans and many other vertebrates where it helps to digest food proteins. Trypsin cleaves peptide chains at very specific places namely when encountering the amino acids lysine (K) or arginine (R), except when they are bound to proline (P). The resulting peptides are called tryptic peptides. The effect of trypsin on a protein can easily be simulated *in silico*. It comes down to splitting the protein sequence, for example using a regular expression, after every `K` or `R` except when followed by a `P`.
+
+Next, one or more mass spectrometry (MS) steps are used to analyze the peptide mixture. When two MS steps are used, this is called tandem mass spectrometry (MS/MS; @Fig:ch1fig16). In the first MS phase, the incoming peptides are ionized using an ionization technique that causes little fragmentation, for example ESI or MALDI. Next, the ions are separated and ions of a particular mass-to-charge ratio are selected. In the second phase, the selected ions are fragmented, for example using collission-induced dissociation (CID). The resulting fragments are then again separated by mass-to-charge ratio and detected resulting in a mass spectrum.
+
+![Schematic overview of tandem mass spectrometry. In the first phase, the peptides are ionized (for example, using ESI or MALDI) and separated. In the second phase, ions of a particular mass-to-charge ratio are selected and fragmented using collision-induced dissociation (CID). Image by Hannes Röst under the CC BY-SA 3.0 license.](images/ch1fig16.png){#fig:ch1fig16}
+
+The next challenge is converting the many measured spectra to usable information such as peptide sequences. Two approaches can be used for this conversion: database searching and de novo sequencing. Where de novo sequencing uses advanced algorithms to determine the sequence directly from the spectrum, database searching is a simpler technique that is more commonly used. As the name implies, database searching starts from a protein database, for example UniProt, and performs an *in silico* trypsin digest on the proteins. For each of the resulting tryptic peptides, a theoretical mass spectrum is calculated. These predicted spectra are then compared to the recorded spectrum and the sequence of the best matching spectrum is returned as the result. Many tools implement database searching, for example Mascot, Sequest, X!Tandem or OMSSA.
 
 ##### Metaproteomics
 - in metaproteomics, we study all proteins of a single environmental sample. Examples are soil, marine, gut,...
@@ -145,6 +143,7 @@ TODO: add a few citations?
   - separate peptides using LC step (for example HPLC)
   - using tandem mass spec to generate spectra. The first MS step doesn't fragment the peptides and only separates them, the second step fragments the peptides.
 - add image that shows the procedure
+- Mention I L issue
 
 ![Shotgun metaproteomics approach used to identify microbial proteins in human faecal samples. Taken from @Verberkmoes2009.](images/ch1fig3.jpg){#fig:ch1fig3}
 
@@ -153,14 +152,8 @@ TODO: add a few citations?
 ========
 
 
-- top down & bottom up -> bottom up: "The proteins may first be purified by a method such as gel electrophoresis resulting in one or a few proteins in each proteolytic digest. Alternatively, the crude protein extract is digested directly, followed by one or more dimensions of separation of the peptides by liquid chromatography coupled to mass spectrometry, a technique known as shotgun proteomics.[3][4] By comparing the masses of the proteolytic peptides or their tandem mass spectra with those predicted from a sequence database or annotated peptide spectral in a peptide spectral library, peptides can be identified and multiple peptide identifications assembled into a protein identification."
-
-
-Because most proteins are simply too large to be analyzed using a mass spectrometer, they are usually cleaved into smaller peptides before the actual MS analysis takes place. In practice, most proteomics studies achieve such a cleavage by adding trypsin to a protein sample. Trypsin is a serine protease found in the digestive system of humans and many other vertebrates, where it helps to digest food proteins. The enzyme has a very specific function — it only cleaves peptide chains at the carboxyl side of the amino acids lysine (represented by the letter `K`) or arginine (represented by the letter `R`). As a result, it is commonly used in biological research during proteomics experiments to digest proteins into peptides for mass spectrometry analysis, e.g., in-gel digestion.
-
 High-performance liquid chromatography (HPLC) is a chromatographic technique used to separate the components in a mixture, to identify each component, and to quantify each component. When combined with shotgun tandem mass spectrometric methods, the active proteins within a biological sample may be determined. A trypsin digest is used to cleave the proteins in a sample downstream to every `K` (lysine) or `R` (arginine), except when followed by `P` (proline). The individual components that result after the cleavage step are called tryptic peptides. The amino acid sequence of these tryptic peptides may then be determined by means of mass spectrometry. However, most devices have a detection limit that only allows to determine the amino acid sequence of peptides having a length between 5 and 50 amino acids ([@Fig:ch1fig1]).
 
-![Tryptic digestion is a necessary step in protein absorption as proteins are generally too large to be absorbed through the lining of the small intestine. Trypsin predominantly cleaves proteins at the carboxyl side (or "C-terminal side") of the amino acids lysine (`K`) and arginine (`R`) except when either is bound to a C-terminal proline (`P`).](images/ch1fig1.png){#fig:ch1fig1}
 
 By searching for all proteins that contain a particular tryptic peptide that was sequenced from an environmental sample, we can get insight into the biodiversity and functionality of the biological sample. The Unipept web application supports biodiversity analysis of large and complex metaproteome samples using tryptic peptide information obtained from shotgun MS/MS experiments. Its underlying index structure is designed to quickly retrieve all occurrences of a tryptic peptide in UniProt entries.
 
