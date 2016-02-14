@@ -136,26 +136,17 @@ Next, one or more mass spectrometry (MS) steps are used to analyze the peptide m
 The next challenge is converting the many measured spectra to usable information such as peptide sequences. Two approaches can be used for this conversion: database searching and de novo sequencing. Where de novo sequencing uses advanced algorithms to determine the sequence directly from the spectrum, database searching is a simpler technique that is more commonly used. As the name implies, database searching starts from a protein database, for example UniProt, and performs an *in silico* trypsin digest on the proteins. For each of the resulting tryptic peptides, a theoretical mass spectrum is calculated. These predicted spectra are then compared to the recorded spectrum and the sequence of the best matching spectrum is returned as the result. Many tools implement database searching, for example Mascot, Sequest, X!Tandem or OMSSA.
 
 ##### Metaproteomics
-- in metaproteomics, we study all proteins of a single environmental sample. Examples are soil, marine, gut,...
-- more complex, also called shotgun metaproteomics (look up: are there other kinds of metaproteomics?) "Characterization of protein mixtures using HPLC/MS is also called shotgun proteomics"
-- different experimental procedure
-  - first add trypsin
-  - separate peptides using LC step (for example HPLC)
-  - using tandem mass spec to generate spectra. The first MS step doesn't fragment the peptides and only separates them, the second step fragments the peptides.
-- add image that shows the procedure
-- Mention I L issue
+When the protein contents of an environmental sample<span class="aside">The origin of such samples ranges from waste water treatment plants to clinical samples.</span> is analyzed, this is called metaproteomics. While the procedure looks similar to the one described in the previous section, shotgun metaproteomics is a relatively new technique that developed in the last decade [@Wilmes2004;@Herbst2015]. Because the origin of the proteins is not limited to a single species or well defined set of organisms, metaproteomics is a lot more challenging.
 
-![Shotgun metaproteomics approach used to identify microbial proteins in human faecal samples. Taken from @Verberkmoes2009.](images/ch1fig3.jpg){#fig:ch1fig3}
+![Example of a shotgun metaproteomics workflow used to identify proteins in environmental samples. Image taken from @Hettich2013.](images/ch1fig17.png){#fig:ch1fig17}
 
-- read Griet her introduction and review this text
+In classic proteomics, proteins are first separated and selected using Two-dimensional gel electrophoresis (2DE) before trypsin is added to digest the proteins into tryptic peptides. In metaproteomics, we want to get a complete picture of the sample and analyze as many proteins as possible. Because of this, the 2DE step is skipped and trypsin is added in the sample preparation step (@Fig:ch1fig17). During sample preparation, the proteins are extracted from the cells in the sample. Protein extraction in complex samples is very challenging and the used method is dependent on the origin of the sample. Next, the tryptic peptides are separated using liquid chromatographic methods, for example high-performance liquid chromatography (HPLC), before starting the MS/MS phase.
 
-========
+Converting the obtained spectra to peptide sequences and ultimately proteins is also a lot more challenging in metaproteomics. Because the number of possible organisms and thus proteins is a lot bigger, the database on which a search is performed is very important and must be carefully selected [@Tanca2013a]. Other issues that impede the correct identification of proteins is the fact that distinct peptides can generate the same spectrum (leucine and isoleucine have the same mass, for example) and that some peptides are shared by many proteins.
 
+Nevertheless, the field of metaproteomics has seen enormous progress in the last ten years (@Fig:ch1fig18). Where the technique initially worked for relatively simple acid mine drainage samples, it is now routinely applied to more complex environments such as the human gut.
 
-High-performance liquid chromatography (HPLC) is a chromatographic technique used to separate the components in a mixture, to identify each component, and to quantify each component. When combined with shotgun tandem mass spectrometric methods, the active proteins within a biological sample may be determined. A trypsin digest is used to cleave the proteins in a sample downstream to every `K` (lysine) or `R` (arginine), except when followed by `P` (proline). The individual components that result after the cleavage step are called tryptic peptides. The amino acid sequence of these tryptic peptides may then be determined by means of mass spectrometry. However, most devices have a detection limit that only allows to determine the amino acid sequence of peptides having a length between 5 and 50 amino acids ([@Fig:ch1fig1]).
-
-
-By searching for all proteins that contain a particular tryptic peptide that was sequenced from an environmental sample, we can get insight into the biodiversity and functionality of the biological sample. The Unipept web application supports biodiversity analysis of large and complex metaproteome samples using tryptic peptide information obtained from shotgun MS/MS experiments. Its underlying index structure is designed to quickly retrieve all occurrences of a tryptic peptide in UniProt entries.
+![Overview of the milestones in metaproteomics research over the last ten years. Unipept is mentioned as bioinformatics improvement for the easy phylogenetic analysis of metaproteomic data. Image adapted from @Herbst2015](images/ch1fig18.png){#fig:ch1fig18}
 
 
 ## Unipept {data-running-title='Unipept'}
@@ -175,9 +166,3 @@ Recently, we have been aided by the development of molecular tools that enable u
 A next step is to determine what genes are actually expressed and the function of the gut microbiota in different states of health and disease. Shotgun proteomics (@Fig:ch1fig3) is one approach that can be used to determine what proteins were expressed in an environmental sample. As of today, this technique is still in its infancy, but given the rapid technological developments and based on the results of the first analyses, we can nevertheless consider this to be a very promising technique.
 
 Microorganisms drive most of the chemical transformations crucial to sustaining life on Earth. Their ability to inhabit almost every environmental niche proves they possess an incredible diversity of physiological capabilities. However, little is known about the majority of the millions of microbial species that are predicted to exists, given that we are able to grow only an estimated 1% of these organisms under lab conditions. The emerging disciplines of metagenomics and metaproteomics take advantage of the current generation of sequencing technologies to recover genetic material and active proteins directly from environmental samples. These new approaches provide us with a “new kind of microscope” that is revolutionizing our understanding of the diversity and ecology of environmental communities. However, the computational and statistical tools to analyze metagenomics and metaproteomics data are clearly lagging behind the developments in sequencing technology. To counter this, researchers at Ghent University are developing an online web portal called Unipept that combines advanced algorithms, novel statistical methods and interactive visualizations for the analysis of metagenomics and metaproteomics data sets. It will equip the new microscope with more powerful lenses, enabling researchers to better zoom in on who is living in complex environmental communities, what they are doing there and how they are doing it. To validate that Unipept has important applications across the fields of environmental, clinical and evolutionary microbiology, it is used to study shifts in the gut microbiota of patients suffering from cystic fibrosis (also known as mucovisidosis), the most common genetic disease in people from Caucasian origin that mostly affects the lungs and for which no cure exists today.
-
-<span class="todo">something about:
-
-* CF?
-* metagenomics?
-</span>
