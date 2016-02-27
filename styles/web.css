@@ -214,6 +214,7 @@ blockquote p {
 }
 header h2 {
     margin: 0 0 2em;
+    text-indent: 0;
 }
 .title {
     font-weight: 600;
