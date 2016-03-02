@@ -2,7 +2,7 @@
 
 The initial objective of Unipept was to improve the biodiversity analysis of metaproteomics experiments. This was achieved not only by providing more accurate and faster results, but also by presenting the results with interactive visualizations in a user-friendly approach focused on non-technical users.
 
-This chapter contains the initial Unipept article published in the Journal of Proteome Research in 2012 and an update article published in Proteomics in 2015.
+This chapter contains the initial Unipept article published in the Journal of Proteome Research in 2012, an update article published in Proteomics in 2015 and a short overview of the new features that were added since the last publication.
 
 ## Unipept: Tryptic peptide-based biodiversity analysis of metaproteome samples {data-running-title='Tryptic peptide-based biodiversity analysis'}
 
@@ -200,19 +200,10 @@ Unipept uses the NCBI Taxonomy as its reference taxonomy database. The taxonomic
 
 The number of Unipept users is growing each month, with over a thousand users in June 2014. In total, 4000 multi-peptide and 3000 single peptide analyses were performed, accounting for 81 million processed peptides.
 
-## Potential subsection about new TPA/MPA stuff not yet mentioned in these articles {data-running-title='Optional section'}
+## Recent additions {data-running-title='Recent additions'}
 
-* Reset button
-* use new treeview for TPA page
-* D3 treemap
-* MPA full screen
-* treemap and sunburst breadcrumbs
-* shift+click to expand all on treeview
-* use number of hits for node size of TPA tree
-* test coverage
-* fix overlapping nodes in treeview
-* protein names in TPA output
-* UniProt version in footer
-* new parser
-* copy to clipboard for TPA
-* open in UniProt for TPA
+After the publication in Proteomics [@Mesuere2015], we didn't stop adding new features to the diversity analysis in Unipept. On a data level, the biggest update was the implementation of a new data processing pipeline as already mentioned in the previous section. The new pipeline can process UniProt in under 12 hours as opposed to almost 3 months for the previous one. This enables us to incorporate the monthly UniProt updates in a timely manner. The UniProt version that is used by Unipept is now also displayed in the footer of each page.
+
+The Tryptic Peptide Analysis was expanded with a few minor changes. The treeview that was introduced in the Metaproteome Analysis was open sourced on GitHub (https://github.com/unipept/unipept-visualizations) as a stand alone visualization. This allowed us to replace the existing tree visualization in the Tryptic Peptide Analysis with our own new treeview. Additionally the table displaying all UniProt matches was supplemented with the name of the proteins, an *open in UniProt* button and a *copy to clipboard* button.
+
+The visualizations of the Metaproteome Analysis underwent bigger changes. The treemap was entirely rewritten using D3, allowing more customization such as the addition of a breadcrumb bar. Major parts of the sunburst graph were also rewritten and an enhanced breadcrumbs bar was added to the visualization. The fairly new treeview gained a shift-click option that expands all children of the clicked node. Additionally, a few bugs were fixed improving the layout of the graph and eliminating overlapping nodes. These improvements allowed for a new full screen mode that enables fast switching between all three visualizations.
