@@ -2,11 +2,25 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
-    list = ["Rajkovic", "Heyndrickx", "Vandamme", "Antoni", "Alexander", "mRNA"];
+    // exclude
+    var list = ["Rajkovic", "Heyndrickx", "Vandamme", "Antoni", "Alexander", "mRNA"];
     var pattern = new RegExp("\\b(" + list.join("|") + ")\\b", "gi");
-	var replaceWith = "<span class='no-hyphen'>$1</span>";
-	$('p').each(function(){
-		$(this).html($(this).html().replace(pattern,replaceWith));
+    var replaceWith = "<span class='no-hyphen'>$1</span>";
+    $('p').each(function(){
+        $(this).html($(this).html().replace(pattern,replaceWith));
 	});
+
+    // fix
+    var fixes = [
+        "prokaryotic", "pro&shy;kary&shy;otic",
+        "Prokaryotic", "Pro&shy;kary&shy;otic",
+        "molecule", "mol&shy;e&shy;cule",
+        "metaproteomics", "meta&shy;pro&shy;teo&shy;m&shy;ics"];
+    for (var i = 0; i < list.length; i = i+2) {
+        pattern = new RegExp("\\b" + fixes[i] + "\\b", "g");
+        $('p').each(function(){
+            $(this).html($(this).html().replace(pattern, fixes[i+1]));
+        });
+    }
 });
 </script>
