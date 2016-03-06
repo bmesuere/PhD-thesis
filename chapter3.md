@@ -1,4 +1,4 @@
-# The Unipept API and command line tools {.chapter data-running-title='The Unipept API and CLI'}
+# The Unipept API and command line tools {.chapter data-running-title='3. The Unipept API and CLI'}
 
 The Unipept website is an excellent tool for biodiversity analysis of metaproteomics samples. One disadvantage for large-scale data processing is that all analysis must be run manually on the website. For high-throughput studies, this manual approach is not viable. With this in mind, we developed an API and a set of command line tools to expose the Unipept analysis features for use in automated pipelines and other applications.
 

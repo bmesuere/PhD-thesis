@@ -1,4 +1,4 @@
-# The Unique Peptide Finder {.chapter data-running-title='The Unique Peptide Finder'}
+# The Unique Peptide Finder {.chapter data-running-title='4. The Unique Peptide Finder'}
 
 This chapter describes the Unique Peptide Finder, a tool for finding taxon-specific peptides that can be used as biomarkers for targeted proteomics. Together with the Peptidome Similarity feature, the Unique Peptide Finder forms the Peptidome Analysis part of the Unipept web application.
 

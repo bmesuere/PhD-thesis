@@ -1,4 +1,4 @@
-# Metaproteomics biodiversity analysis {.chapter data-running-title='Metaproteomics biodiversity analysis'}
+# Metaproteomics biodiversity analysis {.chapter data-running-title='2. Metaproteomics biodiversity analysis'}
 
 The initial objective of Unipept was to improve the biodiversity analysis of metaproteomics experiments. This was achieved not only by providing more accurate and faster results, but also by presenting the results with interactive visualizations in a user-friendly approach focused on non-technical users.
 

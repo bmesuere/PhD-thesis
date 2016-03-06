@@ -1,4 +1,4 @@
-# Proteomics for computer scientists {.chapter .content-start  data-running-title='Proteomics for computer scientists'}
+# Proteomics for computer scientists {.chapter .content-start  data-running-title='1. Proteomics for computer scientists'}
 
 Biology can be a daunting subject for computer scientists. As people who are used to everything being deterministic and logical, the real world can be disappointingly unpredictable. Biological lingo and jargon can also be a real barrier in the communication between computer scientists and biologists. This chapters aims to be a gentle introduction in the (micro)biology and biochemistry that is needed to understand this thesis.
 
