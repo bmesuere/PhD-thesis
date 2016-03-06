@@ -266,5 +266,5 @@ div.sourceCode {
     width: 90%;
 }
 .no-hyphen {
-    hyphens: none;
+    hyphens: none !important;
 }

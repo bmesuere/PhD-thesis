@@ -36,7 +36,7 @@ Microorganisms drive most of the chemical transformations crucial to sustaining 
 
 # Samenvatting {- .front-matter data-running-title='Samenvatting'}
 
-# List of Publications {- .front-matter data-running-title='List of Publications'}
+# List of publications {- .front-matter data-running-title='List of publications'}
 
 Tsilia, Varvara, Bart Devreese, Ilse Baenst De, **Bart Mesuere**, Andreja Rajkovic, Mieke Uyttendaele, Tom Van De Wiele, and Marc Heyndrickx. 2012. “Application of MALDI-TOF mass spectrometry for the detection of enterotoxins produced by pathogenic strains of the Bacillus cereus group.” *Analytical and Bioanalytical Chemistry* 404 (6-7): 1691–1702.<span class="hidden">@Tsilia2012</span>
 
