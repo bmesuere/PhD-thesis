@@ -1,0 +1,12 @@
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+    list = ["Rajkovic", "Heyndrickx", "Vandamme", "Antoni", "Alexander", "mRNA"];
+    var pattern = new RegExp("\\b(" + list.join("|") + ")\\b", "gi");
+	var replaceWith = "<span class='no-hyphen'>$1</span>";
+	$('p').each(function(){
+		$(this).html($(this).html().replace(pattern,replaceWith));
+	});
+});
+</script>

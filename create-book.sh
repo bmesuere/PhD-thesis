@@ -49,10 +49,12 @@ pandoc chapter0.md chapter1.md chapter2.md chapter3.md chapter4.md chapter5.md c
     --css='styles/web.css' \
     --css='styles/book.css' \
     --bibliography='library.bib' \
+    --include-in-header='hyphenation.html' \
     --toc
 
 prince output/book.html \
-    -o output/book-no-cover.pdf
+    -o output/book-no-cover.pdf \
+    --javascript
 
 # Has quality loss in images!
 #gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -sOutputFile=output/book.pdf output/images/cover.pdf output/book-no-cover.pdf
