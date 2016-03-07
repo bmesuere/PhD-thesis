@@ -6,6 +6,7 @@ author: 'Bart Mesuere'
 lang: "en"
 
 link-citations: true
+citation-style: bib.cls
 
 titleDelim: ""
 figureTemplate: "<span class='figure-title'>$$figureTitle$$&nbsp;$$i$$</span> $$t$$"
