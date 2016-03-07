@@ -3,7 +3,7 @@
 <script type="text/javascript">
 $(document).ready(function(){
     // exclude
-    var list = ["Rajkovic", "Heyndrickx", "Vandamme", "Antoni", "Alexander", "mRNA", "Marto", "Wheeler", "UniProtKB", "TrEMBL", "Delmotte", "Ashburner", "Verberkmoes", "VoltDB"];
+    var list = ["Rajkovic", "Heyndrickx", "Vandamme", "Antoni", "Alexander", "mRNA", "Marto", "Wheeler", "UniProtKB", "TrEMBL", "Delmotte", "Ashburner", "Verberkmoes", "VoltDB", "Euzéby"];
     var pattern = new RegExp("\\b(" + list.join("|") + ")\\b", "gi");
     var replaceWith = "<span class='no-hyphen'>$1</span>";
     $('p').each(function(){
@@ -15,7 +15,8 @@ $(document).ready(function(){
         "prokaryotic", "pro&shy;kary&shy;otic",
         "Prokaryotic", "Pro&shy;kary&shy;otic",
         "molecule", "mol&shy;e&shy;cule",
-        "metaproteomics", "meta&shy;pro&shy;teo&shy;m&shy;ics"];
+        "metaproteomics", "meta&shy;pro&shy;teo&shy;m&shy;ics",
+        "metagenome", "meta&shy;gen&shy;ome"];
     for (var i = 0; i < list.length; i = i+2) {
         pattern = new RegExp("\\b" + fixes[i] + "\\b", "g");
         $('p').each(function(){

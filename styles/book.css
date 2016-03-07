@@ -284,6 +284,9 @@ ul:first-child {
 figure {
     page-break-inside: avoid;
 }
+.no-break {
+    page-break-inside: avoid;
+}
 table caption,
 figure figcaption {
     margin-left: 100px;
