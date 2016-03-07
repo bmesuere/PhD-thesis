@@ -330,7 +330,7 @@ The spaciousness of full screen mode and the treemap breadcrumbs provided the in
 
 <p style="display:none" class='pre-small-image image-screenshot image-half-size'> </p> ![Breadcrumbs of the sunburst visualization. Next to being a navigational aid, the miniature pie charts in the sunburst breadcrumbs also provide quantitative information.](images/ch6fig23.png){#fig:ch6fig23}
 
-### Unipept version 3.0
+### Unipept version 3.0 {#sec:ch6-uniprot-reduction}
 <span class="aside">Released on<br>July 31, 2015</span>Unipept 3.0 is the biggest Unipept release yet with major rewrites in both the back and front end and many new features. At the back end, the entire UniProt parsing pipeline was rewritten to make it several orders of magnitude faster. The entire website was redesigned based on Google's Material Design guidelines ([http://&#8203;www&#8203;.google&#8203;.com&#8203;/design&#8203;/spec&#8203;/material-design](http://www.google.com/design/spec/material-design)). The unique peptide finder and peptidome clustering page was given a major update and the Unipept command line tools and accompanying documentation were released.
 
 <p style="display:none" class='pre-small-image image-screenshot'> </p> ![Redesigned home page of Unipept 3.0, based on the Google Material Design guidelines.](images/ch6fig24.png){#fig:ch6fig24}
@@ -368,7 +368,7 @@ For all but one table, this was a straightforward conversion. Because these tabl
 
 The performance improvements of this reimplementation are similar to those achieved with the new LCA approach. Parsing the entire UniProt database can now be done in under 12 hours compared to over four weeks with the old approach. This allows us to provide more timely updates to the Unipept database. Another attempt to reduce the number of lookup operations by making use of bloom filters did not result in any significant performance improvements.
 
-##### UniProt redundancy removal {#sec:ch6-uniprot-reduction}
+##### UniProt redundancy removal
 Over the course of 2014, the size of the UniProt database more than doubled from 45 million entries to over 90 million ([@Fig:ch6fig27]). The UniProt team attributes this exponential growth to the high number of redundant bacterial genomes. As an example, they show that UniProt contains 4000 proteomes for *Staphylococcus aureus*, accounting for 10 million UniProt entries. In order to deal with this drastic data growth, they implemented a redundancy removal procedure. The procedure removes redundant UniProt entries by identifying similar bacterial genomes. As a result, the size of the UniProt database decreased from 92 million entries to just 47 million.
 
 <p style="display:none" class='pre-small-image'> </p> ![A graph showing the growth rate of the UniProt database. Its size was approaching 100 million entries in early 2015 after which a redundancy removal was implemented.](images/ch6fig27.png){#fig:ch6fig27}

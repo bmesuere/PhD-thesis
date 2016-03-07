@@ -303,6 +303,7 @@ table tbody {
     font-size: 0.8em;
     margin-left: -50px;
     margin-right: 20px;
+    page-break-inside: avoid;
 }
 span.aside {
     margin-left: -150px;
