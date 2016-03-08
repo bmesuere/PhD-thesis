@@ -15,7 +15,7 @@ Unipept is a web application for biodiversity analysis of complex metaproteomics
 
 Fast computation of LCAs for given lists of peptides also enables interactive biodiversity analysis of metaproteomics data sets. The biodiversity in complex samples can then be inspected using multiple interactive visualizations such as a treeview ([@Fig:ch3fig2]), a sunburst view ([@Fig:ch3fig3]) and a treemap ([@Fig:ch3fig4]). All visualizations on the Unipept website can be saved as publication-grade graphics, and all analysis results can be exported as Microsoft Excel-compatible CSV files.
 
-![Interactive treeview visualization that shows the tree of the matched taxa resulting from a Tryptic Peptide Analysis on the tryptic peptide <span class='small-caps'>AEAHIK</span>.](images/ch3fig2.png){#fig:ch3fig2}
+![Interactive treeview visualization that shows the tree of the matched taxa resulting from a Tryptic Peptide Analysis on the tryptic peptide <span class='small-caps'>aeahik</span>.](images/ch3fig2.png){#fig:ch3fig2}
 
 To guarantee optimal performance and correctness, the Unipept project pursues excellence regarding best practices for modern web application development. One example of this is automatic correctness testing by over 1000 tests after each code change. The entire application including the web services is open source and licensed under the terms of the MIT license. The source code can be found at [http://&#8203;GitHub&#8203;.com&#8203;/unipept&#8203;/unipept](http://GitHub.com/unipept/unipept).
 
@@ -28,24 +28,24 @@ In this article, we present the latest addition to the Unipept toolbox: a set of
 ### Methods {#sec:ch3-API}
 Unipept version 2.4 introduced the Unipept web services. These web services allow access to all Unipept peptide analysis features through a RESTful API. This means that all communication with the web services can be done using simple stateless HTTP requests, to which the server answers in JSON. JSON is an open standard for transmitting data that is both human readable and has wide support in developer tools and programming languages.
 
-In the next sections, we discuss the available API functions by drawing parallels between usage of the Unipept website and the Unipept API. @Fig:ch3fig1 displays a schematic overview of the functions, along with the expected input and output. The full documentation can be found at [http://&#8203;api&#8203;.unipept&#8203;.ugent&#8203;.be](http://api.unipept.ugent.be). Next to the documentation, the website also offers an interactive API explorer (@Fig:ch3fig5) where API requests can be composed and tested with just a few clicks.
+In the next sections, we discuss the available API functions by drawing parallels between usage of the Unipept website and the Unipept API. @Fig:ch3fig1 displays a schematic overview of the included functions, along with the expected input and output. The full documentation can be found at [http://&#8203;api&#8203;.unipept&#8203;.ugent&#8203;.be](http://api.unipept.ugent.be). Next to the documentation, the website also offers an interactive API explorer (@Fig:ch3fig5) where API requests can be composed and tested with just a few clicks.
 
 ![General outline of the Unipept workflow for taxonomic identification of tryptic peptides. For a given tryptic peptide, all UniProt entries having an exact match of the peptide in the protein sequence are found. Unipept then computes the lowest common ancestor (LCA) of the taxonomic annotations extracted from the matched UniProt entries, based on a cleaned up version of the NCBI Taxonomy. All intermediate results are shown for the sample tryptic peptide <span class='small-caps'>enfvy[il]ak</span> (isoleucine and leucine equated), leading to an LCA in the phylum Streptophyta. Arrows at the bottom show which processing steps are available as functions in the Unipept API.](images/ch3fig1.png){#fig:ch3fig1}
 
 ##### pept2prot
-The fundamental component in the Tryptic Peptide Analysis feature of Unipept is fast retrieval of all UniProt entries in which a given tryptic peptide occurs. All subsequent calculations are based on this result, and therefore the database indexes are heavily optimized to return it as fast as possible. When doing a Tryptic Peptide analysis in the web interface, the set of all matching UniProt entries is listed on the Protein Matches tab.
+The fundamental component in the Tryptic Peptide Analysis feature of Unipept is fast retrieval of all UniProt entries in which a given tryptic peptide occurs. All subsequent calculations are based on this result, and therefore the database indexes are heavily optimized to return the result as fast as possible. When doing a Tryptic Peptide analysis in the web interface, the set of all matching UniProt entries is listed on the Protein Matches tab.
 
 Its web service counterpart, `pept2prot`, takes a single tryptic peptide as input and returns the list of all UniProt entries containing the given tryptic peptide. By default, for each entry, the UniProt accession number, protein name and associated NCBI taxon ID are returned. Optionally, users can also request additional information fields such as the name of the organism associated with the UniProt entry, a list of cross-referenced EC numbers [@Bairoch2000] and a list of cross-referenced GO terms [@Gene2014]. Users can also choose to equate the isobaric amino acids isoleucine (I) and leucine (L) when matching peptides to proteins, a typical option for mass spectrometry-related queries. Batch retrieval of multiple peptides at once is also supported.
-
-<p style="display:none" class='pre-small-image'> </p> ![Screenshot of the API explorer, available on the documentation page of each of the Unipept API functions. By using the form, all of the API features can be easily tested within a web browser. After clicking the "Try it!" button, the resulting query string and response are shown. The figure shows the output for the `pept2lca` method used on the tryptic peptides <span class='small-caps'>aaamsmiptstgaak</span> and <span class='small-caps'>aivaytqtgatvhr</span> with the option to equate isoleucine and leucine when matching peptides to proteins. The LCA for <span class='small-caps'>aaamsmiptstgaak</span> is the superkingdom Bacteria, the LCA for <span class='small-caps'>aivaytqtgatvhr</span> is the species *Bifidobacterium longum*.](images/ch3fig5.png){#fig:ch3fig5}
 
 ##### pept2taxa
 After matching the UniProt entries, Unipept uses the cross-referenced NCBI taxon IDs to compile a set of organisms in which the queried peptide occurs. These organisms are then mapped to their taxonomic lineages using a cleaned up version of the NCBI taxonomy database. Using the web interface, the list of organisms along with their lineage can be found in the Lineage Table tab and an interactive visualization is available in the Lineage Tree tab (@Fig:ch3fig2).
 
+<p style="display:none" class='pre-small-image'> </p> ![Screenshot of the API explorer, available on the documentation page of each of the Unipept API functions. By using the form, all of the API features can be easily tested within a web browser. After clicking the "Try it!" button, the resulting query string and response are shown. The figure shows the output for the `pept2lca` method used on the tryptic peptides <span class='small-caps'>aaamsmiptstgaak</span> and <span class='small-caps'>aivaytqtgatvhr</span> with the option to equate isoleucine and leucine when matching peptides to proteins. The LCA for <span class='small-caps'>aaamsmiptstgaak</span> is the superkingdom Bacteria, the LCA for <span class='small-caps'>aivaytqtgatvhr</span> is the species *Bifidobacterium longum*.](images/ch3fig5.png){#fig:ch3fig5}
+
 Similarly, the API function `pept2taxa` takes a tryptic peptide as input and returns the set of organisms associated with the UniProt entries containing the given tryptic peptide. By default, the taxon ID, name and rank are returned for each of the matched organisms. Optionally, the full lineage of each organism can be requested as a sequence of taxon IDs and/or taxon names. Batch requests and equating isoleucine and leucine are also supported.
 
 ##### pept2lca
-The matched organisms from the previous section are then used to calculate the taxonomic lowest common ancestor (LCA). Simply put, the LCA is the most specific taxonomic rank that all matched organisms have in common. However, the algorithm used by Unipept has several advancements to better cope with taxonomic noise and misclassifications [@Mesuere2012]. One of these improvements is the invalidation of taxonomic nodes that provide little informational values, such as those containing words like "uncultured", "unspecified" or "undetermined" in their name. Invalidated taxa are ignored during LCA calculation and mapped to their first valid ancestor. These invalidated taxa would otherwise result in a drastic loss of information when used for LCA calculation. Another example is mapping strain-specific taxon IDs to their first valid parent taxon to counter the, now abandoned, practice of creating strain-level taxon IDs [@Federhen2014].
+The matched organisms from the previous section are then used to calculate the taxonomic lowest common ancestor (LCA). Simply put, the LCA is the most specific taxonomic rank that all matched organisms have in common. However, the algorithm used by Unipept has several advancements to better cope with taxonomic noise and misclassifications [@Mesuere2012].<span class="aside">Newer versions of the invalidation script also contain exceptions for viruses.</span> One of these improvements is the invalidation of taxonomic nodes that provide little informational values, such as those containing words like "uncultured", "unspecified" or "undetermined" in their name. Invalidated taxa are ignored during LCA calculation and mapped to their first valid ancestor. These invalidated taxa would otherwise result in a drastic loss of information when used for LCA calculation. Another example is mapping strain-specific taxon IDs to their first valid parent taxon to counter the, now abandoned, practice of creating strain-level taxon IDs [@Federhen2014].
 
 Correspondingly, the `pept2lca` function returns the LCA (taxon ID, name and rank) for a given tryptic peptide. Optionally, the full lineage (IDs and/or names) can be requested and both equating isoleucine and leucine and batch requests are supported. The LCAs for all tryptic peptides are precalculated and stored in the database. Therefore, the peptide matching steps can be skipped for the pept2lca function, resulting in improved performance.
 
@@ -78,7 +78,7 @@ Installing ri documentation for unipept-1.1.0
 Done installing documentation for unipept after 0 seconds
 1 gem installed</code></pre></div>
 
-After successful installation, the unipept command should be available. To check if unipept was installed correctly, run `unipept --version`. This should print the version number:
+After successful installation, the unipept command should be available. To check if the gem was installed correctly, run `unipept --version`. This should print the version number:
 
 <div class="sourceCode"><pre class="sourceCode zsh"><code class="sourceCode zsh"><b>$</b> <span class="kw">unipept</span> --version
 1.1.0</code></pre></div>
@@ -114,7 +114,8 @@ tryptic peptide or one NCBI Taxonomy Identifier per line.
               that match tryptic peptides.
 <span class="kw">pept2prot</span>     Fetch UniProt entries that match tryptic peptides.
 <span class="kw">pept2taxa</span>     Fetch taxa of UniProt entries that match tryptic peptides.
-<span class="kw">taxa2lca</span>      Compute taxonomic lowest common ancestor for given list of taxa.
+<span class="kw">taxa2lca</span>      Compute taxonomic lowest common ancestor for given list of
+              taxa.
 <span class="kw">taxonomy</span>      Fetch taxonomic information from Unipept Taxonomy.
 
 <span class='wa'>OPTIONS</span>
@@ -134,7 +135,8 @@ The Unipept command line tools consist of four main commands: `uniprot`, `prot2p
 The `uniprot` command is a utility to easily fetch protein information from UniProt. It takes one or more UniProt accession numbers and returns the corresponding UniProt entry for each of the accession numbers as output. This information is fetched by using the UniProt web services.
 
 <div class="sourceCode"><pre class="sourceCode zsh"><code class="sourceCode zsh"><b>$</b> <span class='kw'>uniprot</span> C6JD41 Q06JG4
-MTLVPLGDRVVLKQVEAEETTKSGIVLPGQAQEKPQQAEVVAVGPGGVVDGKEVKMEVAVGDKVIYSKYSGTEVKMDGTEYIIVKQNDILAIVK
+MTLVPLGDRVVLKQVEAEETTKSGIVLPGQAQEKPQQAEVVAVGPGGVVDGKEVKMEVAVGDKVIYSKYSGT
+  EVKMDGTEYIIVKQNDILAIVK
 MFTNSIKNLIIYLMPLMVTLMLLSVSFVDAGKKPSGPNPGGNN</code></pre></div>
 
 `prot2pept` is a utility to perform an *in silico* trypsin digest on protein sequences. The command takes one or more protein sequences as input and returns the digested peptides as output. This command runs entirely locally and doesn't connect to any server.
@@ -154,9 +156,9 @@ AALTER</code></pre></div>
 The `unipept` command has several subcommands: `pept2lca`, `pept2taxa`, `pept2prot`, `taxa2lca` and `taxonomy`. Each of them corresponds to the equally named API call and has several options that are equivalent with the corresponding API parameters. A comprehensive description of these calls and parameters can be found in @sec:ch3-API of this chapter, examples of their usage can be found in the case studies in @sec:ch3-CS1 and @sec:ch3-CS2.
 
 ##### Input and output formats
-One of the benefits of using the command line tools is support for multiple input and output formats. All commands accept input from command line arguments, a file, or *standard input*. Output can be written to *standard output* or to a file. Where the API always uses json as output format, the command line tools offer support for json, xml and csv. Additionally, the `--select` option allows you to control which fields are returned. A list of fields can be specified by a comma-separated list, or by using multiple `--select` options. A `*` can be used as a wildcard for field names. For example, `--select peptide,taxon*` will return the `peptide` field and all fields starting with `taxon`.
+One of the benefits of using the command line tools is support for multiple input and output formats. All commands accept input from command line arguments, a file, or *standard input*. Output can be written to *standard output* or to a file. Where the API always uses json as output format, the command line tools offer support for json, xml and csv. Additionally, the `--select` option allows you to control which fields are returned. A list of fields can be specified by a comma-separated list, or by using multiple `--select` options. The `*`-symbol can be used as a wildcard for field names. For example, `--select peptide,taxon*` will return the `peptide` field and all fields starting with `taxon`.
 
-The commands also support input (from any source) in fasta(-like) format. This format consists of a fasta header (a line starting with a `>`), followed by one or more lines containing, for example, one peptide each. When this format is detected, the output will automatically include an extra information field in the output containing the corresponding fasta header.
+The commands also support input (from any source) in fasta(-like) format. This format consists of a fasta header (a line starting with a `>`-symbol), followed by one or more lines containing, for example, one peptide each. When this format is detected, the output will automatically include an extra information field in the output containing the corresponding fasta header.
 
 <div class="sourceCode"><pre class="sourceCode zsh"><code class="sourceCode zsh"><b>$</b> <span class="kw">cat</span> input.txt
 &gt; header 1
@@ -177,7 +179,7 @@ A second solution is doing multiple parallel requests at a time to make optimal 
 
 ### Case study: analysis of a tryptic peptide {#sec:ch3-CS1}
 
-For a first case study, let's say that we have determined the mass spectrum of a tryptic peptide, that was identified as the peptide <span class="sequence">enfvyiak</span> using database searches (*Mascot* [@Perkins1999], *Sequest* [@Eng1994], *X!Tandem* [@Craig2003]) or de novo identification (*PEAKS* [@Ma2003]). As an example, we show how this tryptic peptide can be taxonomically assigned to the phylum *Streptophyta*. As a starter, we can use the `unipept pept2prot` command to fetch all UniProt proteins indexed by Unipept that contain the peptide.
+For a first case study, let's say that we have determined the mass spectrum of a tryptic peptide, that was identified as the peptide <span class="sequence">enfvyiak</span> using database searches (*Mascot* [@Perkins1999], *Sequest* [@Eng1994], *X!Tandem* [@Craig2003]) or de novo identification (*PEAKS* [@Ma2003]). As an example, we show how this tryptic peptide can be taxonomically assigned to the phylum Streptophyta. As a starter, we can use the `unipept pept2prot` command to fetch all UniProt proteins indexed by Unipept that contain the peptide.
 
 ##### Matching proteins
 The following interactive session shows that UniProt contains 19 proteins that contain the tryptic peptide <span class="sequence">enfvyiak</span>. Note that the first command passes the tryptic peptide as an argument to the `unipept pept2prot` command. In case no tryptic peptide is passed as an argument, the command reads a tryptic peptide from standard input as illustrated by the second command. Throughout this case study we will preferentially pass tryptic peptides as an argument to the `unipept pept2prot` command, but the command works the same way irrespective of how the tryptic peptide is fed to the command.
@@ -198,7 +200,7 @@ ENFVYIAK,Q96453,14-3-3-like protein D,3847
 By default, the output is generated in csv-format (*comma-separated values*). Apart from the query peptide (`peptide`), the output contains two GUIDs (*globally unique identifiers*): i) the UniProt Accession Number (`uniprot_id`) that refers to the protein record in the UniProt database that contains the tryptic peptide and ii) the NCBI Taxonomy Identifier (`taxon_id`) assigned to the UniProt protein record that refers to a record in the NCBI Taxonomy Database [@Acland2014;@Benson2013]. The latter describes a taxon in the hierarchical classification of cellular organisms, being the taxon from which the protein was extracted. The output also contains the name of each protein (`protein_name`).
 
 ##### Leucine & isoleucine
-In peptide sequencing experiments involving a single step tandem mass acquisition, leucine (`L`) and isoleucine (`I`) are indistinguishable because both are characterized by a 113 Da mass difference from the other peptide fragments in the MS-MS spectrum. In general, there are 2<sup>n</sup> `I=L` variants for each tryptic peptide that contains n residues that are either leucine or isoleucine. Therefore, all subcommands of the unipept command that are based on matching given peptides against UniProt proteins support the `-e/--equate` option (*equate*). Exact matching makes no distinction between `I` and `L` when this option is activated.
+In peptide sequencing experiments involving a single step tandem mass acquisition, leucine (`L`) and isoleucine (`I`) are indistinguishable because both are characterized by a 113 Da mass difference from the other peptide fragments in the MS-MS spectrum. In general, there are 2<sup>n</sup> `I=L` variants for each tryptic peptide that contains *n* residues that are either leucine or isoleucine. Therefore, all subcommands of the unipept command that are based on matching given peptides against UniProt proteins support the `-e/--equate` option. Exact matching makes no distinction between `I` and `L` when this option is activated.
 
 <div class="sourceCode"><pre class="sourceCode zsh"><code class="sourceCode zsh"><b>$</b> <span class="kw">unipept pept2prot</span> <b>-e</b> ENFVYIAK
 peptide,uniprot_id,protein_name,taxon_id
@@ -214,11 +216,17 @@ Note that the Unipept database has two separate index structures to match trypti
 Apart from a fast index that maps tryptic peptides onto the UniProt entries of proteins that contain the peptide, the Unipept database contains minimal information about the proteins that was extracted from the UniProt entries. This includes information about the taxon from which the protein was sequenced (`taxon_id` and `taxon_name`) and a description of the cellular functions the protein is involved in (`ec_references` and `go_references`). Taxonomic information is described using a GUID that refers to a record in the NCBI Taxonomy Database [@Acland2014;@Benson2013]. Functional information is described using GUIDs that refer to records from the Enzyme Commission classification (EC; @Bairoch2000) and the Gene Ontology (GO; @Ashburner2000). The generated output contains this additional information if the `-a/--all` option of the `unipept` command is used. The following example is representative in the sense that the taxonomic information about proteins is generally more accurate and complete than the information about known functions of the proteins.
 
 <div class="sourceCode"><pre class="sourceCode zsh"><code class="sourceCode zsh"><b>$</b> <span class="kw">unipept pept2prot</span> -e <b>-a</b> ENFVYIAK
-peptide,uniprot_id,protein_name,taxon_id,taxon_name,ec_references,go_references,refseq_ids,refseq_protein_ids,insdc_ids,insdc_protein_ids
-ENFVYIAK,C6TH93,Casparian strip membrane protein 4,3847,Glycine max,,GO:0016021 GO:0005886 GO:0071555,NM_001255156.1,NP_001242085.1,BT097011,ACU21195.1
-ENFVYIAK,P42654,14-3-3-like protein B,3906,Vicia faba,,,,,Z48505,CAA88416.1
-ENFVYIAK,Q96453,14-3-3-like protein D,3847,Glycine max,,,NM_001250136.1,NP_001237065.1,U70536,AAB09583.1
-ENFVYIAK,G7LIR4,Uncharacterized protein,3880,Medicago truncatula,,,XM_003629715.1,XP_003629763.1,CM001224 BT141273,AET04239.2 AFK41067.1
+peptide,uniprot_id,protein_name,taxon_id,taxon_name,ec_references,go_ref
+  erences,refseq_ids,refseq_protein_ids,insdc_ids,insdc_protein_ids
+ENFVYIAK,C6TH93,Casparian strip membrane protein 4,3847,Glycine max,,GO:
+  0016021 GO:0005886 GO:0071555,NM_001255156.1,NP_001242085.1,BT097011,A
+  CU21195.1
+ENFVYIAK,P42654,14-3-3-like protein B,3906,Vicia faba,,,,,Z48505,CAA8841
+  6.1
+ENFVYIAK,Q96453,14-3-3-like protein D,3847,Glycine max,,,NM_001250136.1,
+  NP_001237065.1,U70536,AAB09583.1
+ENFVYIAK,G7LIR4,Uncharacterized protein,3880,Medicago truncatula,,,XM_00
+  3629715.1,XP_003629763.1,CM001224 BT141273,AET04239.2 AFK41067.1
 <span class="co">...</span></code></pre></div>
 
 Because Unipept uses a separate peptide index in which `I` and `L` are equated, Unipept cannot directly resolve what specific `I=L` variant (or variants) of a tryptic peptide are contained in a protein sequence. However, the Unipept command line tools contain the `uniprot` command that calls the UniProt web services. This can be used, for example, to retrieve all protein sequences for a given list of UniProt Accession Numbers. The following example also illustrates the `-s/--select` option of the `unipept` command, that can be used to include only a selected list of information fields in the generated output. Note that we add a series of additional processing steps to the result of the `uniprot` command, that only put the contained `I=L` variants in capitals (the remaining residues are converted into lower case) and truncate the protein sequences after a fixed number of residues.
@@ -263,7 +271,7 @@ ENFVYIAK,3827,Cicer arietinum,species
 ENFVYIAK,3847,Glycine max,species
 <span class="co">...</span></code></pre></div>
 
-Using the `-a` option in combination with the `unipept pept2taxa` command includes the complete lineages (resulting after the cleanup done by Unipept) of the taxa in the generated output.
+Using the `-a` option in combination with the `unipept` `pept2taxa` command includes the complete lineages (resulting after the cleanup done by Unipept) of the taxa in the generated output.
 
 <div class="sourceCode"><pre class="sourceCode zsh"><code class="sourceCode zsh"><b>$</b> <span class="kw">unipept pept2taxa</span> -e <b>-a</b> ENFVYIAK
 peptide,taxon_id,taxon_name,taxon_rank,superkingdom_id,superkingdom_name,kingdom_id,kingdom_name,subkingdom_id,subkingdom_name,superphylum_id,superphylum_name,phylum_id,phylum_name,subphylum_id,subphylum_name,superclass_id,superclass_name,class_id,class_name,subclass_id,subclass_name,infraclass_id,infraclass_name,superorder_id,superorder_name,order_id,order_name,suborder_id,suborder_name,infraorder_id,infraorder_name,parvorder_id,parvorder_name,superfamily_id,superfamily_name,family_id,family_name,subfamily_id,subfamily_name,tribe_id,tribe_name,subtribe_id,subtribe_name,genus_id,genus_name,subgenus_id,subgenus_name,species_group_id,species_group_name,species_subgroup_id,species_subgroup_name,species_id,species_name,subspecies_id,subspecies_name,varietas_id,varietas_name,forma_id,forma_name
@@ -275,7 +283,7 @@ ENFVYIAK,3847,Glycine max,species,2759,Eukaryota,33090,Viridiplantae,,,,,35493,S
 
 This output corresponds to the tree structure that appears at the left of [@Fig:ch3fig1] or the tree drawn in the Lineage tree tab on the page that shows the results of a Tryptic Peptide Analysis in the Unipept web interface. Note that the tryptic peptide <span class="sequence">enfvyiak</span> was only found in a peach protein (*Prunus persica*), whereas its `I=L` variant was found in proteins of a species of wild banana (*Musa acuminata* subsp. *malaccensis*) and in different members of the flowering plants including chick pea (*Cicer arietinum*), broad bean (*Vicia faba*), soybean (*Glycine max*), common bean (*Phaseolus vulgaris*), barrel medic (*Medicago truncatula*), orange (*Citrus sinensis*), clementine (*Citrus clementina*) and common grape vine (*Vitis vinifera*).
 
-The Unipept implementation of the LCA algorithm can be applied on a given tryptic peptide using the `unipept pept2lca` command. Using the `-e` option will again have an influence on the LCA computation for the tryptic peptide <span class="sequence">enfvyiak</span>. After all, the LCA will be computed for all taxa associated with proteins in which the tryptic peptide (or one of its `I=L` variants) was found.
+The Unipept implementation of the LCA algorithm can be applied on a given tryptic peptide using the `unipept` `pept2lca` command. Using the `-e` option will again have an influence on the LCA computation for the tryptic peptide <span class="sequence">enfvyiak</span>. After all, the LCA will be computed for all taxa associated with proteins in which the tryptic peptide (or one of its `I=L` variants) was found.
 
 <div class="sourceCode"><pre class="sourceCode zsh"><code class="sourceCode zsh"><b>$</b> <span class="kw">unipept pept2lca</span> ENFVYIAK
 peptide,taxon_id,taxon_name,taxon_rank
@@ -290,12 +298,12 @@ ENFVYLAK,35493,Streptophyta,phylum</code></pre></div>
 The correctness of the computed LCAs can be checked based on the taxonomic hierarchy shown in [@Fig:ch3fig1].
 
 
-### Case study: analysis of a metaproteomics data set {#sec:ch3-CS2}
+### Case study: analysis of a metaproteomics data&nbsp;set {#sec:ch3-CS2}
 
 As a demonstration of the Unipept CLI, this second case study shows how it can be used to get insight into the biodiversity within one of the faecal samples from a gut microbiome study [@Verberkmoes2009]. The sample was taken from a female that is part of a healthy monozygotic twin pair born in 1951 that was invited to take part in a larger double-blinded study. Details of this individual with respect to diet, antibiotic usage, and so on are described by @Dicksved2008 (individual 6a in this study, sample 7 in the study of @Verberkmoes2009). The most important thing that we learn from the available information in the questionnaire that this individual has filled up, is that she had gastroenteritis at the time the sample was taken and that her twin sister (individual 6b in the study of @Dicksved2008, sample 7 in the study of @Verberkmoes2009) had taken non-steroidal anti-inflammatory drugs during the past 12 months before the time of sampling. The data can be downloaded from the website of the study and is also available as a demo data set on the Unipept website.
 
 ##### Duplicate peptides
-Say that we stored the list of tryptic peptides that were extracted from sample 7 in the study of @Verberkmoes2009 in the text file sample7.dat. The file contains a list of all tryptic peptides, each on a separate line. The following session shows that this file contains a list of 3983 tryptic peptides (2065 unique peptides) that could be identified in the faecal sample using *shotgun metaproteomics*.
+Say that we stored the list of tryptic peptides that were extracted from sample 7 in the study of @Verberkmoes2009 in the text file `sample7.dat`. The file contains a list of all tryptic peptides, each on a separate line. The following session shows that this file contains a list of 3&thinsp;983 tryptic peptides (2&thinsp;065 unique peptides) that could be identified in the faecal sample using *shotgun metaproteomics*.
 
 <div class="sourceCode"><pre class="sourceCode zsh"><code class="sourceCode zsh"><b>$</b> <span class="kw">head</span> -n5 sample7.dat
 SGIVLPGQAQEKPQQAEVVAVGPGGVVDGK
@@ -311,9 +319,9 @@ MDGTEYIIVK
 The first thing that strikes the eye is that a mass spectrometer might pick up multiple copies of the same tryptic peptide from an environmental sample. Depending on the fact whether or not we can draw quantitative conclusion on the number of different identifications of a particular peptide (apart from identification, the quantification of proteins in an environmental sample is an important research theme [@Seifert2013;@Kolmeder2014]), we might decide to deduplicate the peptides before they are analyzed further using the Unipept CLI. This decision has an impact on the analysis results, but deduplication also results in improved performance since it avoids duplicate work.
 
 ##### Non-tryptic peptides
-What might be less obvious at first sight, is that the peptides on lines 3 and 4 in the text file sample7.dat actually aren't tryptic peptides, but the composition of two tryptic peptides. This is a consequence of the fact that cleavage of proteins using trypsin is not always perfect, leading to some proteins that aren't cleaved properly. Such composed tryptic peptides are called *missed cleavages*. The index structure underpinning Unipept only indexes tryptic peptides that result from an *in silico* trypsin digest of the proteins in UniProt, so that missed cleavages cannot be matched directly by Unipept.
+What might be less obvious at first sight, is that the peptides on lines 3 and 4 in the text file `sample7.dat` actually aren't tryptic peptides, but the composition of two tryptic peptides. This is a consequence of the fact that cleavage of proteins using trypsin is not always perfect, leading to some proteins that aren't cleaved properly. Such composed tryptic peptides are called *missed cleavages*. The index structure underpinning Unipept only indexes tryptic peptides that result from an *in silico* trypsin digest of the proteins in UniProt, so that missed cleavages cannot be matched directly by Unipept.
 
-To cope with this problem, we can start to check if the peptides resulting from a shotgun metaproteomics experiment need to be cleaved further before making taxonomic identifications using Unipept. Performing an *in silico* trypsin digest can be done using the `prot2pept` command from the Unipept CLI. This command is executed purely *client side*, and thus is provided as a standalone command and not as a subcommand of the `unipept` command.
+To cope with this problem, we can start to check if the peptides resulting from a shotgun metaproteomics experiment need to be cleaved further before making taxonomic identifications using Unipept. Performing an *in silico* trypsin digest can be done using the `prot2pept` command from the Unipept CLI. This command is executed purely client side, and thus is provided as a standalone command and not as a subcommand of the `unipept` command.
 
 <div class="sourceCode"><pre class="sourceCode zsh"><code class="sourceCode zsh"><b>$</b> <span class="kw">sed</span> -ne <span class="st">'4{p;q}'</span> sample7.dat
 MEVAVGDKVIYSK
@@ -387,8 +395,6 @@ AAALNTLPHSTGAAK,1678,Bifidobacterium,genus
 AAAMSMLPTSTGAAK,2,Bacteria,superkingdom
 AAANESFGYNEDELVSSDLVGMR,186802,Clostridiales,order</code></pre></div>
 
-<p style="display:none" class='pre-small-image'> </p> ![Processing of sample 7 from the study of @Verberkmoes2009 using the Metaproteomics Analysis feature of the Unipept web site.](images/ch3fig6.png){#fig:ch3fig6}
-
 For those that are not familiar with IO redirection, the `unipept` command also supports the `-i/--input` option to read the peptides from the file that is passed as an argument and the `-o/--output` option to store the results in a file that is passed as an argument.
 
 <div class="sourceCode"><pre class="sourceCode zsh"><code class="sourceCode zsh"><b>$</b> <span class="kw">unipept pept2lca</span> <b>--input</b> sample7.dat <b>--output</b> sample7.csv
@@ -399,6 +405,8 @@ AAALNTLAHSTGAAK,1678,Bifidobacterium,genus
 AAALNTLPHSTGAAK,1678,Bifidobacterium,genus
 AAAMSMLPTSTGAAK,2,Bacteria,superkingdom
 AAANESFGYNEDELVSSDLVGMR,186802,Clostridiales,order</code></pre></div>
+
+<p style="display:none" class='pre-small-image'> </p> ![Processing of sample 7 from the study of @Verberkmoes2009 using the Metaproteomics Analysis feature of the Unipept web site.](images/ch3fig6.png){#fig:ch3fig6}
 
 If needed, the unipept `pept2lca` command can be used in combination with the `-a` option to fetch the complete lineages for all LCAs according to the Unipept Taxonomy. @Fig:ch3fig7 shows the hierarchical classification of the taxa that could be identified in sample 7. A similar tree view can be found in the *Treeview* tab on the page showing the results of a Metaproteomics analysis in the Unipept web interface.
 
