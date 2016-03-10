@@ -3,7 +3,7 @@
 <script type="text/javascript">
 $(document).ready(function(){
     // exclude
-    var list = ["Rajkovic", "Heyndrickx", "Vandamme", "Antoni", "Alexander", "mRNA", "Marto", "Wheeler", "UniProtKB", "TrEMBL", "Delmotte", "Ashburner", "Verberkmoes", "VoltDB", "Euzéby", "Bioinformatics"];
+    var list = ["Rajkovic", "Heyndrickx", "Vandamme", "Antoni", "Alexander", "mRNA", "Marto", "Wheeler", "UniProtKB", "TrEMBL", "Delmotte", "Ashburner", "Verberkmoes", "VoltDB", "Euzéby", "Bioinformatics", "Euzéby"];
     var pattern = new RegExp("\\b(" + list.join("|") + ")\\b", "gi");
     var replaceWith = "<span class='no-hyphen'>$1</span>";
     $('p').each(function(){
