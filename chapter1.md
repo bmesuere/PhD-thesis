@@ -155,8 +155,8 @@ Unipept, the subject of this thesis, is a tool to help analyze the outcome of me
 
 In the next chapter, we present the Unipept web application as a tool for the diversity analysis of complex metaproteome samples. Chapter 3 builds on that by introducing two new ways to access the analysis tools offered by Unipept: a web-based API and a set of command line tools.
 
-The next two chapters cover the peptidome analysis part of the Unipept ecosystem. The Unique Peptide Finder is introduced in chapter 4 as a new way to discover unique peptides that can be used as biomarkers in targeted metaproteomics, while chapter 5 features Peptidome Clustering to investigate the relatedness of organisms. These two tools are built on the same foundations using advanced JavaScript features to offer interactive visualizations and high-performance client-side calculations.
+The next chapter covers the peptidome analysis part of the Unipept ecosystem. The Unique Peptide Finder is introduced as a new way to discover unique peptides that can be used as biomarkers in targeted metaproteomics, while Peptidome Clustering can be used to investigate the relatedness of organisms. These two tools are built on the same foundations using advanced JavaScript features to offer interactive visualizations and high-performance client-side calculations.
 
-Chapter 6 tells the story of Unipept from a computer scientist's point of view. The chapter reconstructs the development timeline of Unipept including the technical design choices and failed experiments.
+Chapter 5 tells the story of Unipept from a computer scientist's point of view. The chapter reconstructs the development timeline of Unipept including the technical design choices and failed experiments.
 
 The last chapter explores ongoing and potential future extensions to Unipept, including a new metagenomics pipeline, the addition of functional analysis features, and additions to the Unique Peptide Finder.

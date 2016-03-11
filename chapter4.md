@@ -1,8 +1,8 @@
-# The Unique Peptide Finder {.chapter data-running-title='4. The Unique Peptide Finder'}
+# Peptidome analysis {.chapter data-running-title='4. Peptidome analysis'}
 
 This chapter describes the Unique Peptide Finder, a tool for finding taxon-specific peptides that can be used as biomarkers for targeted proteomics. Together with the Peptidome Similarity feature, the Unique Peptide Finder forms the Peptidome Analysis part of the Unipept web application.
 
-## The unique peptidome: taxon-specific tryptic peptides as biomarkers for targeted metaproteomics {data-running-title='The Unique Peptidome'}
+## The unique peptidome: taxon-specific tryptic peptides as biomarkers for targeted metaproteomics {data-running-title='The unique peptidome' #sec:unique-peptidome}
 
 <p class='aside'>This section contains a verbatim copy of the research article by @Mesuere2016a as submitted to Proteomics.</p>
 
@@ -73,3 +73,5 @@ Bacillus anthracis str. 95014 | GCA_000585275.1
 : Overview of the *Bacillus anthracis* assemblies used to analyze the *B. anthracis* peptidome. The order of the assemblies corresponds to the order of the proteomes in [@Fig:ch4fig3] {#tbl:ch4tbl1}
 
 ![Chart displaying sizes of peptidomes (gray), core peptidomes (orange) and unique peptidomes (green) for 3 *B. anthracis* proteomes available in the "UniProt proteomes" library and 24 *B. anthracis* proteomes downloaded from the NCBI website. These 27 proteomes have 50&thinsp;724 tryptic peptides in common (core peptidome), of which 878 are specific to *B. anthracis* (unique peptidome). Sizes of the pan peptidomes were hidden in the visualization to improve legibility of the chart.](images/ch4fig3.png){#fig:ch4fig3}
+
+## Peptidome clustering {data-running-title='Peptidome clustering' #sec:peptidome-clustering}

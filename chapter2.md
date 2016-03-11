@@ -177,11 +177,11 @@ As with the sunburst and treemap visualization, a tooltip with more information 
 ##### Peptidome-based analysis
 The tryptic peptidome is the complete set of (tryptic) peptides encoded in the genome of an organism. Unipept now provides fast and flexible analysis tools for identifying the unique peptidome of a given taxon and for clustering whole-genomes based on their peptidome content.
 
-<p class='aside'>The unique peptide finder is discussed in more detail in chapter 4.</p>
+<p class='aside'>The unique peptide finder is discussed in more detail in @sec:unique-peptidome.</p>
 
 A first tool, the unique peptide finder, computes the unique peptidome for a selected set of RefSeq whole-genome sequences. This unique peptidome consists of all tryptic peptides that are contained in all of the selected genomes, but in none of the UniProt entries belonging to taxa outside those of the selected genomes, making these peptides taxon-specific. Unique peptide sets can be downloaded and used in targeted proteomics experiments.
 
-<p class='aside'>Peptidome-based clustering is discussed in more detail in chapter 5.</p>
+<p class='aside'>Peptidome-based clustering is discussed in more detail in @sec:peptidome-clustering.</p>
 
 Peptidome-based clustering computes the UPGMA clustering of a selected set of RefSeq whole-genome sequences based on their peptidome content. Pairwise similarities are computed as the fraction of the size of the intersection over the size of the union of both peptidomes. The results are visualized by a similarity matrix and a phylogenetic tree and can be exported in the Newick and CSV format.
 
