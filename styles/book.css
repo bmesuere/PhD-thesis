@@ -86,12 +86,12 @@ div#reset {
 }
 
 /* remove for final version */
-@page {
+/*@page {
     @bottom-center {
         font-family: 'Myriad pro', serif;
         content: string(version, first);
     }
-}
+}*/
 
 /* page numbers */
 @page :left {
