@@ -195,7 +195,7 @@ div#reset {
 
 /* set the number of roman-numbered sections here */
 
-#TOC > ul > li:nth-child(-n+3) > a::after {
+#TOC > ul > li:nth-child(-n+1) > a::after {
     content: leader(' ') target-counter(attr(href), page, lower-roman);
 }
 #TOC > ul > li > a > .toc-section-number::before {
