@@ -39,7 +39,7 @@ Microorganisms drive most of the chemical transformations crucial to sustaining 
 
 # List of publications {- .front-matter data-running-title='List of publications'}
 
-Tsilia, Varvara, Bart Devreese, Ilse Baenst De, **Bart Mesuere**, Andreja Rajkovic, Mieke Uyttendaele, Tom Van De Wiele, and Marc Heyndrickx. 2012. “Application of MALDI-TOF mass spectrometry for the detection of enterotoxins produced by pathogenic strains of the Bacillus cereus group.” *Analytical and Bioanalytical Chemistry* 404 (6-7): 1691–1702.<span class="hidden">@Tsilia2012</span>
+Tsilia, Varvara, Bart Devreese, Ilse De Baenst, **Bart Mesuere**, Andreja Rajkovic, Mieke Uyttendaele, Tom Van De Wiele, and Marc Heyndrickx. 2012. “Application of MALDI-TOF mass spectrometry for the detection of enterotoxins produced by pathogenic strains of the Bacillus cereus group.” *Analytical and Bioanalytical Chemistry* 404 (6-7): 1691–1702.<span class="hidden">@Tsilia2012</span>
 
 **Mesuere, Bart**, Bart Devreese, Griet Debyser, Maarten Aerts, Peter Vandamme, and Peter Dawyndt. 2012. “Unipept: Tryptic peptide-based biodiversity analysis of metaproteome samples.” *Journal of Proteome Research* 11 (12): 5773–80. <span class="hidden">@Mesuere2012</span>
 
