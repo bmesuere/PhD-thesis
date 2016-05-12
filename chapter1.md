@@ -106,7 +106,7 @@ Proteins are large molecules that perform many different functions in living org
 &nbsp; | Tyrosine | Tyr | Y | 181.19 Da
 &nbsp; | Valine | Val | V | 117.15 Da
 
-: Overview of all naturally occurring amino acids with long abbreviation, short abbreviation and molecular weight. Notice that leucine and isoleucine have the same weight. {#tbl:ch1tbl1}
+: Overview of the standard amino acids with long abbreviation, short abbreviation and molecular weight. Notice that leucine and isoleucine have the same weight. {#tbl:ch1tbl1}
 
 
 ## Metaproteomics {data-running-title='Metaproteomics'}
@@ -120,7 +120,7 @@ Next, the ions are selected from the sample and directed through the mass analyz
 
 <p style="display:none" class='pre-small-image'> </p> ![Schematic overview of a mass spectrometer showing the ionization, mass analysis (magnet) and detector.](images/ch1fig14.png){#fig:ch1fig14}
 
-The separation of the ions makes it possible to detect how many ions of each mass-to-charge ratio are present. This is what happens in the last phase by a detector producing a mass spectrum (@Fig:ch1fig15). This spectrum shows the number of detections and thus the relative abundance of ions for each mass-to-charge ratio.
+The separation of the ions makes it possible to detect how many ions of each mass-to-charge ratio (m/z) are present. This is what happens in the last phase by a detector producing a mass spectrum (@Fig:ch1fig15). This spectrum shows the number of detections and thus the relative abundance of ions for each mass-to-charge ratio.
 
 ![Example of a recorded mass spectrum. The horizontal axis shows the recorded m/z range and the vertical axis shows the relative number of detections for each ratio.](images/ch1fig15.gif){#fig:ch1fig15}
 
