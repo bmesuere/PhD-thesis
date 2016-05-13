@@ -25,6 +25,9 @@ lstPrefix:
   - "listing"
   - "listings"
 ---
+
+# Preface {- .front-matter data-running-title='Preface'}
+
 # Summary {- .front-matter data-running-title='Summary'}
 
 Microorganisms drive most of the chemical transformations crucial to sustaining life on Earth. Their ability to inhabit almost every environmental niche proves they possess an incredible diversity of physiological capabilities. However, little is known about the majority of the millions of microbial species that are predicted to exists, given that we are able to grow only an estimated 1% of these organisms under lab conditions. The emerging disciplines of metagenomics and metaproteomics take advantage of the current generation of sequencing technologies to recover genetic material and active proteins directly from environmental samples. These new approaches provide us with a “new kind of microscope” that is revolutionizing our understanding of the diversity and ecology of environmental communities. However, the computational and statistical tools to analyze metagenomics and metaproteomics data are clearly lagging behind the developments in sequencing technology.
@@ -61,6 +64,6 @@ Tsilia, Varvara, Bart Devreese, Ilse De Baenst, **Bart Mesuere**, Andreja Rajkov
 
 **Mesuere, Bart**, Griet Debyser, Maarten Aerts, Bart Devreese, Peter Vandamme, and Peter Dawyndt. 2015. “The Unipept metaproteomics analysis pipeline.” *Proteomics* 15 (8): 1437–42. <span class="hidden">@Mesuere2015</span>
 
-Debyser, Griet, **Bart Mesuere**, Lieven Clement, Jens Van de Weygaert, Pieter Van Hecke, Gwen Duytschaever, Maarten Aerts, Peter Dawyndt, Kris De Boeck, Peter Vandamme, and Bart Devreese. 2015. “Faecal proteomics: A tool to investigate dysbiosis and inflammation in patients with cystic fibrosis.” *Journal of Cystic Fibrosis*. <span class="hidden">@debyser2015</span>
+Debyser, Griet, **Bart Mesuere**, Lieven Clement, Jens Van de Weygaert, Pieter Van Hecke, Gwen Duytschaever, Maarten Aerts, Peter Dawyndt, Kris De Boeck, Peter Vandamme, and Bart Devreese. 2015. “Faecal proteomics: A tool to investigate dysbiosis and inflammation in patients with cystic fibrosis.” *Journal of Cystic Fibrosis* 15 (2): 242–50. <span class="hidden">@debyser2015</span>
 
-**Mesuere, Bart**, Toon Willems, Felix Van der Jeugt, Bart Devreese, Peter Vandamme, and Peter Dawyndt. 2016. “Unipept web services for metaproteomics analysis.” *Bioinformatics*. <span class="hidden">@Mesuere2016</span>
+**Mesuere, Bart**, Toon Willems, Felix Van der Jeugt, Bart Devreese, Peter Vandamme, and Peter Dawyndt. 2016. “Unipept web services for metaproteomics analysis.” *Bioinformatics* (in press). <span class="hidden">@Mesuere2016</span>
