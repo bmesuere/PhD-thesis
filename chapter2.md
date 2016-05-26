@@ -4,7 +4,7 @@ The initial objective of Unipept was to improve the biodiversity analysis of met
 
 This chapter contains the initial Unipept article published in the Journal of Proteome Research in 2012, an update article published in Proteomics in 2015 and a short overview of the new features that were added since the last publication.
 
-## Unipept: Tryptic peptide-based biodiversity analysis of metaproteome samples {data-running-title='Tryptic peptide-based biodiversity analysis'}
+## Unipept: Tryptic peptide-based biodiversity analysis of metaproteome&nbsp;samples {data-running-title='Tryptic peptide-based biodiversity analysis'}
 
 <p class='aside'>This section contains a verbatim copy of the research article by @Mesuere2012 as published in the Journal of Proteome Research.</p>
 

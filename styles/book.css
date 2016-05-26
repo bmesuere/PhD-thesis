@@ -18,7 +18,7 @@ header {
     page: no-header-footer;
 }
 header h3.date {
-    string-set: version content();
+    /*string-set: version content();*/
 }
 
 /* all front-matter starts on a right page */
@@ -28,6 +28,10 @@ header h3.date {
 }
 .front-matter {
     page-break-before: right;
+}
+
+#TOC {
+    font-size: 97%;
 }
 
 /* header settings */
@@ -51,7 +55,7 @@ section.level1 {
 }
 section#references {
     page-break-before: right;
-    string-set: sect attr('data-running-title'), chap attr('data-running-title');
+    /*string-set: sect attr('data-running-title'), chap attr('data-running-title');*/
 }
 section.level2 {
     string-set: sect attr('data-running-title');

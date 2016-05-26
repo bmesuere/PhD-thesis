@@ -2,7 +2,7 @@
 
 This chapter describes the Unique Peptide Finder, a tool for finding taxon-specific peptides that can be used as biomarkers for targeted proteomics. Together with the Peptidome Similarity feature, a tool for comparing the similarity of proteomes, the Unique Peptide Finder forms the Peptidome Analysis part of the Unipept web application.
 
-## The unique peptidome: taxon-specific tryptic peptides as biomarkers for targeted metaproteomics {data-running-title='The unique peptidome' #sec:unique-peptidome}
+## The unique peptidome: taxon-specific tryptic peptides as biomarkers&nbsp;for targeted metaproteomics {data-running-title='The unique peptidome' #sec:unique-peptidome}
 
 <p class='aside'>This section contains a verbatim copy of the research article by @Mesuere2016a as submitted to Proteomics.</p>
 
