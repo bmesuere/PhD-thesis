@@ -1,6 +1,6 @@
 # PhD thesis Bart Mesuere
 
-This repository contains the source files of my PhD thesis. A pdf version of the result can be found at [here](https://www.dropbox.com/s/vpse9uu82niqs48/book.pdf).
+This repository contains the source files of my PhD thesis. A pdf version of the result can be found at [here](https://biblio.ugent.be/publication/7237782/file/7237787).
 
 You can site this manuscript as follows:
 
